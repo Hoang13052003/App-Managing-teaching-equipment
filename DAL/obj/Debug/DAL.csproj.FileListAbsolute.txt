@@ -1,0 +1,9 @@
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\DAL\bin\Debug\DAL.dll
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\DAL\bin\Debug\DAL.pdb
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\DAL\obj\Debug\DAL.dll
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\DAL\obj\Debug\DAL.pdb
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\DAL\bin\Debug\DTO.dll
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\DAL\bin\Debug\DTO.pdb
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\DAL\obj\Debug\DAL.csproj.CopyComplete

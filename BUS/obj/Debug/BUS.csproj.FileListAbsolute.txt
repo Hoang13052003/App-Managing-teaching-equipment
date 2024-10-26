@@ -1,0 +1,11 @@
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\BUS\bin\Debug\BUS.dll
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\BUS\bin\Debug\BUS.pdb
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\BUS\obj\Debug\BUS.csproj.AssemblyReference.cache
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\BUS\obj\Debug\BUS.csproj.CoreCompileInputs.cache
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\BUS\obj\Debug\BUS.dll
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\BUS\obj\Debug\BUS.pdb
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\BUS\bin\Debug\DAL.dll
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\BUS\bin\Debug\DTO.dll
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\BUS\bin\Debug\DAL.pdb
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\BUS\bin\Debug\DTO.pdb
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\BUS\obj\Debug\BUS.csproj.CopyComplete

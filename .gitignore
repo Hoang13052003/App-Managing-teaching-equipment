@@ -1,0 +1,56 @@
+﻿# Các file và thư mục mà bạn muốn bỏ qua
+
+# Thư mục bin và obj
+/bin/
+/obj/
+
+# File cấu hình Visual Studio
+.vs/
+*.suo
+*.user
+*.userprefs
+*.sln.ide
+
+# File biên dịch
+*.dll
+*.exe
+*.pdb
+*.appx
+*.appxbundle
+*.msix
+*.msixbundle
+*.app
+
+# File log
+*.log
+
+# File cài đặt NuGet
+*.nupkg
+project.lock.json
+
+# Cấu hình NuGet
+*.nuget/
+
+# Các thư mục tạm thời khác
+*.tmp
+*.temp
+*.cache
+*.bak
+
+# Các file và thư mục của hệ điều hành
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+*.swp
+*~
+*.pid
+
+# File cấu hình cho IDE khác
+.idea/
+*.iml
+
+# Ignore any local secrets or keys
+*.secret
+*.key
+*.pem
