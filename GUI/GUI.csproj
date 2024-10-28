@@ -54,11 +54,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dashboard.cs">
+    <Compile Include="Dashboard_Admin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dashboard.Designer.cs">
-      <DependentUpon>Dashboard.cs</DependentUpon>
+    <Compile Include="Dashboard_Admin.Designer.cs">
+      <DependentUpon>Dashboard_Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dashboard_User.Designer.cs">
+      <DependentUpon>Dashboard_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formConDemo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formConDemo.Designer.cs">
+      <DependentUpon>formConDemo.cs</DependentUpon>
     </Compile>
     <Compile Include="Layout.cs">
       <SubType>Form</SubType>
@@ -86,8 +98,14 @@
     <Compile Include="Setting.Designer.cs">
       <DependentUpon>Setting.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Dashboard.resx">
-      <DependentUpon>Dashboard.cs</DependentUpon>
+    <EmbeddedResource Include="Dashboard_Admin.resx">
+      <DependentUpon>Dashboard_Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dashboard_User.resx">
+      <DependentUpon>Dashboard_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formConDemo.resx">
+      <DependentUpon>formConDemo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layout.resx">
       <DependentUpon>Layout.cs</DependentUpon>

@@ -115,7 +115,7 @@
             this.panelDangNhap.Controls.Add(this.txtTenDangNhap);
             this.guna2Transition1.SetDecoration(this.panelDangNhap, Guna.UI2.AnimatorNS.DecorationType.None);
             this.panelDangNhap.FillColor = System.Drawing.Color.White;
-            this.panelDangNhap.Location = new System.Drawing.Point(0, 0);
+            this.panelDangNhap.Location = new System.Drawing.Point(2, 0);
             this.panelDangNhap.Name = "panelDangNhap";
             this.panelDangNhap.Radius = 10;
             this.panelDangNhap.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(139)))), ((int)(((byte)(193)))));
@@ -127,6 +127,7 @@
             // 
             this.btnChuyenQuaDangKy.Animated = true;
             this.btnChuyenQuaDangKy.BorderRadius = 20;
+            this.btnChuyenQuaDangKy.Cursor = System.Windows.Forms.Cursors.Hand;
             this.guna2Transition1.SetDecoration(this.btnChuyenQuaDangKy, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btnChuyenQuaDangKy.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnChuyenQuaDangKy.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -173,6 +174,7 @@
             // btnDangNhap
             // 
             this.btnDangNhap.BorderRadius = 20;
+            this.btnDangNhap.Cursor = System.Windows.Forms.Cursors.Hand;
             this.guna2Transition1.SetDecoration(this.btnDangNhap, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btnDangNhap.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnDangNhap.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -208,6 +210,7 @@
             this.swichHienMatKhauDangNhap.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.swichHienMatKhauDangNhap.CheckedState.InnerBorderColor = System.Drawing.Color.White;
             this.swichHienMatKhauDangNhap.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.swichHienMatKhauDangNhap.Cursor = System.Windows.Forms.Cursors.Hand;
             this.guna2Transition1.SetDecoration(this.swichHienMatKhauDangNhap, Guna.UI2.AnimatorNS.DecorationType.None);
             this.swichHienMatKhauDangNhap.Location = new System.Drawing.Point(48, 197);
             this.swichHienMatKhauDangNhap.Name = "swichHienMatKhauDangNhap";
@@ -271,6 +274,7 @@
             // 
             this.btnChuyenQuaDangNhap.Animated = true;
             this.btnChuyenQuaDangNhap.BorderRadius = 20;
+            this.btnChuyenQuaDangNhap.Cursor = System.Windows.Forms.Cursors.Hand;
             this.guna2Transition1.SetDecoration(this.btnChuyenQuaDangNhap, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btnChuyenQuaDangNhap.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnChuyenQuaDangNhap.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -304,6 +308,7 @@
             // btnDangKy
             // 
             this.btnDangKy.BorderRadius = 20;
+            this.btnDangKy.Cursor = System.Windows.Forms.Cursors.Hand;
             this.guna2Transition1.SetDecoration(this.btnDangKy, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btnDangKy.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnDangKy.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -339,6 +344,7 @@
             this.swichHienMatKhauDangKy.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.swichHienMatKhauDangKy.CheckedState.InnerBorderColor = System.Drawing.Color.White;
             this.swichHienMatKhauDangKy.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.swichHienMatKhauDangKy.Cursor = System.Windows.Forms.Cursors.Hand;
             this.guna2Transition1.SetDecoration(this.swichHienMatKhauDangKy, Guna.UI2.AnimatorNS.DecorationType.None);
             this.swichHienMatKhauDangKy.Location = new System.Drawing.Point(48, 197);
             this.swichHienMatKhauDangKy.Name = "swichHienMatKhauDangKy";

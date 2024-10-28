@@ -3,7 +3,6 @@ D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\bin\Debug\GUI.ex
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\bin\Debug\GUI.pdb
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\bin\Debug\Guna.UI2.dll
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.csproj.AssemblyReference.cache
-D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Dashboard.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Properties.Resources.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.csproj.GenerateResource.cache
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.csproj.CoreCompileInputs.cache
@@ -20,3 +19,6 @@ D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\bin\Debug\DTO.pd
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\bin\Debug\DAL.pdb
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Login.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.ResetPassword.resources
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Dashboard_Admin.resources
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Dashboard_User.resources
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.formConDemo.resources
