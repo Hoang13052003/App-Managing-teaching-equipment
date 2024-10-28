@@ -58,7 +58,7 @@ namespace GUI
                     MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     // Chuyển đến giao diện chính hoặc các thao tác khác
                     AccountInfo.SetAccountInfo(nguoiDung);
-                    FormTask.OpenForm<Dashboard>(this);
+                    FormTask.OpenForm<Dashboard_Admin>(this);
                 }
                 else
                 {

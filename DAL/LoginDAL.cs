@@ -111,6 +111,7 @@ namespace DAL
             if (nguoiDung == null)
             {
                 MessageBox.Show("Không tồn tại người dùng này!", "Thông báo");
+                return null;
             }
             // 2. Tạo code xác thực mới ngẫu nhiên
             string verificationCode = GenerateRandomCode(8);
