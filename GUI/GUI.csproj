@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DAL">
+      <HintPath>..\DAL\bin\Debug\DAL.dll</HintPath>
+    </Reference>
     <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
@@ -40,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
@@ -65,12 +69,6 @@
     </Compile>
     <Compile Include="Dashboard_User.Designer.cs">
       <DependentUpon>Dashboard_User.cs</DependentUpon>
-    </Compile>
-    <Compile Include="formConDemo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="formConDemo.Designer.cs">
-      <DependentUpon>formConDemo.cs</DependentUpon>
     </Compile>
     <Compile Include="Layout.cs">
       <SubType>Form</SubType>
@@ -98,14 +96,23 @@
     <Compile Include="Setting.Designer.cs">
       <DependentUpon>Setting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier.Designer.cs">
+      <DependentUpon>Supplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YeuCauThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YeuCauThietBi.Designer.cs">
+      <DependentUpon>YeuCauThietBi.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Dashboard_Admin.resx">
       <DependentUpon>Dashboard_Admin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard_User.resx">
       <DependentUpon>Dashboard_User.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="formConDemo.resx">
-      <DependentUpon>formConDemo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layout.resx">
       <DependentUpon>Layout.cs</DependentUpon>
@@ -128,6 +135,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Setting.resx">
       <DependentUpon>Setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier.resx">
+      <DependentUpon>Supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YeuCauThietBi.resx">
+      <DependentUpon>YeuCauThietBi.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
