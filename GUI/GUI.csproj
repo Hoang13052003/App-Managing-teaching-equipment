@@ -102,11 +102,11 @@
     <Compile Include="Supplier.Designer.cs">
       <DependentUpon>Supplier.cs</DependentUpon>
     </Compile>
-    <Compile Include="YeuCauThietBi.cs">
+    <Compile Include="YeuCauSuaThietBi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="YeuCauThietBi.Designer.cs">
-      <DependentUpon>YeuCauThietBi.cs</DependentUpon>
+    <Compile Include="YeuCauSuaThietBi.Designer.cs">
+      <DependentUpon>YeuCauSuaThietBi.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Dashboard_Admin.resx">
       <DependentUpon>Dashboard_Admin.cs</DependentUpon>
@@ -139,8 +139,8 @@
     <EmbeddedResource Include="Supplier.resx">
       <DependentUpon>Supplier.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="YeuCauThietBi.resx">
-      <DependentUpon>YeuCauThietBi.cs</DependentUpon>
+    <EmbeddedResource Include="YeuCauSuaThietBi.resx">
+      <DependentUpon>YeuCauSuaThietBi.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

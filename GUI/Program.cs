@@ -57,7 +57,7 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Supplier());
+            Application.Run(new YeuCauSuaThietBi());
         }
     }
 }
