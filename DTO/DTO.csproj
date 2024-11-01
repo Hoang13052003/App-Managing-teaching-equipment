@@ -43,34 +43,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaiHocDTO.cs" />
+    <Compile Include="BaoDuongDTO.cs" />
+    <Compile Include="BienBanXuLyDTO.cs" />
+    <Compile Include="ChiTietMuonThietBiDTO.cs" />
+    <Compile Include="ChiTietNhapDTO.cs" />
+    <Compile Include="ChiTietThanhLyDTO.cs" />
+    <Compile Include="ChiTietThietBi_NhaCungCapDTO.cs" />
     <Compile Include="ChiTietYeuCauThietBiDTO.cs" />
+    <Compile Include="LoaiThietBi_MonHocDTO.cs" />
+    <Compile Include="LopHocDTO.cs" />
     <Compile Include="ManHinhDTO.cs" />
+    <Compile Include="MonHocDTO.cs" />
+    <Compile Include="MuonThietBiDTO.cs" />
     <Compile Include="NguoiDungDTO.cs" />
     <Compile Include="NguoiDungNhomNguoiDungDTO.cs" />
+    <Compile Include="NhapThietBiDTO.cs" />
     <Compile Include="NhomNguoiDungDTO.cs" />
-    <Compile Include="pChiTietThietBiDTO.cs" />
+    <Compile Include="ChiTietThietBiDTO.cs" />
+    <Compile Include="PhanHoiGiaoVienDTO.cs" />
     <Compile Include="PhanQuyenDTO.cs" />
-    <Compile Include="pLoaiThietBiDTO.cs" />
+    <Compile Include="LoaiThietBiDTO.cs" />
+    <Compile Include="PhongHocDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="pThietBiDTO.cs" />
     <Compile Include="SupplierDTO.cs" />
+    <Compile Include="ThanhLyThietBiDTO.cs" />
+    <Compile Include="ThietBiDTO.cs" />
+    <Compile Include="ThoiKhoaBieuDTO.cs" />
+    <Compile Include="ThongKeSuDungThietBiDTO.cs" />
     <Compile Include="ThongTinCaNhanDTO.cs" />
     <Compile Include="YeuCauThietBiDTO.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

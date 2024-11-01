@@ -13,15 +13,15 @@ namespace DAL
 {
     public class YeuCauThietBiDAL: DatabaseHelper
     {
-        public List<pLoaiThietBiDTO> getAllLoaiTB()
+        public List<LoaiThietBiDTO> getAllLoaiTB()
         {
-            List<pLoaiThietBiDTO> list = new List<pLoaiThietBiDTO>();
+            List<LoaiThietBiDTO> list = new List<LoaiThietBiDTO>();
             string query = "SELECT * FROM LoaiThietBi";
             DataTable dataTable = GetDataTable(query);
 
             foreach (DataRow row in dataTable.Rows)
             {
-                list.Add(new pLoaiThietBiDTO
+                list.Add(new LoaiThietBiDTO
                 {
                     MaLoai = Convert.ToInt32(row["MaLoai"]),
                     TenLoai = row["TenLoai"].ToString(),
@@ -29,15 +29,16 @@ namespace DAL
             }
             return list;
         }
-        public List<pThietBiDTO> SearchThietBi(int pMaLoai)
+        public List<ThietBiDTO> SearchThietBi(int pMaLoai)
         {
-            List<pThietBiDTO> list = new List<pThietBiDTO>();
+            List<ThietBiDTO> list = new List<ThietBiDTO>();
+
             string query = "SELECT * FROM ThietBi WHERE MaLoai = '"+pMaLoai+"'";
             DataTable dataTable = GetDataTable(query);
 
             foreach (DataRow row in dataTable.Rows)
             {
-                list.Add(new pThietBiDTO
+                list.Add(new ThietBiDTO
                 {
                     MaTB = Convert.ToInt32(row["MaTB"]),
                     TenTB = row["TenTB"].ToString(),
@@ -49,15 +50,15 @@ namespace DAL
             return list;
         }
 
-        public List<pThietBiDTO> getAllThietBi()
+        public List<ThietBiDTO> getAllThietBi()
         {
-            List<pThietBiDTO> list = new List<pThietBiDTO>();
+            List<ThietBiDTO> list = new List<ThietBiDTO>();
             string query = "SELECT * FROM ThietBi";
             DataTable dataTable = GetDataTable(query);
 
             foreach (DataRow row in dataTable.Rows)
             {
-                list.Add(new pThietBiDTO
+                list.Add(new ThietBiDTO
                 {
                     MaTB = Convert.ToInt32(row["MaTB"]),
                     TenTB = row["TenTB"].ToString(),
@@ -69,9 +70,9 @@ namespace DAL
             return list;
         }
 
-        public List<pChiTietThietBiDTO> getAllChiTietThietBi()
+        public List<ChiTietThietBiDTO> getAllChiTietThietBi()
         {
-            List<pChiTietThietBiDTO> list = new List<pChiTietThietBiDTO>();
+            List<ChiTietThietBiDTO> list = new List<ChiTietThietBiDTO>();
             string query = @"Select cn.MaCTTB_NCC, TenTB, TinhTrang, TrangThai, NgayMua
                             From ThietBi t, ChiTietThietBi c, ChiTietThietBi_NhaCungCap cn
                             Where cn.MaCTTB = c.MaCTTB 
@@ -98,7 +99,7 @@ namespace DAL
                         break;
                 }
 
-                list.Add(new pChiTietThietBiDTO
+                list.Add(new ChiTietThietBiDTO
                 {
                     MaCTTB_NCC = Convert.ToInt32(row["MaCTTB_NCC"]),
                     TenTB = row["TenTB"].ToString(),
@@ -110,9 +111,9 @@ namespace DAL
             return list;
         }
 
-        public List<pChiTietThietBiDTO> SearchChiTietThietBi(int pMaTB)
+        public List<ChiTietThietBiDTO> SearchChiTietThietBi(int pMaTB)
         {
-            List<pChiTietThietBiDTO> list = new List<pChiTietThietBiDTO>();
+            List<ChiTietThietBiDTO> list = new List<ChiTietThietBiDTO>();
             string query = @"Select cn.MaCTTB_NCC, TenTB, TinhTrang, TrangThai, NgayMua
                             From ThietBi t, ChiTietThietBi c, ChiTietThietBi_NhaCungCap cn
                             Where cn.MaCTTB = c.MaCTTB 
@@ -140,7 +141,7 @@ namespace DAL
                         break;
                 }
 
-                list.Add(new pChiTietThietBiDTO
+                list.Add(new ChiTietThietBiDTO
                 {
                     MaCTTB_NCC = Convert.ToInt32(row["MaCTTB_NCC"]),
                     TenTB = row["TenTB"].ToString(),
@@ -151,9 +152,9 @@ namespace DAL
             }
             return list;
         }
-        public List<pChiTietThietBiDTO> SearchKeyChiTietThietBi(string keyword)
+        public List<ChiTietThietBiDTO> SearchKeyChiTietThietBi(string keyword)
         {
-            List<pChiTietThietBiDTO> list = new List<pChiTietThietBiDTO>();
+            List<ChiTietThietBiDTO> list = new List<ChiTietThietBiDTO>();
             string query = @"Select cn.MaCTTB_NCC, TenTB, TinhTrang, TrangThai, NgayMua
                             From ThietBi t, ChiTietThietBi c, ChiTietThietBi_NhaCungCap cn
                             Where cn.MaCTTB = c.MaCTTB 
@@ -181,7 +182,7 @@ namespace DAL
                         break;
                 }
 
-                list.Add(new pChiTietThietBiDTO
+                list.Add(new ChiTietThietBiDTO
                 {
                     MaCTTB_NCC = Convert.ToInt32(row["MaCTTB_NCC"]),
                     TenTB = row["TenTB"].ToString(),

@@ -11,27 +11,27 @@ namespace BUS
     public class YeuCauThietBiBUS
     {
         YeuCauThietBiDAL y = new YeuCauThietBiDAL();
-        public List<pLoaiThietBiDTO> getAllLoaiTB()
+        public List<LoaiThietBiDTO> getAllLoaiTB()
         {
             return y.getAllLoaiTB();
         }
-        public List<pThietBiDTO> getAllThietBi()
+        public List<ThietBiDTO> getAllThietBi()
         {
             return y.getAllThietBi();
         }
-        public List<pThietBiDTO> SearchThietBi(int pMaLoai)
+        public List<ThietBiDTO> SearchThietBi(int pMaLoai)
         {
             return y.SearchThietBi(pMaLoai);
         }
-        public List<pChiTietThietBiDTO> SearchChiTietThietBi(int pMaTB)
+        public List<ChiTietThietBiDTO> SearchChiTietThietBi(int pMaTB)
         {
             return y.SearchChiTietThietBi(pMaTB);
         }
-        public List<pChiTietThietBiDTO> getAllChiTietThietBi()
+        public List<ChiTietThietBiDTO> getAllChiTietThietBi()
         {
             return y.getAllChiTietThietBi();
         }
-        public List<pChiTietThietBiDTO> SearchKeyChiTietThietBi(string keyword)
+        public List<ChiTietThietBiDTO> SearchKeyChiTietThietBi(string keyword)
         {
             return y.SearchKeyChiTietThietBi(keyword);
         }
