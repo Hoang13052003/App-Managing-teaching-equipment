@@ -66,11 +66,11 @@
     <Compile Include="Dashboard_User.Designer.cs">
       <DependentUpon>Dashboard_User.cs</DependentUpon>
     </Compile>
-    <Compile Include="formConDemo.cs">
+    <Compile Include="demoKichThuocFormCon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formConDemo.Designer.cs">
-      <DependentUpon>formConDemo.cs</DependentUpon>
+    <Compile Include="demoKichThuocFormCon.Designer.cs">
+      <DependentUpon>demoKichThuocFormCon.cs</DependentUpon>
     </Compile>
     <Compile Include="Layout.cs">
       <SubType>Form</SubType>
@@ -104,8 +104,8 @@
     <EmbeddedResource Include="Dashboard_User.resx">
       <DependentUpon>Dashboard_User.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formConDemo.resx">
-      <DependentUpon>formConDemo.cs</DependentUpon>
+    <EmbeddedResource Include="demoKichThuocFormCon.resx">
+      <DependentUpon>demoKichThuocFormCon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layout.resx">
       <DependentUpon>Layout.cs</DependentUpon>
