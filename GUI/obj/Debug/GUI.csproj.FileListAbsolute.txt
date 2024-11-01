@@ -21,4 +21,3 @@ D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Lo
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.ResetPassword.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Dashboard_Admin.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Dashboard_User.resources
-D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.formConDemo.resources
