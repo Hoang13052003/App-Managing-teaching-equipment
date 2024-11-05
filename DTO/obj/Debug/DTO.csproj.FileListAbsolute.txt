@@ -4,3 +4,9 @@ D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\DTO\obj\Debug\DTO.cs
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\DTO\obj\Debug\DTO.dll
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\DTO\obj\Debug\DTO.pdb
+E:\Nam4\DoAnCN\App-Managing-teaching-equipment\DTO\bin\Debug\DTO.dll
+E:\Nam4\DoAnCN\App-Managing-teaching-equipment\DTO\bin\Debug\DTO.pdb
+E:\Nam4\DoAnCN\App-Managing-teaching-equipment\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
+E:\Nam4\DoAnCN\App-Managing-teaching-equipment\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+E:\Nam4\DoAnCN\App-Managing-teaching-equipment\DTO\obj\Debug\DTO.dll
+E:\Nam4\DoAnCN\App-Managing-teaching-equipment\DTO\obj\Debug\DTO.pdb

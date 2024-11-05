@@ -80,4 +80,17 @@ public class MonHocBUS
             return false;
         }
     }
+
+    public bool CheckMonHocExists(string ten)
+    {
+        try
+        {
+            return monHocDAL.CheckMonHocExists(ten);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Lỗi khi kiểm tra trùng tên môn học: " + ex.Message);
+            return false;
+        }
+    }
 }

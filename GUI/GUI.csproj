@@ -72,6 +72,24 @@
     <Compile Include="demoKichThuocFormCon.Designer.cs">
       <DependentUpon>demoKichThuocFormCon.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLoaiTB_MonHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLoaiTB_MonHoc.Designer.cs">
+      <DependentUpon>FormLoaiTB_MonHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLoaiThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLoaiThietBi.Designer.cs">
+      <DependentUpon>FormLoaiThietBi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMuonThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMuonThietBi.Designer.cs">
+      <DependentUpon>FormMuonThietBi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Layout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +101,12 @@
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manage_Device.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manage_Device.Designer.cs">
+      <DependentUpon>Manage_Device.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,11 +131,23 @@
     <EmbeddedResource Include="demoKichThuocFormCon.resx">
       <DependentUpon>demoKichThuocFormCon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLoaiTB_MonHoc.resx">
+      <DependentUpon>FormLoaiTB_MonHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLoaiThietBi.resx">
+      <DependentUpon>FormLoaiThietBi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMuonThietBi.resx">
+      <DependentUpon>FormMuonThietBi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Layout.resx">
       <DependentUpon>Layout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manage_Device.resx">
+      <DependentUpon>Manage_Device.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -88,11 +88,56 @@ namespace DAL
             }
         }
 
-        public bool SuaThietBi(int pMaTB, string pTenTB, int pMaLoai, DateTime pNSX, int pSoLuong)
+        public bool SuaThietBi(int pMaTB, string pTenTB, int pMaLoai, string pNSX, int pSoLuong)
         {
-            string query = "UPDATE ThietBi SET TenTB = @TenTB, MaLoai = @MaLoai, NSX = @NSX, SoLuong = @SoLuong WHERE MaTB = @MaTB";
             using (SqlConnection connection = GetConnection())
             {
+                // Kiểm tra xem tên thiết bị có bị trùng không
+                string checkNameQuery = "SELECT COUNT(*) FROM ThietBi WHERE TenTB = @TenTB AND MaTB != @MaTB";
+                SqlCommand checkNameCommand = new SqlCommand(checkNameQuery, connection);
+                checkNameCommand.Parameters.AddWithValue("@TenTB", pTenTB);
+                checkNameCommand.Parameters.AddWithValue("@MaTB", pMaTB);
+
+                connection.Open();
+                int duplicateCount = (int)checkNameCommand.ExecuteScalar();
+                connection.Close();
+
+                if (duplicateCount > 0)
+                {
+                    // Trùng tên thiết bị, không cập nhật
+                    return false;
+                }
+
+                // Kiểm tra xem có thay đổi nào so với dữ liệu cũ không
+                string checkChangesQuery = "SELECT TenTB, MaLoai, NSX, SoLuong FROM ThietBi WHERE MaTB = @MaTB";
+                SqlCommand checkChangesCommand = new SqlCommand(checkChangesQuery, connection);
+                checkChangesCommand.Parameters.AddWithValue("@MaTB", pMaTB);
+
+                connection.Open();
+                SqlDataReader reader = checkChangesCommand.ExecuteReader();
+                if (reader.Read())
+                {
+                    string currentTenTB = reader["TenTB"].ToString();
+                    int currentMaLoai = (int)reader["MaLoai"];
+                    string currentNSX = reader["NSX"].ToString();
+                    int currentSoLuong = (int)reader["SoLuong"];
+                    connection.Close();
+
+                    // Kiểm tra nếu không có thay đổi
+                    if (currentTenTB == pTenTB && currentMaLoai == pMaLoai && currentNSX == pNSX && currentSoLuong == pSoLuong)
+                    {
+                        // Không có thay đổi, không cần cập nhật
+                        return false;
+                    }
+                }
+                else
+                {
+                    // Thiết bị không tồn tại
+                    return false;
+                }
+
+                // Cập nhật thiết bị nếu có thay đổi
+                string query = "UPDATE ThietBi SET TenTB = @TenTB, MaLoai = @MaLoai, NSX = @NSX, SoLuong = @SoLuong WHERE MaTB = @MaTB";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@MaTB", pMaTB);
                 command.Parameters.AddWithValue("@TenTB", pTenTB);
@@ -101,9 +146,13 @@ namespace DAL
                 command.Parameters.AddWithValue("@SoLuong", pSoLuong);
 
                 connection.Open();
-                return command.ExecuteNonQuery() > 0;
+                bool result = command.ExecuteNonQuery() > 0;
+                connection.Close();
+
+                return result;
             }
         }
+
 
         public bool XoaThietBi(int pMaTB)
         {
@@ -117,5 +166,34 @@ namespace DAL
             }
         }
 
+        public List<ThietBiDTO> LayTenThietBiByMaLoai(int maLoai)
+        {
+            List<ThietBiDTO> thietBis = new List<ThietBiDTO>();
+
+            string query = "SELECT MaTB, TenTB FROM ThietBi WHERE MaLoai = @MaLoai";
+            using (SqlConnection connection = GetConnection())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@MaLoai", maLoai);
+
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ThietBiDTO thietBi = new ThietBiDTO
+                        {
+                            MaTB = reader.GetInt32(0), // Giả sử MaTB là kiểu int
+                            TenTB = reader.GetString(1) // Giả sử TenTB là kiểu string
+                        };
+                        thietBis.Add(thietBi);
+                    }
+                }
+            }
+
+            return thietBis;
+        }
+
     }
+
 }

@@ -7,7 +7,7 @@ using System.Runtime.Remoting.Contexts;
 
 public class DatabaseHelper
 {
-    private readonly string connectionString = "Data Source=LAPTOP-H0BOFLN9;Initial Catalog=QlyThietBiDayHoc;User ID=sa;Password=123;Encrypt=False";
+    private readonly string connectionString = "Data Source=LAPTOPTQT03;Initial Catalog=QLThietBiDayHoc;Integrated Security=True;Encrypt=False";
 
     public SqlConnection GetConnection()
     {
