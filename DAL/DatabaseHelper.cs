@@ -139,6 +139,40 @@ public class DatabaseHelper
         }
         return dataTable;
     }
+    public DataTable GetDataTableQuery(string query, SqlParameter[] parameters = null)
+    {
+        DataTable dataTable = new DataTable();
+
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                if (parameters != null)
+                {
+                    command.Parameters.AddRange(parameters);
+                }
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    try
+                    {
+                        connection.Open();
+                        adapter.Fill(dataTable);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Ghi log hoặc xử lý lỗi ở đây
+                        Console.WriteLine($"Error getting data table: {ex.Message}");
+                        // Trả về một DataTable mặc định
+                        return new DataTable(); // Trả về một DataTable rỗng nếu có lỗi
+                    }
+                }
+            }
+        }
+
+        return dataTable;
+    }
+
     public DataTable GetDataTable(string SQLProc, SqlParameter[] para)
     {
         DataTable dataTable = new DataTable();

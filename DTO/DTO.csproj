@@ -68,6 +68,7 @@
     <Compile Include="SupplierDTO.cs" />
     <Compile Include="ThanhLyThietBiDTO.cs" />
     <Compile Include="ThietBiDTO.cs" />
+    <Compile Include="ThoiKhoaBieuChiTietDTO.cs" />
     <Compile Include="ThoiKhoaBieuDTO.cs" />
     <Compile Include="ThongKeSuDungThietBiDTO.cs" />
     <Compile Include="ThongTinCaNhanDTO.cs" />

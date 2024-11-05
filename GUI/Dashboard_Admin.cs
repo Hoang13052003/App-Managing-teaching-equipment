@@ -51,11 +51,6 @@ namespace GUI
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnSetting_Click(object sender, EventArgs e)
         {
             Form x = new Setting();

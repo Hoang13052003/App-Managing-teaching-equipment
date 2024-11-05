@@ -66,11 +66,17 @@
     <Compile Include="Dashboard_User.Designer.cs">
       <DependentUpon>Dashboard_User.cs</DependentUpon>
     </Compile>
-    <Compile Include="demoKichThuocFormCon.cs">
+    <Compile Include="formConDemo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="demoKichThuocFormCon.Designer.cs">
-      <DependentUpon>demoKichThuocFormCon.cs</DependentUpon>
+    <Compile Include="formConDemo.Designer.cs">
+      <DependentUpon>formConDemo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home_User.Designer.cs">
+      <DependentUpon>Home_User.cs</DependentUpon>
     </Compile>
     <Compile Include="Layout.cs">
       <SubType>Form</SubType>
@@ -98,14 +104,29 @@
     <Compile Include="Setting.Designer.cs">
       <DependentUpon>Setting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Show_Subjects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Show_Subjects.Designer.cs">
+      <DependentUpon>Show_Subjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Teaching_Schedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Teaching_Schedule.Designer.cs">
+      <DependentUpon>Teaching_Schedule.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Dashboard_Admin.resx">
       <DependentUpon>Dashboard_Admin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard_User.resx">
       <DependentUpon>Dashboard_User.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="demoKichThuocFormCon.resx">
-      <DependentUpon>demoKichThuocFormCon.cs</DependentUpon>
+    <EmbeddedResource Include="formConDemo.resx">
+      <DependentUpon>formConDemo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home_User.resx">
+      <DependentUpon>Home_User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layout.resx">
       <DependentUpon>Layout.cs</DependentUpon>
@@ -128,6 +149,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Setting.resx">
       <DependentUpon>Setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Show_Subjects.resx">
+      <DependentUpon>Show_Subjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Teaching_Schedule.resx">
+      <DependentUpon>Teaching_Schedule.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -154,12 +181,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Image\backround_schedule.jpg" />
+    <Content Include="Image\demo_image_giang_vien.jpg" />
     <Content Include="Image\Background_Login.png" />
     <Content Include="Image\icon\account.png" />
     <Content Include="Image\icon\close.png" />
     <Content Include="Image\icon\Close_hover.png" />
     <Content Include="Image\icon\help.png" />
+    <Content Include="Image\icon\icons8-back-25.png" />
+    <Content Include="Image\icon\icons8-home-25.png" />
     <Content Include="Image\icon\icons8-next-25.png" />
+    <Content Include="Image\icon\icons8-notification-100.png" />
+    <Content Include="Image\icon\icons8-schedule-100.png" />
+    <Content Include="Image\icon\icons8-schedule-25.png" />
+    <Content Include="Image\icon\icons8-Tiep-25.png" />
     <Content Include="Image\icon\Lock.png" />
     <Content Include="Image\icon\logoApp.jpg" />
     <Content Include="Image\icon\Notification.png" />
