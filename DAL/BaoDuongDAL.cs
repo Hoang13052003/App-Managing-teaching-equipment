@@ -14,11 +14,14 @@ namespace DAL
 
     public class BaoDuongDAL : DatabaseHelper
     {
-        // Lấy tất cả bản ghi bảo dưỡng
         public List<BaoDuongDTO> GetAll()
         {
             List<BaoDuongDTO> list = new List<BaoDuongDTO>();
-            string query = "SELECT * FROM BaoDuong";
+            string query = @"Select MaBD, BD.MaCTTB_NCC, TenTB, NgayBD, KetQua, ChiPhi
+                            From BaoDuong BD
+                            JOIN ChiTietThietBi_NhaCungCap CTTBNCC ON CTTBNCC.MaCTTB_NCC = BD.MaCTTB_NCC
+                            JOIN ChiTietThietBi CTTB ON CTTB.MaCTTB = CTTBNCC.MaCTTB
+                            JOIN ThietBi TB ON TB.MaTB = CTTB.MaTB";
             DataTable dataTable = GetDataTable(query);
 
             foreach (DataRow row in dataTable.Rows)
@@ -27,6 +30,7 @@ namespace DAL
                 {
                     MaBD = Convert.ToInt32(row["MaBD"]),
                     MaCTTB_NCC = Convert.ToInt32(row["MaCTTB_NCC"]),
+                    TenTB = row["TenTB"].ToString(),
                     NgayBD = row["NgayBD"] as DateTime?,
                     KetQua = row["KetQua"].ToString(),
                     ChiPhi = Convert.ToSingle(row["ChiPhi"])
@@ -35,7 +39,6 @@ namespace DAL
             return list;
         }
 
-        // Lấy bản ghi bảo dưỡng theo mã bảo dưỡng
         public BaoDuongDTO GetByID(int maBD)
         {
             string query = "SELECT * FROM BaoDuong WHERE MaBD = @MaBD";

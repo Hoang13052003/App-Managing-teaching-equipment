@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class BaoDuongDTO
+    public class pChiTietThietBiDTO
     {
-        public int MaBD { get; set; }
         public int MaCTTB_NCC { get; set; }
         public string TenTB { get; set; }
-        public DateTime? NgayBD { get; set; }
-        public string KetQua { get; set; }
-        public float ChiPhi { get; set; }
+        public string TinhTrang { get; set; }
+        public string TrangThai {  get; set; }
+        public DateTime? NgayMua { get; set; }
     }
-
 }

@@ -57,7 +57,11 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMuonThietBi());
+
+            //Application.Run(new FormMuonThietBi());
+
+            Application.Run(new XuLyThietBiHuHong());
+
         }
     }
 }

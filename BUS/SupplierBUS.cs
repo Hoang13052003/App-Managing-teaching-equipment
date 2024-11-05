@@ -50,8 +50,14 @@ namespace BUS
                 return count > 0; // Trả về true nếu nhà cung cấp tồn tại, ngược lại false
             }
         }
-
-
+        public List<LoaiThietBiDTO> SearchLoaiTB(int pMaNCC)
+        {
+            return sup.SearchLoaiTB(pMaNCC);
+        }
+        public List<ThietBiDTO> SearchThietBi(int pMaLoai)
+        {
+            return sup.SearchThietBi(pMaLoai);
+        }
         //QLThietBiDayHocDataContext qltb = new QLThietBiDayHocDataContext();
         //SupplierDAL sup = new SupplierDAL();
         //public SupplierBUS()
