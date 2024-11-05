@@ -92,4 +92,20 @@ public class MonHocDAL : DatabaseHelper
             return command.ExecuteNonQuery() > 0;
         }
     }
+
+
+    // Phương thức kiểm tra tên môn học tồn tại
+    public bool CheckMonHocExists(string tenMon)
+    {
+        string query = "SELECT COUNT(*) FROM MonHoc WHERE TenMon = @TenMon";
+        using (SqlConnection connection = GetConnection())
+        {
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@TenMon", tenMon);
+            connection.Open();
+            int count = (int)command.ExecuteScalar();
+            return count > 0;
+        }
+
+    }
 }

@@ -10,6 +10,7 @@ namespace DTO
     {
         public int MaYC { get; set; }
         public int MaCTTB_NCC { get; set; }
+        public string TenTB { get; set; }
         public string LoaiYeuCau { get; set; }
         public string GhiChu { get; set; }
         public int TrangThai { get; set; }

@@ -4,10 +4,12 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Runtime.Remoting.Contexts;
+using System.Windows.Forms;
 
 public class DatabaseHelper
 {
-    private readonly string connectionString = "Data Source=LAPTOP-H0BOFLN9;Initial Catalog=QlyThietBiDayHoc;User ID=sa;Password=123;Encrypt=False";
+    private readonly string connectionString = "Data Source=LAPTOPTQT03;Initial Catalog=QLThietBiDayHoc;Integrated Security=True;Encrypt=False";
+
 
     public SqlConnection GetConnection()
     {
@@ -20,11 +22,13 @@ public class DatabaseHelper
         {
             if (GetConnection().State == ConnectionState.Closed)
                 GetConnection().Open();
+            //MessageBox.Show("Kết nối thành công với cơ sở dữ liệu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         catch (Exception ex)
         {
             Console.WriteLine("Error opening connection: " + ex.Message);
             // Có thể xử lý hoặc ném exception tùy thuộc vào yêu cầu cụ thể của bạn.
+            //MessageBox.Show("Kết nối không thành công với cơ sở dữ liệu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 
