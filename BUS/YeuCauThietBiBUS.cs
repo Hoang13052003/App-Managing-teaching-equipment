@@ -39,5 +39,29 @@ namespace BUS
         {
             return y.TaoYeuCauThietBi(yeuCauThietBiDTO, chiTietList);
         }
+        public bool TaoYeuCauThietBi2(YeuCauThietBiDTO yeuCauThietBiDTO, List<ChiTietYeuCauThietBiDTO> chiTietList)
+        {
+            return y.TaoYeuCauThietBi2(yeuCauThietBiDTO, chiTietList);
+        }
+        public List<ChiTietThietBiDTO> SearchChiTietThietBi2(int pMaLoaiTB)
+        {
+            return y.SearchChiTietThietBi2(pMaLoaiTB);
+        }
+        public List<YeuCauThietBiDTO> getAllYeuCauThietBi()
+        {
+            return y.getAllYeuCauThietBi();
+        }
+        public List<ChiTietYeuCauThietBiDTO> getAllChiTietYeuCauSuaThietBi()
+        {
+            return y.getAllChiTietYeuCauSuaThietBi();
+        }
+        public List<ChiTietYeuCauThietBiDTO> searchChiTietYeuCauSuaThietBi(int pMaYC)
+        {
+            return y.searchChiTietYeuCauSuaThietBi(pMaYC);
+        }
+        public bool UpdataTrangThaiCTYCTB(int pMaYC, int pMaCTTB_NCC, int pTrangThai, string pKetQua, float pChiPhi)
+        {
+            return y.UpdataTrangThaiCTYCTB(pMaYC, pMaCTTB_NCC, pTrangThai, pKetQua, pChiPhi);
+        }
     }
 }

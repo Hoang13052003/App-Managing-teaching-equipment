@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+    Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -33,13 +34,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+    <Reference Include="DAL">
+      <HintPath>..\DAL\bin\Debug\DAL.dll</HintPath>
+    </Reference>
+    <Reference
+      Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
@@ -52,8 +58,17 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="ucBamGio">
+      <HintPath>..\..\..\..\PTPM_AI\Buoi3\Buoi3_PTPM_AI\ucBamGio\bin\Debug\ucBamGio.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoDuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaoDuong.Designer.cs">
+      <DependentUpon>BaoDuong.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard_Admin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,11 +81,35 @@
     <Compile Include="Dashboard_User.Designer.cs">
       <DependentUpon>Dashboard_User.cs</DependentUpon>
     </Compile>
-    <Compile Include="demoKichThuocFormCon.cs">
+    <Compile Include="formConDemo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="demoKichThuocFormCon.Designer.cs">
-      <DependentUpon>demoKichThuocFormCon.cs</DependentUpon>
+    <Compile Include="formConDemo.Designer.cs">
+      <DependentUpon>formConDemo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home_User.Designer.cs">
+      <DependentUpon>Home_User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLoaiTB_MonHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLoaiTB_MonHoc.Designer.cs">
+      <DependentUpon>FormLoaiTB_MonHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLoaiThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLoaiThietBi.Designer.cs">
+      <DependentUpon>FormLoaiThietBi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMuonThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMuonThietBi.Designer.cs">
+      <DependentUpon>FormMuonThietBi.cs</DependentUpon>
     </Compile>
     <Compile Include="Layout.cs">
       <SubType>Form</SubType>
@@ -83,6 +122,12 @@
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manage_Device.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manage_Device.Designer.cs">
+      <DependentUpon>Manage_Device.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,20 +143,80 @@
     <Compile Include="Setting.Designer.cs">
       <DependentUpon>Setting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Show_Subjects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Show_Subjects.Designer.cs">
+      <DependentUpon>Show_Subjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Teaching_Schedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Teaching_Schedule.Designer.cs">
+      <DependentUpon>Teaching_Schedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier.Designer.cs">
+      <DependentUpon>Supplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaoCaoThietBiHuHong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaoCaoThietBiHuHong.Designer.cs">
+      <DependentUpon>BaoCaoThietBiHuHong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XuLyThietBiHuHong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XuLyThietBiHuHong.Designer.cs">
+      <DependentUpon>XuLyThietBiHuHong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YeuCauMuaThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YeuCauMuaThietBi.Designer.cs">
+      <DependentUpon>YeuCauMuaThietBi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YeuCauSuaThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YeuCauSuaThietBi.Designer.cs">
+      <DependentUpon>YeuCauSuaThietBi.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BaoDuong.resx">
+      <DependentUpon>BaoDuong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard_Admin.resx">
       <DependentUpon>Dashboard_Admin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard_User.resx">
       <DependentUpon>Dashboard_User.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="demoKichThuocFormCon.resx">
-      <DependentUpon>demoKichThuocFormCon.cs</DependentUpon>
+    <EmbeddedResource Include="formConDemo.resx">
+      <DependentUpon>formConDemo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home_User.resx">
+      <DependentUpon>Home_User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLoaiTB_MonHoc.resx">
+      <DependentUpon>FormLoaiTB_MonHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLoaiThietBi.resx">
+      <DependentUpon>FormLoaiThietBi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMuonThietBi.resx">
+      <DependentUpon>FormMuonThietBi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layout.resx">
       <DependentUpon>Layout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manage_Device.resx">
+      <DependentUpon>Manage_Device.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -128,6 +233,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Setting.resx">
       <DependentUpon>Setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Show_Subjects.resx">
+      <DependentUpon>Show_Subjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Teaching_Schedule.resx">
+      <DependentUpon>Teaching_Schedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier.resx">
+      <DependentUpon>Supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCaoThietBiHuHong.resx">
+      <DependentUpon>BaoCaoThietBiHuHong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XuLyThietBiHuHong.resx">
+      <DependentUpon>XuLyThietBiHuHong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YeuCauMuaThietBi.resx">
+      <DependentUpon>YeuCauMuaThietBi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YeuCauSuaThietBi.resx">
+      <DependentUpon>YeuCauSuaThietBi.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -154,12 +280,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Image\backround_schedule.jpg" />
+    <Content Include="Image\demo_image_giang_vien.jpg" />
     <Content Include="Image\Background_Login.png" />
     <Content Include="Image\icon\account.png" />
     <Content Include="Image\icon\close.png" />
     <Content Include="Image\icon\Close_hover.png" />
     <Content Include="Image\icon\help.png" />
+    <Content Include="Image\icon\icons8-back-25.png" />
+    <Content Include="Image\icon\icons8-home-25.png" />
     <Content Include="Image\icon\icons8-next-25.png" />
+    <Content Include="Image\icon\icons8-notification-100.png" />
+    <Content Include="Image\icon\icons8-schedule-100.png" />
+    <Content Include="Image\icon\icons8-schedule-25.png" />
+    <Content Include="Image\icon\icons8-Tiep-25.png" />
     <Content Include="Image\icon\Lock.png" />
     <Content Include="Image\icon\logoApp.jpg" />
     <Content Include="Image\icon\Notification.png" />

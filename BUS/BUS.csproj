@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,17 +43,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaiHocBUS.cs" />
+    <Compile Include="BaoDuongBUS.cs" />
+    <Compile Include="BienBanXuLyBUS.cs" />
     <Compile Include="LoaiThietBiBUS.cs" />
     <Compile Include="LoginBUS.cs" />
     <Compile Include="LopHocBUS.cs" />
     <Compile Include="MonHocBUS.cs" />
     <Compile Include="MuonThietBiBUS.cs" />
     <Compile Include="NguoiDungBUS.cs" />
+    <Compile Include="NhapThietBiBUS.cs" />
     <Compile Include="PhanHoiGiaoVienBUS.cs" />
     <Compile Include="PhongHocBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SupplierBUS.cs" />
+    <Compile Include="ThanhLyThietBiBUS.cs" />
     <Compile Include="ThietBiBUS.cs" />
+    <Compile Include="ThoiKhoaBieuBUS.cs" />
+    <Compile Include="ThongKeSuDungThietBiBUS.cs" />
     <Compile Include="ThongTinCaNhanBUS.cs" />
     <Compile Include="YeuCauThietBiBUS.cs" />
   </ItemGroup>

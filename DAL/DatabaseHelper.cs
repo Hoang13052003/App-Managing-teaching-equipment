@@ -4,10 +4,12 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Runtime.Remoting.Contexts;
+using System.Windows.Forms;
 
 public class DatabaseHelper
 {
-    private readonly string connectionString = "Data Source=LAPTOP-H0BOFLN9;Initial Catalog=QlyThietBiDayHoc;User ID=sa;Password=123;Encrypt=False";
+    private readonly string connectionString = "Data Source=LAPTOPTQT03;Initial Catalog=QLThietBiDayHoc;Integrated Security=True;Encrypt=False";
+
 
     public SqlConnection GetConnection()
     {
@@ -20,11 +22,13 @@ public class DatabaseHelper
         {
             if (GetConnection().State == ConnectionState.Closed)
                 GetConnection().Open();
+            //MessageBox.Show("Kết nối thành công với cơ sở dữ liệu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         catch (Exception ex)
         {
             Console.WriteLine("Error opening connection: " + ex.Message);
             // Có thể xử lý hoặc ném exception tùy thuộc vào yêu cầu cụ thể của bạn.
+            //MessageBox.Show("Kết nối không thành công với cơ sở dữ liệu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 
@@ -139,6 +143,40 @@ public class DatabaseHelper
         }
         return dataTable;
     }
+    public DataTable GetDataTableQuery(string query, SqlParameter[] parameters = null)
+    {
+        DataTable dataTable = new DataTable();
+
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                if (parameters != null)
+                {
+                    command.Parameters.AddRange(parameters);
+                }
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    try
+                    {
+                        connection.Open();
+                        adapter.Fill(dataTable);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Ghi log hoặc xử lý lỗi ở đây
+                        Console.WriteLine($"Error getting data table: {ex.Message}");
+                        // Trả về một DataTable mặc định
+                        return new DataTable(); // Trả về một DataTable rỗng nếu có lỗi
+                    }
+                }
+            }
+        }
+
+        return dataTable;
+    }
+
     public DataTable GetDataTable(string SQLProc, SqlParameter[] para)
     {
         DataTable dataTable = new DataTable();

@@ -26,7 +26,7 @@ namespace BUS
         {
             return tb.ThemThietBi(thietBi);
         }
-        public bool UpdateSevice(int pMaTB, string pTenTB, int pMaLoai, DateTime pNSX, int pSoLuong)
+        public bool UpdateSevice(int pMaTB, string pTenTB, int pMaLoai, string pNSX, int pSoLuong)
         {
             return tb.SuaThietBi(pMaTB, pTenTB, pMaLoai, pNSX, pSoLuong);
 
@@ -34,6 +34,11 @@ namespace BUS
         public bool DeleteSevice(int pMaTB)
         {
             return tb.XoaThietBi(pMaTB);
+        }
+
+        public List<ThietBiDTO> GetAllByID(int pmaLoai)
+        {
+            return tb.LayTenThietBiByMaLoai(pmaLoai);
         }
     }
 }

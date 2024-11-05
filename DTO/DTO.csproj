@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +46,7 @@
     <Compile Include="BaiHocDTO.cs" />
     <Compile Include="BaoDuongDTO.cs" />
     <Compile Include="BienBanXuLyDTO.cs" />
+    <Compile Include="ChiTietBienBanDTO.cs" />
     <Compile Include="ChiTietMuonThietBiDTO.cs" />
     <Compile Include="ChiTietNhapDTO.cs" />
     <Compile Include="ChiTietThanhLyDTO.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="SupplierDTO.cs" />
     <Compile Include="ThanhLyThietBiDTO.cs" />
     <Compile Include="ThietBiDTO.cs" />
+    <Compile Include="ThoiKhoaBieuChiTietDTO.cs" />
     <Compile Include="ThoiKhoaBieuDTO.cs" />
     <Compile Include="ThongKeSuDungThietBiDTO.cs" />
     <Compile Include="ThongTinCaNhanDTO.cs" />

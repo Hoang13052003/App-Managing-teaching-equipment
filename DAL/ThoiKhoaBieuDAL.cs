@@ -29,6 +29,87 @@ public class ThoiKhoaBieuDAL : DatabaseHelper
         }
         return list;
     }
+    public List<ThoiKhoaBieuChiTietDTO> GetThoiKhoaBieuByUser(string maNguoiDung)
+    {
+        // Khởi tạo danh sách kết quả
+        List<ThoiKhoaBieuChiTietDTO> list = new List<ThoiKhoaBieuChiTietDTO>();
+
+        // Câu truy vấn SQL để lấy thông tin thời khóa biểu của người dùng
+        string query = @"
+        SELECT 
+            tkb.MaTKB,
+            tkb.MaNguoiDung,
+            mh.TenMon,
+            bh.TenBaiHoc,
+            ph.TenPhong,
+            lh.TenLopHoc,
+            tkb.GioHoc,
+            tkb.NgayHoc
+        FROM ThoiKhoaBieu tkb
+        LEFT JOIN MonHoc mh ON tkb.MaMon = mh.MaMon
+        LEFT JOIN BaiHoc bh ON tkb.MaBaiHoc = bh.MaBaiHoc
+        LEFT JOIN PhongHoc ph ON tkb.MaPhong = ph.MaPhong
+        LEFT JOIN LopHoc lh ON tkb.MaLopHoc = lh.MaLopHoc
+        WHERE tkb.MaNguoiDung = @MaNguoiDung";
+
+        SqlParameter[] parameters = new SqlParameter[]
+        {
+        new SqlParameter("@MaNguoiDung", maNguoiDung)
+        };
+
+        DataTable dataTable = GetDataTableQuery(query, parameters);
+
+        // Kiểm tra nếu DataTable không có dữ liệu
+        if (dataTable != null && dataTable.Rows.Count > 0)
+        {
+            foreach (DataRow row in dataTable.Rows)
+            {
+                list.Add(new ThoiKhoaBieuChiTietDTO
+                {
+                    MaTKB = Convert.ToInt32(row["MaTKB"]),
+                    MaNguoiDung = row["MaNguoiDung"].ToString(),
+                    TenMonHoc = row["TenMon"] != DBNull.Value ? row["TenMon"].ToString() : string.Empty,
+                    TenBaiHoc = row["TenBaiHoc"] != DBNull.Value ? row["TenBaiHoc"].ToString() : string.Empty,
+                    TenPhong = row["TenPhong"] != DBNull.Value ? row["TenPhong"].ToString() : string.Empty,
+                    TenLop = row["TenLopHoc"] != DBNull.Value ? row["TenLopHoc"].ToString() : string.Empty,
+                    GioHoc = row["GioHoc"] != DBNull.Value ? (TimeSpan?)row["GioHoc"] : null,
+                    NgayHoc = row["NgayHoc"] != DBNull.Value ? (DateTime?)row["NgayHoc"] : null
+                });
+            }
+        }
+        else
+        {
+            list = new List<ThoiKhoaBieuChiTietDTO>();
+        }
+
+        return list;
+    }
+
+    public List<ThoiKhoaBieuChiTietDTO> GetThoiKhoaBieuByUserAndDate(string maNguoiDung, DateTime startDate, DateTime endDate)
+    {
+        List<ThoiKhoaBieuChiTietDTO> list = new List<ThoiKhoaBieuChiTietDTO>();
+        string query = "SELECT * FROM ThoiKhoaBieu WHERE MaNguoiDung = @MaNguoiDung AND NgayHoc BETWEEN @StartDate AND @EndDate";
+
+        // Thêm logic để truyền tham số cho câu truy vấn SQL
+
+        DataTable dataTable = GetDataTable(query);
+
+        foreach (DataRow row in dataTable.Rows)
+        {
+            list.Add(new ThoiKhoaBieuChiTietDTO
+            {
+                MaTKB = Convert.ToInt32(row["MaTKB"]),
+                MaNguoiDung = row["MaNguoiDung"].ToString(),
+                TenMonHoc = row["TenMonHoc"].ToString(),
+                TenBaiHoc = row["TenBaiHoc"].ToString(),
+                TenPhong = row["TenPhong"].ToString(),
+                TenLop = row["TenLop"].ToString(),
+                GioHoc = row["GioHoc"] as TimeSpan?,
+                NgayHoc = row["NgayHoc"] as DateTime?
+            });
+        }
+        return list;
+    }
 
     // Lấy thời khóa biểu theo mã
     public ThoiKhoaBieuDTO GetByID(int maTKB)

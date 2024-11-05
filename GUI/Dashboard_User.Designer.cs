@@ -31,26 +31,26 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard_User));
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.lb_home = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.controlClose = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Panel_Change_Form = new Guna.UI2.WinForms.Guna2Panel();
             this.Navbar = new System.Windows.Forms.Panel();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.main = new System.Windows.Forms.Panel();
             this.Sidebar = new System.Windows.Forms.Panel();
-            this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lbMenu = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.btn_Lich_Day = new Guna.UI2.WinForms.Guna2Button();
             this.btnHelp = new Guna.UI2.WinForms.Guna2Button();
             this.btnAccount = new Guna.UI2.WinForms.Guna2Button();
             this.btnSetting = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.lbMenu = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.btnHome = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.panel1.SuspendLayout();
             this.Navbar.SuspendLayout();
             this.main.SuspendLayout();
@@ -62,31 +62,12 @@
             this.guna2Elipse1.BorderRadius = 10;
             this.guna2Elipse1.TargetControl = this;
             // 
-            // guna2ImageButton1
-            // 
-            this.guna2ImageButton1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButton1.CausesValidation = false;
-            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2ImageButton1.HoverState.Image = global::GUI.Properties.Resources.Notification_Hover;
-            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(24, 24);
-            this.guna2ImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton1.Image")));
-            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(24, 24);
-            this.guna2ImageButton1.Location = new System.Drawing.Point(923, 9);
-            this.guna2ImageButton1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.guna2ImageButton1.Name = "guna2ImageButton1";
-            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(24, 24);
-            this.guna2ImageButton1.Size = new System.Drawing.Size(34, 40);
-            this.guna2ImageButton1.TabIndex = 1;
-            // 
             // lb_home
             // 
             this.lb_home.BackColor = System.Drawing.Color.Transparent;
             this.lb_home.Font = new System.Drawing.Font("JetBrains Mono", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_home.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(148)))), ((int)(((byte)(249)))));
-            this.lb_home.Location = new System.Drawing.Point(64, 9);
+            this.lb_home.Location = new System.Drawing.Point(108, 13);
             this.lb_home.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.lb_home.Name = "lb_home";
             this.lb_home.Size = new System.Drawing.Size(67, 38);
@@ -125,25 +106,6 @@
             this.controlClose.Size = new System.Drawing.Size(30, 30);
             this.controlClose.TabIndex = 7;
             // 
-            // guna2ImageButton3
-            // 
-            this.guna2ImageButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
-            this.guna2ImageButton3.CausesValidation = false;
-            this.guna2ImageButton3.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.guna2ImageButton3.HoverState.Image = global::GUI.Properties.Resources.Search;
-            this.guna2ImageButton3.HoverState.ImageSize = new System.Drawing.Size(24, 24);
-            this.guna2ImageButton3.Image = global::GUI.Properties.Resources.Search;
-            this.guna2ImageButton3.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton3.ImageRotate = 0F;
-            this.guna2ImageButton3.ImageSize = new System.Drawing.Size(24, 24);
-            this.guna2ImageButton3.Location = new System.Drawing.Point(884, 20);
-            this.guna2ImageButton3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.guna2ImageButton3.Name = "guna2ImageButton3";
-            this.guna2ImageButton3.PressedState.ImageSize = new System.Drawing.Size(24, 24);
-            this.guna2ImageButton3.Size = new System.Drawing.Size(24, 24);
-            this.guna2ImageButton3.TabIndex = 4;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
@@ -154,6 +116,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(240, 65);
             this.panel1.TabIndex = 2;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // Panel_Change_Form
             // 
@@ -161,6 +124,7 @@
             this.Panel_Change_Form.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Change_Form.Location = new System.Drawing.Point(240, 65);
             this.Panel_Change_Form.Name = "Panel_Change_Form";
+            this.Panel_Change_Form.Padding = new System.Windows.Forms.Padding(5);
             this.Panel_Change_Form.Size = new System.Drawing.Size(1200, 895);
             this.Panel_Change_Form.TabIndex = 3;
             // 
@@ -180,6 +144,7 @@
             this.Navbar.Name = "Navbar";
             this.Navbar.Size = new System.Drawing.Size(1440, 65);
             this.Navbar.TabIndex = 1;
+            this.Navbar.Paint += new System.Windows.Forms.PaintEventHandler(this.Navbar_Paint);
             // 
             // txtSearch
             // 
@@ -225,13 +190,13 @@
             // Sidebar
             // 
             this.Sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
-            this.Sidebar.Controls.Add(this.guna2Button5);
+            this.Sidebar.Controls.Add(this.btn_Lich_Day);
             this.Sidebar.Controls.Add(this.btnHelp);
             this.Sidebar.Controls.Add(this.btnAccount);
             this.Sidebar.Controls.Add(this.btnSetting);
             this.Sidebar.Controls.Add(this.guna2HtmlLabel1);
             this.Sidebar.Controls.Add(this.lbMenu);
-            this.Sidebar.Controls.Add(this.guna2Button1);
+            this.Sidebar.Controls.Add(this.btnHome);
             this.Sidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.Sidebar.Location = new System.Drawing.Point(0, 65);
             this.Sidebar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -239,28 +204,56 @@
             this.Sidebar.Size = new System.Drawing.Size(240, 895);
             this.Sidebar.TabIndex = 2;
             // 
-            // guna2Button5
+            // guna2HtmlLabel1
             // 
-            this.guna2Button5.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.guna2Button5.BorderRadius = 8;
-            this.guna2Button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Button5.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button5.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button5.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
-            this.guna2Button5.ForeColor = System.Drawing.Color.Gray;
-            this.guna2Button5.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
-            this.guna2Button5.Image = global::GUI.Properties.Resources.Notification;
-            this.guna2Button5.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button5.Location = new System.Drawing.Point(12, 106);
-            this.guna2Button5.Name = "guna2Button5";
-            this.guna2Button5.Size = new System.Drawing.Size(210, 45);
-            this.guna2Button5.TabIndex = 6;
-            this.guna2Button5.Text = "chức năng 1";
-            this.guna2Button5.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("JetBrains Mono", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Gray;
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(23, 651);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(69, 27);
+            this.guna2HtmlLabel1.TabIndex = 2;
+            this.guna2HtmlLabel1.Text = "OTHERS";
+            // 
+            // lbMenu
+            // 
+            this.lbMenu.AutoSize = false;
+            this.lbMenu.BackColor = System.Drawing.Color.Transparent;
+            this.lbMenu.Font = new System.Drawing.Font("JetBrains Mono", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMenu.ForeColor = System.Drawing.Color.Gray;
+            this.lbMenu.Location = new System.Drawing.Point(23, 17);
+            this.lbMenu.Name = "lbMenu";
+            this.lbMenu.Size = new System.Drawing.Size(46, 27);
+            this.lbMenu.TabIndex = 1;
+            this.lbMenu.Text = "Menu";
+            // 
+            // guna2Elipse2
+            // 
+            this.guna2Elipse2.BorderRadius = 10;
+            // 
+            // btn_Lich_Day
+            // 
+            this.btn_Lich_Day.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Lich_Day.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Lich_Day.BorderRadius = 8;
+            this.btn_Lich_Day.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Lich_Day.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Lich_Day.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_Lich_Day.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_Lich_Day.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_Lich_Day.FillColor = System.Drawing.Color.Transparent;
+            this.btn_Lich_Day.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
+            this.btn_Lich_Day.ForeColor = System.Drawing.Color.Gray;
+            this.btn_Lich_Day.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
+            this.btn_Lich_Day.Image = global::GUI.Properties.Resources.icons8_schedule_25;
+            this.btn_Lich_Day.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btn_Lich_Day.Location = new System.Drawing.Point(12, 106);
+            this.btn_Lich_Day.Name = "btn_Lich_Day";
+            this.btn_Lich_Day.Size = new System.Drawing.Size(210, 45);
+            this.btn_Lich_Day.TabIndex = 6;
+            this.btn_Lich_Day.Text = "Lịch dạy";
+            this.btn_Lich_Day.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btn_Lich_Day.Click += new System.EventHandler(this.btn_Lich_Day_Click);
             // 
             // btnHelp
             // 
@@ -331,55 +324,67 @@
             this.btnSetting.Text = "Setting";
             this.btnSetting.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // guna2HtmlLabel1
+            // btnHome
             // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("JetBrains Mono", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Gray;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(23, 651);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(69, 27);
-            this.guna2HtmlLabel1.TabIndex = 2;
-            this.guna2HtmlLabel1.Text = "OTHERS";
+            this.btnHome.BackColor = System.Drawing.Color.Transparent;
+            this.btnHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnHome.BorderRadius = 8;
+            this.btnHome.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHome.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnHome.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnHome.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnHome.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnHome.FillColor = System.Drawing.Color.Transparent;
+            this.btnHome.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
+            this.btnHome.ForeColor = System.Drawing.Color.Gray;
+            this.btnHome.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
+            this.btnHome.Image = global::GUI.Properties.Resources.icons8_home_25;
+            this.btnHome.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnHome.Location = new System.Drawing.Point(12, 50);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(210, 45);
+            this.btnHome.TabIndex = 0;
+            this.btnHome.Text = "Trang chủ";
+            this.btnHome.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
-            // lbMenu
+            // guna2ImageButton3
             // 
-            this.lbMenu.AutoSize = false;
-            this.lbMenu.BackColor = System.Drawing.Color.Transparent;
-            this.lbMenu.Font = new System.Drawing.Font("JetBrains Mono", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMenu.ForeColor = System.Drawing.Color.Gray;
-            this.lbMenu.Location = new System.Drawing.Point(23, 17);
-            this.lbMenu.Name = "lbMenu";
-            this.lbMenu.Size = new System.Drawing.Size(46, 27);
-            this.lbMenu.TabIndex = 1;
-            this.lbMenu.Text = "Menu";
+            this.guna2ImageButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
+            this.guna2ImageButton3.CausesValidation = false;
+            this.guna2ImageButton3.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.guna2ImageButton3.HoverState.Image = global::GUI.Properties.Resources.Search;
+            this.guna2ImageButton3.HoverState.ImageSize = new System.Drawing.Size(24, 24);
+            this.guna2ImageButton3.Image = global::GUI.Properties.Resources.Search;
+            this.guna2ImageButton3.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton3.ImageRotate = 0F;
+            this.guna2ImageButton3.ImageSize = new System.Drawing.Size(24, 24);
+            this.guna2ImageButton3.Location = new System.Drawing.Point(884, 20);
+            this.guna2ImageButton3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.guna2ImageButton3.Name = "guna2ImageButton3";
+            this.guna2ImageButton3.PressedState.ImageSize = new System.Drawing.Size(24, 24);
+            this.guna2ImageButton3.Size = new System.Drawing.Size(24, 24);
+            this.guna2ImageButton3.TabIndex = 4;
             // 
-            // guna2Button1
+            // guna2ImageButton1
             // 
-            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.guna2Button1.BorderRadius = 8;
-            this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.Gray;
-            this.guna2Button1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
-            this.guna2Button1.Image = global::GUI.Properties.Resources.Notification;
-            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.Location = new System.Drawing.Point(12, 50);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(210, 45);
-            this.guna2Button1.TabIndex = 0;
-            this.guna2Button1.Text = "chức năng 1";
-            this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // guna2Elipse2
-            // 
-            this.guna2Elipse2.BorderRadius = 10;
+            this.guna2ImageButton1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ImageButton1.CausesValidation = false;
+            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2ImageButton1.HoverState.Image = global::GUI.Properties.Resources.Notification_Hover;
+            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(24, 24);
+            this.guna2ImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton1.Image")));
+            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton1.ImageRotate = 0F;
+            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(24, 24);
+            this.guna2ImageButton1.Location = new System.Drawing.Point(923, 9);
+            this.guna2ImageButton1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.guna2ImageButton1.Name = "guna2ImageButton1";
+            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(24, 24);
+            this.guna2ImageButton1.Size = new System.Drawing.Size(34, 40);
+            this.guna2ImageButton1.TabIndex = 1;
             // 
             // Dashboard_User
             // 
@@ -391,6 +396,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Dashboard_User";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard_User";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -408,13 +414,13 @@
         private System.Windows.Forms.Panel main;
         private Guna.UI2.WinForms.Guna2Panel Panel_Change_Form;
         private System.Windows.Forms.Panel Sidebar;
-        private Guna.UI2.WinForms.Guna2Button guna2Button5;
+        private Guna.UI2.WinForms.Guna2Button btn_Lich_Day;
         private Guna.UI2.WinForms.Guna2Button btnHelp;
         private Guna.UI2.WinForms.Guna2Button btnAccount;
         private Guna.UI2.WinForms.Guna2Button btnSetting;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbMenu;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button btnHome;
         private System.Windows.Forms.Panel Navbar;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;

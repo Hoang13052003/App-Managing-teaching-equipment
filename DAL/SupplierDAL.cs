@@ -109,66 +109,66 @@ namespace DAL
             }
         }
 
-        //QLThietBiDayHocDataContext qltb = new QLThietBiDayHocDataContext();
-        //public SupplierDAL()
-        //{
+        public List<LoaiThietBiDTO> SearchLoaiTB(int pMaNCC)
+        {
+            List<LoaiThietBiDTO> listLoaiThietBi = new List<LoaiThietBiDTO>();
+            string query = @"SELECT DISTINCT LTB.MaLoai, LTB.TenLoai
+                            FROM NhaCungCap NCC
+                            JOIN ChiTietThietBi_NhaCungCap CTTB_NCC ON NCC.MaNCC = CTTB_NCC.MaNCC
+                            JOIN ChiTietThietBi CTTB ON CTTB.MaCTTB = CTTB_NCC.MaCTTB
+                            JOIN ThietBi TB ON CTTB.MaTB = TB.MaTB
+                            JOIN LoaiThietBi LTB ON TB.MaLoai = LTB.MaLoai
+                            WHERE NCC.MaNCC = @MaNCC";
 
-        //}
+            using (SqlConnection connection = GetConnection())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@MaNCC", pMaNCC);
 
-        //public List<NhaCungCap> getNCC()
-        //{
-        //    return qltb.NhaCungCaps.Select(n => n).ToList<NhaCungCap>();
-        //}
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
 
-        //public bool ThemNCC(NhaCungCap pNCC)
-        //{
-        //    try
-        //    {
-        //        qltb.NhaCungCaps.InsertOnSubmit(pNCC);
-        //        qltb.SubmitChanges();
-        //        return true;
-        //    }
-        //    catch
-        //    {
-        //        return false;
-        //    }
-        //}
+                while (reader.Read())
+                {
+                    LoaiThietBiDTO loaiThietBi = new LoaiThietBiDTO
+                    {
+                        MaLoai = reader.GetInt32(reader.GetOrdinal("MaLoai")),
+                        TenLoai = reader.GetString(reader.GetOrdinal("TenLoai"))
+                    };
+                    listLoaiThietBi.Add(loaiThietBi);
+                }
+            }
+            return listLoaiThietBi;
+        }
 
-        //public bool XoaNCC(int pMaNCC)
-        //{
-        //    NhaCungCap dt = qltb.NhaCungCaps.Where(d => d.MaNCC == pMaNCC).FirstOrDefault();
-        //    if (dt != null)
-        //    {
-        //        qltb.NhaCungCaps.DeleteOnSubmit(dt);
-        //        qltb.SubmitChanges();
-        //        return true;
-        //    }
-        //    else return false;
-        //}
+        public List<ThietBiDTO> SearchThietBi(int pMaLoai)
+        {
+            List<ThietBiDTO> listThietBi = new List<ThietBiDTO>();
+            string query = @"SELECT DISTINCT TB.MaTB, TB.TenTB
+                            FROM LoaiThietBi LTB
+                            JOIN ThietBi TB ON LTB.MaLoai = TB.MaLoai
+                            WHERE LTB.MaLoai = @MaLoai";
 
-        //public bool SuaNCC(int pMaNCC, string pTenNCC, string pDiaChi, string pSDT)
-        //{
-        //    NhaCungCap dt = qltb.NhaCungCaps.Where(d => d.MaNCC == pMaNCC).FirstOrDefault();
-        //    if (dt != null)
-        //    {
-        //        dt.TenNCC = pTenNCC;
-        //        dt.DiaChi = pDiaChi;
-        //        dt.SDT = pSDT;
-        //        qltb.SubmitChanges();
-        //        return true;
-        //    }
-        //    else return false;
-        //}
+            using (SqlConnection connection = GetConnection())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@MaLoai", pMaLoai);
 
-        //public IQueryable searchNCC(string keyword)
-        //{
-        //    var ncc = from n in qltb.NhaCungCaps
-        //              where n.TenNCC.Contains(keyword) ||
-        //                    n.MaNCC.ToString().Contains(keyword) ||
-        //                    n.DiaChi.Contains(keyword) ||
-        //                    n.SDT.Contains(keyword)
-        //              select n;
-        //    return ncc;
-        //}
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ThietBiDTO thietBi = new ThietBiDTO
+                    {
+                        MaTB = reader.GetInt32(reader.GetOrdinal("MaTB")),
+                        TenTB = reader.GetString(reader.GetOrdinal("TenTB"))
+                    };
+                    listThietBi.Add(thietBi);
+                }
+            }
+            return listThietBi;
+        }
+
     }
 }
