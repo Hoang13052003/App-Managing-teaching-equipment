@@ -56,8 +56,17 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="ucBamGio">
+      <HintPath>..\..\..\..\PTPM_AI\Buoi3\Buoi3_PTPM_AI\ucBamGio\bin\Debug\ucBamGio.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoDuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaoDuong.Designer.cs">
+      <DependentUpon>BaoDuong.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard_Admin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,12 +117,33 @@
     <Compile Include="Supplier.Designer.cs">
       <DependentUpon>Supplier.cs</DependentUpon>
     </Compile>
+    <Compile Include="BaoCaoThietBiHuHong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaoCaoThietBiHuHong.Designer.cs">
+      <DependentUpon>BaoCaoThietBiHuHong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="XuLyThietBiHuHong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XuLyThietBiHuHong.Designer.cs">
+      <DependentUpon>XuLyThietBiHuHong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YeuCauMuaThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YeuCauMuaThietBi.Designer.cs">
+      <DependentUpon>YeuCauMuaThietBi.cs</DependentUpon>
+    </Compile>
     <Compile Include="YeuCauSuaThietBi.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="YeuCauSuaThietBi.Designer.cs">
       <DependentUpon>YeuCauSuaThietBi.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BaoDuong.resx">
+      <DependentUpon>BaoDuong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard_Admin.resx">
       <DependentUpon>Dashboard_Admin.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +177,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier.resx">
       <DependentUpon>Supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaoCaoThietBiHuHong.resx">
+      <DependentUpon>BaoCaoThietBiHuHong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XuLyThietBiHuHong.resx">
+      <DependentUpon>XuLyThietBiHuHong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YeuCauMuaThietBi.resx">
+      <DependentUpon>YeuCauMuaThietBi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YeuCauSuaThietBi.resx">
       <DependentUpon>YeuCauSuaThietBi.cs</DependentUpon>

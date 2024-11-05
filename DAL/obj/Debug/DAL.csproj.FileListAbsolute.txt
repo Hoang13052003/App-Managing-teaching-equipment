@@ -11,7 +11,6 @@ D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\DAL\bin\Debug\DAL.dll
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\DAL\bin\Debug\DAL.pdb
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\DAL\bin\Debug\DTO.dll
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\DAL\bin\Debug\DTO.pdb
-D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\DAL\bin\Debug\DTO.dll.config
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\DAL\obj\Debug\DAL.csproj.Up2Date

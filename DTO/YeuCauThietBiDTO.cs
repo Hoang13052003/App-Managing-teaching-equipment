@@ -10,6 +10,7 @@ namespace DTO
     {
         public int MaYC { get; set; }
         public string MaNguoiDung { get; set; }
+        public string TenNguoiDung { get; set; }
         public DateTime? NgayYeuCau { get; set; }
     }
 }

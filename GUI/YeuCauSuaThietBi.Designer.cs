@@ -39,6 +39,7 @@
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.btnLamMoi = new Guna.UI2.WinForms.Guna2Button();
             this.main = new System.Windows.Forms.Panel();
+            this.btnYeuCauMua = new Guna.UI2.WinForms.Guna2Button();
             this.cboThietBi = new Guna.UI2.WinForms.Guna2ComboBox();
             this.cboLoaiTB = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -100,6 +101,7 @@
             // 
             // main
             // 
+            this.main.Controls.Add(this.btnYeuCauMua);
             this.main.Controls.Add(this.cboThietBi);
             this.main.Controls.Add(this.cboLoaiTB);
             this.main.Controls.Add(this.btnLamMoi);
@@ -117,6 +119,21 @@
             this.main.Name = "main";
             this.main.Size = new System.Drawing.Size(1100, 500);
             this.main.TabIndex = 2;
+            // 
+            // btnYeuCauMua
+            // 
+            this.btnYeuCauMua.BorderRadius = 10;
+            this.btnYeuCauMua.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnYeuCauMua.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnYeuCauMua.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnYeuCauMua.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnYeuCauMua.Font = new System.Drawing.Font("JetBrains Mono", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnYeuCauMua.ForeColor = System.Drawing.Color.White;
+            this.btnYeuCauMua.Location = new System.Drawing.Point(945, 75);
+            this.btnYeuCauMua.Name = "btnYeuCauMua";
+            this.btnYeuCauMua.Size = new System.Drawing.Size(134, 35);
+            this.btnYeuCauMua.TabIndex = 9;
+            this.btnYeuCauMua.Text = "Yêu cầu mua →";
             // 
             // cboThietBi
             // 
@@ -319,7 +336,7 @@
             // 
             // Navbar
             // 
-            this.Navbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.Navbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Navbar.Controls.Add(this.guna2HtmlLabel5);
             this.Navbar.Controls.Add(this.guna2ControlBox2);
             this.Navbar.Controls.Add(this.guna2ControlBox1);
@@ -449,5 +466,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel7;
         private Guna.UI2.WinForms.Guna2DataGridView dgvDSThietBiSua;
         private Guna.UI2.WinForms.Guna2Button btnGuiYeuCau;
+        private Guna.UI2.WinForms.Guna2Button btnYeuCauMua;
     }
 }

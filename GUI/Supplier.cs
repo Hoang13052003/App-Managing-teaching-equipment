@@ -15,6 +15,7 @@ namespace GUI
     public partial class Supplier : Form
     {
         SupplierBUS sup = new SupplierBUS();
+        YeuCauThietBiBUS y = new YeuCauThietBiBUS();
         public Supplier()
         {
             InitializeComponent();
@@ -25,13 +26,23 @@ namespace GUI
             this.btnSua.Click += BtnSua_Click;
             this.btnLamMoi.Click += BtnLamMoi_Click;
             this.btnSearch.Click += BtnSearch_Click;
+            this.dgvLoaiThietBi.CellClick += DgvLoaiThietBi_CellClick;
+        }
+
+        private void DgvLoaiThietBi_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                dgvThietBi.DataSource = sup.SearchThietBi(Convert.ToInt32(dgvLoaiThietBi.Rows[e.RowIndex].Cells[0].Value));
+                dgvThietBi.Columns[0].HeaderText = "Mã thiết bị";
+                dgvThietBi.Columns[1].HeaderText = "Tên thiết bị";
+            }
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             if (txtSearch.Text == string.Empty) return;
             dgvNCC.DataSource = sup.SearchNhaCungCap(txtSearch.Text);
-            //dgvNCC.DataSource = sup.searchNCC(txtSearch.Text);
         }
 
         private void BtnLamMoi_Click(object sender, EventArgs e)
@@ -59,7 +70,7 @@ namespace GUI
                 "Xác nhận xóa nhà cung cấp mã '" + txtMaNCC.Text + "'",
                 "Thông báo",
                 MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
+                MessageBoxIcon.Question
             );
 
             if (result == DialogResult.Yes)
@@ -113,6 +124,8 @@ namespace GUI
         void LamMoi()
         {
             LoadNCC();
+            LoadLoaiTB();
+            LoadThietBi();
             txtMaNCC.Text = string.Empty;
             txtTenNCC.Text = string.Empty;
             txtDiaChi.Text = string.Empty;
@@ -124,23 +137,27 @@ namespace GUI
             if (e.RowIndex >= 0)
             {
                 BingDings(e.RowIndex);
+
+                dgvLoaiThietBi.DataSource = sup.SearchLoaiTB(Convert.ToInt32(dgvNCC.Rows[e.RowIndex].Cells[0].Value));
+                dgvLoaiThietBi.Columns[0].HeaderText = "Mã loại";
+                dgvLoaiThietBi.Columns[1].HeaderText = "Tên loại";
             }
         }
 
         private void Supplier_Load(object sender, EventArgs e)
         {
             LoadNCC();
+            LoadLoaiTB();
+            LoadThietBi();
         }
 
         void LoadNCC()
         {
-            //dgvNCC.DataSource = sup.getNCC();
             dgvNCC.DataSource = sup.getAll();
             dgvNCC.Columns[0].HeaderText = "Mã nhà cung cấp";
             dgvNCC.Columns[1].HeaderText = "Tên nhà cung cấp";
             dgvNCC.Columns[2].HeaderText = "Địa chỉ";
             dgvNCC.Columns[3].HeaderText = "Số điện thoại";
-            dgvNCC.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         public void BingDings(int rowIndex)
@@ -150,6 +167,30 @@ namespace GUI
             txtTenNCC.Text = row.Cells[1].Value.ToString();
             txtDiaChi.Text = row.Cells[2].Value.ToString();
             txtSDT.Text = row.Cells[3].Value.ToString();
+        }
+        public void LoadLoaiTB()
+        {
+            dgvLoaiThietBi.DataSource = y.getAllLoaiTB();
+            dgvLoaiThietBi.Columns[0].HeaderText = "Mã loại";
+            dgvLoaiThietBi.Columns[1].HeaderText = "Tên loại";
+
+            dgvLoaiThietBi.Columns[0].Width = 70; 
+            dgvLoaiThietBi.Columns[1].Width = 200;
+
+            dgvLoaiThietBi.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvLoaiThietBi.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        }
+        public void LoadThietBi()
+        {
+            dgvThietBi.DataSource = y.getAllThietBi();
+            dgvThietBi.Columns[0].HeaderText = "Mã thiết bị";
+            dgvThietBi.Columns[1].HeaderText = "Tên thiết bị";
+
+            dgvThietBi.Columns[0].Width = 70;
+            dgvThietBi.Columns[1].Width = 200;
+
+            dgvThietBi.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvThietBi.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
     }
 }

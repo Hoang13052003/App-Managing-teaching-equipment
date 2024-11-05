@@ -21,7 +21,6 @@ D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Lo
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.ResetPassword.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Dashboard_Admin.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Dashboard_User.resources
-
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.formConDemo.resources
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\bin\Debug\GUI.exe.config
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\bin\Debug\GUI.exe
@@ -32,7 +31,6 @@ D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\bin\Debug\DTO.dll
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\bin\Debug\Guna.UI2.dll
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\bin\Debug\BUS.pdb
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\bin\Debug\DTO.pdb
-D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\bin\Debug\DTO.dll.config
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\bin\Debug\DAL.pdb
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.csproj.AssemblyReference.cache
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.Dashboard_Admin.resources
@@ -49,4 +47,8 @@ D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.csproj.
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.csproj.Up2Date
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.exe
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.pdb
-
+D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.formConDemo.resources
+D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.YeuCauMuaThietBi.resources
+D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.BaoDuong.resources
+D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.BaoCaoThietBiHuHong.resources
+D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.XuLyThietBiHuHong.resources

@@ -26,6 +26,14 @@ namespace GUI
             this.btnGuiYeuCau.Click += BtnGuiYeuCau_Click;
             this.btnThem.Click += BtnThem_Click;
             this.btnXoa.Click += BtnXoa_Click;
+            this.btnYeuCauMua.Click += BtnYeuCauMua_Click;
+        }
+
+        private void BtnYeuCauMua_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            YeuCauMuaThietBi frm = new YeuCauMuaThietBi();
+            frm.ShowDialog();
         }
 
         private void BtnXoa_Click(object sender, EventArgs e)
@@ -42,7 +50,6 @@ namespace GUI
             {
                 MessageBox.Show("Vui lòng chọn một thiết bị!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
 
         private void BtnThem_Click(object sender, EventArgs e)
@@ -50,6 +57,13 @@ namespace GUI
             if (dgvDSChiTietThietBi.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dgvDSChiTietThietBi.SelectedRows[0];
+
+                var trangThaiCell = selectedRow.Cells["TrangThai"].Value;
+                if (trangThaiCell != null && trangThaiCell.ToString() == "Đang bảo dưỡng")
+                {
+                    MessageBox.Show("Thiết bị đang trong trạng thái bảo dưỡng và không thể thêm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; 
+                }
 
                 if (dgvDSThietBiSua.Rows.Count == 0)
                 {
@@ -62,7 +76,7 @@ namespace GUI
                 }
                 else
                 {
-                    bool exists = false; 
+                    bool exists = false;
 
                     foreach (DataGridViewRow row in dgvDSThietBiSua.Rows)
                     {
@@ -75,7 +89,7 @@ namespace GUI
                         if (cellValue1.ToString() == cellValue2.ToString())
                         {
                             exists = true;
-                            break; 
+                            break;
                         }
                     }
 
@@ -98,34 +112,50 @@ namespace GUI
 
         private void BtnGuiYeuCau_Click(object sender, EventArgs e)
         {
-            YeuCauThietBiDTO yeuCauThietBiDTO = new YeuCauThietBiDTO
+            if (dgvDSThietBiSua.Rows.Count == 0 || dgvDSThietBiSua.Rows.Cast<DataGridViewRow>().All(row => row.IsNewRow))
             {
-                MaNguoiDung = "ND00000001",
-                NgayYeuCau = DateTime.Now
-            };
-            var chiTiet = new List<ChiTietYeuCauThietBiDTO>();
-            foreach(DataGridViewRow row in dgvDSThietBiSua.Rows)
-            {
-                if (row.IsNewRow) continue; // Bỏ qua hàng mới (nếu có)
+                MessageBox.Show("Không có thiết bị nào để gửi yêu cầu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
+            DialogResult result = MessageBox.Show(
+                "Xác nhận gửi yêu cầu sửa chữa?",
+                "Thông báo",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
 
-                ChiTietYeuCauThietBiDTO chiTietYeuCauThietBiDTO = new ChiTietYeuCauThietBiDTO
+            if (result == DialogResult.Yes)
+            {
+                YeuCauThietBiDTO yeuCauThietBiDTO = new YeuCauThietBiDTO
                 {
-                    MaCTTB_NCC = Convert.ToInt32(row.Cells["MaCTTB_NCC"].Value),
-                    LoaiYeuCau = "Sửa chữa",
-                    GhiChu = null,
-                    TrangThai = 0
+                    MaNguoiDung = "ND00000001",
+                    NgayYeuCau = DateTime.Now
                 };
-                chiTiet.Add(chiTietYeuCauThietBiDTO);
-            }
-            var success = y.TaoYeuCauThietBi(yeuCauThietBiDTO, chiTiet);
-            if (success)
-            {
-                MessageBox.Show("Yêu cầu thiết bị đã được tạo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LamMoi();
-            }
-            else
-            {
-                MessageBox.Show("Có lỗi xảy ra khi tạo yêu cầu thiết bị.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                var chiTiet = new List<ChiTietYeuCauThietBiDTO>();
+                foreach (DataGridViewRow row in dgvDSThietBiSua.Rows)
+                {
+                    if (row.IsNewRow) continue; // Bỏ qua hàng mới (nếu có)
+
+                    ChiTietYeuCauThietBiDTO chiTietYeuCauThietBiDTO = new ChiTietYeuCauThietBiDTO
+                    {
+                        MaCTTB_NCC = Convert.ToInt32(row.Cells["MaCTTB_NCC"].Value),
+                        LoaiYeuCau = "Sửa chữa",
+                        GhiChu = "Cần kiểm tra sửa chữa.",
+                        TrangThai = 0
+                    };
+                    chiTiet.Add(chiTietYeuCauThietBiDTO);
+                }
+                var success = y.TaoYeuCauThietBi(yeuCauThietBiDTO, chiTiet);
+                if (success)
+                {
+                    MessageBox.Show("Yêu cầu thiết bị đã được tạo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LamMoi();
+                    dgvDSThietBiSua.Rows.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi xảy ra khi tạo yêu cầu thiết bị.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -200,6 +230,31 @@ namespace GUI
             dgvDSChiTietThietBi.Columns[2].HeaderText = "Tình trạng";
             dgvDSChiTietThietBi.Columns[3].HeaderText = "Trạng thái";
             dgvDSChiTietThietBi.Columns[4].HeaderText = "Ngày mua";
+
+            dgvDSChiTietThietBi.CellFormatting += DgvDSChiTietThietBi_CellFormatting;
+        }
+
+        private void DgvDSChiTietThietBi_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dgvDSChiTietThietBi.Columns[e.ColumnIndex].HeaderText == "Trạng thái")
+            {
+                string trangThai = e.Value.ToString();
+                switch (trangThai)
+                {
+                    case "Không sử dụng": //0
+                        e.CellStyle.BackColor = Color.White;
+                        e.CellStyle.ForeColor = Color.Black;
+                        break;
+                    case "Đang sử dụng": //1
+                        e.CellStyle.BackColor = Color.LightGreen;
+                        e.CellStyle.ForeColor = Color.Black;
+                        break;
+                    case "Đang bảo dưỡng": //2
+                        e.CellStyle.BackColor = Color.Red;
+                        e.CellStyle.ForeColor = Color.White;
+                        break;
+                }
+            }
         }
 
         void LoadDgvDSThietBiSua()
