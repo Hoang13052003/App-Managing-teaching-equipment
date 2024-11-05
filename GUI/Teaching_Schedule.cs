@@ -36,24 +36,30 @@ namespace GUI
 
         private void LoadSchedule(DateTime selectedDate)
         {
-            _listTKB = tkbBUS.GetThoiKhoaBieuByUser("ND00000001");
-
-            scheduleByDay.Clear();
-            foreach (var item in _listTKB)
+            _listTKB = tkbBUS.GetThoiKhoaBieuByUser("ND00000002");
+            if (_listTKB.Count()>0)
             {
-                if (item.NgayHoc.HasValue)
+                scheduleByDay.Clear();
+                foreach (var item in _listTKB)
                 {
-                    DayOfWeek day = item.NgayHoc.Value.DayOfWeek;
-                    if (!scheduleByDay.ContainsKey(day))
+                    if (item.NgayHoc.HasValue)
                     {
-                        scheduleByDay[day] = new List<ThoiKhoaBieuChiTietDTO>();
+                        DayOfWeek day = item.NgayHoc.Value.DayOfWeek;
+                        if (!scheduleByDay.ContainsKey(day))
+                        {
+                            scheduleByDay[day] = new List<ThoiKhoaBieuChiTietDTO>();
+                        }
+                        scheduleByDay[day].Add(item);
                     }
-                    scheduleByDay[day].Add(item);
                 }
-            }
 
-            DisplaySchedule();
-            DisplayDates(selectedDate); // Cập nhật hiển thị ngày tháng
+                DisplaySchedule();
+                DisplayDates(selectedDate);
+            }
+            else
+            {
+                MessageBox.Show("Tuần này bạn không có lịch làm!", "Thông báo");
+            }
         }
 
         private void DisplaySchedule()
