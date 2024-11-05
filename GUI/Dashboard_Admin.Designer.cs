@@ -75,7 +75,7 @@
             this.Sidebar.Location = new System.Drawing.Point(0, 65);
             this.Sidebar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Sidebar.Name = "Sidebar";
-            this.Sidebar.Size = new System.Drawing.Size(240, 895);
+            this.Sidebar.Size = new System.Drawing.Size(240, 723);
             this.Sidebar.TabIndex = 2;
             // 
             // guna2Button5
@@ -226,7 +226,7 @@
             this.main.Location = new System.Drawing.Point(0, 0);
             this.main.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.main.Name = "main";
-            this.main.Size = new System.Drawing.Size(1440, 960);
+            this.main.Size = new System.Drawing.Size(1386, 788);
             this.main.TabIndex = 0;
             // 
             // Panel_Change_Form
@@ -235,7 +235,7 @@
             this.Panel_Change_Form.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Change_Form.Location = new System.Drawing.Point(240, 65);
             this.Panel_Change_Form.Name = "Panel_Change_Form";
-            this.Panel_Change_Form.Size = new System.Drawing.Size(1200, 895);
+            this.Panel_Change_Form.Size = new System.Drawing.Size(1146, 723);
             this.Panel_Change_Form.TabIndex = 3;
             // 
             // Navbar
@@ -252,7 +252,7 @@
             this.Navbar.Location = new System.Drawing.Point(0, 0);
             this.Navbar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Navbar.Name = "Navbar";
-            this.Navbar.Size = new System.Drawing.Size(1440, 65);
+            this.Navbar.Size = new System.Drawing.Size(1386, 65);
             this.Navbar.TabIndex = 1;
             this.Navbar.Paint += new System.Windows.Forms.PaintEventHandler(this.Navbar_Paint);
             // 
@@ -262,7 +262,7 @@
             this.guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
             this.guna2ControlBox2.FillColor = System.Drawing.Color.White;
             this.guna2ControlBox2.IconColor = System.Drawing.Color.DimGray;
-            this.guna2ControlBox2.Location = new System.Drawing.Point(1317, 17);
+            this.guna2ControlBox2.Location = new System.Drawing.Point(1263, 17);
             this.guna2ControlBox2.Name = "guna2ControlBox2";
             this.guna2ControlBox2.Size = new System.Drawing.Size(30, 30);
             this.guna2ControlBox2.TabIndex = 9;
@@ -273,7 +273,7 @@
             this.guna2ControlBox1.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MaximizeBox;
             this.guna2ControlBox1.FillColor = System.Drawing.Color.White;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.DimGray;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1353, 17);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(1299, 17);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
             this.guna2ControlBox1.Size = new System.Drawing.Size(30, 30);
             this.guna2ControlBox1.TabIndex = 8;
@@ -283,7 +283,7 @@
             this.controlClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.controlClose.FillColor = System.Drawing.Color.White;
             this.controlClose.IconColor = System.Drawing.Color.DimGray;
-            this.controlClose.Location = new System.Drawing.Point(1389, 17);
+            this.controlClose.Location = new System.Drawing.Point(1335, 17);
             this.controlClose.Name = "controlClose";
             this.controlClose.Size = new System.Drawing.Size(30, 30);
             this.controlClose.TabIndex = 7;
@@ -381,16 +381,16 @@
             this.guna2ImageButton1.Size = new System.Drawing.Size(34, 40);
             this.guna2ImageButton1.TabIndex = 1;
             // 
-            // Dashboard
+            // Dashboard_Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1440, 960);
+            this.ClientSize = new System.Drawing.Size(1386, 788);
             this.Controls.Add(this.main);
             this.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "Dashboard";
+            this.Name = "Dashboard_Admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Sidebar.ResumeLayout(false);
