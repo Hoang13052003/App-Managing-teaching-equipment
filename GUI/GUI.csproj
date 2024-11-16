@@ -265,6 +265,18 @@
     <Content Include="Image\icon\Search.png" />
     <Content Include="Image\icon\setting.png" />
     <Content Include="Image\icon\User.png" />
+    <Content Include="Image\thietBiHuHong\img_10_20241116223637.jpg" />
+    <Content Include="Image\thietBiHuHong\img_10_20241116224008.jpg" />
+    <Content Include="Image\thietBiHuHong\img_11_20241104124806.jpg" />
+    <Content Include="Image\thietBiHuHong\img_13_20241104131819.jpg" />
+    <Content Include="Image\thietBiHuHong\img_14_20241104134038.jpg" />
+    <Content Include="Image\thietBiHuHong\img_19_20241116223623.jpg" />
+    <Content Include="Image\thietBiHuHong\img_19_20241116223637.jpg" />
+    <Content Include="Image\thietBiHuHong\img_20_20241116224008.jpg" />
+    <Content Include="Image\thietBiHuHong\img_20_20241116224701.jpg" />
+    <Content Include="Image\thietBiHuHong\img_3_20241104134311.jpg" />
+    <Content Include="Image\thietBiHuHong\img_5_20241104124806.jpg" />
+    <Content Include="Image\thietBiHuHong\img_7_20241104135107.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnLamMoi = new Guna.UI2.WinForms.Guna2Button();
             this.txtKetQua = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtTenTB = new Guna.UI2.WinForms.Guna2TextBox();
@@ -57,27 +57,29 @@
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.main = new System.Windows.Forms.Panel();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.ngayYeuCau = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.ngayBD = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.txtChiPhi = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtChiPhiSua = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtKetQuaSua = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtNguoiYeuCau = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel13 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel12 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtMaYC = new Guna.UI2.WinForms.Guna2TextBox();
-            this.dgvYeuCau = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.ngayYeuCau = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.guna2HtmlLabel12 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             this.dgvChiTietYC = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.guna2HtmlLabel13 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txtKetQuaSua = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtChiPhiSua = new Guna.UI2.WinForms.Guna2TextBox();
+            this.dgvYeuCau = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.txtPhong = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBD)).BeginInit();
             this.Navbar.SuspendLayout();
             this.main.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvYeuCau)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietYC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvYeuCau)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLamMoi
@@ -107,14 +109,14 @@
             this.txtKetQua.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtKetQua.Font = new System.Drawing.Font("JetBrains Mono", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKetQua.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtKetQua.Location = new System.Drawing.Point(316, 147);
+            this.txtKetQua.Location = new System.Drawing.Point(316, 190);
             this.txtKetQua.Multiline = true;
             this.txtKetQua.Name = "txtKetQua";
             this.txtKetQua.PasswordChar = '\0';
             this.txtKetQua.PlaceholderText = "";
             this.txtKetQua.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtKetQua.SelectedText = "";
-            this.txtKetQua.Size = new System.Drawing.Size(210, 95);
+            this.txtKetQua.Size = new System.Drawing.Size(210, 52);
             this.txtKetQua.TabIndex = 6;
             // 
             // txtTenTB
@@ -141,7 +143,7 @@
             // guna2HtmlLabel4
             // 
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(316, 126);
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(316, 168);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
             this.guna2HtmlLabel4.Size = new System.Drawing.Size(40, 15);
             this.guna2HtmlLabel4.TabIndex = 5;
@@ -266,26 +268,26 @@
             // 
             // dgvBD
             // 
-            dataGridViewCellStyle28.BackColor = System.Drawing.Color.White;
-            this.dgvBD.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle28;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvBD.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvBD.ColumnHeadersHeight = 15;
             this.dgvBD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle30.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBD.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBD.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvBD.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvBD.Location = new System.Drawing.Point(12, 254);
             this.dgvBD.Name = "dgvBD";
@@ -316,7 +318,7 @@
             // 
             // Navbar
             // 
-            this.Navbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Navbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.Navbar.Controls.Add(this.guna2HtmlLabel5);
             this.Navbar.Controls.Add(this.guna2ControlBox2);
             this.Navbar.Controls.Add(this.guna2ControlBox1);
@@ -352,12 +354,14 @@
             this.main.Controls.Add(this.txtKetQua);
             this.main.Controls.Add(this.guna2HtmlLabel6);
             this.main.Controls.Add(this.guna2HtmlLabel10);
+            this.main.Controls.Add(this.txtPhong);
             this.main.Controls.Add(this.txtTenTB);
             this.main.Controls.Add(this.guna2HtmlLabel9);
             this.main.Controls.Add(this.guna2HtmlLabel13);
             this.main.Controls.Add(this.guna2HtmlLabel12);
             this.main.Controls.Add(this.guna2HtmlLabel4);
             this.main.Controls.Add(this.guna2HtmlLabel3);
+            this.main.Controls.Add(this.guna2HtmlLabel8);
             this.main.Controls.Add(this.guna2HtmlLabel7);
             this.main.Controls.Add(this.guna2HtmlLabel2);
             this.main.Controls.Add(this.txtMaYC);
@@ -390,6 +394,23 @@
             this.guna2Button1.Size = new System.Drawing.Size(88, 30);
             this.guna2Button1.TabIndex = 7;
             this.guna2Button1.Text = "Làm mới";
+            // 
+            // ngayYeuCau
+            // 
+            this.ngayYeuCau.BorderRadius = 10;
+            this.ngayYeuCau.Checked = true;
+            this.ngayYeuCau.Enabled = false;
+            this.ngayYeuCau.FillColor = System.Drawing.Color.White;
+            this.ngayYeuCau.Font = new System.Drawing.Font("JetBrains Mono", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ngayYeuCau.ForeColor = System.Drawing.Color.Black;
+            this.ngayYeuCau.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.ngayYeuCau.Location = new System.Drawing.Point(926, 107);
+            this.ngayYeuCau.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.ngayYeuCau.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.ngayYeuCau.Name = "ngayYeuCau";
+            this.ngayYeuCau.Size = new System.Drawing.Size(138, 36);
+            this.ngayYeuCau.TabIndex = 7;
+            this.ngayYeuCau.Value = new System.DateTime(2024, 11, 2, 15, 57, 44, 307);
             // 
             // ngayBD
             // 
@@ -426,6 +447,48 @@
             this.txtChiPhi.SelectedText = "";
             this.txtChiPhi.Size = new System.Drawing.Size(140, 30);
             this.txtChiPhi.TabIndex = 6;
+            // 
+            // txtChiPhiSua
+            // 
+            this.txtChiPhiSua.BorderRadius = 10;
+            this.txtChiPhiSua.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtChiPhiSua.DefaultText = "";
+            this.txtChiPhiSua.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtChiPhiSua.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtChiPhiSua.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtChiPhiSua.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtChiPhiSua.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtChiPhiSua.Font = new System.Drawing.Font("JetBrains Mono", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtChiPhiSua.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtChiPhiSua.Location = new System.Drawing.Point(821, 337);
+            this.txtChiPhiSua.Name = "txtChiPhiSua";
+            this.txtChiPhiSua.PasswordChar = '\0';
+            this.txtChiPhiSua.PlaceholderText = "Chi phí ...";
+            this.txtChiPhiSua.SelectedText = "";
+            this.txtChiPhiSua.Size = new System.Drawing.Size(147, 28);
+            this.txtChiPhiSua.TabIndex = 6;
+            // 
+            // txtKetQuaSua
+            // 
+            this.txtKetQuaSua.BorderRadius = 10;
+            this.txtKetQuaSua.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtKetQuaSua.DefaultText = "";
+            this.txtKetQuaSua.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtKetQuaSua.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtKetQuaSua.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtKetQuaSua.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtKetQuaSua.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtKetQuaSua.Font = new System.Drawing.Font("JetBrains Mono", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKetQuaSua.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtKetQuaSua.Location = new System.Drawing.Point(575, 305);
+            this.txtKetQuaSua.Multiline = true;
+            this.txtKetQuaSua.Name = "txtKetQuaSua";
+            this.txtKetQuaSua.PasswordChar = '\0';
+            this.txtKetQuaSua.PlaceholderText = "Kết quả...";
+            this.txtKetQuaSua.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtKetQuaSua.SelectedText = "";
+            this.txtKetQuaSua.Size = new System.Drawing.Size(240, 60);
+            this.txtKetQuaSua.TabIndex = 6;
             // 
             // txtNguoiYeuCau
             // 
@@ -475,6 +538,24 @@
             this.guna2HtmlLabel9.TabIndex = 5;
             this.guna2HtmlLabel9.Text = "Ngày yêu cầu";
             // 
+            // guna2HtmlLabel13
+            // 
+            this.guna2HtmlLabel13.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel13.Location = new System.Drawing.Point(974, 344);
+            this.guna2HtmlLabel13.Name = "guna2HtmlLabel13";
+            this.guna2HtmlLabel13.Size = new System.Drawing.Size(26, 15);
+            this.guna2HtmlLabel13.TabIndex = 5;
+            this.guna2HtmlLabel13.Text = "VNĐ";
+            // 
+            // guna2HtmlLabel12
+            // 
+            this.guna2HtmlLabel12.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel12.Location = new System.Drawing.Point(262, 222);
+            this.guna2HtmlLabel12.Name = "guna2HtmlLabel12";
+            this.guna2HtmlLabel12.Size = new System.Drawing.Size(26, 15);
+            this.guna2HtmlLabel12.TabIndex = 5;
+            this.guna2HtmlLabel12.Text = "VNĐ";
+            // 
             // guna2HtmlLabel7
             // 
             this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
@@ -505,119 +586,29 @@
             this.txtMaYC.Size = new System.Drawing.Size(107, 25);
             this.txtMaYC.TabIndex = 4;
             // 
-            // dgvYeuCau
-            // 
-            dataGridViewCellStyle34.BackColor = System.Drawing.Color.White;
-            this.dgvYeuCau.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle34;
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle35.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvYeuCau.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle35;
-            this.dgvYeuCau.ColumnHeadersHeight = 15;
-            this.dgvYeuCau.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle36.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvYeuCau.DefaultCellStyle = dataGridViewCellStyle36;
-            this.dgvYeuCau.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvYeuCau.Location = new System.Drawing.Point(560, 147);
-            this.dgvYeuCau.Name = "dgvYeuCau";
-            this.dgvYeuCau.RowHeadersVisible = false;
-            this.dgvYeuCau.Size = new System.Drawing.Size(528, 152);
-            this.dgvYeuCau.TabIndex = 2;
-            this.dgvYeuCau.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvYeuCau.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.dgvYeuCau.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.dgvYeuCau.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.dgvYeuCau.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgvYeuCau.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dgvYeuCau.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvYeuCau.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.dgvYeuCau.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvYeuCau.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvYeuCau.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvYeuCau.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvYeuCau.ThemeStyle.HeaderStyle.Height = 15;
-            this.dgvYeuCau.ThemeStyle.ReadOnly = false;
-            this.dgvYeuCau.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvYeuCau.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvYeuCau.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvYeuCau.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvYeuCau.ThemeStyle.RowsStyle.Height = 22;
-            this.dgvYeuCau.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvYeuCau.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // ngayYeuCau
-            // 
-            this.ngayYeuCau.BorderRadius = 10;
-            this.ngayYeuCau.Checked = true;
-            this.ngayYeuCau.Enabled = false;
-            this.ngayYeuCau.FillColor = System.Drawing.Color.White;
-            this.ngayYeuCau.Font = new System.Drawing.Font("JetBrains Mono", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ngayYeuCau.ForeColor = System.Drawing.Color.Black;
-            this.ngayYeuCau.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.ngayYeuCau.Location = new System.Drawing.Point(926, 107);
-            this.ngayYeuCau.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.ngayYeuCau.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.ngayYeuCau.Name = "ngayYeuCau";
-            this.ngayYeuCau.Size = new System.Drawing.Size(138, 36);
-            this.ngayYeuCau.TabIndex = 7;
-            this.ngayYeuCau.Value = new System.DateTime(2024, 11, 2, 15, 57, 44, 307);
-            // 
-            // guna2HtmlLabel12
-            // 
-            this.guna2HtmlLabel12.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel12.Location = new System.Drawing.Point(262, 222);
-            this.guna2HtmlLabel12.Name = "guna2HtmlLabel12";
-            this.guna2HtmlLabel12.Size = new System.Drawing.Size(26, 15);
-            this.guna2HtmlLabel12.TabIndex = 5;
-            this.guna2HtmlLabel12.Text = "VNĐ";
-            // 
-            // guna2ContextMenuStrip1
-            // 
-            this.guna2ContextMenuStrip1.Name = "guna2ContextMenuStrip1";
-            this.guna2ContextMenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.guna2ContextMenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
-            this.guna2ContextMenuStrip1.RenderStyle.ColorTable = null;
-            this.guna2ContextMenuStrip1.RenderStyle.RoundedEdges = true;
-            this.guna2ContextMenuStrip1.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
-            this.guna2ContextMenuStrip1.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
-            this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // dgvChiTietYC
             // 
-            dataGridViewCellStyle31.BackColor = System.Drawing.Color.White;
-            this.dgvChiTietYC.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dgvChiTietYC.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvChiTietYC.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvChiTietYC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvChiTietYC.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvChiTietYC.ColumnHeadersHeight = 15;
             this.dgvChiTietYC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle33.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvChiTietYC.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvChiTietYC.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvChiTietYC.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvChiTietYC.Location = new System.Drawing.Point(560, 371);
             this.dgvChiTietYC.Name = "dgvChiTietYC";
@@ -646,56 +637,99 @@
             this.dgvChiTietYC.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvChiTietYC.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // guna2HtmlLabel13
+            // dgvYeuCau
             // 
-            this.guna2HtmlLabel13.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel13.Location = new System.Drawing.Point(974, 344);
-            this.guna2HtmlLabel13.Name = "guna2HtmlLabel13";
-            this.guna2HtmlLabel13.Size = new System.Drawing.Size(26, 15);
-            this.guna2HtmlLabel13.TabIndex = 5;
-            this.guna2HtmlLabel13.Text = "VNĐ";
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            this.dgvYeuCau.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvYeuCau.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvYeuCau.ColumnHeadersHeight = 15;
+            this.dgvYeuCau.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvYeuCau.DefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvYeuCau.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvYeuCau.Location = new System.Drawing.Point(560, 147);
+            this.dgvYeuCau.Name = "dgvYeuCau";
+            this.dgvYeuCau.RowHeadersVisible = false;
+            this.dgvYeuCau.Size = new System.Drawing.Size(528, 152);
+            this.dgvYeuCau.TabIndex = 2;
+            this.dgvYeuCau.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvYeuCau.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgvYeuCau.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgvYeuCau.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgvYeuCau.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvYeuCau.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgvYeuCau.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvYeuCau.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dgvYeuCau.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvYeuCau.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvYeuCau.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvYeuCau.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dgvYeuCau.ThemeStyle.HeaderStyle.Height = 15;
+            this.dgvYeuCau.ThemeStyle.ReadOnly = false;
+            this.dgvYeuCau.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvYeuCau.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvYeuCau.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvYeuCau.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvYeuCau.ThemeStyle.RowsStyle.Height = 22;
+            this.dgvYeuCau.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvYeuCau.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // txtKetQuaSua
+            // guna2ContextMenuStrip1
             // 
-            this.txtKetQuaSua.BorderRadius = 10;
-            this.txtKetQuaSua.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtKetQuaSua.DefaultText = "";
-            this.txtKetQuaSua.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtKetQuaSua.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtKetQuaSua.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtKetQuaSua.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtKetQuaSua.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtKetQuaSua.Font = new System.Drawing.Font("JetBrains Mono", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKetQuaSua.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtKetQuaSua.Location = new System.Drawing.Point(575, 305);
-            this.txtKetQuaSua.Multiline = true;
-            this.txtKetQuaSua.Name = "txtKetQuaSua";
-            this.txtKetQuaSua.PasswordChar = '\0';
-            this.txtKetQuaSua.PlaceholderText = "Kết quả...";
-            this.txtKetQuaSua.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtKetQuaSua.SelectedText = "";
-            this.txtKetQuaSua.Size = new System.Drawing.Size(240, 60);
-            this.txtKetQuaSua.TabIndex = 6;
+            this.guna2ContextMenuStrip1.Name = "guna2ContextMenuStrip1";
+            this.guna2ContextMenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.guna2ContextMenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.guna2ContextMenuStrip1.RenderStyle.ColorTable = null;
+            this.guna2ContextMenuStrip1.RenderStyle.RoundedEdges = true;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // txtChiPhiSua
+            // guna2HtmlLabel8
             // 
-            this.txtChiPhiSua.BorderRadius = 10;
-            this.txtChiPhiSua.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtChiPhiSua.DefaultText = "";
-            this.txtChiPhiSua.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtChiPhiSua.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtChiPhiSua.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtChiPhiSua.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtChiPhiSua.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtChiPhiSua.Font = new System.Drawing.Font("JetBrains Mono", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtChiPhiSua.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtChiPhiSua.Location = new System.Drawing.Point(821, 337);
-            this.txtChiPhiSua.Name = "txtChiPhiSua";
-            this.txtChiPhiSua.PasswordChar = '\0';
-            this.txtChiPhiSua.PlaceholderText = "Chi phí ...";
-            this.txtChiPhiSua.SelectedText = "";
-            this.txtChiPhiSua.Size = new System.Drawing.Size(147, 28);
-            this.txtChiPhiSua.TabIndex = 6;
+            this.guna2HtmlLabel8.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel8.Location = new System.Drawing.Point(322, 135);
+            this.guna2HtmlLabel8.Name = "guna2HtmlLabel8";
+            this.guna2HtmlLabel8.Size = new System.Drawing.Size(34, 15);
+            this.guna2HtmlLabel8.TabIndex = 5;
+            this.guna2HtmlLabel8.Text = "Phòng";
+            // 
+            // txtPhong
+            // 
+            this.txtPhong.BorderRadius = 10;
+            this.txtPhong.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPhong.DefaultText = "";
+            this.txtPhong.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtPhong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtPhong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPhong.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPhong.Enabled = false;
+            this.txtPhong.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPhong.Font = new System.Drawing.Font("JetBrains Mono", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhong.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPhong.Location = new System.Drawing.Point(363, 128);
+            this.txtPhong.Name = "txtPhong";
+            this.txtPhong.PasswordChar = '\0';
+            this.txtPhong.PlaceholderText = "";
+            this.txtPhong.SelectedText = "";
+            this.txtPhong.Size = new System.Drawing.Size(143, 30);
+            this.txtPhong.TabIndex = 6;
             // 
             // BaoDuong
             // 
@@ -711,8 +745,8 @@
             this.Navbar.PerformLayout();
             this.main.ResumeLayout(false);
             this.main.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvYeuCau)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTietYC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvYeuCau)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -753,5 +787,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txtKetQuaSua;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel13;
         private Guna.UI2.WinForms.Guna2DataGridView dgvChiTietYC;
+        private Guna.UI2.WinForms.Guna2TextBox txtPhong;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel8;
     }
 }

@@ -13,7 +13,6 @@ namespace DTO
         public string VaiTro { get; set; }
         public DateTime ThoiGianLamHong { get; set; }
         public DateTime? ThoiGianXuLy { get; set; }
-        public string MoTaChiTiet { get; set; }
         public double ChiPhiSuaChua { get; set; }
         public int TinhTrang { get; set; } // Đã xử lý / Chưa xử lý
     }

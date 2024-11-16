@@ -133,6 +133,7 @@ namespace GUI
             dgvBD.DataSource = b.GetAll();
             dgvBD.Columns["MaBD"].HeaderText = "Mã bảo dưỡng";
             dgvBD.Columns["TenTB"].HeaderText = "Tên thiết bị";
+            dgvBD.Columns["TenPhong"].HeaderText = "Tên phòng";
             dgvBD.Columns["NgayBD"].HeaderText = "Ngày bảo dưỡng";
             dgvBD.Columns["KetQua"].HeaderText = "Kết quả";
             dgvBD.Columns["ChiPhi"].HeaderText = "Chi phí";
@@ -144,9 +145,10 @@ namespace GUI
             DataGridViewRow row = dgvBD.Rows[rowIndex];
             txtMaBD.Text = row.Cells[0].Value.ToString();
             txtTenTB.Text = row.Cells[2].Value.ToString();
-            ngayBD.Value = Convert.ToDateTime(row.Cells[3].Value);
-            txtKetQua.Text = row.Cells[4].Value.ToString();
-            txtChiPhi.Text = row.Cells[5].Value.ToString();
+            txtPhong.Text = row.Cells[3].Value.ToString();
+            ngayBD.Value = Convert.ToDateTime(row.Cells[4].Value);
+            txtKetQua.Text = row.Cells[5].Value.ToString();
+            txtChiPhi.Text = row.Cells[6].Value.ToString();
         }
 
         void LoadYeuCau() 
