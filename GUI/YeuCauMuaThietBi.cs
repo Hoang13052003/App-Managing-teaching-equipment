@@ -173,9 +173,10 @@ namespace GUI
                 dgvDSChiTietThietBi.DataSource = y.SearchChiTietThietBi2(maLoai);
                 dgvDSChiTietThietBi.Columns[0].HeaderText = "Mã chi tiết";
                 dgvDSChiTietThietBi.Columns[1].HeaderText = "Tên thiết bị";
-                dgvDSChiTietThietBi.Columns[2].HeaderText = "Tình trạng";
-                dgvDSChiTietThietBi.Columns[3].HeaderText = "Trạng thái";
-                dgvDSChiTietThietBi.Columns[4].HeaderText = "Ngày mua";
+                dgvDSChiTietThietBi.Columns[2].HeaderText = "Tên phòng";
+                dgvDSChiTietThietBi.Columns[3].HeaderText = "Tình trạng";
+                dgvDSChiTietThietBi.Columns[4].HeaderText = "Trạng thái";
+                dgvDSChiTietThietBi.Columns[5].HeaderText = "Ngày mua";
             }
         }
 
@@ -213,6 +214,7 @@ namespace GUI
         {
             dgvDSThietBiMua.Columns.Add("MaCTTB_NCC", "Mã chi tiết");
             dgvDSThietBiMua.Columns.Add("TenTB", "Tên thiết bị");
+            dgvDSThietBiMua.Columns.Add("TenPhong", "Tên phòng");
             dgvDSThietBiMua.Columns.Add("TinhTrang", "Tình trạng");
             dgvDSThietBiMua.Columns.Add("TrangThai", "Trạng thái");
             dgvDSThietBiMua.Columns.Add("NgayMua", "Ngày mua");
@@ -222,9 +224,10 @@ namespace GUI
             dgvDSChiTietThietBi.DataSource = y.getAllChiTietThietBi();
             dgvDSChiTietThietBi.Columns[0].HeaderText = "Mã chi tiết";
             dgvDSChiTietThietBi.Columns[1].HeaderText = "Tên thiết bị";
-            dgvDSChiTietThietBi.Columns[2].HeaderText = "Tình trạng";
-            dgvDSChiTietThietBi.Columns[3].HeaderText = "Trạng thái";
-            dgvDSChiTietThietBi.Columns[4].HeaderText = "Ngày mua";
+            dgvDSChiTietThietBi.Columns[2].HeaderText = "Tên phòng";
+            dgvDSChiTietThietBi.Columns[3].HeaderText = "Tình trạng";
+            dgvDSChiTietThietBi.Columns[4].HeaderText = "Trạng thái";
+            dgvDSChiTietThietBi.Columns[5].HeaderText = "Ngày mua";
 
             dgvDSChiTietThietBi.CellFormatting += DgvDSChiTietThietBi_CellFormatting;
         }

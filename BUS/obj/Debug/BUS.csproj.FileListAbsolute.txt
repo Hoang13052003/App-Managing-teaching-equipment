@@ -9,7 +9,6 @@ D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\BUS\bin\Debug\DTO.dl
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\BUS\bin\Debug\DAL.pdb
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\BUS\bin\Debug\DTO.pdb
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\BUS\obj\Debug\BUS.csproj.CopyComplete
-
 E:\Nam4\DoAnCN\App-Managing-teaching-equipment\BUS\bin\Debug\BUS.dll
 E:\Nam4\DoAnCN\App-Managing-teaching-equipment\BUS\bin\Debug\BUS.pdb
 E:\Nam4\DoAnCN\App-Managing-teaching-equipment\BUS\bin\Debug\DAL.dll
@@ -21,7 +20,6 @@ E:\Nam4\DoAnCN\App-Managing-teaching-equipment\BUS\obj\Debug\BUS.csproj.CoreComp
 E:\Nam4\DoAnCN\App-Managing-teaching-equipment\BUS\obj\Debug\BUS.csproj.Up2Date
 E:\Nam4\DoAnCN\App-Managing-teaching-equipment\BUS\obj\Debug\BUS.dll
 E:\Nam4\DoAnCN\App-Managing-teaching-equipment\BUS\obj\Debug\BUS.pdb
-
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\BUS\bin\Debug\BUS.dll
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\BUS\bin\Debug\BUS.pdb
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\BUS\bin\Debug\DAL.dll
@@ -33,4 +31,3 @@ D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\BUS\obj\Debug\BUS.csproj.
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\BUS\obj\Debug\BUS.csproj.Up2Date
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\BUS\obj\Debug\BUS.dll
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\BUS\obj\Debug\BUS.pdb
-

@@ -51,6 +51,7 @@
     <Compile Include="ChiTietNhapDTO.cs" />
     <Compile Include="ChiTietThanhLyDTO.cs" />
     <Compile Include="ChiTietThietBi_NhaCungCapDTO.cs" />
+    <Compile Include="ChiTietThietBi_PhongDTO.cs" />
     <Compile Include="ChiTietYeuCauThietBiDTO.cs" />
     <Compile Include="LoaiThietBi_MonHocDTO.cs" />
     <Compile Include="LopHocDTO.cs" />

@@ -73,10 +73,12 @@ namespace DAL
         public List<ChiTietThietBiDTO> getAllChiTietThietBi()
         {
             List<ChiTietThietBiDTO> list = new List<ChiTietThietBiDTO>();
-            string query = @"Select cn.MaCTTB_NCC, TenTB, TinhTrang, TrangThai, NgayMua
-                            From ThietBi t, ChiTietThietBi c, ChiTietThietBi_NhaCungCap cn
-                            Where cn.MaCTTB = c.MaCTTB 
-                            And t.MaTB = c.MaTB";
+            string query = @"Select cn.MaCTTB_NCC, TenTB, TenPhong, TinhTrang, TrangThai, NgayMua
+                            FROM ThietBi t
+                            LEFT JOIN ChiTietThietBi ct ON t.MaTB = ct.MaTB
+                            LEFT JOIN ChiTietThietBi_Phong cp ON ct.MaCTTB = cp.MaCTTB
+                            LEFT JOIN PhongHoc p ON cp.MaPhong = p.MaPhong
+                            LEFT JOIN ChiTietThietBi_NhaCungCap cn ON ct.MaCTTB = cn.MaCTTB";
             DataTable dataTable = GetDataTable(query);
 
             foreach (DataRow row in dataTable.Rows)
@@ -103,6 +105,7 @@ namespace DAL
                 {
                     MaCTTB_NCC = Convert.ToInt32(row["MaCTTB_NCC"]),
                     TenTB = row["TenTB"].ToString(),
+                    TenPhong = row["TenPhong"].ToString(),
                     TinhTrang = row["TinhTrang"].ToString(),
                     TrangThai = trangThaiText,
                     NgayMua = row["NgayMua"] as DateTime?
@@ -114,11 +117,13 @@ namespace DAL
         public List<ChiTietThietBiDTO> SearchChiTietThietBi(int pMaTB)
         {
             List<ChiTietThietBiDTO> list = new List<ChiTietThietBiDTO>();
-            string query = @"Select cn.MaCTTB_NCC, TenTB, TinhTrang, TrangThai, NgayMua
-                            From ThietBi t, ChiTietThietBi c, ChiTietThietBi_NhaCungCap cn
-                            Where cn.MaCTTB = c.MaCTTB 
-                            And t.MaTB = c.MaTB
-                            And c.MaTB = '" + pMaTB+"'";
+            string query = @"SELECT cn.MaCTTB_NCC, TenTB, TenPhong, TinhTrang, TrangThai, NgayMua
+                            FROM ThietBi t
+                            LEFT JOIN ChiTietThietBi c ON t.MaTB = c.MaTB
+                            LEFT JOIN ChiTietThietBi_NhaCungCap cn ON cn.MaCTTB = c.MaCTTB
+                            LEFT JOIN ChiTietThietBi_Phong cp ON cp.MaCTTB = c.MaCTTB
+                            LEFT JOIN PhongHoc p ON cp.MaPhong = p.MaPhong
+                            WHERE c.MaTB = '" + pMaTB+"'";
             DataTable dataTable = GetDataTable(query);
 
             foreach (DataRow row in dataTable.Rows)
@@ -145,6 +150,7 @@ namespace DAL
                 {
                     MaCTTB_NCC = Convert.ToInt32(row["MaCTTB_NCC"]),
                     TenTB = row["TenTB"].ToString(),
+                    TenPhong = row["TenPhong"].ToString(),
                     TinhTrang = row["TinhTrang"].ToString(),
                     TrangThai = trangThaiText,
                     NgayMua = row["NgayMua"] as DateTime?
@@ -155,12 +161,14 @@ namespace DAL
         public List<ChiTietThietBiDTO> SearchChiTietThietBi2(int pMaLoaiTB)
         {
             List<ChiTietThietBiDTO> list = new List<ChiTietThietBiDTO>();
-            string query = @"Select MaCTTB_NCC, TenTB, TinhTrang, TrangThai, NgayMua
-                            From ThietBi t, ChiTietThietBi c, ChiTietThietBi_NhaCungCap cn, LoaiThietBi l
-                            Where cn.MaCTTB = c.MaCTTB 
-                            And t.MaTB = c.MaTB
-                            And c.MaTB = t.MaTB
-                            And t.MaLoai = '"+pMaLoaiTB+"'";
+            string query = @"SELECT cn.MaCTTB_NCC, TenTB, TenPhong, TinhTrang, TrangThai, NgayMua
+                            FROM ThietBi t
+                            LEFT JOIN ChiTietThietBi c ON t.MaTB = c.MaTB
+                            LEFT JOIN ChiTietThietBi_NhaCungCap cn ON c.MaCTTB = cn.MaCTTB
+                            LEFT JOIN LoaiThietBi l ON t.MaLoai = l.MaLoai
+                            LEFT JOIN ChiTietThietBi_Phong cp ON c.MaCTTB = cp.MaCTTB
+                            LEFT JOIN PhongHoc p ON cp.MaPhong = p.MaPhong
+                            WHERE t.MaLoai = '" + pMaLoaiTB+"'";
 
             DataTable dataTable = GetDataTable(query);
 
@@ -188,6 +196,7 @@ namespace DAL
                 {
                     MaCTTB_NCC = Convert.ToInt32(row["MaCTTB_NCC"]),
                     TenTB = row["TenTB"].ToString(),
+                    TenPhong = row["TenPhong"].ToString(),
                     TinhTrang = row["TinhTrang"].ToString(),
                     TrangThai = trangThaiText,
                     NgayMua = row["NgayMua"] as DateTime?
@@ -198,11 +207,13 @@ namespace DAL
         public List<ChiTietThietBiDTO> SearchKeyChiTietThietBi(string keyword)
         {
             List<ChiTietThietBiDTO> list = new List<ChiTietThietBiDTO>();
-            string query = @"Select cn.MaCTTB_NCC, TenTB, TinhTrang, TrangThai, NgayMua
-                            From ThietBi t, ChiTietThietBi c, ChiTietThietBi_NhaCungCap cn
-                            Where cn.MaCTTB = c.MaCTTB 
-                            And t.MaTB = c.MaTB
-                            And (TenTB LIKE '%" + keyword+ "%' OR TinhTrang LIKE '%"+keyword+"%')";
+            string query = @"SELECT cn.MaCTTB_NCC, TenTB, TenPhong, TinhTrang, TrangThai, NgayMua
+                            FROM ThietBi t
+                            LEFT JOIN ChiTietThietBi c ON t.MaTB = c.MaTB
+                            LEFT JOIN ChiTietThietBi_NhaCungCap cn ON c.MaCTTB = cn.MaCTTB
+                            LEFT JOIN ChiTietThietBi_Phong cp ON c.MaCTTB = cp.MaCTTB
+                            LEFT JOIN PhongHoc p ON cp.MaPhong = p.MaPhong
+                            WHERE TenTB LIKE '%" + keyword+ "%' OR TinhTrang LIKE '%"+keyword+ "%' OR TenPhong LIKE '%" + keyword + "%'";
             DataTable dataTable = GetDataTable(query);
 
             foreach (DataRow row in dataTable.Rows)
@@ -229,6 +240,7 @@ namespace DAL
                 {
                     MaCTTB_NCC = Convert.ToInt32(row["MaCTTB_NCC"]),
                     TenTB = row["TenTB"].ToString(),
+                    TenPhong = row["TenPhong"].ToString(),
                     TinhTrang = row["TinhTrang"].ToString(),
                     TrangThai = trangThaiText,
                     NgayMua = row["NgayMua"] as DateTime?

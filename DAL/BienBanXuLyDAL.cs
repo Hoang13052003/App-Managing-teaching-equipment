@@ -24,7 +24,6 @@ public class BienBanXuLyDAL : DatabaseHelper
                 VaiTro = row["VaiTro"].ToString(),
                 ThoiGianLamHong = Convert.ToDateTime(row["ThoiGianLamHong"]),
                 ThoiGianXuLy = row["ThoiGianXuLy"] != DBNull.Value ? (DateTime?)Convert.ToDateTime(row["ThoiGianXuLy"]) : null,
-                MoTaChiTiet = row["MoTaChiTiet"].ToString(),
                 ChiPhiSuaChua = row["ChiPhiSuaChua"] != DBNull.Value ? Convert.ToDouble(row["ChiPhiSuaChua"]) : 0,
                 TinhTrang = Convert.ToInt32(row["TinhTrang"])
             });
@@ -50,7 +49,7 @@ public class BienBanXuLyDAL : DatabaseHelper
                 VaiTro = row["VaiTro"].ToString(),
                 ThoiGianLamHong = Convert.ToDateTime(row["ThoiGianLamHong"]),
                 ThoiGianXuLy = row["ThoiGianXuLy"] != DBNull.Value ? Convert.ToDateTime(row["ThoiGianXuLy"]) : (DateTime?)null,
-                MoTaChiTiet = row["MoTaChiTiet"].ToString(),
+               
                 ChiPhiSuaChua = row["ChiPhiSuaChua"] != DBNull.Value ? Convert.ToDouble(row["ChiPhiSuaChua"]) : 0,
                 TinhTrang = Convert.ToInt32(row["TinhTrang"])
             });
@@ -60,7 +59,7 @@ public class BienBanXuLyDAL : DatabaseHelper
     public List<ChiTietBienBanDTO> GetAllChiTietBB()
     {
         List<ChiTietBienBanDTO> list = new List<ChiTietBienBanDTO>();
-        string query = @"SELECT MaBB, CTBB.MaCTTB_NCC, TenTB, HinhAnh 
+        string query = @"SELECT MaBB, CTBB.MaCTTB_NCC, TenTB, HinhAnh, MoTaChiTiet 
                         FROM ChiTietBienBan CTBB
                         JOIN ChiTietThietBi_NhaCungCap CN ON CN.MaCTTB_NCC = CTBB.MaCTTB_NCC
                         JOIN ChiTietThietBi CTTB ON CTTB.MaCTTB = CN.MaCTTB
@@ -74,7 +73,8 @@ public class BienBanXuLyDAL : DatabaseHelper
                 MaBB = Convert.ToInt32(row["MaBB"]),
                 MaCTTB_NCC = Convert.ToInt32(row["MaCTTB_NCC"]),
                 TenTB = row["TenTB"].ToString(),
-                HinhAnh = row["HinhAnh"].ToString()
+                HinhAnh = row["HinhAnh"].ToString(),
+                MoTaChiTiet = row["MoTaChiTiet"].ToString()
             });
         }
         return list;
@@ -82,7 +82,7 @@ public class BienBanXuLyDAL : DatabaseHelper
     public List<ChiTietBienBanDTO> SearchChiTietBB(int pMaBB)
     {
         List<ChiTietBienBanDTO> list = new List<ChiTietBienBanDTO>();
-        string query = @"SELECT MaBB, CTBB.MaCTTB_NCC, TenTB, HinhAnh 
+        string query = @"SELECT MaBB, CTBB.MaCTTB_NCC, TenTB, HinhAnh, MoTaChiTiet
                         FROM ChiTietBienBan CTBB
                         JOIN ChiTietThietBi_NhaCungCap CN ON CN.MaCTTB_NCC = CTBB.MaCTTB_NCC
                         JOIN ChiTietThietBi CTTB ON CTTB.MaCTTB = CN.MaCTTB
@@ -97,7 +97,8 @@ public class BienBanXuLyDAL : DatabaseHelper
                 MaBB = Convert.ToInt32(row["MaBB"]),
                 MaCTTB_NCC = Convert.ToInt32(row["MaCTTB_NCC"]),
                 TenTB = row["TenTB"].ToString(),
-                HinhAnh = row["HinhAnh"].ToString()
+                HinhAnh = row["HinhAnh"].ToString(),
+                MoTaChiTiet = row["MoTaChiTiet"].ToString()
             });
         }
         return list;
@@ -105,8 +106,8 @@ public class BienBanXuLyDAL : DatabaseHelper
 
     public bool Insert(BienBanXuLyDTO bienBan, List<ChiTietBienBanDTO> chiTietList)
     {
-        string insertBienBanQuery = "INSERT INTO BienBanXuLy (TenNguoiLamHong, VaiTro, ThoiGianLamHong, ThoiGianXuLy, MoTaChiTiet, ChiPhiSuaChua, TinhTrang) " +
-                                     "VALUES (@TenNguoiLamHong, @VaiTro, @ThoiGianLamHong,@ThoiGianXuLy, @MoTaChiTiet, @ChiPhiSuaChua, @TinhTrang); " +
+        string insertBienBanQuery = "INSERT INTO BienBanXuLy (TenNguoiLamHong, VaiTro, ThoiGianLamHong, ThoiGianXuLy, ChiPhiSuaChua, TinhTrang) " +
+                                     "VALUES (@TenNguoiLamHong, @VaiTro, @ThoiGianLamHong, @ThoiGianXuLy, @ChiPhiSuaChua, @TinhTrang); " +
                                      "SELECT SCOPE_IDENTITY();"; // Lấy ID của bản ghi vừa chèn
 
         using (SqlConnection connection = GetConnection())
@@ -115,24 +116,24 @@ public class BienBanXuLyDAL : DatabaseHelper
             command.Parameters.AddWithValue("@TenNguoiLamHong", bienBan.TenNguoiLamHong);
             command.Parameters.AddWithValue("@VaiTro", bienBan.VaiTro);
             command.Parameters.AddWithValue("@ThoiGianLamHong", bienBan.ThoiGianLamHong);
-            command.Parameters.AddWithValue("@ThoiGianXuLy", bienBan.ThoiGianXuLy);
-            command.Parameters.AddWithValue("@MoTaChiTiet", bienBan.MoTaChiTiet ?? (object)DBNull.Value);
+            command.Parameters.AddWithValue("@ThoiGianXuLy", bienBan.ThoiGianXuLy ?? (object)DBNull.Value);
             command.Parameters.AddWithValue("@ChiPhiSuaChua", bienBan.ChiPhiSuaChua);
             command.Parameters.AddWithValue("@TinhTrang", bienBan.TinhTrang);
 
             connection.Open();
-            int newMaBB = Convert.ToInt32(command.ExecuteScalar()); 
+            int newMaBB = Convert.ToInt32(command.ExecuteScalar());
 
             if (newMaBB > 0)
             {
                 foreach (var chiTiet in chiTietList)
                 {
-                    string insertChiTietQuery = @"INSERT INTO ChiTietBienBan (MaBB, MaCTTB_NCC, HinhAnh) 
-                                               VALUES (@MaBB, @MaCTTB_NCC, @HinhAnh)";
+                    string insertChiTietQuery = @"INSERT INTO ChiTietBienBan (MaBB, MaCTTB_NCC, MoTaChiTiet, HinhAnh) 
+                                             VALUES (@MaBB, @MaCTTB_NCC, @MoTaChiTiet, @HinhAnh)";
 
                     SqlCommand chiTietCommand = new SqlCommand(insertChiTietQuery, connection);
                     chiTietCommand.Parameters.AddWithValue("@MaBB", newMaBB);
                     chiTietCommand.Parameters.AddWithValue("@MaCTTB_NCC", chiTiet.MaCTTB_NCC);
+                    chiTietCommand.Parameters.AddWithValue("@MoTaChiTiet", chiTiet.MoTaChiTiet);
                     chiTietCommand.Parameters.AddWithValue("@HinhAnh", chiTiet.HinhAnh ?? (object)DBNull.Value);
 
                     chiTietCommand.ExecuteNonQuery();
@@ -176,7 +177,6 @@ public class BienBanXuLyDAL : DatabaseHelper
                         commandBB.Parameters.AddWithValue("@VaiTro", bienBan.VaiTro);
                         commandBB.Parameters.AddWithValue("@ThoiGianLamHong", bienBan.ThoiGianLamHong);
                         commandBB.Parameters.AddWithValue("@ThoiGianXuLy", bienBan.ThoiGianXuLy);
-                        commandBB.Parameters.AddWithValue("@MoTaChiTiet", bienBan.MoTaChiTiet ?? (object)DBNull.Value);
                         commandBB.Parameters.AddWithValue("@ChiPhiSuaChua", bienBan.ChiPhiSuaChua);
                         commandBB.Parameters.AddWithValue("@TinhTrang", bienBan.TinhTrang);
 

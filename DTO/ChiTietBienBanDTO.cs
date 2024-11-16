@@ -12,5 +12,6 @@ namespace DTO
         public int MaCTTB_NCC { get; set; }
         public string TenTB { get; set; }
         public string HinhAnh { get; set; }
+        public string MoTaChiTiet { get; set; }
     }
 }
