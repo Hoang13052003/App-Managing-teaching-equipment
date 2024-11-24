@@ -173,6 +173,7 @@ namespace GUI
             dgvChiTietYC.DataSource = y.searchChiTietYeuCauSuaThietBi(pMaYC);
             dgvChiTietYC.Columns["MaYC"].HeaderText = "Mã yêu cầu";
             dgvChiTietYC.Columns["TenTB"].HeaderText = "Tên thiết bị";
+            dgvChiTietYC.Columns["TenPhong"].HeaderText = "Phòng";
             dgvChiTietYC.Columns["LoaiYeuCau"].HeaderText = "Loại yêu cầu";
             dgvChiTietYC.Columns["GhiChu"].HeaderText = "Ghi chú";
             dgvChiTietYC.Columns["TrangThai"].HeaderText = "Trạng thái";
@@ -186,6 +187,7 @@ namespace GUI
 
             dgvChiTietYC.Columns["MaYC"].HeaderText = "Mã yêu cầu";
             dgvChiTietYC.Columns["TenTB"].HeaderText = "Tên thiết bị";
+            dgvChiTietYC.Columns["TenPhong"].HeaderText = "Phòng";
             dgvChiTietYC.Columns["LoaiYeuCau"].HeaderText = "Loại yêu cầu";
             dgvChiTietYC.Columns["GhiChu"].HeaderText = "Ghi chú";
             dgvChiTietYC.Columns["TrangThai"].HeaderText = "Trạng thái";

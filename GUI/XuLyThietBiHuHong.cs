@@ -101,11 +101,11 @@ namespace GUI
             {
                 pictureBox.Image = Image.FromFile(combinedImagePath);
                 pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                pictureBox.Width = 290;
-                pictureBox.Height = 220;
+                //pictureBox.Width = 390;
+                //pictureBox.Height = 320;
 
-                pictureBox.Anchor = AnchorStyles.None;
-                pictureBox.Margin = new Padding(10);
+                //pictureBox.Anchor = AnchorStyles.None;
+                //pictureBox.Margin = new Padding(10);
             }
             else
             {

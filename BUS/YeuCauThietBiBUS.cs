@@ -63,5 +63,9 @@ namespace BUS
         {
             return y.UpdataTrangThaiCTYCTB(pMaYC, pMaCTTB_NCC, pTrangThai, pKetQua, pChiPhi);
         }
+        public List<ChiTietThietBi_TKBDTO> getAllChiTietThietBi_TKB(int pMaTKB)
+        {
+            return y.getAllChiTietThietBi_TKB(pMaTKB);
+        }
     }
 }

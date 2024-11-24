@@ -84,3 +84,4 @@ D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.FormLoa
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.FormLoaiThietBi.resources
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.FormMuonThietBi.resources
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.Manage_Device.resources
+D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.BaoCaoThietBiHuHong_TKB.resources

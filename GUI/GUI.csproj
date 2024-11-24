@@ -61,6 +61,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCaoThietBiHuHong_TKB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaoCaoThietBiHuHong_TKB.Designer.cs">
+      <DependentUpon>BaoCaoThietBiHuHong_TKB.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaoDuong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     <Compile Include="YeuCauSuaThietBi.Designer.cs">
       <DependentUpon>YeuCauSuaThietBi.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BaoCaoThietBiHuHong_TKB.resx">
+      <DependentUpon>BaoCaoThietBiHuHong_TKB.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoDuong.resx">
       <DependentUpon>BaoDuong.cs</DependentUpon>
     </EmbeddedResource>
