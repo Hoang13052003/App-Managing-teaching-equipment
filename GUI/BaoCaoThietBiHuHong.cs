@@ -32,6 +32,12 @@ namespace GUI
             this.cboThietBi.SelectedIndexChanged += CboThietBi_SelectedIndexChanged;
             this.btnGui.Click += BtnGui_Click;
             this.btnReset.Click += BtnReset_Click;
+            this.dgvThietBi.CellClick += DgvThietBi_CellClick;
+        }
+
+        private void DgvThietBi_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) BingDingDSChiTietThietBi(e.RowIndex);
         }
 
         private void BtnReset_Click(object sender, EventArgs e)
@@ -364,6 +370,13 @@ namespace GUI
             dgvThietBi.Columns["TinhTrang"].HeaderText = "Tình trạng";
             dgvThietBi.Columns["TrangThai"].HeaderText = "Trạng thái";
             dgvThietBi.Columns["NgayMua"].Visible = false;
+        }
+        void BingDingDSChiTietThietBi(int rowIndex)
+        {
+            DataGridViewRow row = dgvThietBi.Rows[rowIndex];
+            txtMaCTTB.Text = row.Cells[0].Value.ToString();
+            txtTenTB.Text = row.Cells[1].Value.ToString();
+            txtPhong.Text = row.Cells[2].Value.ToString();
         }
         void LoadDgvDSChiTietThietBi()
         {

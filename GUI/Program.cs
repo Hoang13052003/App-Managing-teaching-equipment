@@ -60,7 +60,7 @@ namespace GUI
 
             //Application.Run(new FormMuonThietBi());
 
-            Application.Run(new XuLyThietBiHuHong());
+            Application.Run(new BaoCaoThietBiHuHong());
 
         }
     }
