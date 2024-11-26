@@ -512,6 +512,45 @@ namespace DAL
             }
             return list;
         }
-        
+        public DateTime ngayHoc_TKB(int pMaTKB)
+        {
+            DateTime ngayHoc = DateTime.Now; 
+
+            string query = @"SELECT NgayHoc
+                     FROM ThoiKhoaBieu tkb
+                     WHERE tkb.MaTKB = " + pMaTKB;
+
+            DataTable dataTable = GetDataTable(query);
+
+            if (dataTable.Rows.Count > 0)
+            {
+                DataRow row = dataTable.Rows[0];
+                if (row["NgayHoc"] != DBNull.Value)
+                {
+                    ngayHoc = Convert.ToDateTime(row["NgayHoc"]);
+                }
+            }
+            return ngayHoc;
+        }
+        public TimeSpan gioHoc_TKB(int pMaTKB)
+        {
+            TimeSpan gioHoc = TimeSpan.MinValue; 
+
+            string query = @"SELECT GioHoc
+                     FROM ThoiKhoaBieu tkb
+                     WHERE tkb.MaTKB = " + pMaTKB;
+
+            DataTable dataTable = GetDataTable(query);
+
+            if (dataTable.Rows.Count > 0)
+            {
+                DataRow row = dataTable.Rows[0];
+                if (row["GioHoc"] != DBNull.Value)
+                {
+                    gioHoc = (TimeSpan)(row["GioHoc"]);
+                }
+            }
+            return gioHoc;
+        }
     }
 }

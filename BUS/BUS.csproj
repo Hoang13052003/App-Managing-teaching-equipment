@@ -51,6 +51,7 @@
     <Compile Include="MonHocBUS.cs" />
     <Compile Include="MuonThietBiBUS.cs" />
     <Compile Include="NguoiDungBUS.cs" />
+    <Compile Include="NhapThietBiBUS.cs" />
     <Compile Include="PhanHoiGiaoVienBUS.cs" />
     <Compile Include="PhongHocBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -124,7 +124,7 @@ public class NhapThietBiDAL : DatabaseHelper
                 list.Add(new ChiTietNhapDTO
                 {
                     MaNhap = Convert.ToInt32(row["MaNhap"]),
-                    MaCTTB_NCC = Convert.ToInt32(row["MaCTTB_NCC"]),
+                    MaTB = Convert.ToInt32(row["MaTB"]),
                     GiaNhap = Convert.ToSingle(row["GiaNhap"]),
                     SoLuong = Convert.ToInt32(row["SoLuong"]),
                     ThanhTien = Convert.ToSingle(row["ThanhTien"])
@@ -137,12 +137,12 @@ public class NhapThietBiDAL : DatabaseHelper
     // Thêm chi tiết nhập
     public bool Insert(ChiTietNhapDTO chiTietNhap)
     {
-        string query = "INSERT INTO ChiTietNhap (MaNhap, MaCTTB_NCC, GiaNhap, SoLuong, ThanhTien) VALUES (@MaNhap, @MaCTTB_NCC, @GiaNhap, @SoLuong, @ThanhTien)";
+        string query = "INSERT INTO ChiTietNhap (MaNhap, MaTB, GiaNhap, SoLuong, ThanhTien) VALUES (@MaNhap, @MaTB, @GiaNhap, @SoLuong, @ThanhTien)";
         using (SqlConnection connection = GetConnection())
         {
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@MaNhap", chiTietNhap.MaNhap);
-            command.Parameters.AddWithValue("@MaCTTB_NCC", chiTietNhap.MaCTTB_NCC);
+            command.Parameters.AddWithValue("@MaTB", chiTietNhap.MaTB);
             command.Parameters.AddWithValue("@GiaNhap", chiTietNhap.GiaNhap);
             command.Parameters.AddWithValue("@SoLuong", chiTietNhap.SoLuong);
             command.Parameters.AddWithValue("@ThanhTien", chiTietNhap.ThanhTien);
@@ -152,14 +152,14 @@ public class NhapThietBiDAL : DatabaseHelper
     }
 
     // Xóa chi tiết nhập theo mã nhập và mã thiết bị nhà cung cấp
-    public bool Delete(int maNhap, int maCTTB_NCC)
+    public bool Delete(int maNhap, int maTB)
     {
-        string query = "DELETE FROM ChiTietNhap WHERE MaNhap = @MaNhap AND MaCTTB_NCC = @MaCTTB_NCC";
+        string query = "DELETE FROM ChiTietNhap WHERE MaNhap = @MaNhap AND MaTB = @MaTB";
         using (SqlConnection connection = GetConnection())
         {
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@MaNhap", maNhap);
-            command.Parameters.AddWithValue("@MaCTTB_NCC", maCTTB_NCC);
+            command.Parameters.AddWithValue("@MaCTTB_NCC", maTB);
             connection.Open();
             return command.ExecuteNonQuery() > 0;
         }

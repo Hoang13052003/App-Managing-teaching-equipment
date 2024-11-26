@@ -16,16 +16,16 @@ namespace GUI
 {
     public partial class BaoCaoThietBiHuHong_TKB : Form
     {
-        //int maTKB;
+        int maTKB; //307, 308, 309, 337
         private Dictionary<int, List<string>> deviceImages = new Dictionary<int, List<string>>();
         YeuCauThietBiBUS y = new YeuCauThietBiBUS();
         BienBanXuLyBUS b = new BienBanXuLyBUS();
 
-        //public int MaTKB
-        //{
-        //    get { return maTKB; }
-        //    set { maTKB = value; }
-        //}
+        public int MaTKB
+        {
+            get { return maTKB; }
+            set { maTKB = value; }
+        }
         public BaoCaoThietBiHuHong_TKB()
         {
             InitializeComponent();
@@ -305,8 +305,8 @@ namespace GUI
             LoadThietBiHong();
             LoadCboVaiTro();
             txtMaTKB.Text = "1"; // maTKB.ToString();
-            txtNgayHoc.Text = "";
-            txtGioHoc.Text = "";
+            txtNgayHoc.Text = y.ngayHoc_TKB(1).ToString(); //maTKB
+            txtGioHoc.Text = y.gioHoc_TKB(1).ToString(); //maTKB
             DateTime now = DateTime.Now;
             txtThoiGian.Text = now.ToString("dd/MM/yyyy HH:mm");
         }

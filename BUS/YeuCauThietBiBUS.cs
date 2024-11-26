@@ -67,5 +67,13 @@ namespace BUS
         {
             return y.getAllChiTietThietBi_TKB(pMaTKB);
         }
+        public DateTime ngayHoc_TKB(int pMaTKB)
+        {
+            return y.ngayHoc_TKB(pMaTKB);
+        }
+        public TimeSpan gioHoc_TKB(int pMaTKB)
+        {
+            return y.gioHoc_TKB(pMaTKB);
+        }
     }
 }
