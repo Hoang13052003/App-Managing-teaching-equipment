@@ -83,41 +83,6 @@ namespace GUI
         {
             if (e.RowIndex >= 0)
             {
-                int maCTTB_NCC = (int)dgvChiTietBB.Rows[e.RowIndex].Cells["MaCTTB_NCC"].Value;
-                int maBB = (int)dgvChiTietBB.Rows[e.RowIndex].Cells["MaBB"].Value;
-                string imagePath = b.GetImage(maBB, maCTTB_NCC);
-
-                flowLayoutPanelHinhAnh.Controls.Clear();
-
-                if (!string.IsNullOrEmpty(imagePath))
-                {
-                    PictureBox picBox = new PictureBox();
-                    string fullPath = System.IO.Path.Combine(@"D:\App\data_zalo\ImageThietBiHuHong", imagePath); // Đường dẫn thư mục chứa ảnh
-
-                    try
-                    {
-                        picBox.Image = Image.FromFile(fullPath);
-                        picBox.SizeMode = PictureBoxSizeMode.Zoom;
-                        picBox.Width = 290;
-                        picBox.Height = 220;
-
-                        flowLayoutPanelHinhAnh.Controls.Add(picBox);
-                        flowLayoutPanelHinhAnh.AutoSize = true;
-                        flowLayoutPanelHinhAnh.FlowDirection = FlowDirection.TopDown;
-                        flowLayoutPanelHinhAnh.WrapContents = false;
-
-                        picBox.Anchor = AnchorStyles.None;
-                        picBox.Margin = new Padding(10);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Không thể tải hình ảnh: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy hình ảnh của thiết bị này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
                 LoadImage(e.RowIndex, dgvChiTietBB);
             }
         }
@@ -136,11 +101,11 @@ namespace GUI
             {
                 pictureBox.Image = Image.FromFile(combinedImagePath);
                 pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                //pictureBox.Width = 390;
-                //pictureBox.Height = 320;
+                pictureBox.Width = 290;
+                pictureBox.Height = 220;
 
-                //pictureBox.Anchor = AnchorStyles.None;
-                //pictureBox.Margin = new Padding(10);
+                pictureBox.Anchor = AnchorStyles.None;
+                pictureBox.Margin = new Padding(10);
             }
             else
             {

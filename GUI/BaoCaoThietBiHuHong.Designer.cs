@@ -59,24 +59,24 @@
             this.btnGui = new Guna.UI2.WinForms.Guna2Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvThietBi = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtPhong = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtTenTB = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtMaCTTB = new Guna.UI2.WinForms.Guna2TextBox();
             this.Navbar = new System.Windows.Forms.Panel();
             this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.controlClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtMaCTTB = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtTenTB = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtPhong = new Guna.UI2.WinForms.Guna2TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvThietBiHong)).BeginInit();
             this.main.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvThietBi)).BeginInit();
-            this.Navbar.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.Navbar.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2HtmlLabel1
@@ -440,7 +440,6 @@
             this.main.Controls.Add(this.guna2HtmlLabel1);
             this.main.Controls.Add(this.Navbar);
             this.main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.main.Enabled = false;
             this.main.Location = new System.Drawing.Point(0, 0);
             this.main.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.main.Name = "main";
@@ -526,6 +525,83 @@
             this.dgvThietBi.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvThietBi.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.txtMoTa);
+            this.groupBox4.Controls.Add(this.txtPhong);
+            this.groupBox4.Controls.Add(this.txtTenTB);
+            this.groupBox4.Controls.Add(this.txtMaCTTB);
+            this.groupBox4.Font = new System.Drawing.Font("JetBrains Mono", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(250, 71);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(230, 249);
+            this.groupBox4.TabIndex = 8;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Thông tin thiết bị";
+            // 
+            // txtPhong
+            // 
+            this.txtPhong.BorderColor = System.Drawing.Color.Black;
+            this.txtPhong.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtPhong.DefaultText = "";
+            this.txtPhong.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtPhong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtPhong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPhong.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtPhong.Enabled = false;
+            this.txtPhong.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPhong.Font = new System.Drawing.Font("JetBrains Mono", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhong.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtPhong.Location = new System.Drawing.Point(16, 106);
+            this.txtPhong.Name = "txtPhong";
+            this.txtPhong.PasswordChar = '\0';
+            this.txtPhong.PlaceholderText = "Phòng ...";
+            this.txtPhong.SelectedText = "";
+            this.txtPhong.Size = new System.Drawing.Size(200, 26);
+            this.txtPhong.TabIndex = 6;
+            // 
+            // txtTenTB
+            // 
+            this.txtTenTB.BorderColor = System.Drawing.Color.Black;
+            this.txtTenTB.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTenTB.DefaultText = "";
+            this.txtTenTB.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTenTB.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtTenTB.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTenTB.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTenTB.Enabled = false;
+            this.txtTenTB.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTenTB.Font = new System.Drawing.Font("JetBrains Mono", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenTB.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTenTB.Location = new System.Drawing.Point(16, 67);
+            this.txtTenTB.Name = "txtTenTB";
+            this.txtTenTB.PasswordChar = '\0';
+            this.txtTenTB.PlaceholderText = "Tên thiết bị";
+            this.txtTenTB.SelectedText = "";
+            this.txtTenTB.Size = new System.Drawing.Size(200, 26);
+            this.txtTenTB.TabIndex = 6;
+            // 
+            // txtMaCTTB
+            // 
+            this.txtMaCTTB.BorderColor = System.Drawing.Color.Black;
+            this.txtMaCTTB.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtMaCTTB.DefaultText = "";
+            this.txtMaCTTB.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtMaCTTB.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtMaCTTB.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtMaCTTB.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtMaCTTB.Enabled = false;
+            this.txtMaCTTB.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMaCTTB.Font = new System.Drawing.Font("JetBrains Mono", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaCTTB.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMaCTTB.Location = new System.Drawing.Point(16, 26);
+            this.txtMaCTTB.Name = "txtMaCTTB";
+            this.txtMaCTTB.PasswordChar = '\0';
+            this.txtMaCTTB.PlaceholderText = "Mã thiết bị";
+            this.txtMaCTTB.SelectedText = "";
+            this.txtMaCTTB.Size = new System.Drawing.Size(200, 26);
+            this.txtMaCTTB.TabIndex = 6;
+            // 
             // Navbar
             // 
             this.Navbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
@@ -588,83 +664,6 @@
             // 
             this.guna2Elipse1.BorderRadius = 10;
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.txtMoTa);
-            this.groupBox4.Controls.Add(this.txtPhong);
-            this.groupBox4.Controls.Add(this.txtTenTB);
-            this.groupBox4.Controls.Add(this.txtMaCTTB);
-            this.groupBox4.Font = new System.Drawing.Font("JetBrains Mono", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(250, 71);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(230, 249);
-            this.groupBox4.TabIndex = 8;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Thông tin thiết bị";
-            // 
-            // txtMaCTTB
-            // 
-            this.txtMaCTTB.BorderColor = System.Drawing.Color.Black;
-            this.txtMaCTTB.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMaCTTB.DefaultText = "";
-            this.txtMaCTTB.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtMaCTTB.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtMaCTTB.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaCTTB.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtMaCTTB.Enabled = false;
-            this.txtMaCTTB.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaCTTB.Font = new System.Drawing.Font("JetBrains Mono", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaCTTB.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaCTTB.Location = new System.Drawing.Point(16, 26);
-            this.txtMaCTTB.Name = "txtMaCTTB";
-            this.txtMaCTTB.PasswordChar = '\0';
-            this.txtMaCTTB.PlaceholderText = "Mã thiết bị";
-            this.txtMaCTTB.SelectedText = "";
-            this.txtMaCTTB.Size = new System.Drawing.Size(200, 26);
-            this.txtMaCTTB.TabIndex = 6;
-            // 
-            // txtTenTB
-            // 
-            this.txtTenTB.BorderColor = System.Drawing.Color.Black;
-            this.txtTenTB.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTenTB.DefaultText = "";
-            this.txtTenTB.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTenTB.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtTenTB.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTenTB.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTenTB.Enabled = false;
-            this.txtTenTB.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTenTB.Font = new System.Drawing.Font("JetBrains Mono", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenTB.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTenTB.Location = new System.Drawing.Point(16, 67);
-            this.txtTenTB.Name = "txtTenTB";
-            this.txtTenTB.PasswordChar = '\0';
-            this.txtTenTB.PlaceholderText = "Tên thiết bị";
-            this.txtTenTB.SelectedText = "";
-            this.txtTenTB.Size = new System.Drawing.Size(200, 26);
-            this.txtTenTB.TabIndex = 6;
-            // 
-            // txtPhong
-            // 
-            this.txtPhong.BorderColor = System.Drawing.Color.Black;
-            this.txtPhong.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPhong.DefaultText = "";
-            this.txtPhong.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtPhong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtPhong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPhong.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtPhong.Enabled = false;
-            this.txtPhong.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPhong.Font = new System.Drawing.Font("JetBrains Mono", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhong.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPhong.Location = new System.Drawing.Point(16, 106);
-            this.txtPhong.Name = "txtPhong";
-            this.txtPhong.PasswordChar = '\0';
-            this.txtPhong.PlaceholderText = "Phòng ...";
-            this.txtPhong.SelectedText = "";
-            this.txtPhong.Size = new System.Drawing.Size(200, 26);
-            this.txtPhong.TabIndex = 6;
-            // 
             // BaoCaoThietBiHuHong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -684,9 +683,9 @@
             this.main.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvThietBi)).EndInit();
+            this.groupBox4.ResumeLayout(false);
             this.Navbar.ResumeLayout(false);
             this.Navbar.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
