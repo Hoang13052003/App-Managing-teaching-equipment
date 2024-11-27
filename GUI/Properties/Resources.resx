@@ -121,8 +121,8 @@
   <data name="icons8-schedule-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\icon\icons8-schedule-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Close_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\icon\Close_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="backround_schedule" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\backround_schedule.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-back-25" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\icon\icons8-back-25.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,20 +136,17 @@
   <data name="setting" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\icon\setting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Search" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\icon\Search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Lock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\icon\Lock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Notification" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\icon\Notification.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-Tiep-25" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\icon\icons8-Tiep-25.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Close_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\icon\Close_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="backround_schedule" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\backround_schedule.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-logout-25" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\icon\icons8-logout-25.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Pasword" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\icon\Pasword.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,8 +154,11 @@
   <data name="User" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\icon\User.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="account" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\icon\account.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-home-25" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\icon\icons8-home-25.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-notification-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\icon\icons8-notification-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="close" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\icon\close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,14 +166,20 @@
   <data name="Background_Login" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\Background_Login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-Tiep-25" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\icon\icons8-Tiep-25.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Notification_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\icon\Notification_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="demo_image_giang_vien" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\demo_image_giang_vien.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-notification-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\icon\icons8-notification-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\icon\Search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="account" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\icon\account.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logoApp1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\icon\logoApp.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,7 +193,7 @@
   <data name="help" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\icon\help.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-home-25" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\icon\icons8-home-25.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-add-100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\icon\icons8-add-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

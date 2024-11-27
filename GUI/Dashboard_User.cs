@@ -15,6 +15,7 @@ namespace GUI
         public Dashboard_User()
         {
             InitializeComponent();
+            FormTask.Pannel_change = Panel_Change_Form;
             FormTask.OpenFormInPanel<Home_User>(Panel_Change_Form);
         }
 
@@ -50,6 +51,20 @@ namespace GUI
         private void btn_Lich_Day_Click(object sender, EventArgs e)
         {
             FormTask.OpenFormInPanel<Teaching_Schedule>(Panel_Change_Form);
+        }
+
+        private void btnYeuCauSuaThietBi_Click(object sender, EventArgs e)
+        {
+            FormTask.OpenFormInPanel<YeuCauSuaThietBi>(Panel_Change_Form);
+        }
+        private void btnBaoCaoThietBiHuHong_Click(object sender, EventArgs e)
+        {
+            FormTask.OpenFormInPanel<BaoCaoThietBiHuHong>(Panel_Change_Form);
+        }
+
+        private void controlClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

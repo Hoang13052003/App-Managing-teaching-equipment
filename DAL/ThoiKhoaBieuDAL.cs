@@ -84,6 +84,64 @@ public class ThoiKhoaBieuDAL : DatabaseHelper
 
         return list;
     }
+    public List<ThoiKhoaBieuChiTietDTO> GetThoiKhoaBieuByUser(string maNguoiDung, DateTime startDate, DateTime endDate)
+    {
+        // Khởi tạo danh sách kết quả
+        List<ThoiKhoaBieuChiTietDTO> list = new List<ThoiKhoaBieuChiTietDTO>();
+
+        // Câu truy vấn SQL để lấy thông tin thời khóa biểu của người dùng theo khoảng ngày
+        string query = @"
+        SELECT 
+            tkb.MaTKB,
+            tkb.MaNguoiDung,
+            mh.TenMon,
+            bh.TenBaiHoc,
+            ph.TenPhong,
+            lh.TenLopHoc,
+            tkb.GioHoc,
+            tkb.NgayHoc
+        FROM ThoiKhoaBieu tkb
+        LEFT JOIN MonHoc mh ON tkb.MaMon = mh.MaMon
+        LEFT JOIN BaiHoc bh ON tkb.MaBaiHoc = bh.MaBaiHoc
+        LEFT JOIN PhongHoc ph ON tkb.MaPhong = ph.MaPhong
+        LEFT JOIN LopHoc lh ON tkb.MaLopHoc = lh.MaLopHoc
+        WHERE tkb.MaNguoiDung = @MaNguoiDung
+        AND CAST(tkb.NgayHoc AS DATE) >= @StartDate AND CAST(tkb.NgayHoc AS DATE) <= @EndDate";
+
+        SqlParameter[] parameters = new SqlParameter[]
+        {
+        new SqlParameter("@MaNguoiDung", maNguoiDung),
+        new SqlParameter("@StartDate", startDate.Date),
+        new SqlParameter("@EndDate", endDate.Date)
+        };
+
+        DataTable dataTable = GetDataTableQuery(query, parameters);
+
+        // Kiểm tra nếu DataTable không có dữ liệu
+        if (dataTable != null && dataTable.Rows.Count > 0)
+        {
+            foreach (DataRow row in dataTable.Rows)
+            {
+                list.Add(new ThoiKhoaBieuChiTietDTO
+                {
+                    MaTKB = Convert.ToInt32(row["MaTKB"]),
+                    MaNguoiDung = row["MaNguoiDung"].ToString(),
+                    TenMonHoc = row["TenMon"] != DBNull.Value ? row["TenMon"].ToString() : string.Empty,
+                    TenBaiHoc = row["TenBaiHoc"] != DBNull.Value ? row["TenBaiHoc"].ToString() : string.Empty,
+                    TenPhong = row["TenPhong"] != DBNull.Value ? row["TenPhong"].ToString() : string.Empty,
+                    TenLop = row["TenLopHoc"] != DBNull.Value ? row["TenLopHoc"].ToString() : string.Empty,
+                    GioHoc = row["GioHoc"] != DBNull.Value ? (TimeSpan?)row["GioHoc"] : null,
+                    NgayHoc = row["NgayHoc"] != DBNull.Value ? (DateTime?)row["NgayHoc"] : null
+                });
+            }
+        }
+        else
+        {
+            list = new List<ThoiKhoaBieuChiTietDTO>();
+        }
+
+        return list;
+    }
 
     public List<ThoiKhoaBieuChiTietDTO> GetThoiKhoaBieuByUserAndDate(string maNguoiDung, DateTime startDate, DateTime endDate)
     {

@@ -92,7 +92,7 @@ namespace GUI
                 if (!string.IsNullOrEmpty(imagePath))
                 {
                     PictureBox picBox = new PictureBox();
-                    string fullPath = System.IO.Path.Combine(@"D:\DOAN_TOTNGHIEP\Code\ImageThietBiHuHong", imagePath); // Đường dẫn thư mục chứa ảnh
+                    string fullPath = System.IO.Path.Combine(@"D:\App\data_zalo\ImageThietBiHuHong", imagePath); // Đường dẫn thư mục chứa ảnh
 
                     try
                     {

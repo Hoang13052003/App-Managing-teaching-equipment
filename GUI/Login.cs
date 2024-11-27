@@ -57,8 +57,26 @@ namespace GUI
                 {
                     MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     // Chuyển đến giao diện chính hoặc các thao tác khác
-                    AccountInfo.SetAccountInfo(nguoiDung);
-                    FormTask.OpenForm<Dashboard_Admin>(this);
+
+                    switch (loginBUS.CheckRoles(nguoiDung.MaNguoiDung))
+                    {
+                        case "Admin":
+                            {
+                                AccountInfo.SetAccountInfo(nguoiDung);
+                                FormTask.OpenForm<Dashboard_Admin>(this);
+                            }
+                            break;
+                        case "Teacher":
+                            {
+                                AccountInfo.SetAccountInfo(nguoiDung);
+                                FormTask.OpenForm<Dashboard_User>(this);
+                            }
+                            break;
+                        case "Staff": { 
+                            
+                            } break;
+                        default: MessageBox.Show("Người dùng chưa có quyền!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);break;
+                    }
                 }
                 else
                 {

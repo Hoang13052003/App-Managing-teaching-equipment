@@ -62,5 +62,40 @@ namespace GUI
         {
             Application.Exit();
         }
+
+        private void btnQuanLyThietBi_Click(object sender, EventArgs e)
+        {
+            FormTask.OpenFormInPanel<Manage_Device>(Panel_Change_Form);
+        }
+
+        private void btnQuanLyNhaCungCap_Click(object sender, EventArgs e)
+        {
+            FormTask.OpenFormInPanel<Supplier>(Panel_Change_Form);
+        }
+
+        private void btnThoiKhoaBieu_Click(object sender, EventArgs e)
+        {
+            //FormTask.OpenFormInPanel<Supplier>(Panel_Change_Form);
+        }
+
+        private void btnMuonTraThietBi_Click(object sender, EventArgs e)
+        {
+            FormTask.OpenFormInPanel<FormMuonThietBi>(Panel_Change_Form);
+        }
+
+        private void btnQuanLyThietBiHuHong_Click(object sender, EventArgs e)
+        {
+            FormTask.OpenFormInPanel<XuLyThietBiHuHong>(Panel_Change_Form);
+        }
+
+        private void btnBaoDuongThietBi_Click(object sender, EventArgs e)
+        {
+            FormTask.OpenFormInPanel<BaoDuong>(Panel_Change_Form);
+        }
+
+        private void btnQuanLyNguoiDung_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -56,6 +56,7 @@
             this.pannel_Lich_Hoc.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pannel_Lich_Hoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pannel_Lich_Hoc.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.pannel_Lich_Hoc.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pannel_Lich_Hoc.Location = new System.Drawing.Point(0, 0);
             this.pannel_Lich_Hoc.Name = "pannel_Lich_Hoc";
             this.pannel_Lich_Hoc.Padding = new System.Windows.Forms.Padding(10);
@@ -71,57 +72,61 @@
             // 
             this.lb_Ten_Bai_Hoc.BackColor = System.Drawing.Color.Transparent;
             this.lb_Ten_Bai_Hoc.Enabled = false;
-            this.lb_Ten_Bai_Hoc.Font = new System.Drawing.Font("JetBrains Mono", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Ten_Bai_Hoc.Location = new System.Drawing.Point(22, 71);
+            this.lb_Ten_Bai_Hoc.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Ten_Bai_Hoc.Location = new System.Drawing.Point(18, 115);
             this.lb_Ten_Bai_Hoc.Name = "lb_Ten_Bai_Hoc";
-            this.lb_Ten_Bai_Hoc.Size = new System.Drawing.Size(59, 19);
+            this.lb_Ten_Bai_Hoc.Size = new System.Drawing.Size(59, 25);
             this.lb_Ten_Bai_Hoc.TabIndex = 4;
             this.lb_Ten_Bai_Hoc.Text = "Bài học";
+            this.lb_Ten_Bai_Hoc.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lb_Phong_Hoc
             // 
-            this.lb_Phong_Hoc.AutoSize = false;
             this.lb_Phong_Hoc.BackColor = System.Drawing.Color.Transparent;
             this.lb_Phong_Hoc.Enabled = false;
-            this.lb_Phong_Hoc.Font = new System.Drawing.Font("JetBrains Mono", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Phong_Hoc.Location = new System.Drawing.Point(22, 128);
+            this.lb_Phong_Hoc.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Phong_Hoc.Location = new System.Drawing.Point(18, 91);
             this.lb_Phong_Hoc.Name = "lb_Phong_Hoc";
-            this.lb_Phong_Hoc.Size = new System.Drawing.Size(157, 23);
+            this.lb_Phong_Hoc.Size = new System.Drawing.Size(96, 25);
             this.lb_Phong_Hoc.TabIndex = 3;
             this.lb_Phong_Hoc.Text = "Phòng A209";
+            this.lb_Phong_Hoc.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lb_Gio_Hoc
             // 
             this.lb_Gio_Hoc.BackColor = System.Drawing.Color.Transparent;
             this.lb_Gio_Hoc.Enabled = false;
-            this.lb_Gio_Hoc.Font = new System.Drawing.Font("JetBrains Mono", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Gio_Hoc.Location = new System.Drawing.Point(22, 103);
+            this.lb_Gio_Hoc.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Gio_Hoc.Location = new System.Drawing.Point(18, 66);
             this.lb_Gio_Hoc.Name = "lb_Gio_Hoc";
-            this.lb_Gio_Hoc.Size = new System.Drawing.Size(75, 19);
+            this.lb_Gio_Hoc.Size = new System.Drawing.Size(66, 25);
             this.lb_Gio_Hoc.TabIndex = 2;
             this.lb_Gio_Hoc.Text = "Tiết 1 -2";
+            this.lb_Gio_Hoc.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lb_MaMH_Lop
             // 
             this.lb_MaMH_Lop.BackColor = System.Drawing.Color.Transparent;
             this.lb_MaMH_Lop.Enabled = false;
-            this.lb_MaMH_Lop.Font = new System.Drawing.Font("JetBrains Mono", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_MaMH_Lop.Location = new System.Drawing.Point(22, 46);
+            this.lb_MaMH_Lop.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_MaMH_Lop.Location = new System.Drawing.Point(18, 41);
             this.lb_MaMH_Lop.Name = "lb_MaMH_Lop";
-            this.lb_MaMH_Lop.Size = new System.Drawing.Size(131, 19);
+            this.lb_MaMH_Lop.Size = new System.Drawing.Size(139, 25);
             this.lb_MaMH_Lop.TabIndex = 1;
             this.lb_MaMH_Lop.Text = "324552252 - 12A8";
+            this.lb_MaMH_Lop.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lb_Ten_Mon_Hoc
             // 
             this.lb_Ten_Mon_Hoc.BackColor = System.Drawing.Color.Transparent;
             this.lb_Ten_Mon_Hoc.Enabled = false;
-            this.lb_Ten_Mon_Hoc.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Ten_Mon_Hoc.Location = new System.Drawing.Point(22, 21);
+            this.lb_Ten_Mon_Hoc.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Ten_Mon_Hoc.Location = new System.Drawing.Point(18, 13);
             this.lb_Ten_Mon_Hoc.Name = "lb_Ten_Mon_Hoc";
-            this.lb_Ten_Mon_Hoc.Size = new System.Drawing.Size(83, 23);
+            this.lb_Ten_Mon_Hoc.Size = new System.Drawing.Size(78, 25);
             this.lb_Ten_Mon_Hoc.TabIndex = 0;
             this.lb_Ten_Mon_Hoc.Text = "Toán Học";
+            this.lb_Ten_Mon_Hoc.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Show_Subjects
             // 

@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
-    Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -37,8 +36,7 @@
     <Reference Include="DAL">
       <HintPath>..\DAL\bin\Debug\DAL.dll</HintPath>
     </Reference>
-    <Reference
-      Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+    <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
@@ -87,6 +85,18 @@
     <Compile Include="formConDemo.Designer.cs">
       <DependentUpon>formConDemo.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMuonThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMuonThietBi.designer.cs">
+      <DependentUpon>FormMuonThietBi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi.Designer.cs">
+      <DependentUpon>formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home_User.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,12 +115,6 @@
     <Compile Include="FormLoaiThietBi.Designer.cs">
       <DependentUpon>FormLoaiThietBi.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMuonThietBi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormMuonThietBi.Designer.cs">
-      <DependentUpon>FormMuonThietBi.cs</DependentUpon>
-    </Compile>
     <Compile Include="Layout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +132,12 @@
     </Compile>
     <Compile Include="Manage_Device.Designer.cs">
       <DependentUpon>Manage_Device.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profile_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profile_User.Designer.cs">
+      <DependentUpon>Profile_User.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -197,6 +207,12 @@
     <EmbeddedResource Include="formConDemo.resx">
       <DependentUpon>formConDemo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormMuonThietBi.resx">
+      <DependentUpon>FormMuonThietBi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi.resx">
+      <DependentUpon>formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home_User.resx">
       <DependentUpon>Home_User.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,9 +222,6 @@
     <EmbeddedResource Include="FormLoaiThietBi.resx">
       <DependentUpon>FormLoaiThietBi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMuonThietBi.resx">
-      <DependentUpon>FormMuonThietBi.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Layout.resx">
       <DependentUpon>Layout.cs</DependentUpon>
     </EmbeddedResource>
@@ -217,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Manage_Device.resx">
       <DependentUpon>Manage_Device.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile_User.resx">
+      <DependentUpon>Profile_User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -287,8 +303,10 @@
     <Content Include="Image\icon\close.png" />
     <Content Include="Image\icon\Close_hover.png" />
     <Content Include="Image\icon\help.png" />
+    <Content Include="Image\icon\icons8-add-100.png" />
     <Content Include="Image\icon\icons8-back-25.png" />
     <Content Include="Image\icon\icons8-home-25.png" />
+    <Content Include="Image\icon\icons8-logout-25.png" />
     <Content Include="Image\icon\icons8-next-25.png" />
     <Content Include="Image\icon\icons8-notification-100.png" />
     <Content Include="Image\icon\icons8-schedule-100.png" />

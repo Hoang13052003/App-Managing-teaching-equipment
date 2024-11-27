@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 public class DatabaseHelper
 {
-    private readonly string connectionString = "Data Source=LAPTOPTQT03;Initial Catalog=QLThietBiDayHoc;Integrated Security=True;Encrypt=False";
+    private readonly string connectionString = "Data Source=LAPTOP-H0BOFLN9;Initial Catalog=QLThietBiDayHoc;Integrated Security=True;Encrypt=False";
 
 
     public SqlConnection GetConnection()
@@ -46,7 +46,7 @@ public class DatabaseHelper
         }
     }
 
-    public int GetNonQuery(string SQLQueryString)
+    public int GetNonQuery(string SQLQueryString, SqlParameter[] para)
     {
         int result = 0;
         try
@@ -54,31 +54,6 @@ public class DatabaseHelper
             Open();
             using (SqlCommand cmd = new SqlCommand(SQLQueryString, GetConnection()))
             {
-                result = cmd.ExecuteNonQuery();
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("Error executing non-query: " + ex.Message);
-            // Có thể xử lý hoặc ném exception tùy thuộc vào yêu cầu cụ thể của bạn.
-        }
-        finally
-        {
-            Close();
-        }
-        return result;
-    }
-    public int GetNonQuery(string SQLProc, SqlParameter[] para)
-    {
-        int result = 0;
-        try
-        {
-            Open();
-            using (SqlCommand cmd = new SqlCommand())
-            {
-                cmd.CommandText = SQLProc;
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = GetConnection();
                 if (para != null)
                 {
                     cmd.Parameters.AddRange(para);
@@ -97,6 +72,35 @@ public class DatabaseHelper
         }
         return result;
     }
+    //public int GetNonQuery(string SQLProc, SqlParameter[] para)
+    //{
+    //    int result = 0;
+    //    try
+    //    {
+    //        Open();
+    //        using (SqlCommand cmd = new SqlCommand())
+    //        {
+    //            cmd.CommandText = SQLProc;
+    //            cmd.CommandType = CommandType.StoredProcedure;
+    //            cmd.Connection = GetConnection();
+    //            if (para != null)
+    //            {
+    //                cmd.Parameters.AddRange(para);
+    //            }
+    //            result = cmd.ExecuteNonQuery();
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        Console.WriteLine("Error executing non-query: " + ex.Message);
+    //        // Có thể xử lý hoặc ném exception tùy thuộc vào yêu cầu cụ thể của bạn.
+    //    }
+    //    finally
+    //    {
+    //        Close();
+    //    }
+    //    return result;
+    //}
 
     public int GetExecuteScalar(string SQLQueryString)
     {

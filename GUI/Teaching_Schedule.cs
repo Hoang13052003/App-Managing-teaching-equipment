@@ -19,6 +19,7 @@ namespace GUI
         private List<ThoiKhoaBieuChiTietDTO> _listTKB = new List<ThoiKhoaBieuChiTietDTO>();
         private Dictionary<DayOfWeek, List<ThoiKhoaBieuChiTietDTO>> scheduleByDay = new Dictionary<DayOfWeek, List<ThoiKhoaBieuChiTietDTO>>();
         private DateTime currentDate;
+        private MuonThietBiBUS mtbBUS = new MuonThietBiBUS();
 
         public Teaching_Schedule()
         {
@@ -26,6 +27,7 @@ namespace GUI
             currentDate = DateTime.Now; // Khởi tạo ngày hiện tại
             Load_Visible_Pannel(false);
             Load_Clear_Pannel();
+            AccountInfo.MaNguoiDung = "ND00000001";
         }
 
         private void Teaching_Schedule_Load(object sender, EventArgs e)
@@ -34,9 +36,12 @@ namespace GUI
             DisplayDates(currentDate);
         }
 
-        private void LoadSchedule(DateTime selectedDate)
+        private void LoadSchedule(DateTime currentDate)
         {
-            _listTKB = tkbBUS.GetThoiKhoaBieuByUser("ND00000002");
+            DateTime startOfWeek = currentDate.AddDays(-(int)(currentDate.DayOfWeek == DayOfWeek.Sunday ? 7 : currentDate.DayOfWeek - DayOfWeek.Monday));
+            DateTime endOfWeek = startOfWeek.AddDays(6);
+            
+            _listTKB = tkbBUS.GetThoiKhoaBieuByUser("ND00000001", startOfWeek.Date, endOfWeek.Date);
             if (_listTKB.Count()>0)
             {
                 scheduleByDay.Clear();
@@ -54,11 +59,11 @@ namespace GUI
                 }
 
                 DisplaySchedule();
-                DisplayDates(selectedDate);
+                DisplayDates(currentDate);
             }
             else
             {
-                MessageBox.Show("Tuần này bạn không có lịch làm!", "Thông báo");
+                MessageBox.Show("Tuần này bạn Chưa có lịch làm!", "Thông báo");
             }
         }
 
@@ -82,15 +87,21 @@ namespace GUI
                     {
                         foreach (var item in scheduleList)
                         {
+                            Color subjectColor = GetColor(AccountInfo.MaNguoiDung, item.MaTKB);
+                            var newForm = new Show_Subjects
+                            {
+                                _tkbDTO = item,
+                                _color = subjectColor,
+                            };
                             if (GetSession(item.GioHoc))
                             {
                                 pannel_Lich_T2_Sang.Visible = true;
-                                FormTask.OpenFormInPanelWithParams<Show_Subjects>(pannel_Lich_T2_Sang, item);
+                                FormTask.OpenFormInPanel(pannel_Lich_T2_Sang, newForm);
                             }
                             else
                             {
                                 pannel_Lich_T2_Chieu.Visible = true;
-                                FormTask.OpenFormInPanelWithParams<Show_Subjects>(pannel_Lich_T2_Chieu, item);
+                                FormTask.OpenFormInPanel(pannel_Lich_T2_Chieu, newForm);
                             }
                         }
                     }
@@ -100,15 +111,21 @@ namespace GUI
                     {
                         foreach (var item in scheduleList)
                         {
+                            Color subjectColor = GetColor(AccountInfo.MaNguoiDung, item.MaTKB);
+                            var newForm = new Show_Subjects
+                            {
+                                _tkbDTO = item,
+                                _color = subjectColor,
+                            };
                             if (GetSession(item.GioHoc))
                             {
                                 pannel_Lich_T3_Sang.Visible = true;
-                                FormTask.OpenFormInPanelWithParams<Show_Subjects>(pannel_Lich_T3_Sang, item);
+                                FormTask.OpenFormInPanel(pannel_Lich_T3_Sang, newForm);
                             }
                             else
                             {
                                 pannel_Lich_T3_Chieu.Visible = true;
-                                FormTask.OpenFormInPanelWithParams<Show_Subjects>(pannel_Lich_T3_Chieu, item);
+                                FormTask.OpenFormInPanel(pannel_Lich_T3_Chieu, newForm);
                             }
                         }
                     }
@@ -118,15 +135,21 @@ namespace GUI
                     {
                         foreach (var item in scheduleList)
                         {
+                            Color subjectColor = GetColor(AccountInfo.MaNguoiDung, item.MaTKB);
+                            var newForm = new Show_Subjects
+                            {
+                                _tkbDTO = item,
+                                _color = subjectColor,
+                            };
                             if (GetSession(item.GioHoc))
                             {
                                 pannel_Lich_T4_Sang.Visible = true;
-                                FormTask.OpenFormInPanelWithParams<Show_Subjects>(pannel_Lich_T4_Sang, item);
+                                FormTask.OpenFormInPanel(pannel_Lich_T4_Sang, newForm);
                             }
                             else
                             {
                                 pannel_Lich_T4_Chieu.Visible = true;
-                                FormTask.OpenFormInPanelWithParams<Show_Subjects>(pannel_Lich_T4_Chieu, item);
+                                FormTask.OpenFormInPanel(pannel_Lich_T4_Chieu, newForm);
                             }
                         }
                     }
@@ -136,15 +159,21 @@ namespace GUI
                     {
                         foreach (var item in scheduleList)
                         {
+                            Color subjectColor = GetColor(AccountInfo.MaNguoiDung, item.MaTKB);
+                            var newForm = new Show_Subjects
+                            {
+                                _tkbDTO = item,
+                                _color = subjectColor,
+                            };
                             if (GetSession(item.GioHoc))
                             {
                                 pannel_Lich_T5_Sang.Visible = true;
-                                FormTask.OpenFormInPanelWithParams<Show_Subjects>(pannel_Lich_T5_Sang, item);
+                                FormTask.OpenFormInPanel(pannel_Lich_T5_Sang, newForm);
                             }
                             else
                             {
                                 pannel_Lich_T5_Chieu.Visible = true;
-                                FormTask.OpenFormInPanelWithParams<Show_Subjects>(pannel_Lich_T5_Chieu, item);
+                                FormTask.OpenFormInPanel(pannel_Lich_T5_Chieu, newForm);
                             }
                         }
                     }
@@ -154,15 +183,21 @@ namespace GUI
                     {
                         foreach (var item in scheduleList)
                         {
+                            Color subjectColor = GetColor(AccountInfo.MaNguoiDung, item.MaTKB);
+                            var newForm = new Show_Subjects
+                            {
+                                _tkbDTO = item,
+                                _color = subjectColor,
+                            };
                             if (GetSession(item.GioHoc))
                             {
                                 pannel_Lich_T6_Sang.Visible = true;
-                                FormTask.OpenFormInPanelWithParams<Show_Subjects>(pannel_Lich_T6_Sang, item);
+                                FormTask.OpenFormInPanel(pannel_Lich_T6_Sang, newForm);
                             }
                             else
                             {
                                 pannel_Lich_T6_Chieu.Visible = true;
-                                FormTask.OpenFormInPanelWithParams<Show_Subjects>(pannel_Lich_T6_Chieu, item);
+                                FormTask.OpenFormInPanel(pannel_Lich_T6_Chieu, newForm);
                             }
                         }
                     }
@@ -172,15 +207,21 @@ namespace GUI
                     {
                         foreach (var item in scheduleList)
                         {
+                            Color subjectColor = GetColor(AccountInfo.MaNguoiDung, item.MaTKB);
+                            var newForm = new Show_Subjects
+                            {
+                                _tkbDTO = item,
+                                _color = subjectColor,
+                            };
                             if (GetSession(item.GioHoc))
                             {
                                 pannel_Lich_T7_Sang.Visible = true;
-                                FormTask.OpenFormInPanelWithParams<Show_Subjects>(pannel_Lich_T7_Sang, item);
+                                FormTask.OpenFormInPanel(pannel_Lich_T7_Sang, newForm);
                             }
                             else
                             {
                                 pannel_Lich_T7_Chieu.Visible = true;
-                                FormTask.OpenFormInPanelWithParams<Show_Subjects>(pannel_Lich_T7_Chieu, item);
+                                FormTask.OpenFormInPanel(pannel_Lich_T7_Chieu, newForm);
                             }
                         }
                     }
@@ -190,15 +231,21 @@ namespace GUI
                     {
                         foreach (var item in scheduleList)
                         {
+                            Color subjectColor = GetColor(AccountInfo.MaNguoiDung, item.MaTKB);
+                            var newForm = new Show_Subjects
+                            {
+                                _tkbDTO = item,
+                                _color = subjectColor,
+                            };
                             if (GetSession(item.GioHoc))
                             {
                                 pannel_Lich_TCN_Sang.Visible = true;
-                                FormTask.OpenFormInPanelWithParams<Show_Subjects>(pannel_Lich_TCN_Sang, item);
+                                FormTask.OpenFormInPanel(pannel_Lich_TCN_Sang, newForm);
                             }
                             else
                             {
                                 pannel_Lich_TCN_Chieu.Visible = true;
-                                FormTask.OpenFormInPanelWithParams<Show_Subjects>(pannel_Lich_TCN_Chieu, item);
+                                FormTask.OpenFormInPanel(pannel_Lich_TCN_Chieu, newForm);
                             }
                         }
                     }
@@ -210,6 +257,11 @@ namespace GUI
             }
         }
 
+        private Color GetColor(string maNguoiDung, int maTKB)
+        {
+            return mtbBUS.GetByMaND_MaTKB(maNguoiDung, maTKB) != null ? Color.FromArgb(239, 182, 200) : Color.FromArgb(192, 192, 255);
+
+        }
 
         private bool GetSession(TimeSpan? gioHoc)
         {
@@ -291,6 +343,14 @@ namespace GUI
         }
 
         private void btn_Tro_Ve_Click(object sender, EventArgs e)
+        {
+            currentDate = currentDate.AddDays(-7);
+            Load_Visible_Pannel(false);
+            Load_Clear_Pannel();
+            LoadSchedule(currentDate);
+        }
+
+        private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

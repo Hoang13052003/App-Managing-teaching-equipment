@@ -7,12 +7,14 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using System.Drawing;
 
 namespace GUI
 {
     internal static class AccountInfo
     {
         public static string MaNguoiDung { get; set; }
+        public static string TenNguoiDung { get; set; }
 
         public static void SetAccountInfo(NguoiDungDTO user)
         {
@@ -22,6 +24,11 @@ namespace GUI
         {
             MaNguoiDung = null;
         }
+    }
+
+    public interface IParamForm
+    {
+        void SetParams(object param);
     }
 
     public static class FormTask
@@ -49,20 +56,44 @@ namespace GUI
 
             newForm.Show(); // Hiển thị form mới
         }
+
         public static void OpenFormInPanel<T>(Panel panel) where T : Form, new()
         {
             // Tạo một thể hiện mới của form cần mở
             T newForm = new T();
             newForm.TopLevel = false; // Thiết lập form không phải là form cấp cao
             newForm.FormBorderStyle = FormBorderStyle.None; // Không hiển thị viền
-            Pannel_change = panel;
             panel.Controls.Clear(); // Xóa tất cả điều khiển trong panel
             panel.Controls.Add(newForm); // Thêm form mới vào panel
 
             newForm.Dock = DockStyle.Fill; // Đảm bảo form lấp đầy panel
             newForm.Show(); // Hiển thị form mới
         }
+        public static void OpenFormInPanel(Panel panel, Form newForm)
+        {
+            // Tạo một thể hiện mới của form cần mở
+            newForm.TopLevel = false;
+            newForm.FormBorderStyle = FormBorderStyle.None;
+
+            //panel.Controls.Clear();
+            panel.Controls.Add(newForm);
+
+            //newForm.Dock = DockStyle.Fill;
+            newForm.Show();
+        }
         public static void OpenFormInPanel<T>(Panel panel, ThoiKhoaBieuDTO tkb) where T : Form
+        {
+            T newForm = (T)Activator.CreateInstance(typeof(T), tkb);
+            newForm.TopLevel = false; // Thiết lập form không phải là form cấp cao
+            newForm.FormBorderStyle = FormBorderStyle.None; // Không hiển thị viền
+
+            panel.Controls.Clear(); // Xóa tất cả điều khiển trong panel
+            panel.Controls.Add(newForm); // Thêm form mới vào panel
+
+            newForm.Dock = DockStyle.Fill; // Đảm bảo form lấp đầy panel
+            newForm.Show(); // Hiển thị form mới
+        }
+        public static void OpenFormInPanel<T>(Panel panel, ThoiKhoaBieuChiTietDTO tkb) where T : Form
         {
             T newForm = (T)Activator.CreateInstance(typeof(T), tkb);
             newForm.TopLevel = false; // Thiết lập form không phải là form cấp cao
@@ -114,7 +145,7 @@ namespace GUI
 
             //Application.Run(new FormMuonThietBi());
 
-            // Application.Run(new XuLyThietBiHuHong());
+            //Application.Run(new XuLyThietBiHuHong());
 
         }
     }

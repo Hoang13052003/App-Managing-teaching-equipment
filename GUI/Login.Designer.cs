@@ -68,6 +68,7 @@
             // 
             // guna2GradientPanel1
             // 
+            this.guna2GradientPanel1.Controls.Add(this.panelDangNhap);
             this.guna2GradientPanel1.Controls.Add(this.panelDangKy);
             this.guna2GradientPanel1.Controls.Add(this.guna2ControlBox2);
             this.guna2GradientPanel1.Controls.Add(this.controlClose);
@@ -84,7 +85,6 @@
             // panelDangKy
             // 
             this.panelDangKy.BackColor = System.Drawing.Color.Transparent;
-            this.panelDangKy.Controls.Add(this.panelDangNhap);
             this.panelDangKy.Controls.Add(this.btnChuyenQuaDangNhap);
             this.panelDangKy.Controls.Add(this.label2);
             this.panelDangKy.Controls.Add(this.btnDangKy);
@@ -115,7 +115,7 @@
             this.panelDangNhap.Controls.Add(this.txtTenDangNhap);
             this.guna2Transition1.SetDecoration(this.panelDangNhap, Guna.UI2.AnimatorNS.DecorationType.None);
             this.panelDangNhap.FillColor = System.Drawing.Color.White;
-            this.panelDangNhap.Location = new System.Drawing.Point(2, 0);
+            this.panelDangNhap.Location = new System.Drawing.Point(512, 66);
             this.panelDangNhap.Name = "panelDangNhap";
             this.panelDangNhap.Radius = 10;
             this.panelDangNhap.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(139)))), ((int)(((byte)(193)))));

@@ -51,11 +51,13 @@
     <Compile Include="ChiTietNhapDTO.cs" />
     <Compile Include="ChiTietThanhLyDTO.cs" />
     <Compile Include="ChiTietThietBi_NhaCungCapDTO.cs" />
+    <Compile Include="ChiTietThietBi_ThietBiDTO.cs" />
     <Compile Include="ChiTietYeuCauThietBiDTO.cs" />
     <Compile Include="LoaiThietBi_MonHocDTO.cs" />
     <Compile Include="LopHocDTO.cs" />
     <Compile Include="ManHinhDTO.cs" />
     <Compile Include="MonHocDTO.cs" />
+    <Compile Include="MonHoc_BaiHoc_ChiTietTB_DTO.cs" />
     <Compile Include="MuonThietBiDTO.cs" />
     <Compile Include="NguoiDungDTO.cs" />
     <Compile Include="NguoiDungNhomNguoiDungDTO.cs" />

@@ -9,7 +9,12 @@ namespace BUS
     public class ThoiKhoaBieuBUS
     {
         private ThoiKhoaBieuDAL tkb = new ThoiKhoaBieuDAL();
-        public List<ThoiKhoaBieuChiTietDTO> GetThoiKhoaBieuByUser(string maNguoiDung)
+
+        public ThoiKhoaBieuDTO GetByID(int maTKB)
+        {
+            return tkb.GetByID(maTKB);  
+        }
+        public List<ThoiKhoaBieuChiTietDTO> GetThoiKhoaBieuByUser(string maNguoiDung, DateTime startDate, DateTime endDate)
         {
             if (string.IsNullOrWhiteSpace(maNguoiDung))
             {
@@ -18,7 +23,7 @@ namespace BUS
 
             try
             {
-                var result = tkb.GetThoiKhoaBieuByUser(maNguoiDung);
+                var result = tkb.GetThoiKhoaBieuByUser(maNguoiDung, startDate, endDate);
 
                 if (result == null || result.Count == 0)
                 {

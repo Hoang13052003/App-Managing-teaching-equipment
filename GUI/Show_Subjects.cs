@@ -12,7 +12,13 @@ namespace GUI
 {
     public partial class Show_Subjects : Form
     {
-        private ThoiKhoaBieuChiTietDTO _tkbDTO;
+        public ThoiKhoaBieuChiTietDTO _tkbDTO { get; set; }
+        public Color _color { get; set; }
+
+        public Show_Subjects()
+        {
+            InitializeComponent();
+        }
         public Show_Subjects(ThoiKhoaBieuChiTietDTO tkbDTO)
         {
             InitializeComponent();
@@ -26,6 +32,8 @@ namespace GUI
             lb_Ten_Bai_Hoc.Text = _tkbDTO.TenBaiHoc.ToString();
             lb_Phong_Hoc.Text = _tkbDTO.TenPhong.ToString();
             lb_Gio_Hoc.Text = _tkbDTO.GioHoc.ToString();
+
+            pannel_Lich_Hoc.FillColor = _color;
         }
 
         private void pannel_Lich_Hoc_Paint(object sender, PaintEventArgs e)
@@ -35,7 +43,7 @@ namespace GUI
 
         private void pannel_Lich_Hoc_Click(object sender, EventArgs e)
         {
-
+            FormTask.OpenFormInPanel<formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi>(FormTask.Pannel_change, _tkbDTO);
         }
 
 
