@@ -9,10 +9,15 @@ namespace DTO
     public class ChiTietMuonThietBiDTO
     {
         public int MaMuon { get; set; }
-        public int MaCTTB_NCC { get; set; }
-        public DateTime? NgayMuon { get; set; }
-        public DateTime? NgayTra { get; set; }
-        public bool TrangThai { get; set; } // Đã trả / Chưa trả
+        public int? MaCTTB { get; set; }
+        public int? MaTB { get; set; }
+        public string TenTB { get; set; }
+        public bool TrangThai { get; set; }
     }
-
+    public class ChiTietMuonThietBiDTO_ThietBi
+    {
+        public int? MaTB { get; set; }
+        public string TenTB { get; set; }
+        public int SoLuong { get; set; }
+    }
 }

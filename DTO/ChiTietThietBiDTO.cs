@@ -15,4 +15,5 @@ namespace DTO
         public string TrangThai {  get; set; }
         public DateTime? NgayMua { get; set; }
     }
+
 }

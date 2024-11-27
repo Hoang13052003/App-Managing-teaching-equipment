@@ -40,5 +40,9 @@ namespace BUS
         {
             return tb.LayTenThietBiByMaLoai(pmaLoai);
         }
+        public List<ThietBiDTO> GetByMaLoai(int pmaLoai)
+        {
+            return tb.LayTenThietBiByMaLoai(pmaLoai);
+        }
     }
 }

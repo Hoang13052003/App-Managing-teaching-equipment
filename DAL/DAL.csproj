@@ -48,12 +48,15 @@
     <Compile Include="BaiHocDAL.cs" />
     <Compile Include="BaoDuongDAL.cs" />
     <Compile Include="BienBanXuLyDAL.cs" />
+    <Compile Include="ChiTietMuonThietBiDAL.cs" />
+    <Compile Include="ChiTietThietBi_ThietBiDAL.cs" />
     <Compile Include="LoaiThietBiDAL.cs" />
     <Compile Include="LoaiThietBi_MonHocDAL.cs" />
     <Compile Include="LoginDAL.cs" />
     <Compile Include="DatabaseHelper.cs" />
     <Compile Include="LopHocDAL.cs" />
     <Compile Include="MonHocDAL.cs" />
+    <Compile Include="MonHoc_BaiHoc_ChiTietTB_DAL.cs" />
     <Compile Include="MuonThietBiDAL.cs" />
     <Compile Include="NguoiDungDAL.cs" />
     <Compile Include="NhapThietBiDAL.cs" />

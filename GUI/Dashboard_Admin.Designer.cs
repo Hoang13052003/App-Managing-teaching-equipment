@@ -29,27 +29,28 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard_Admin));
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.Sidebar = new System.Windows.Forms.Panel();
-            this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnQuanLyNguoiDung = new Guna.UI2.WinForms.Guna2Button();
+            this.btnBaoDuongThietBi = new Guna.UI2.WinForms.Guna2Button();
+            this.btnMuonTraThietBi = new Guna.UI2.WinForms.Guna2Button();
+            this.btnQuanLyThietBiHuHong = new Guna.UI2.WinForms.Guna2Button();
+            this.btnThoiKhoaBieu = new Guna.UI2.WinForms.Guna2Button();
+            this.btnQuanLyNhaCungCap = new Guna.UI2.WinForms.Guna2Button();
             this.btnHelp = new Guna.UI2.WinForms.Guna2Button();
             this.btnAccount = new Guna.UI2.WinForms.Guna2Button();
             this.btnSetting = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lbMenu = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnQuanLyThietBi = new Guna.UI2.WinForms.Guna2Button();
             this.main = new System.Windows.Forms.Panel();
             this.Panel_Change_Form = new Guna.UI2.WinForms.Guna2Panel();
             this.Navbar = new System.Windows.Forms.Panel();
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.controlClose = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lb_home = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.Sidebar.SuspendLayout();
             this.main.SuspendLayout();
             this.Navbar.SuspendLayout();
@@ -64,42 +65,168 @@
             // Sidebar
             // 
             this.Sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
-            this.Sidebar.Controls.Add(this.guna2Button5);
+            this.Sidebar.Controls.Add(this.btnQuanLyNguoiDung);
+            this.Sidebar.Controls.Add(this.btnBaoDuongThietBi);
+            this.Sidebar.Controls.Add(this.btnMuonTraThietBi);
+            this.Sidebar.Controls.Add(this.btnQuanLyThietBiHuHong);
+            this.Sidebar.Controls.Add(this.btnThoiKhoaBieu);
+            this.Sidebar.Controls.Add(this.btnQuanLyNhaCungCap);
             this.Sidebar.Controls.Add(this.btnHelp);
             this.Sidebar.Controls.Add(this.btnAccount);
             this.Sidebar.Controls.Add(this.btnSetting);
             this.Sidebar.Controls.Add(this.guna2HtmlLabel1);
             this.Sidebar.Controls.Add(this.lbMenu);
-            this.Sidebar.Controls.Add(this.guna2Button1);
+            this.Sidebar.Controls.Add(this.btnQuanLyThietBi);
             this.Sidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.Sidebar.Location = new System.Drawing.Point(0, 65);
             this.Sidebar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Sidebar.Name = "Sidebar";
-            this.Sidebar.Size = new System.Drawing.Size(240, 723);
+            this.Sidebar.Size = new System.Drawing.Size(240, 895);
             this.Sidebar.TabIndex = 2;
             // 
-            // guna2Button5
+            // btnQuanLyNguoiDung
             // 
-            this.guna2Button5.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.guna2Button5.BorderRadius = 8;
-            this.guna2Button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Button5.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button5.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button5.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
-            this.guna2Button5.ForeColor = System.Drawing.Color.Gray;
-            this.guna2Button5.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
-            this.guna2Button5.Image = global::GUI.Properties.Resources.Notification;
-            this.guna2Button5.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button5.Location = new System.Drawing.Point(12, 106);
-            this.guna2Button5.Name = "guna2Button5";
-            this.guna2Button5.Size = new System.Drawing.Size(210, 45);
-            this.guna2Button5.TabIndex = 6;
-            this.guna2Button5.Text = "chức năng 1";
-            this.guna2Button5.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnQuanLyNguoiDung.BackColor = System.Drawing.Color.Transparent;
+            this.btnQuanLyNguoiDung.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnQuanLyNguoiDung.BorderRadius = 8;
+            this.btnQuanLyNguoiDung.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuanLyNguoiDung.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnQuanLyNguoiDung.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnQuanLyNguoiDung.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnQuanLyNguoiDung.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnQuanLyNguoiDung.FillColor = System.Drawing.Color.Transparent;
+            this.btnQuanLyNguoiDung.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
+            this.btnQuanLyNguoiDung.ForeColor = System.Drawing.Color.Gray;
+            this.btnQuanLyNguoiDung.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
+            this.btnQuanLyNguoiDung.Image = global::GUI.Properties.Resources.Notification;
+            this.btnQuanLyNguoiDung.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnQuanLyNguoiDung.Location = new System.Drawing.Point(12, 361);
+            this.btnQuanLyNguoiDung.Name = "btnQuanLyNguoiDung";
+            this.btnQuanLyNguoiDung.Size = new System.Drawing.Size(210, 45);
+            this.btnQuanLyNguoiDung.TabIndex = 11;
+            this.btnQuanLyNguoiDung.Text = "Quản lý người dùng";
+            this.btnQuanLyNguoiDung.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnQuanLyNguoiDung.Click += new System.EventHandler(this.btnQuanLyNguoiDung_Click);
+            // 
+            // btnBaoDuongThietBi
+            // 
+            this.btnBaoDuongThietBi.BackColor = System.Drawing.Color.Transparent;
+            this.btnBaoDuongThietBi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnBaoDuongThietBi.BorderRadius = 8;
+            this.btnBaoDuongThietBi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBaoDuongThietBi.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnBaoDuongThietBi.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnBaoDuongThietBi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnBaoDuongThietBi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnBaoDuongThietBi.FillColor = System.Drawing.Color.Transparent;
+            this.btnBaoDuongThietBi.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
+            this.btnBaoDuongThietBi.ForeColor = System.Drawing.Color.Gray;
+            this.btnBaoDuongThietBi.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
+            this.btnBaoDuongThietBi.Image = global::GUI.Properties.Resources.Notification;
+            this.btnBaoDuongThietBi.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnBaoDuongThietBi.Location = new System.Drawing.Point(12, 310);
+            this.btnBaoDuongThietBi.Name = "btnBaoDuongThietBi";
+            this.btnBaoDuongThietBi.Size = new System.Drawing.Size(210, 45);
+            this.btnBaoDuongThietBi.TabIndex = 10;
+            this.btnBaoDuongThietBi.Text = "Bảo dưởng thiết bị";
+            this.btnBaoDuongThietBi.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnBaoDuongThietBi.Click += new System.EventHandler(this.btnBaoDuongThietBi_Click);
+            // 
+            // btnMuonTraThietBi
+            // 
+            this.btnMuonTraThietBi.BackColor = System.Drawing.Color.Transparent;
+            this.btnMuonTraThietBi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnMuonTraThietBi.BorderRadius = 8;
+            this.btnMuonTraThietBi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMuonTraThietBi.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnMuonTraThietBi.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnMuonTraThietBi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnMuonTraThietBi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnMuonTraThietBi.FillColor = System.Drawing.Color.Transparent;
+            this.btnMuonTraThietBi.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
+            this.btnMuonTraThietBi.ForeColor = System.Drawing.Color.Gray;
+            this.btnMuonTraThietBi.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
+            this.btnMuonTraThietBi.Image = global::GUI.Properties.Resources.Notification;
+            this.btnMuonTraThietBi.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnMuonTraThietBi.Location = new System.Drawing.Point(12, 208);
+            this.btnMuonTraThietBi.Name = "btnMuonTraThietBi";
+            this.btnMuonTraThietBi.Size = new System.Drawing.Size(210, 45);
+            this.btnMuonTraThietBi.TabIndex = 9;
+            this.btnMuonTraThietBi.Text = "Quản lý mượn trả thiết bị";
+            this.btnMuonTraThietBi.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnMuonTraThietBi.Click += new System.EventHandler(this.btnMuonTraThietBi_Click);
+            // 
+            // btnQuanLyThietBiHuHong
+            // 
+            this.btnQuanLyThietBiHuHong.BackColor = System.Drawing.Color.Transparent;
+            this.btnQuanLyThietBiHuHong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnQuanLyThietBiHuHong.BorderRadius = 8;
+            this.btnQuanLyThietBiHuHong.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuanLyThietBiHuHong.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnQuanLyThietBiHuHong.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnQuanLyThietBiHuHong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnQuanLyThietBiHuHong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnQuanLyThietBiHuHong.FillColor = System.Drawing.Color.Transparent;
+            this.btnQuanLyThietBiHuHong.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
+            this.btnQuanLyThietBiHuHong.ForeColor = System.Drawing.Color.Gray;
+            this.btnQuanLyThietBiHuHong.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
+            this.btnQuanLyThietBiHuHong.Image = global::GUI.Properties.Resources.Notification;
+            this.btnQuanLyThietBiHuHong.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnQuanLyThietBiHuHong.Location = new System.Drawing.Point(12, 259);
+            this.btnQuanLyThietBiHuHong.Name = "btnQuanLyThietBiHuHong";
+            this.btnQuanLyThietBiHuHong.Size = new System.Drawing.Size(210, 45);
+            this.btnQuanLyThietBiHuHong.TabIndex = 8;
+            this.btnQuanLyThietBiHuHong.Text = "Quản lý thiết bị hư hỏng";
+            this.btnQuanLyThietBiHuHong.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnQuanLyThietBiHuHong.Click += new System.EventHandler(this.btnQuanLyThietBiHuHong_Click);
+            // 
+            // btnThoiKhoaBieu
+            // 
+            this.btnThoiKhoaBieu.BackColor = System.Drawing.Color.Transparent;
+            this.btnThoiKhoaBieu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnThoiKhoaBieu.BorderRadius = 8;
+            this.btnThoiKhoaBieu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThoiKhoaBieu.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnThoiKhoaBieu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnThoiKhoaBieu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnThoiKhoaBieu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnThoiKhoaBieu.FillColor = System.Drawing.Color.Transparent;
+            this.btnThoiKhoaBieu.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
+            this.btnThoiKhoaBieu.ForeColor = System.Drawing.Color.Gray;
+            this.btnThoiKhoaBieu.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
+            this.btnThoiKhoaBieu.Image = global::GUI.Properties.Resources.icons8_schedule_25;
+            this.btnThoiKhoaBieu.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnThoiKhoaBieu.Location = new System.Drawing.Point(12, 157);
+            this.btnThoiKhoaBieu.Name = "btnThoiKhoaBieu";
+            this.btnThoiKhoaBieu.Size = new System.Drawing.Size(210, 45);
+            this.btnThoiKhoaBieu.TabIndex = 7;
+            this.btnThoiKhoaBieu.Text = "Thời khóa biếu";
+            this.btnThoiKhoaBieu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnThoiKhoaBieu.Click += new System.EventHandler(this.btnThoiKhoaBieu_Click);
+            // 
+            // btnQuanLyNhaCungCap
+            // 
+            this.btnQuanLyNhaCungCap.BackColor = System.Drawing.Color.Transparent;
+            this.btnQuanLyNhaCungCap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnQuanLyNhaCungCap.BorderRadius = 8;
+            this.btnQuanLyNhaCungCap.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuanLyNhaCungCap.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnQuanLyNhaCungCap.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnQuanLyNhaCungCap.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnQuanLyNhaCungCap.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnQuanLyNhaCungCap.FillColor = System.Drawing.Color.Transparent;
+            this.btnQuanLyNhaCungCap.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
+            this.btnQuanLyNhaCungCap.ForeColor = System.Drawing.Color.Gray;
+            this.btnQuanLyNhaCungCap.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
+            this.btnQuanLyNhaCungCap.Image = global::GUI.Properties.Resources.Notification;
+            this.btnQuanLyNhaCungCap.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnQuanLyNhaCungCap.Location = new System.Drawing.Point(12, 106);
+            this.btnQuanLyNhaCungCap.Name = "btnQuanLyNhaCungCap";
+            this.btnQuanLyNhaCungCap.Size = new System.Drawing.Size(210, 45);
+            this.btnQuanLyNhaCungCap.TabIndex = 6;
+            this.btnQuanLyNhaCungCap.Text = "Quản lý nhà cung cấp";
+            this.btnQuanLyNhaCungCap.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnQuanLyNhaCungCap.Click += new System.EventHandler(this.btnQuanLyNhaCungCap_Click);
             // 
             // btnHelp
             // 
@@ -117,7 +244,7 @@
             this.btnHelp.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
             this.btnHelp.Image = global::GUI.Properties.Resources.help;
             this.btnHelp.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnHelp.Location = new System.Drawing.Point(11, 796);
+            this.btnHelp.Location = new System.Drawing.Point(11, 661);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(210, 45);
             this.btnHelp.TabIndex = 5;
@@ -140,7 +267,7 @@
             this.btnAccount.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
             this.btnAccount.Image = global::GUI.Properties.Resources.account;
             this.btnAccount.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnAccount.Location = new System.Drawing.Point(12, 740);
+            this.btnAccount.Location = new System.Drawing.Point(12, 605);
             this.btnAccount.Name = "btnAccount";
             this.btnAccount.Size = new System.Drawing.Size(210, 45);
             this.btnAccount.TabIndex = 4;
@@ -163,7 +290,7 @@
             this.btnSetting.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
             this.btnSetting.Image = global::GUI.Properties.Resources.setting;
             this.btnSetting.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnSetting.Location = new System.Drawing.Point(11, 684);
+            this.btnSetting.Location = new System.Drawing.Point(11, 549);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Size = new System.Drawing.Size(210, 45);
             this.btnSetting.TabIndex = 3;
@@ -176,7 +303,7 @@
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("JetBrains Mono", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Gray;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(23, 651);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(23, 516);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(69, 27);
             this.guna2HtmlLabel1.TabIndex = 2;
@@ -194,28 +321,29 @@
             this.lbMenu.TabIndex = 1;
             this.lbMenu.Text = "Menu";
             // 
-            // guna2Button1
+            // btnQuanLyThietBi
             // 
-            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.guna2Button1.BorderRadius = 8;
-            this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.Gray;
-            this.guna2Button1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
-            this.guna2Button1.Image = global::GUI.Properties.Resources.Notification;
-            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.Location = new System.Drawing.Point(12, 50);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(210, 45);
-            this.guna2Button1.TabIndex = 0;
-            this.guna2Button1.Text = "chức năng 1";
-            this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnQuanLyThietBi.BackColor = System.Drawing.Color.Transparent;
+            this.btnQuanLyThietBi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnQuanLyThietBi.BorderRadius = 8;
+            this.btnQuanLyThietBi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuanLyThietBi.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnQuanLyThietBi.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnQuanLyThietBi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnQuanLyThietBi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnQuanLyThietBi.FillColor = System.Drawing.Color.Transparent;
+            this.btnQuanLyThietBi.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
+            this.btnQuanLyThietBi.ForeColor = System.Drawing.Color.Gray;
+            this.btnQuanLyThietBi.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
+            this.btnQuanLyThietBi.Image = global::GUI.Properties.Resources.Notification;
+            this.btnQuanLyThietBi.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnQuanLyThietBi.Location = new System.Drawing.Point(12, 50);
+            this.btnQuanLyThietBi.Name = "btnQuanLyThietBi";
+            this.btnQuanLyThietBi.Size = new System.Drawing.Size(210, 45);
+            this.btnQuanLyThietBi.TabIndex = 0;
+            this.btnQuanLyThietBi.Text = "Quản lý thiết bị";
+            this.btnQuanLyThietBi.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnQuanLyThietBi.Click += new System.EventHandler(this.btnQuanLyThietBi_Click);
             // 
             // main
             // 
@@ -226,7 +354,7 @@
             this.main.Location = new System.Drawing.Point(0, 0);
             this.main.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.main.Name = "main";
-            this.main.Size = new System.Drawing.Size(1386, 788);
+            this.main.Size = new System.Drawing.Size(1440, 960);
             this.main.TabIndex = 0;
             // 
             // Panel_Change_Form
@@ -235,7 +363,7 @@
             this.Panel_Change_Form.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Change_Form.Location = new System.Drawing.Point(240, 65);
             this.Panel_Change_Form.Name = "Panel_Change_Form";
-            this.Panel_Change_Form.Size = new System.Drawing.Size(1146, 723);
+            this.Panel_Change_Form.Size = new System.Drawing.Size(1200, 895);
             this.Panel_Change_Form.TabIndex = 3;
             // 
             // Navbar
@@ -244,15 +372,12 @@
             this.Navbar.Controls.Add(this.guna2ControlBox2);
             this.Navbar.Controls.Add(this.guna2ControlBox1);
             this.Navbar.Controls.Add(this.controlClose);
-            this.Navbar.Controls.Add(this.guna2ImageButton3);
             this.Navbar.Controls.Add(this.panel1);
-            this.Navbar.Controls.Add(this.txtSearch);
-            this.Navbar.Controls.Add(this.guna2ImageButton1);
             this.Navbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.Navbar.Location = new System.Drawing.Point(0, 0);
             this.Navbar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Navbar.Name = "Navbar";
-            this.Navbar.Size = new System.Drawing.Size(1386, 65);
+            this.Navbar.Size = new System.Drawing.Size(1440, 65);
             this.Navbar.TabIndex = 1;
             this.Navbar.Paint += new System.Windows.Forms.PaintEventHandler(this.Navbar_Paint);
             // 
@@ -262,7 +387,7 @@
             this.guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
             this.guna2ControlBox2.FillColor = System.Drawing.Color.White;
             this.guna2ControlBox2.IconColor = System.Drawing.Color.DimGray;
-            this.guna2ControlBox2.Location = new System.Drawing.Point(1263, 17);
+            this.guna2ControlBox2.Location = new System.Drawing.Point(1317, 17);
             this.guna2ControlBox2.Name = "guna2ControlBox2";
             this.guna2ControlBox2.Size = new System.Drawing.Size(30, 30);
             this.guna2ControlBox2.TabIndex = 9;
@@ -273,7 +398,7 @@
             this.guna2ControlBox1.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MaximizeBox;
             this.guna2ControlBox1.FillColor = System.Drawing.Color.White;
             this.guna2ControlBox1.IconColor = System.Drawing.Color.DimGray;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1299, 17);
+            this.guna2ControlBox1.Location = new System.Drawing.Point(1353, 17);
             this.guna2ControlBox1.Name = "guna2ControlBox1";
             this.guna2ControlBox1.Size = new System.Drawing.Size(30, 30);
             this.guna2ControlBox1.TabIndex = 8;
@@ -283,30 +408,11 @@
             this.controlClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.controlClose.FillColor = System.Drawing.Color.White;
             this.controlClose.IconColor = System.Drawing.Color.DimGray;
-            this.controlClose.Location = new System.Drawing.Point(1335, 17);
+            this.controlClose.Location = new System.Drawing.Point(1389, 17);
             this.controlClose.Name = "controlClose";
             this.controlClose.Size = new System.Drawing.Size(30, 30);
             this.controlClose.TabIndex = 7;
             this.controlClose.Click += new System.EventHandler(this.controlClose_Click);
-            // 
-            // guna2ImageButton3
-            // 
-            this.guna2ImageButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
-            this.guna2ImageButton3.CausesValidation = false;
-            this.guna2ImageButton3.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.guna2ImageButton3.HoverState.Image = global::GUI.Properties.Resources.Search;
-            this.guna2ImageButton3.HoverState.ImageSize = new System.Drawing.Size(24, 24);
-            this.guna2ImageButton3.Image = global::GUI.Properties.Resources.Search;
-            this.guna2ImageButton3.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton3.ImageRotate = 0F;
-            this.guna2ImageButton3.ImageSize = new System.Drawing.Size(24, 24);
-            this.guna2ImageButton3.Location = new System.Drawing.Point(884, 20);
-            this.guna2ImageButton3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.guna2ImageButton3.Name = "guna2ImageButton3";
-            this.guna2ImageButton3.PressedState.ImageSize = new System.Drawing.Size(24, 24);
-            this.guna2ImageButton3.Size = new System.Drawing.Size(24, 24);
-            this.guna2ImageButton3.TabIndex = 4;
             // 
             // panel1
             // 
@@ -333,59 +439,11 @@
             this.lb_home.Text = "ADMIN";
             this.lb_home.Click += new System.EventHandler(this.lb_home_Click);
             // 
-            // txtSearch
-            // 
-            this.txtSearch.BackColor = System.Drawing.Color.Transparent;
-            this.txtSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.txtSearch.BorderColor = System.Drawing.Color.White;
-            this.txtSearch.BorderRadius = 10;
-            this.txtSearch.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dot;
-            this.txtSearch.BorderThickness = 0;
-            this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSearch.DefaultText = "";
-            this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearch.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
-            this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
-            this.txtSearch.ForeColor = System.Drawing.Color.Black;
-            this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Location = new System.Drawing.Point(272, 13);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PasswordChar = '\0';
-            this.txtSearch.PlaceholderForeColor = System.Drawing.Color.Black;
-            this.txtSearch.PlaceholderText = "Search ...";
-            this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(643, 40);
-            this.txtSearch.TabIndex = 0;
-            // 
-            // guna2ImageButton1
-            // 
-            this.guna2ImageButton1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ImageButton1.CausesValidation = false;
-            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.guna2ImageButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2ImageButton1.HoverState.Image = global::GUI.Properties.Resources.Notification_Hover;
-            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(24, 24);
-            this.guna2ImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton1.Image")));
-            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(24, 24);
-            this.guna2ImageButton1.Location = new System.Drawing.Point(923, 9);
-            this.guna2ImageButton1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.guna2ImageButton1.Name = "guna2ImageButton1";
-            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(24, 24);
-            this.guna2ImageButton1.Size = new System.Drawing.Size(34, 40);
-            this.guna2ImageButton1.TabIndex = 1;
-            // 
             // Dashboard_Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.ClientSize = new System.Drawing.Size(1440, 960);
             this.Controls.Add(this.main);
             this.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -393,6 +451,7 @@
             this.Name = "Dashboard_Admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Sidebar.ResumeLayout(false);
             this.Sidebar.PerformLayout();
             this.main.ResumeLayout(false);
@@ -408,23 +467,25 @@
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private System.Windows.Forms.Panel main;
         private System.Windows.Forms.Panel Navbar;
-        private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private System.Windows.Forms.Panel Sidebar;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel lb_home;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton3;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbMenu;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button btnQuanLyThietBi;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2Button btnAccount;
         private Guna.UI2.WinForms.Guna2Button btnSetting;
-        private Guna.UI2.WinForms.Guna2Button guna2Button5;
+        private Guna.UI2.WinForms.Guna2Button btnQuanLyNhaCungCap;
         private Guna.UI2.WinForms.Guna2Button btnHelp;
         private Guna.UI2.WinForms.Guna2Panel Panel_Change_Form;
         private Guna.UI2.WinForms.Guna2ControlBox controlClose;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
+        private Guna.UI2.WinForms.Guna2Button btnQuanLyThietBiHuHong;
+        private Guna.UI2.WinForms.Guna2Button btnThoiKhoaBieu;
+        private Guna.UI2.WinForms.Guna2Button btnBaoDuongThietBi;
+        private Guna.UI2.WinForms.Guna2Button btnQuanLyNguoiDung;
+        private Guna.UI2.WinForms.Guna2Button btnMuonTraThietBi;
     }
 }
 

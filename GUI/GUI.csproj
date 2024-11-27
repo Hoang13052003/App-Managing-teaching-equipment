@@ -79,11 +79,29 @@
     <Compile Include="Dashboard_User.Designer.cs">
       <DependentUpon>Dashboard_User.cs</DependentUpon>
     </Compile>
-    <Compile Include="demoKichThuocFormCon.cs">
+    <Compile Include="formConDemo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="demoKichThuocFormCon.Designer.cs">
-      <DependentUpon>demoKichThuocFormCon.cs</DependentUpon>
+    <Compile Include="formConDemo.Designer.cs">
+      <DependentUpon>formConDemo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMuonThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMuonThietBi.designer.cs">
+      <DependentUpon>FormMuonThietBi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi.Designer.cs">
+      <DependentUpon>formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home_User.Designer.cs">
+      <DependentUpon>Home_User.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLoaiTB_MonHoc.cs">
       <SubType>Form</SubType>
@@ -96,12 +114,6 @@
     </Compile>
     <Compile Include="FormLoaiThietBi.Designer.cs">
       <DependentUpon>FormLoaiThietBi.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormMuonThietBi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormMuonThietBi.Designer.cs">
-      <DependentUpon>FormMuonThietBi.cs</DependentUpon>
     </Compile>
     <Compile Include="Layout.cs">
       <SubType>Form</SubType>
@@ -121,6 +133,12 @@
     <Compile Include="Manage_Device.Designer.cs">
       <DependentUpon>Manage_Device.cs</DependentUpon>
     </Compile>
+    <Compile Include="Profile_User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profile_User.Designer.cs">
+      <DependentUpon>Profile_User.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResetPassword.cs">
@@ -134,6 +152,18 @@
     </Compile>
     <Compile Include="Setting.Designer.cs">
       <DependentUpon>Setting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Show_Subjects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Show_Subjects.Designer.cs">
+      <DependentUpon>Show_Subjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Teaching_Schedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Teaching_Schedule.Designer.cs">
+      <DependentUpon>Teaching_Schedule.cs</DependentUpon>
     </Compile>
     <Compile Include="Supplier.cs">
       <SubType>Form</SubType>
@@ -174,17 +204,23 @@
     <EmbeddedResource Include="Dashboard_User.resx">
       <DependentUpon>Dashboard_User.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="demoKichThuocFormCon.resx">
-      <DependentUpon>demoKichThuocFormCon.cs</DependentUpon>
+    <EmbeddedResource Include="formConDemo.resx">
+      <DependentUpon>formConDemo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMuonThietBi.resx">
+      <DependentUpon>FormMuonThietBi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi.resx">
+      <DependentUpon>formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home_User.resx">
+      <DependentUpon>Home_User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLoaiTB_MonHoc.resx">
       <DependentUpon>FormLoaiTB_MonHoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLoaiThietBi.resx">
       <DependentUpon>FormLoaiThietBi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormMuonThietBi.resx">
-      <DependentUpon>FormMuonThietBi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layout.resx">
       <DependentUpon>Layout.cs</DependentUpon>
@@ -194,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Manage_Device.resx">
       <DependentUpon>Manage_Device.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile_User.resx">
+      <DependentUpon>Profile_User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -210,6 +249,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Setting.resx">
       <DependentUpon>Setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Show_Subjects.resx">
+      <DependentUpon>Show_Subjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Teaching_Schedule.resx">
+      <DependentUpon>Teaching_Schedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier.resx">
       <DependentUpon>Supplier.cs</DependentUpon>
@@ -251,12 +296,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Image\backround_schedule.jpg" />
+    <Content Include="Image\demo_image_giang_vien.jpg" />
     <Content Include="Image\Background_Login.png" />
     <Content Include="Image\icon\account.png" />
     <Content Include="Image\icon\close.png" />
     <Content Include="Image\icon\Close_hover.png" />
     <Content Include="Image\icon\help.png" />
+    <Content Include="Image\icon\icons8-add-100.png" />
+    <Content Include="Image\icon\icons8-back-25.png" />
+    <Content Include="Image\icon\icons8-home-25.png" />
+    <Content Include="Image\icon\icons8-logout-25.png" />
     <Content Include="Image\icon\icons8-next-25.png" />
+    <Content Include="Image\icon\icons8-notification-100.png" />
+    <Content Include="Image\icon\icons8-schedule-100.png" />
+    <Content Include="Image\icon\icons8-schedule-25.png" />
+    <Content Include="Image\icon\icons8-Tiep-25.png" />
     <Content Include="Image\icon\Lock.png" />
     <Content Include="Image\icon\logoApp.jpg" />
     <Content Include="Image\icon\Notification.png" />

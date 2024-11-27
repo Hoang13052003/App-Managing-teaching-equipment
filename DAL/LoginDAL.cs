@@ -259,5 +259,41 @@ namespace DAL
             string hash = HashPassword(enteredPassword);
             return hash == storedHash;
         }
+
+        public string CheckRoles(String maNguoiDung)
+        {
+            SqlConnection connection = null;
+            SqlCommand command = null;
+            SqlDataReader reader = null;
+
+            try
+            {
+                connection = GetConnection();
+                command = new SqlCommand("SELECT NND.TenNhom FROM NguoiDungNhomNguoiDung ND_NND JOIN NhomNguoiDung NND ON ND_NND.MaNhom = NND.MaNhom WHERE ND_NND.MaNguoiDung = @maNguoiDung", connection);
+                command.Parameters.AddWithValue("@maNguoiDung", maNguoiDung);
+                connection.Open();
+                reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    string role = reader["TenNhom"].ToString();
+                    return role;
+                }
+
+            }
+            catch (System.Exception ex)
+            {
+                System.Console.WriteLine("Lỗi khi đăng nhập: " + ex.Message);
+            }
+            finally
+            {
+                // Đảm bảo rằng các tài nguyên được giải phóng
+                reader?.Close();
+                command?.Dispose();
+                connection?.Close();
+            }
+            return null;
+        }
+
+
     }
 }
