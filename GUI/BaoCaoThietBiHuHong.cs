@@ -71,13 +71,6 @@ namespace GUI
                     return;
                 }
 
-                if (string.IsNullOrWhiteSpace(txtMoTa.Text))
-                {
-                    MessageBox.Show("Mô tả không được để trống.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtMoTa.Focus();
-                    return;
-                }
-
                 DateTime thoiGian;
                 if (string.IsNullOrWhiteSpace(txtThoiGian.Text) || !DateTime.TryParseExact(txtThoiGian.Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out thoiGian))
                 {
@@ -91,37 +84,38 @@ namespace GUI
                     VaiTro = cboVaiTro.Text,
                     ThoiGianLamHong = thoiGian,
                     ThoiGianXuLy = null,
-                    MoTaChiTiet = txtMoTa.Text,
                     ChiPhiSuaChua = 0,
                     TinhTrang = 0
                 };
                 List<ChiTietBienBanDTO> chiTietList = new List<ChiTietBienBanDTO>();
 
-                string commonImageFolder = @"D:\DOAN_TOTNGHIEP\Code\ImageThietBiHuHong"; // Đường dẫn thư mục chung
-                if (!System.IO.Directory.Exists(commonImageFolder))
+                string projectDirectory = Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.FullName).FullName;
+                string commonImageFolder = Path.Combine(projectDirectory, "Image", "thietBiHuHong");
+
+                if (!Directory.Exists(commonImageFolder))
                 {
-                    System.IO.Directory.CreateDirectory(commonImageFolder);
+                    Directory.CreateDirectory(commonImageFolder);
                 }
-
                 int validImageCount = 0;
-
+                MessageBox.Show($"Thư mục lưu ảnh: {commonImageFolder}");
                 foreach (DataGridViewRow row in dgvThietBiHong.Rows)
                 {
                     if (row.Cells["MaCTTB_NCC"].Value != null && row.Cells["MaCTTB_NCC"].Value != DBNull.Value)
                     {
                         int maCTTB_NCC = (int)row.Cells["MaCTTB_NCC"].Value;
+                        string moTaChiTiet = row.Cells["MoTaChiTiet"].Value.ToString();
                         string hinhAnh = "";
 
                         if (deviceImages.ContainsKey(maCTTB_NCC) && deviceImages[maCTTB_NCC].Count > 0)
                         {
                             string originalImagePath = deviceImages[maCTTB_NCC][0];
                             string imageName = $"img_{maCTTB_NCC}_{DateTime.Now:yyyyMMddHHmmss}.jpg";
-                            string newImagePath = System.IO.Path.Combine(commonImageFolder, imageName);
+                            string newImagePath = Path.Combine(commonImageFolder, imageName);
 
                             try
                             {
-                                System.IO.File.Copy(originalImagePath, newImagePath, true); // Sao chép ảnh vào thư mục chung
-                                hinhAnh = imageName; // Lưu chỉ tên ảnh
+                                File.Copy(originalImagePath, newImagePath, true); // Sao chép ảnh vào thư mục chung
+                                hinhAnh = Path.Combine(imageName); // Lưu đường dẫn tương đối để sử dụng trong project
                                 validImageCount++;
                             }
                             catch (Exception ex)
@@ -139,7 +133,8 @@ namespace GUI
                         ChiTietBienBanDTO chiTiet = new ChiTietBienBanDTO
                         {
                             MaCTTB_NCC = maCTTB_NCC,
-                            HinhAnh = hinhAnh // Lưu tên ảnh thay vì đường dẫn đầy đủ
+                            MoTaChiTiet = moTaChiTiet,
+                            HinhAnh = hinhAnh // Lưu đường dẫn tương đối
                         };
 
                         chiTietList.Add(chiTiet);
@@ -164,7 +159,6 @@ namespace GUI
                 }
             }
         }
-
         private void BtnLamMoi_Click(object sender, EventArgs e)
         {
             LamMoi();
@@ -254,35 +248,41 @@ namespace GUI
 
         private void BtnThem_Click(object sender, EventArgs e)
         {
-            if(dgvThietBiHong.Rows.Count > 6)
+            if (dgvThietBiHong.Rows.Count >= 6)
             {
                 MessageBox.Show("Mỗi lần báo cáo chỉ tối đa 6 thiết bị!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             if (dgvThietBi.SelectedRows.Count > 0)
             {
-                DataGridViewRow selectedRow = dgvThietBi.SelectedRows[0];
-
-                var trangThaiCell = selectedRow.Cells["TinhTrang"].Value;
-                if (trangThaiCell != null && trangThaiCell.ToString() == "Hỏng")
+                if (txtMoTa.Text == string.Empty)
                 {
-                    MessageBox.Show("Thiết bị đã được báo cáo hư hỏng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Cần nhập mô tả chi tiết hư hỏng cho thiết bị này trước khi thêm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
-                }
-
-                if (dgvThietBiHong.Rows.Count == 0)
-                {
-                    DataGridViewRow newRow = (DataGridViewRow)selectedRow.Clone();
-                    foreach (DataGridViewCell cell in selectedRow.Cells)
-                    {
-                        newRow.Cells[cell.ColumnIndex].Value = cell.Value;
-                    }
-                    dgvThietBiHong.Rows.Add(newRow);
                 }
                 else
                 {
-                    bool exists = false;
+                    DataGridViewRow selectedRow = dgvThietBi.SelectedRows[0];
 
+                    var trangThaiCell = selectedRow.Cells["TinhTrang"].Value;
+                    if (trangThaiCell != null && trangThaiCell.ToString() == "Hỏng")
+                    {
+                        MessageBox.Show("Thiết bị đã được báo cáo hư hỏng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    DataGridViewRow newRow = new DataGridViewRow();
+                    newRow.CreateCells(dgvThietBiHong);
+
+                    for (int i = 0; i < selectedRow.Cells.Count; i++)
+                    {
+                        newRow.Cells[i].Value = selectedRow.Cells[i].Value;
+                    }
+
+                    newRow.Cells[6].Value = txtMoTa.Text.Trim();
+
+                    bool exists = false;
                     foreach (DataGridViewRow row in dgvThietBiHong.Rows)
                     {
                         var cellValue1 = row.Cells["MaCTTB_NCC"].Value;
@@ -300,13 +300,9 @@ namespace GUI
 
                     if (!exists)
                     {
-                        DataGridViewRow newRow = (DataGridViewRow)selectedRow.Clone();
-                        foreach (DataGridViewCell cell in selectedRow.Cells)
-                        {
-                            newRow.Cells[cell.ColumnIndex].Value = cell.Value;
-                        }
                         dgvThietBiHong.Rows.Add(newRow);
                     }
+                    txtMoTa.ResetText();
                 }
             }
             else
@@ -364,16 +360,17 @@ namespace GUI
             dgvThietBi.DataSource = y.SearchChiTietThietBi(pMaTB);
             dgvThietBi.Columns["MaCTTB_NCC"].HeaderText = "Mã chi tiết";
             dgvThietBi.Columns["TenTB"].HeaderText = "Tên thiết bị";
+            dgvThietBi.Columns["TenPhong"].HeaderText = "Tên phòng";
             dgvThietBi.Columns["TinhTrang"].HeaderText = "Tình trạng";
             dgvThietBi.Columns["TrangThai"].HeaderText = "Trạng thái";
             dgvThietBi.Columns["NgayMua"].Visible = false;
         }
-
         void LoadDgvDSChiTietThietBi()
         {
             dgvThietBi.DataSource = y.getAllChiTietThietBi();
             dgvThietBi.Columns["MaCTTB_NCC"].HeaderText = "Mã chi tiết";
             dgvThietBi.Columns["TenTB"].HeaderText = "Tên thiết bị";
+            dgvThietBi.Columns["TenPhong"].HeaderText = "Tên phòng";
             dgvThietBi.Columns["TinhTrang"].HeaderText = "Tình trạng";
             dgvThietBi.Columns["TrangThai"].HeaderText = "Trạng thái";
             dgvThietBi.Columns["NgayMua"].Visible = false;
@@ -383,9 +380,11 @@ namespace GUI
         {
             dgvThietBiHong.Columns.Add("MaCTTB_NCC", "Mã chi tiết");
             dgvThietBiHong.Columns.Add("TenTB", "Tên thiết bị");
+            dgvThietBiHong.Columns.Add("TenPhong", "Tên phòng");
             dgvThietBiHong.Columns.Add("TinhTrang", "Tình trạng");
             dgvThietBiHong.Columns.Add("TrangThai", "Trạng thái");
             dgvThietBiHong.Columns.Add("NgayMua", "Ngày mua");
+            dgvThietBiHong.Columns.Add("MoTaChiTiet", "Mô tả chi tiết");
             dgvThietBiHong.Columns["NgayMua"].Visible = false;
         }
 
@@ -394,7 +393,7 @@ namespace GUI
             // Kiểm tra nếu không có dòng nào được chọn
             if (dgvThietBiHong.SelectedRows.Count == 0 || dgvThietBiHong.SelectedRows[0].Cells["MaCTTB_NCC"].Value == null)
             {
-                MessageBox.Show("Vui lòng chọn một thiết bị hư hỏng trước khi thêm hình ảnh!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn một thiết bị trong danh sách 'Thiết bị hư hỏng' trước khi thêm hình ảnh!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

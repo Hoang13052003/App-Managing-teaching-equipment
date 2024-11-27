@@ -53,6 +53,7 @@ E:\Nam4\DoAnCN\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.exe
 E:\Nam4\DoAnCN\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.pdb
 E:\Nam4\DoAnCN\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.FormLoaiTB_MonHoc.resources
 E:\Nam4\DoAnCN\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.FormMuonThietBi.resources
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.formConDemo.resources
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\bin\Debug\GUI.exe.config
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\bin\Debug\GUI.exe
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\bin\Debug\GUI.pdb
@@ -95,3 +96,7 @@ D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Ye
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.YeuCauSuaThietBi.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Profile_User.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi.resources
+D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.FormLoaiTB_MonHoc.resources
+D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.FormLoaiThietBi.resources
+D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.FormMuonThietBi.resources
+D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.Manage_Device.resources

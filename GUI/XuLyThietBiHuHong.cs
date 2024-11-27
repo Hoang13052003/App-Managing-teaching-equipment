@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,7 +55,6 @@ namespace GUI
                 VaiTro = cboVaiTro.Text,
                 ThoiGianLamHong = thoiGian,
                 ThoiGianXuLy = DateTime.Now,
-                MoTaChiTiet = txtMoTa.Text,
                 ChiPhiSuaChua = Convert.ToSingle(txtChiPhi.Text),
                 TinhTrang = cboTinhTrang.SelectedIndex,
             };
@@ -83,7 +83,7 @@ namespace GUI
         {
             if (e.RowIndex >= 0)
             {
-                int maCTTB_NCC = (int)dgvChiTietBB.Rows[e.RowIndex].Cells["MaCTTB_NCC"].Value; 
+                int maCTTB_NCC = (int)dgvChiTietBB.Rows[e.RowIndex].Cells["MaCTTB_NCC"].Value;
                 int maBB = (int)dgvChiTietBB.Rows[e.RowIndex].Cells["MaBB"].Value;
                 string imagePath = b.GetImage(maBB, maCTTB_NCC);
 
@@ -97,33 +97,59 @@ namespace GUI
                     try
                     {
                         picBox.Image = Image.FromFile(fullPath);
-                        picBox.SizeMode = PictureBoxSizeMode.Zoom; 
+                        picBox.SizeMode = PictureBoxSizeMode.Zoom;
                         picBox.Width = 290;
-                        picBox.Height = 220; 
+                        picBox.Height = 220;
 
                         flowLayoutPanelHinhAnh.Controls.Add(picBox);
-                        flowLayoutPanelHinhAnh.AutoSize = true; 
+                        flowLayoutPanelHinhAnh.AutoSize = true;
                         flowLayoutPanelHinhAnh.FlowDirection = FlowDirection.TopDown;
                         flowLayoutPanelHinhAnh.WrapContents = false;
 
-                        picBox.Anchor = AnchorStyles.None; 
-                        picBox.Margin = new Padding(10); 
+                        picBox.Anchor = AnchorStyles.None;
+                        picBox.Margin = new Padding(10);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Không thể tải hình ảnh: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                        MessageBox.Show("Không thể tải hình ảnh: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
                     MessageBox.Show("Không tìm thấy hình ảnh của thiết bị này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                LoadImage(e.RowIndex, dgvChiTietBB);
             }
         }
+        void LoadImage(int rowIndex, DataGridView dgv)
+        {
+            pictureBox.Image = null;
+            string imageName = dgv.Rows[rowIndex].Cells["HinhAnh"].Value.ToString();
 
+            string projectDirectory = Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.FullName).FullName;
+
+            string projectImagePath = Path.Combine(projectDirectory, "Image", "thietBiHuHong");
+
+            string combinedImagePath = Path.Combine(projectImagePath, imageName);
+
+            if (File.Exists(combinedImagePath))
+            {
+                pictureBox.Image = Image.FromFile(combinedImagePath);
+                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox.Width = 290;
+                pictureBox.Height = 220;
+
+                pictureBox.Anchor = AnchorStyles.None;
+                pictureBox.Margin = new Padding(10);
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy ảnh!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-            if(txtSearch.Text != string.Empty)
+            if (txtSearch.Text != string.Empty)
             {
                 searchBienBan(txtSearch.Text);
             }
@@ -160,24 +186,16 @@ namespace GUI
             LoadDSBienBan();
             LoadChiTietBB();
             txtSearch.Text = txtHoTen.Text = txtMaBB.Text = txtChiPhi.Text = txtMoTa.Text = txtThoiGian.Text = string.Empty;
-            foreach (Control control in flowLayoutPanelHinhAnh.Controls.OfType<PictureBox>().ToList())
-            {
-                flowLayoutPanelHinhAnh.Controls.Remove(control);
-                control.Dispose();
-            }
+            pictureBox.Image = null;
         }
         private void DgvDSBienBan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
-                foreach (Control control in flowLayoutPanelHinhAnh.Controls.OfType<PictureBox>().ToList())
-                {
-                    flowLayoutPanelHinhAnh.Controls.Remove(control);
-                    control.Dispose();
-                }
+                pictureBox.Image = null;
                 BingDings(e.RowIndex);
                 searchChiTietBB(Convert.ToInt32(dgvDSBienBan.Rows[e.RowIndex].Cells["MaBB"].Value));
-            }    
+            }
         }
 
         private void XuLyThietBiHuHong_Load(object sender, EventArgs e)
@@ -213,7 +231,6 @@ namespace GUI
                 txtThoiGianXuLy.Text = "00/00/0000 00:00";
             }
 
-            txtMoTa.Text = row.Cells["MoTaChiTiet"].Value?.ToString() ?? string.Empty;
             txtChiPhi.Text = row.Cells["ChiPhiSuaChua"].Value?.ToString() ?? string.Empty;
             cboTinhTrang.Text = row.Cells["TinhTrang"].Value?.ToString() ?? string.Empty;
         }
@@ -233,7 +250,7 @@ namespace GUI
         }
         void LoadCboTinhTrang()
         {
-            cboTinhTrang.Items.Add(new {Text = "Chưa xử lý", Value = 0});
+            cboTinhTrang.Items.Add(new { Text = "Chưa xử lý", Value = 0 });
             cboTinhTrang.Items.Add(new { Text = "Đã xử lý", Value = 1 });
             cboTinhTrang.DisplayMember = "Text";
             cboTinhTrang.ValueMember = "Value";
@@ -254,6 +271,7 @@ namespace GUI
             dgvChiTietBB.Columns["MaCTTB_NCC"].HeaderText = "Mã thiết bị";
             dgvChiTietBB.Columns["TenTB"].HeaderText = "Tên thiết bị";
             dgvChiTietBB.Columns["HinhAnh"].HeaderText = "Hình ảnh";
+            dgvChiTietBB.Columns["MoTaChiTiet"].HeaderText = "Mô tả chi tiết";
         }
         void LoadDSBienBan()
         {
@@ -263,7 +281,6 @@ namespace GUI
             dgvDSBienBan.Columns["VaiTro"].HeaderText = "Vai trò";
             dgvDSBienBan.Columns["ThoiGianLamHong"].HeaderText = "Thời gian";
             dgvDSBienBan.Columns["ThoiGianXuLy"].HeaderText = "Thời gian xử lý";
-            dgvDSBienBan.Columns["MoTaChiTiet"].HeaderText = "Mô tả";
             dgvDSBienBan.Columns["ChiPhiSuaChua"].HeaderText = "Chi phí";
             dgvDSBienBan.Columns["TinhTrang"].HeaderText = "Tình trạng";
 
