@@ -10,7 +10,11 @@ public class NhapThietBiDAL : DatabaseHelper
     public List<NhapThietBiDTO> GetAll()
     {
         List<NhapThietBiDTO> list = new List<NhapThietBiDTO>();
-        string query = "SELECT * FROM NhapThietBi";
+        string query = @"SELECT MaNhap, tt.HoTen, NgayNhap, SoLuong, TongTien, ncc.TenNCC
+                        FROM NhapThietBi ntb, NguoiDung nd, ThongTinCaNhan tt, NhaCungCap ncc
+                        Where ntb.MaNCC = ncc.MaNCC
+                        And ntb.MaNguoiDung = nd.MaNguoiDung
+                        And nd.MaNguoiDung = tt.MaNguoiDung";
         DataTable dataTable = GetDataTable(query);
 
         foreach (DataRow row in dataTable.Rows)
@@ -18,10 +22,11 @@ public class NhapThietBiDAL : DatabaseHelper
             list.Add(new NhapThietBiDTO
             {
                 MaNhap = Convert.ToInt32(row["MaNhap"]),
-                MaNguoiDung = row["MaNguoiDung"].ToString(),
+                HoTen = row["HoTen"].ToString(),
                 NgayNhap = row["NgayNhap"] as DateTime?,
                 SoLuong = Convert.ToInt32(row["SoLuong"]),
-                TongTien = Convert.ToSingle(row["TongTien"])
+                TongTien = Convert.ToSingle(row["TongTien"]),
+                TenNCC = row["TenNCC"].ToString(),
             });
         }
         return list;
@@ -59,20 +64,50 @@ public class NhapThietBiDAL : DatabaseHelper
     }
 
     // Thêm bản ghi nhập thiết bị
-    public bool Insert(NhapThietBiDTO nhapThietBi)
+    public bool InsertNhapThietBi(NhapThietBiDTO nhapThietBi, List<ChiTietNhapDTO> chiTietList)
     {
-        string query = "INSERT INTO NhapThietBi (MaNguoiDung, NgayNhap, SoLuong, TongTien) VALUES (@MaNguoiDung, @NgayNhap, @SoLuong, @TongTien)";
+        string insertNhapThietBiQuery = @"
+        INSERT INTO NhapThietBi (MaNguoiDung, NgayNhap, SoLuong, TongTien, MaNCC) 
+        VALUES (@MaNguoiDung, @NgayNhap, @SoLuong, @TongTien, @MaNCC); 
+        SELECT SCOPE_IDENTITY();";
+
         using (SqlConnection connection = GetConnection())
         {
-            SqlCommand command = new SqlCommand(query, connection);
+            SqlCommand command = new SqlCommand(insertNhapThietBiQuery, connection);
             command.Parameters.AddWithValue("@MaNguoiDung", nhapThietBi.MaNguoiDung);
             command.Parameters.AddWithValue("@NgayNhap", nhapThietBi.NgayNhap.HasValue ? (object)nhapThietBi.NgayNhap.Value : DBNull.Value);
             command.Parameters.AddWithValue("@SoLuong", nhapThietBi.SoLuong);
             command.Parameters.AddWithValue("@TongTien", nhapThietBi.TongTien);
+            command.Parameters.AddWithValue("@MaNCC", nhapThietBi.MaNCC);
+
             connection.Open();
-            return command.ExecuteNonQuery() > 0;
+
+            // Lấy MaNhap mới thêm
+            int newMaNhap = Convert.ToInt32(command.ExecuteScalar());
+
+            if (newMaNhap > 0)
+            {
+                foreach (var chiTiet in chiTietList)
+                {
+                    string insertChiTietNhapQuery = @"
+                    INSERT INTO ChiTietNhap (MaNhap, MaTB, GiaNhap, SoLuong, ThanhTien) 
+                    VALUES (@MaNhap, @MaTB, @GiaNhap, @SoLuong, @ThanhTien)";
+
+                    SqlCommand chiTietCommand = new SqlCommand(insertChiTietNhapQuery, connection);
+                    chiTietCommand.Parameters.AddWithValue("@MaNhap", newMaNhap);
+                    chiTietCommand.Parameters.AddWithValue("@MaTB", chiTiet.MaTB);
+                    chiTietCommand.Parameters.AddWithValue("@GiaNhap", chiTiet.GiaNhap);
+                    chiTietCommand.Parameters.AddWithValue("@SoLuong", chiTiet.SoLuong);
+                    chiTietCommand.Parameters.AddWithValue("@ThanhTien", chiTiet.ThanhTien);
+
+                    chiTietCommand.ExecuteNonQuery();
+                }
+                return true;
+            }
         }
+        return false;
     }
+
 
     // Cập nhật bản ghi nhập thiết bị
     public bool Update(NhapThietBiDTO nhapThietBi)
@@ -108,7 +143,10 @@ public class NhapThietBiDAL : DatabaseHelper
     public List<ChiTietNhapDTO> GetAll(int maNhap)
     {
         List<ChiTietNhapDTO> list = new List<ChiTietNhapDTO>();
-        string query = "SELECT * FROM ChiTietNhap WHERE MaNhap = @MaNhap";
+        string query = @"SELECT MaNhap, TenTB, GiaNhap, ctn.SoLuong, ThanhTien 
+                        FROM ChiTietNhap ctn, ThietBi tb
+                        WHERE MaNhap = @MaNhap
+                        AND ctn.MaTB = tb.MaTB";
         using (SqlConnection connection = GetConnection())
         {
             SqlCommand command = new SqlCommand(query, connection);
@@ -124,7 +162,7 @@ public class NhapThietBiDAL : DatabaseHelper
                 list.Add(new ChiTietNhapDTO
                 {
                     MaNhap = Convert.ToInt32(row["MaNhap"]),
-                    MaTB = Convert.ToInt32(row["MaTB"]),
+                    TenTB = row["TenTB"].ToString(),
                     GiaNhap = Convert.ToSingle(row["GiaNhap"]),
                     SoLuong = Convert.ToInt32(row["SoLuong"]),
                     ThanhTien = Convert.ToSingle(row["ThanhTien"])

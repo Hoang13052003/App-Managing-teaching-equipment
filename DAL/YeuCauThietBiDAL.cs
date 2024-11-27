@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -49,7 +50,6 @@ namespace DAL
             }
             return list;
         }
-
         public List<ThietBiDTO> getAllThietBi()
         {
             List<ThietBiDTO> list = new List<ThietBiDTO>();
@@ -352,15 +352,15 @@ namespace DAL
         public List<ChiTietYeuCauThietBiDTO> getAllChiTietYeuCauSuaThietBi()
         {
             List<ChiTietYeuCauThietBiDTO> list = new List<ChiTietYeuCauThietBiDTO>();
-            string query = @"SELECT MaYC, CTYC.MaCTTB_NCC, TenTB, P.TenPhong, LoaiYeuCau, GhiChu, CTYC.TrangThai
-                FROM ChiTietYeuCauThietBi CTYC
-                JOIN ChiTietThietBi_NhaCungCap CTTBNCC ON CTYC.MaCTTB_NCC = CTTBNCC.MaCTTB_NCC
-                JOIN ChiTietThietBi CTTB ON CTTB.MaCTTB = CTYC.MaCTTB_NCC
-                JOIN ThietBi TB ON CTTB.MaTB = TB.MaTB
-                JOIN ChiTietThietBi_Phong CP ON CP.MaCTTB = CTTB.MaCTTB
-                JOIN PhongHoc P ON P.MaPhong = CP.MaPhong
-                AND LoaiYeuCau = N'Sửa chữa'
-                AND (CTYC.TrangThai = 0 OR CTYC.TrangThai = 2)";
+            string query = @"SELECT MaYC, CTYC.MaCTTB_NCC, TenTB, TenPhong, LoaiYeuCau, GhiChu, CTYC.TrangThai
+                            FROM ChiTietYeuCauThietBi CTYC
+                            JOIN ChiTietThietBi_NhaCungCap CTTBNCC ON CTYC.MaCTTB_NCC = CTTBNCC.MaCTTB_NCC
+                            JOIN ChiTietThietBi CTTB ON CTTB.MaCTTB = CTYC.MaCTTB_NCC
+                            JOIN ThietBi TB ON CTTB.MaTB = TB.MaTB
+                            LEFT JOIN ChiTietThietBi_Phong CP ON CP.MaCTTB = CTTB.MaCTTB
+                            LEFT JOIN PhongHoc P ON P.MaPhong = CP.MaPhong
+                            WHERE LoaiYeuCau = N'Sửa chữa'
+                            AND (CTYC.TrangThai = 0 OR CTYC.TrangThai = 2)";
             DataTable dataTable = GetDataTable(query);
 
             foreach (DataRow row in dataTable.Rows)
@@ -382,13 +382,71 @@ namespace DAL
         {
             List<ChiTietYeuCauThietBiDTO> list = new List<ChiTietYeuCauThietBiDTO>();
             string query = @"SELECT MaYC, CTYC.MaCTTB_NCC, TenTB, P.TenPhong, LoaiYeuCau, GhiChu, CTYC.TrangThai
-                FROM ChiTietYeuCauThietBi CTYC
-                JOIN ChiTietThietBi_NhaCungCap CTTBNCC ON CTYC.MaCTTB_NCC = CTTBNCC.MaCTTB_NCC
-                JOIN ChiTietThietBi CTTB ON CTTB.MaCTTB = CTYC.MaCTTB_NCC
-                JOIN ThietBi TB ON CTTB.MaTB = TB.MaTB
-                JOIN ChiTietThietBi_Phong CP ON CP.MaCTTB = CTTB.MaCTTB
-                JOIN PhongHoc P ON P.MaPhong = CP.MaPhong
-                AND CTYC.MaYC = '" + pMaYC+"' AND LoaiYeuCau = N'Sửa chữa'";
+                            FROM ChiTietYeuCauThietBi CTYC
+                            JOIN ChiTietThietBi_NhaCungCap CTTBNCC ON CTYC.MaCTTB_NCC = CTTBNCC.MaCTTB_NCC
+                            JOIN ChiTietThietBi CTTB ON CTTB.MaCTTB = CTYC.MaCTTB_NCC
+                            JOIN ThietBi TB ON CTTB.MaTB = TB.MaTB
+                            LEFT JOIN ChiTietThietBi_Phong CP ON CP.MaCTTB = CTTB.MaCTTB
+                            LEFT JOIN PhongHoc P ON P.MaPhong = CP.MaPhong
+                            WHERE CTYC.MaYC = '" + pMaYC + "' AND LoaiYeuCau = N'Sửa chữa'";
+            DataTable dataTable = GetDataTable(query);
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                list.Add(new ChiTietYeuCauThietBiDTO
+                {
+                    MaYC = Convert.ToInt32(row["MaYC"]),
+                    MaCTTB_NCC = Convert.ToInt32(row["MaCTTB_NCC"]),
+                    TenTB = row["TenTB"].ToString(),
+                    TenPhong = row["TenPhong"].ToString(),
+                    LoaiYeuCau = row["LoaiYeuCau"].ToString(),
+                    GhiChu = row["GhiChu"].ToString(),
+                    TrangThai = Convert.ToInt32(row["TrangThai"]),
+                });
+            }
+            return list;
+        }
+
+        public List<ChiTietYeuCauThietBiDTO> getAllChiTietYeuCauMuaThietBi()
+        {
+            List<ChiTietYeuCauThietBiDTO> list = new List<ChiTietYeuCauThietBiDTO>();
+            string query = @"SELECT MaYC, CTYC.MaCTTB_NCC, TenTB, TenPhong, LoaiYeuCau, GhiChu, CTYC.TrangThai
+                            FROM ChiTietYeuCauThietBi CTYC
+                            JOIN ChiTietThietBi_NhaCungCap CTTBNCC ON CTYC.MaCTTB_NCC = CTTBNCC.MaCTTB_NCC
+                            JOIN ChiTietThietBi CTTB ON CTTB.MaCTTB = CTYC.MaCTTB_NCC
+                            JOIN ThietBi TB ON CTTB.MaTB = TB.MaTB
+                            LEFT JOIN ChiTietThietBi_Phong CP ON CP.MaCTTB = CTTB.MaCTTB
+                            LEFT JOIN PhongHoc P ON P.MaPhong = CP.MaPhong
+                            WHERE LoaiYeuCau = 'Mua'
+                            AND (CTYC.TrangThai = 0 OR CTYC.TrangThai = 2)";
+            DataTable dataTable = GetDataTable(query);
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                list.Add(new ChiTietYeuCauThietBiDTO
+                {
+                    MaYC = Convert.ToInt32(row["MaYC"]),
+                    MaCTTB_NCC = Convert.ToInt32(row["MaCTTB_NCC"]),
+                    TenTB = row["TenTB"].ToString(),
+                    TenPhong = row["TenPhong"].ToString(),
+                    LoaiYeuCau = row["LoaiYeuCau"].ToString(),
+                    GhiChu = row["GhiChu"].ToString(),
+                    TrangThai = Convert.ToInt32(row["TrangThai"]),
+                });
+            }
+            return list;
+        }
+        public List<ChiTietYeuCauThietBiDTO> searchChiTietYeuCauMuaThietBi(int pMaYC)
+        {
+            List<ChiTietYeuCauThietBiDTO> list = new List<ChiTietYeuCauThietBiDTO>();
+            string query = @"SELECT MaYC, CTYC.MaCTTB_NCC, TenTB, P.TenPhong, LoaiYeuCau, GhiChu, CTYC.TrangThai
+                            FROM ChiTietYeuCauThietBi CTYC
+                            JOIN ChiTietThietBi_NhaCungCap CTTBNCC ON CTYC.MaCTTB_NCC = CTTBNCC.MaCTTB_NCC
+                            JOIN ChiTietThietBi CTTB ON CTTB.MaCTTB = CTYC.MaCTTB_NCC
+                            JOIN ThietBi TB ON CTTB.MaTB = TB.MaTB
+                            LEFT JOIN ChiTietThietBi_Phong CP ON CP.MaCTTB = CTTB.MaCTTB
+                            LEFT JOIN PhongHoc P ON P.MaPhong = CP.MaPhong
+                            WHERE CTYC.MaYC = '" + pMaYC + "' AND LoaiYeuCau = N'Mua'";
             DataTable dataTable = GetDataTable(query);
 
             foreach (DataRow row in dataTable.Rows)
@@ -449,6 +507,46 @@ namespace DAL
                             insertCommand.Parameters.AddWithValue("@ChiPhi", pChiPhi);
 
                             insertCommand.ExecuteNonQuery();
+                        }
+                    }
+
+                    transaction.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    Console.WriteLine("Lỗi: " + ex.Message);
+                    return false;
+                }
+            }
+        }
+
+        public bool UpdataTrangThaiCTYCTB_Mua(int pMaYC, int pMaCTTB_NCC, int pTrangThai, string pKetQua, float pChiPhi)
+        {
+            string updateQuery = @"UPDATE ChiTietYeuCauThietBi 
+                                SET TrangThai = @TrangThai
+                                WHERE MaYC = @MaYC 
+                                AND MaCTTB_NCC = @MaCTTB_NCC";
+
+            using (SqlConnection connection = GetConnection())
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection, transaction))
+                    {
+                        updateCommand.Parameters.AddWithValue("@MaYC", pMaYC);
+                        updateCommand.Parameters.AddWithValue("@MaCTTB_NCC", pMaCTTB_NCC);
+                        updateCommand.Parameters.AddWithValue("@TrangThai", pTrangThai);
+                        int rowsAffected = updateCommand.ExecuteNonQuery();
+
+                        // Kiểm tra xem có cập nhật được không
+                        if (rowsAffected == 0)
+                        {
+                            throw new Exception("Không tìm thấy bản ghi để cập nhật.");
                         }
                     }
 

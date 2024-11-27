@@ -19,5 +19,9 @@ namespace BUS
         {
             return n.GetAll(maNhap);
         }
+        public bool InsertNhapThietBi(NhapThietBiDTO nhapThietBi, List<ChiTietNhapDTO> chiTietList)
+        {
+            return n.InsertNhapThietBi(nhapThietBi, chiTietList);
+        }
     }
 }

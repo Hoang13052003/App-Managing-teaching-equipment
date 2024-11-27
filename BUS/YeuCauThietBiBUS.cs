@@ -75,5 +75,17 @@ namespace BUS
         {
             return y.gioHoc_TKB(pMaTKB);
         }
+        public List<ChiTietYeuCauThietBiDTO> getAllChiTietYeuCauMuaThietBi()
+        {
+            return y.getAllChiTietYeuCauMuaThietBi();
+        }
+        public List<ChiTietYeuCauThietBiDTO> searchChiTietYeuCauMuaThietBi(int pMaYC)
+        {
+            return y.searchChiTietYeuCauMuaThietBi(pMaYC);
+        }
+        public bool UpdataTrangThaiCTYCTB_Mua(int pMaYC, int pMaCTTB_NCC, int pTrangThai, string pKetQua, float pChiPhi)
+        {
+            return y.UpdataTrangThaiCTYCTB_Mua(pMaYC, pMaCTTB_NCC, pTrangThai, pKetQua, pChiPhi);
+        }
     }
 }

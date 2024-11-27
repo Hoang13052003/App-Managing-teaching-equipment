@@ -314,7 +314,7 @@
             // 
             // Navbar
             // 
-            this.Navbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Navbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.Navbar.Controls.Add(this.guna2HtmlLabel5);
             this.Navbar.Controls.Add(this.guna2ControlBox2);
             this.Navbar.Controls.Add(this.guna2ControlBox1);
