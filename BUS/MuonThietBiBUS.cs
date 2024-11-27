@@ -11,26 +11,39 @@ namespace BUS
 {
     public class MuonThietBiBUS
     {
-        private LoaiThietBiDAL ltb = new LoaiThietBiDAL();
-        private MuonThietBiDAL mtb = new MuonThietBiDAL();
+        private MuonThietBiDAL mtbDAL = new MuonThietBiDAL();
         public List<MuonThietBiDTO> GetAll()
         {
-            return mtb.GetAll();
+            return mtbDAL.GetAll();
+        }
+        public MuonThietBiDTO GetByID(int maMuon)
+        {
+            return mtbDAL.GetByID(maMuon);
+        }
+        public MuonThietBiDTO GetByMaND_MaTKB(string maND, int maTKB)
+        {
+            return mtbDAL.GetByMaND_MaTKB(maND, maTKB);
+        }
+        public bool Insert(MuonThietBiDTO thietBiMuon)
+        {
+            return mtbDAL.Insert(thietBiMuon);
         }
 
-        public ChiTietMuonThietBiDTO GetCTPMByID(int pmaMuon)
+        public bool Update(MuonThietBiDTO thietBiMuon)
         {
-            return mtb.GetCTPMByID(pmaMuon);
+            return mtbDAL.Update(thietBiMuon);
         }
-
-        public DataTable GetMuonThietBiWithDetails()
+        public bool Update_TrangThai(int maMuon, bool thietBiMuon)
         {
-            return mtb.GetMuonThietBiAndDetails();
+            return mtbDAL.Update_TrangThai(maMuon ,thietBiMuon);
         }
-
-        public DataTable GetThietBiDetails(int maCTTB_NCC)
+        public bool Update_TinhTrang(int maMuon, string tinhTrang)
         {
-            return mtb.GetThietBiDetailsByMaCTTB(maCTTB_NCC);
+            return mtbDAL.Update_TinhTrang(maMuon , tinhTrang);
+        }
+        public bool Delete(int maMuon)
+        {
+            return mtbDAL.Delete(maMuon);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+    Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -51,6 +52,7 @@
     <Compile Include="ChiTietNhapDTO.cs" />
     <Compile Include="ChiTietThanhLyDTO.cs" />
     <Compile Include="ChiTietThietBi_NhaCungCapDTO.cs" />
+    <Compile Include="ChiTietThietBi_ThietBiDTO.cs" />
     <Compile Include="ChiTietThietBi_PhongDTO.cs" />
     <Compile Include="ChiTietThietBi_TKBDTO.cs" />
     <Compile Include="ChiTietYeuCauThietBiDTO.cs" />
@@ -58,6 +60,7 @@
     <Compile Include="LopHocDTO.cs" />
     <Compile Include="ManHinhDTO.cs" />
     <Compile Include="MonHocDTO.cs" />
+    <Compile Include="MonHoc_BaiHoc_ChiTietTB_DTO.cs" />
     <Compile Include="MuonThietBiDTO.cs" />
     <Compile Include="NguoiDungDTO.cs" />
     <Compile Include="NguoiDungNhomNguoiDungDTO.cs" />
@@ -72,6 +75,7 @@
     <Compile Include="SupplierDTO.cs" />
     <Compile Include="ThanhLyThietBiDTO.cs" />
     <Compile Include="ThietBiDTO.cs" />
+    <Compile Include="ThoiKhoaBieuChiTietDTO.cs" />
     <Compile Include="ThoiKhoaBieuDTO.cs" />
     <Compile Include="ThongKeSuDungThietBiDTO.cs" />
     <Compile Include="ThongTinCaNhanDTO.cs" />

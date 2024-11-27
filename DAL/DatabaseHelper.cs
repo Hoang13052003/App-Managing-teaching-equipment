@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 public class DatabaseHelper
 {
+
     //private readonly string connectionString = "Data Source=LAPTOP-H0BOFLN9;Initial Catalog=QlyThietBiDayHoc;User ID=sa;Password=123;Encrypt=False";
     private readonly string connectionString = "Data Source=DESKTOP-FGB2G23;Initial Catalog=QlyThietBiDayHoc;Integrated Security=True";
 
@@ -48,7 +49,7 @@ public class DatabaseHelper
         }
     }
 
-    public int GetNonQuery(string SQLQueryString)
+    public int GetNonQuery(string SQLQueryString, SqlParameter[] para)
     {
         int result = 0;
         try
@@ -56,31 +57,6 @@ public class DatabaseHelper
             Open();
             using (SqlCommand cmd = new SqlCommand(SQLQueryString, GetConnection()))
             {
-                result = cmd.ExecuteNonQuery();
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine("Error executing non-query: " + ex.Message);
-            // Có thể xử lý hoặc ném exception tùy thuộc vào yêu cầu cụ thể của bạn.
-        }
-        finally
-        {
-            Close();
-        }
-        return result;
-    }
-    public int GetNonQuery(string SQLProc, SqlParameter[] para)
-    {
-        int result = 0;
-        try
-        {
-            Open();
-            using (SqlCommand cmd = new SqlCommand())
-            {
-                cmd.CommandText = SQLProc;
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Connection = GetConnection();
                 if (para != null)
                 {
                     cmd.Parameters.AddRange(para);
@@ -99,6 +75,35 @@ public class DatabaseHelper
         }
         return result;
     }
+    //public int GetNonQuery(string SQLProc, SqlParameter[] para)
+    //{
+    //    int result = 0;
+    //    try
+    //    {
+    //        Open();
+    //        using (SqlCommand cmd = new SqlCommand())
+    //        {
+    //            cmd.CommandText = SQLProc;
+    //            cmd.CommandType = CommandType.StoredProcedure;
+    //            cmd.Connection = GetConnection();
+    //            if (para != null)
+    //            {
+    //                cmd.Parameters.AddRange(para);
+    //            }
+    //            result = cmd.ExecuteNonQuery();
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        Console.WriteLine("Error executing non-query: " + ex.Message);
+    //        // Có thể xử lý hoặc ném exception tùy thuộc vào yêu cầu cụ thể của bạn.
+    //    }
+    //    finally
+    //    {
+    //        Close();
+    //    }
+    //    return result;
+    //}
 
     public int GetExecuteScalar(string SQLQueryString)
     {
@@ -145,6 +150,40 @@ public class DatabaseHelper
         }
         return dataTable;
     }
+    public DataTable GetDataTableQuery(string query, SqlParameter[] parameters = null)
+    {
+        DataTable dataTable = new DataTable();
+
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                if (parameters != null)
+                {
+                    command.Parameters.AddRange(parameters);
+                }
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                {
+                    try
+                    {
+                        connection.Open();
+                        adapter.Fill(dataTable);
+                    }
+                    catch (Exception ex)
+                    {
+                        // Ghi log hoặc xử lý lỗi ở đây
+                        Console.WriteLine($"Error getting data table: {ex.Message}");
+                        // Trả về một DataTable mặc định
+                        return new DataTable(); // Trả về một DataTable rỗng nếu có lỗi
+                    }
+                }
+            }
+        }
+
+        return dataTable;
+    }
+
     public DataTable GetDataTable(string SQLProc, SqlParameter[] para)
     {
         DataTable dataTable = new DataTable();
