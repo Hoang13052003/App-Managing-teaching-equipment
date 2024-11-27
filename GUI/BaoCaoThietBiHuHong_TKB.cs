@@ -14,22 +14,25 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class BaoCaoThietBiHuHong : Form
+    public partial class BaoCaoThietBiHuHong_TKB : Form
     {
+        int maTKB; //307, 308, 309, 337
         private Dictionary<int, List<string>> deviceImages = new Dictionary<int, List<string>>();
         YeuCauThietBiBUS y = new YeuCauThietBiBUS();
         BienBanXuLyBUS b = new BienBanXuLyBUS();
-        public BaoCaoThietBiHuHong()
+
+        public int MaTKB
+        {
+            get { return maTKB; }
+            set { maTKB = value; }
+        }
+        public BaoCaoThietBiHuHong_TKB()
         {
             InitializeComponent();
             this.btnThemAnh.Click += BtnThemAnh_Click;
             this.Load += BaoCaoThietBiHuHong_Load;
-            this.btnSearch.Click += BtnSearch_Click;
             this.btnThem.Click += BtnThem_Click;
             this.btnXoa.Click += BtnXoa_Click;
-            this.btnLamMoi.Click += BtnLamMoi_Click;
-            this.cboLoaiTB.SelectedIndexChanged += CboLoaiTB_SelectedIndexChanged;
-            this.cboThietBi.SelectedIndexChanged += CboThietBi_SelectedIndexChanged;
             this.btnGui.Click += BtnGui_Click;
             this.btnReset.Click += BtnReset_Click;
             this.dgvThietBi.CellClick += DgvThietBi_CellClick;
@@ -58,7 +61,7 @@ namespace GUI
             {
                 // Kiểm tra điều kiện cho dgvThietBiHong
                 if (dgvThietBiHong.Rows.Count == 0 ||
-                (dgvThietBiHong.Rows.Count == 1 && dgvThietBiHong.Rows[0].Cells["MaCTTB_NCC"].Value == null))
+                (dgvThietBiHong.Rows.Count == 1 && dgvThietBiHong.Rows[0].Cells["MaCTTB"].Value == null))
                 {
                     MessageBox.Show("Danh sách thiết bị hỏng không được để trống.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -103,19 +106,18 @@ namespace GUI
                     Directory.CreateDirectory(commonImageFolder);
                 }
                 int validImageCount = 0;
-                MessageBox.Show($"Thư mục lưu ảnh: {commonImageFolder}");
                 foreach (DataGridViewRow row in dgvThietBiHong.Rows)
                 {
-                    if (row.Cells["MaCTTB_NCC"].Value != null && row.Cells["MaCTTB_NCC"].Value != DBNull.Value)
+                    if (row.Cells["MaCTTB"].Value != null && row.Cells["MaCTTB"].Value != DBNull.Value)
                     {
-                        int maCTTB_NCC = (int)row.Cells["MaCTTB_NCC"].Value;
+                        int maCTTB = (int)row.Cells["MaCTTB"].Value;
                         string moTaChiTiet = row.Cells["MoTaChiTiet"].Value.ToString();
                         string hinhAnh = "";
 
-                        if (deviceImages.ContainsKey(maCTTB_NCC) && deviceImages[maCTTB_NCC].Count > 0)
+                        if (deviceImages.ContainsKey(maCTTB) && deviceImages[maCTTB].Count > 0)
                         {
-                            string originalImagePath = deviceImages[maCTTB_NCC][0];
-                            string imageName = $"img_{maCTTB_NCC}_{DateTime.Now:yyyyMMddHHmmss}.jpg";
+                            string originalImagePath = deviceImages[maCTTB][0];
+                            string imageName = $"img_{maCTTB}_{DateTime.Now:yyyyMMddHHmmss}.jpg";
                             string newImagePath = Path.Combine(commonImageFolder, imageName);
 
                             try
@@ -126,19 +128,19 @@ namespace GUI
                             }
                             catch (Exception ex)
                             {
-                                MessageBox.Show($"Không thể lưu ảnh cho thiết bị {maCTTB_NCC}: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show($"Không thể lưu ảnh cho thiết bị {maCTTB}: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
                         }
                         else
                         {
-                            MessageBox.Show($"Thiết bị {maCTTB_NCC} không có hình ảnh.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show($"Thiết bị {maCTTB} không có hình ảnh.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             return;
                         }
 
                         ChiTietBienBanDTO chiTiet = new ChiTietBienBanDTO
                         {
-                            MaCTTB_NCC = maCTTB_NCC,
+                            MaCTTB_NCC = maCTTB,
                             MoTaChiTiet = moTaChiTiet,
                             HinhAnh = hinhAnh // Lưu đường dẫn tương đối
                         };
@@ -171,8 +173,6 @@ namespace GUI
         }
         void LamMoi()
         {
-            LoadCboLoaiThietBi();
-            LoadThietBi();
             LoadDgvDSChiTietThietBi();
         }
         void Reset()
@@ -186,30 +186,12 @@ namespace GUI
             foreach (Control control in flowLayoutPanelHinhAnh.Controls.OfType<PictureBox>().ToList())
             {
                 flowLayoutPanelHinhAnh.Controls.Remove(control);
-                control.Dispose(); 
+                control.Dispose();
             }
 
             dgvThietBiHong.Rows.Clear();
 
             deviceImages.Clear();
-        }
-
-        private void CboThietBi_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboThietBi.SelectedValue != null && int.TryParse(cboThietBi.SelectedValue.ToString(), out int maThietBi))
-            {
-                SearchDgvDSChiTietThietBi(maThietBi);
-            }
-        }
-
-        private void CboLoaiTB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboLoaiTB.SelectedValue != null && int.TryParse(cboLoaiTB.SelectedValue.ToString(), out int maLoai))
-            {
-                cboThietBi.DataSource = y.SearchThietBi(maLoai);
-                cboThietBi.DisplayMember = "TenTB";
-                cboThietBi.ValueMember = "MaTB";
-            }
         }
 
         private void BtnXoa_Click(object sender, EventArgs e)
@@ -218,9 +200,9 @@ namespace GUI
             {
                 foreach (DataGridViewRow row in dgvThietBiHong.SelectedRows)
                 {
-                    if (row.Cells["MaCTTB_NCC"].Value != null)
+                    if (row.Cells["MaCTTB"].Value != null)
                     {
-                        int selectedDeviceId = (int)row.Cells["MaCTTB_NCC"].Value;
+                        int selectedDeviceId = (int)row.Cells["MaCTTB"].Value;
 
                         // Xóa ảnh khỏi deviceImages nếu tồn tại
                         if (deviceImages.ContainsKey(selectedDeviceId))
@@ -286,13 +268,13 @@ namespace GUI
                         newRow.Cells[i].Value = selectedRow.Cells[i].Value;
                     }
 
-                    newRow.Cells[6].Value = txtMoTa.Text.Trim();
+                    newRow.Cells[8].Value = txtMoTa.Text.Trim();
 
                     bool exists = false;
                     foreach (DataGridViewRow row in dgvThietBiHong.Rows)
                     {
-                        var cellValue1 = row.Cells["MaCTTB_NCC"].Value;
-                        var cellValue2 = selectedRow.Cells["MaCTTB_NCC"].Value;
+                        var cellValue1 = row.Cells["MaCTTB"].Value;
+                        var cellValue2 = selectedRow.Cells["MaCTTB"].Value;
 
                         if (cellValue1 == null || cellValue2 == null)
                             continue;
@@ -317,29 +299,24 @@ namespace GUI
             }
         }
 
-        private void BtnSearch_Click(object sender, EventArgs e)
-        {
-            if (txtSearch.Text == string.Empty) return;
-            dgvThietBi.DataSource = y.SearchKeyChiTietThietBi(txtSearch.Text);
-        }
-
         private void BaoCaoThietBiHuHong_Load(object sender, EventArgs e)
         {
-            LoadCboLoaiThietBi();
-            LoadThietBi();
-            LoadThietBiHong();
             LoadDgvDSChiTietThietBi();
+            LoadThietBiHong();
             LoadCboVaiTro();
+            txtMaTKB.Text = "1"; // maTKB.ToString();
+            txtNgayHoc.Text = y.ngayHoc_TKB(1).ToString(); //maTKB
+            txtGioHoc.Text = y.gioHoc_TKB(1).ToString(); //maTKB
             DateTime now = DateTime.Now;
             txtThoiGian.Text = now.ToString("dd/MM/yyyy HH:mm");
         }
 
         void LoadCboVaiTro()
         {
-            cboVaiTro.Items.Add(new { Text = "Chọn vai trò", Value = 0 }); 
+            cboVaiTro.Items.Add(new { Text = "Chọn vai trò", Value = 0 });
             cboVaiTro.Items.Add(new { Text = "Giáo viên", Value = 1 });
             cboVaiTro.Items.Add(new { Text = "Học sinh", Value = 2 });
-            cboVaiTro.Items.Add(new { Text = "Bộ phận kỹ thuật", Value = 3 }); 
+            cboVaiTro.Items.Add(new { Text = "Bộ phận kỹ thuật", Value = 3 });
             cboVaiTro.Items.Add(new { Text = "Bộ phận quản lý", Value = 4 });
             cboVaiTro.Items.Add(new { Text = "Khách", Value = 4 });
 
@@ -347,29 +324,6 @@ namespace GUI
             cboVaiTro.ValueMember = "Value";
 
             cboVaiTro.SelectedIndex = 0;
-        }
-
-        void LoadCboLoaiThietBi()
-        {
-            cboLoaiTB.DataSource = y.getAllLoaiTB();
-            cboLoaiTB.DisplayMember = "TenLoai";
-            cboLoaiTB.ValueMember = "MaLoai";
-        }
-        void LoadThietBi()
-        {
-            cboThietBi.DataSource = y.getAllThietBi();
-            cboThietBi.DisplayMember = "TenTB";
-            cboThietBi.ValueMember = "MaTB";
-        }
-        void SearchDgvDSChiTietThietBi(int pMaTB)
-        {
-            dgvThietBi.DataSource = y.SearchChiTietThietBi(pMaTB);
-            dgvThietBi.Columns["MaCTTB_NCC"].HeaderText = "Mã chi tiết";
-            dgvThietBi.Columns["TenTB"].HeaderText = "Tên thiết bị";
-            dgvThietBi.Columns["TenPhong"].HeaderText = "Tên phòng";
-            dgvThietBi.Columns["TinhTrang"].HeaderText = "Tình trạng";
-            dgvThietBi.Columns["TrangThai"].HeaderText = "Trạng thái";
-            dgvThietBi.Columns["NgayMua"].Visible = false;
         }
         void BingDingDSChiTietThietBi(int rowIndex)
         {
@@ -380,31 +334,34 @@ namespace GUI
         }
         void LoadDgvDSChiTietThietBi()
         {
-            dgvThietBi.DataSource = y.getAllChiTietThietBi();
-            dgvThietBi.Columns["MaCTTB_NCC"].HeaderText = "Mã chi tiết";
+            dgvThietBi.DataSource = y.getAllChiTietThietBi_TKB(1); //thay 1 thành maTKB khi lấy được mã
+            dgvThietBi.Columns["MaCTTB"].HeaderText = "Mã chi tiết";
             dgvThietBi.Columns["TenTB"].HeaderText = "Tên thiết bị";
             dgvThietBi.Columns["TenPhong"].HeaderText = "Tên phòng";
             dgvThietBi.Columns["TinhTrang"].HeaderText = "Tình trạng";
             dgvThietBi.Columns["TrangThai"].HeaderText = "Trạng thái";
-            dgvThietBi.Columns["NgayMua"].Visible = false;
+            dgvThietBi.Columns["MaMuon"].HeaderText = "Mã mượn";
+            dgvThietBi.Columns["NgayHoc"].HeaderText = "Ngày mượn";
+            dgvThietBi.Columns["GioHoc"].HeaderText = "Giờ mượn";
         }
 
         void LoadThietBiHong()
         {
-            dgvThietBiHong.Columns.Add("MaCTTB_NCC", "Mã chi tiết");
+            dgvThietBiHong.Columns.Add("MaCTTB", "Mã chi tiết");
             dgvThietBiHong.Columns.Add("TenTB", "Tên thiết bị");
             dgvThietBiHong.Columns.Add("TenPhong", "Tên phòng");
             dgvThietBiHong.Columns.Add("TinhTrang", "Tình trạng");
             dgvThietBiHong.Columns.Add("TrangThai", "Trạng thái");
-            dgvThietBiHong.Columns.Add("NgayMua", "Ngày mua");
+            dgvThietBiHong.Columns.Add("MaMuon", "Mã mượn");
+            dgvThietBiHong.Columns.Add("NgayHoc", "Ngày học");
+            dgvThietBiHong.Columns.Add("GioHoc", "Giờ học");
             dgvThietBiHong.Columns.Add("MoTaChiTiet", "Mô tả chi tiết");
-            dgvThietBiHong.Columns["NgayMua"].Visible = false;
         }
 
         private void BtnThemAnh_Click(object sender, EventArgs e)
         {
             // Kiểm tra nếu không có dòng nào được chọn
-            if (dgvThietBiHong.SelectedRows.Count == 0 || dgvThietBiHong.SelectedRows[0].Cells["MaCTTB_NCC"].Value == null)
+            if (dgvThietBiHong.SelectedRows.Count == 0 || dgvThietBiHong.SelectedRows[0].Cells["MaCTTB"].Value == null)
             {
                 MessageBox.Show("Vui lòng chọn một thiết bị trong danh sách 'Thiết bị hư hỏng' trước khi thêm hình ảnh!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -416,7 +373,7 @@ namespace GUI
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string selectedFilePath = openFileDialog.FileName;
-                int selectedDeviceId = (int)dgvThietBiHong.SelectedRows[0].Cells["MaCTTB_NCC"].Value;
+                int selectedDeviceId = (int)dgvThietBiHong.SelectedRows[0].Cells["MaCTTB"].Value;
 
                 // Kiểm tra nếu thiết bị đã có ảnh
                 if (deviceImages.ContainsKey(selectedDeviceId) && deviceImages[selectedDeviceId].Count > 0)

@@ -170,5 +170,56 @@ namespace DAL
             return listThietBi;
         }
 
+        public List<ThietBiDTO> SearchThietBi_NCC(int pMaNCC)
+        {
+            List<ThietBiDTO> listThietBi = new List<ThietBiDTO>();
+            string query = @"SELECT DISTINCT TB.MaTB, TB.TenTB
+                            FROM NhaCungCap NCC
+                            JOIN ChiTietThietBi_NhaCungCap CTTB_NCC ON NCC.MaNCC = CTTB_NCC.MaNCC
+                            JOIN ChiTietThietBi CTTB ON CTTB.MaCTTB = CTTB_NCC.MaCTTB
+                            JOIN ThietBi TB ON CTTB.MaTB = TB.MaTB
+                            WHERE NCC.MaNCC = @MaNCC";
+
+            using (SqlConnection connection = GetConnection())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@MaNCC", pMaNCC);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    ThietBiDTO thietBi = new ThietBiDTO
+                    {
+                        MaTB = reader.GetInt32(reader.GetOrdinal("MaTB")),
+                        TenTB = reader.GetString(reader.GetOrdinal("TenTB"))
+                    };
+                    listThietBi.Add(thietBi);
+                }
+            }
+            return listThietBi;
+        }
+
+        public string tenNCC(int pMaNCC)
+        {
+            string tenNCC = "";
+
+            string query = @"SELECT TenNCC
+                     FROM NhaCungCap
+                     WHERE MaNCC = " + pMaNCC;
+
+            DataTable dataTable = GetDataTable(query);
+
+            if (dataTable.Rows.Count > 0)
+            {
+                DataRow row = dataTable.Rows[0];
+                if (row["TenNCC"] != DBNull.Value)
+                {
+                    tenNCC = (row["TenNCC"]).ToString();
+                }
+            }
+            return tenNCC;
+        }
     }
 }

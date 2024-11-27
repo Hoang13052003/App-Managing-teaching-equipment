@@ -184,9 +184,9 @@ namespace GUI
         {
             if (cboNCC.SelectedValue != null && int.TryParse(cboNCC.SelectedValue.ToString(), out int maNCC))
             {
-                cboNCC.DataSource = y.SearchThietBi(maNCC);
-                cboNCC.DisplayMember = "TenNCC";
-                cboNCC.ValueMember = "MaNCC";
+                cboLoaiTB.DataSource = sup.SearchLoaiTB(maNCC);
+                cboLoaiTB.DisplayMember = "TenLoai";
+                cboLoaiTB.ValueMember = "MaLoai";
             }
         }
 

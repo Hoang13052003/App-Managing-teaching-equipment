@@ -143,10 +143,6 @@ namespace GUI
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Dashboard_User());
 
-            //Application.Run(new FormMuonThietBi());
-
-            //Application.Run(new XuLyThietBiHuHong());
-
         }
     }
 }

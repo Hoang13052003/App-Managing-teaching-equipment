@@ -3,155 +3,98 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 using BUS;
-using DTO;
 
 namespace GUI
 {
-    public partial class BaoDuong : Form
+    public partial class NhapThietBi : Form
     {
+        NhapThietBiBUS n = new NhapThietBiBUS();
         YeuCauThietBiBUS y = new YeuCauThietBiBUS();
-        BaoDuongBUS b = new BaoDuongBUS(); 
-        public BaoDuong()
+        public NhapThietBi()
         {
             InitializeComponent();
-            this.Load += BaoDuong_Load;
-            this.dgvYeuCau.CellClick += DgvYeuCau_CellClick;
-            this.dgvBD.CellClick += DgvBD_CellClick;
+            this.Load += NhapThietBi_Load;
+            this.dgvNhap.CellClick += DgvNhap_CellClick;
             this.btnLamMoi.Click += BtnLamMoi_Click;
-            this.btnSua.Click += BtnSua_Click;
-            this.btnXoa.Click += BtnXoa_Click;
+            this.dgvYeuCau.CellClick += DgvYeuCau_CellClick;
         }
 
-        private void BtnXoa_Click(object sender, EventArgs e)
+        private void DgvYeuCau_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DialogResult result = MessageBox.Show(
-                "Xác nhận xóa thông tin bảo dưỡng đang chọn?'",
-                "Thông báo",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
-
-            if (result == DialogResult.Yes)
-            {
-                if (b.Delete(Convert.ToInt32(txtMaBD.Text)))
-                {
-                    MessageBox.Show("Đã xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LamMoi();
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy dữ liệu xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-        }
-
-        private void BtnSua_Click(object sender, EventArgs e)
-        {
-            if(dgvBD.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = dgvBD.SelectedRows[0];
-                BaoDuongDTO baoDuong = new BaoDuongDTO();
-                baoDuong.MaBD = Convert.ToInt32(selectedRow.Cells["MaBD"].Value);
-                baoDuong.MaCTTB_NCC = Convert.ToInt32(selectedRow.Cells["MaCTTB_NCC"].Value);
-                baoDuong.NgayBD = Convert.ToDateTime(ngayBD.Value);
-                baoDuong.KetQua = txtKetQua.Text;
-                baoDuong.ChiPhi = Convert.ToSingle(txtChiPhi.Text);
-
-                if (b.Update(baoDuong))
-                {
-                    MessageBox.Show("Thông tin bảo dưỡng đã được thay đổi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LamMoi();
-                }
-                else
-                {
-                    MessageBox.Show("Có lỗi xảy ra, vui lòng thử lại sau!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn thông tin bảo dưỡng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+            if (e.RowIndex >= 0) 
+            { 
+                BingDingYeuCaus(e.RowIndex);
+                SearchChiTietYCTB_Mua(Convert.ToInt32(dgvYeuCau.Rows[e.RowIndex].Cells[0].Value));
             }
         }
 
         private void BtnLamMoi_Click(object sender, EventArgs e)
         {
-            LamMoi();
-        }
-        void LamMoi()
-        {
-            LoadBaoDuong();
-            LoadYeuCau();
-            LoadChiTietYC();
-            txtMaBD.Text = string.Empty;
-            txtTenTB.Text = string.Empty;
-            txtKetQua.Text = string.Empty;
-            txtChiPhi.Text = string.Empty;
-            txtMaYC.Text = string.Empty;
-            txtNguoiYeuCau.Text = string.Empty;
-            ngayBD.Value = DateTime.Now;
-            ngayYeuCau.Value = DateTime.Now;
-            txtKetQuaSua.Text = string.Empty;
-            txtChiPhiSua.Text = string.Empty;
+            lamMoi();
         }
 
-        private void DgvBD_CellClick(object sender, DataGridViewCellEventArgs e)
+        void lamMoi()
+        {
+            txtMaNhap.ResetText();
+            txtTongTien.ResetText();
+            txtSoLuong.Value = 0;
+            txtTongTien.ResetText();
+        }
+
+        private void DgvNhap_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                BingDingBaoDuongs(e.RowIndex);
+                BingDings(e.RowIndex);
+                int maNhap = Convert.ToInt32(dgvNhap.Rows[e.RowIndex].Cells[0].Value.ToString());
+                LoadCTNhapTB(maNhap);
             }
         }
-
-        private void DgvYeuCau_CellClick(object sender, DataGridViewCellEventArgs e)
+        void BingDings(int rowIndex)
         {
-            if(e.RowIndex >= 0)
-            {
-                BingDingYeuCaus(e.RowIndex);
-
-                SearchChiTietYCTB(Convert.ToInt32(dgvYeuCau.Rows[e.RowIndex].Cells[0].Value));
-            }
+            DataGridViewRow row = dgvNhap.Rows[rowIndex];
+            txtMaNhap.Text = row.Cells[0].Value.ToString();
+            txtNguoiLap.Text= row.Cells[2].Value.ToString();
+            ngayNhap.Value = Convert.ToDateTime(row.Cells[3].Value);
+            txtSoLuong.Text = row.Cells[4].Value.ToString();
+            txtTongTien.Text = row.Cells[5].Value.ToString();
+            guna2TextBox1.Text = row.Cells[7].Value.ToString();
         }
-
-        private void BaoDuong_Load(object sender, EventArgs e)
+        private void NhapThietBi_Load(object sender, EventArgs e)
         {
-            LoadChiTietYC();
-            LoadBaoDuong();
+            LoadNhapTB();
             LoadYeuCau();
-        }
-        void LoadBaoDuong()
-        {
-            dgvBD.DataSource = b.GetAll();
-            dgvBD.Columns["MaBD"].HeaderText = "Mã bảo dưỡng";
-            dgvBD.Columns["TenTB"].HeaderText = "Tên thiết bị";
-            dgvBD.Columns["TenPhong"].HeaderText = "Tên phòng";
-            dgvBD.Columns["NgayBD"].HeaderText = "Ngày bảo dưỡng";
-            dgvBD.Columns["KetQua"].HeaderText = "Kết quả";
-            dgvBD.Columns["ChiPhi"].HeaderText = "Chi phí";
-            dgvBD.Columns["MaCTTB_NCC"].Visible = false;
+            LoadChiTietYC();
         }
 
-        void BingDingBaoDuongs(int rowIndex)
+        void LoadNhapTB()
         {
-            DataGridViewRow row = dgvBD.Rows[rowIndex];
-            txtMaBD.Text = row.Cells[0].Value.ToString();
-            txtTenTB.Text = row.Cells[2].Value.ToString();
-            txtPhong.Text = row.Cells[3].Value.ToString();
-            ngayBD.Value = Convert.ToDateTime(row.Cells[4].Value);
-            txtKetQua.Text = row.Cells[5].Value.ToString();
-            txtChiPhi.Text = row.Cells[6].Value.ToString();
+            dgvNhap.DataSource = n.GetAll();
+            dgvNhap.Columns["MaNhap"].HeaderText = "Mã nhập";
+            dgvNhap.Columns["HoTen"].HeaderText = "Người lập";
+            dgvNhap.Columns["NgayNhap"].HeaderText = "Ngày lập";
+            dgvNhap.Columns["SoLuong"].HeaderText = "Số lượng";
+            dgvNhap.Columns["TongTien"].HeaderText = "Tổng tiền";
+            dgvNhap.Columns["TenNCC"].HeaderText = "Nhà cung cấp";
+            dgvNhap.Columns["MaNguoiDung"].Visible = false;
+            dgvNhap.Columns["MaNCC"].Visible = false;
         }
-
-        void LoadYeuCau() 
+        void LoadCTNhapTB(int maNhap)
+        {
+            dgvChiTietNhap.DataSource = n.GetAll(maNhap);
+            dgvChiTietNhap.Columns["MaNhap"].HeaderText = "Mã nhập";
+            dgvChiTietNhap.Columns["TenTB"].HeaderText = "Tên thiết bị";
+            dgvChiTietNhap.Columns["GiaNhap"].HeaderText = "Giá nhập";
+            dgvChiTietNhap.Columns["SoLuong"].HeaderText = "Số lượng";
+            dgvChiTietNhap.Columns["ThanhTien"].HeaderText = "Thành tiền";
+            dgvChiTietNhap.Columns["MaTB"].Visible = false;
+        }
+        void LoadYeuCau()
         {
             dgvYeuCau.DataSource = y.getAllYeuCauThietBi();
             dgvYeuCau.Columns["MaYC"].HeaderText = "Mã yêu cầu";
@@ -167,10 +110,9 @@ namespace GUI
             txtNguoiYeuCau.Text = row.Cells[2].Value.ToString();
             ngayYeuCau.Value = Convert.ToDateTime(row.Cells[3].Value);
         }
-
-        void SearchChiTietYCTB(int pMaYC)
+        void SearchChiTietYCTB_Mua(int pMaYC)
         {
-            dgvChiTietYC.DataSource = y.searchChiTietYeuCauSuaThietBi(pMaYC);
+            dgvChiTietYC.DataSource = y.searchChiTietYeuCauMuaThietBi(pMaYC);
             dgvChiTietYC.Columns["MaYC"].HeaderText = "Mã yêu cầu";
             dgvChiTietYC.Columns["TenTB"].HeaderText = "Tên thiết bị";
             dgvChiTietYC.Columns["TenPhong"].HeaderText = "Phòng";
@@ -183,7 +125,7 @@ namespace GUI
         private bool isEventRegistered = false;
         void LoadChiTietYC()
         {
-            dgvChiTietYC.DataSource = y.getAllChiTietYeuCauSuaThietBi();
+            dgvChiTietYC.DataSource = y.getAllChiTietYeuCauMuaThietBi();
 
             dgvChiTietYC.Columns["MaYC"].HeaderText = "Mã yêu cầu";
             dgvChiTietYC.Columns["TenTB"].HeaderText = "Tên thiết bị";
@@ -254,7 +196,7 @@ namespace GUI
                 {
                     if (txtChiPhiSua.Text == string.Empty || txtKetQuaSua.Text == string.Empty)
                     {
-                        MessageBox.Show("Cần cho biết kết quả và chi phí sửa chữa trước khi xác nhận!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Cần cho biết kết quả và chi phí mua dự định trước khi xác nhận!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     int maYC = Convert.ToInt32(dgvChiTietYC.Rows[e.RowIndex].Cells["MaYC"].Value);
@@ -266,7 +208,7 @@ namespace GUI
                     if (success)
                     {
                         MessageBox.Show("Đã hoàn thành cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LamMoi();
+                        lamMoi();
                     }
                     else
                     {
@@ -276,15 +218,15 @@ namespace GUI
                 }
                 else if (btn2Bounds.Contains(clickLocation)) // Nút "Từ chối"
                 {
-                    int maYC = Convert.ToInt32(dgvChiTietYC.Rows[e.RowIndex].Cells["MaYC"].Value); 
+                    int maYC = Convert.ToInt32(dgvChiTietYC.Rows[e.RowIndex].Cells["MaYC"].Value);
                     int maCTTB_NCC = Convert.ToInt32(dgvChiTietYC.Rows[e.RowIndex].Cells["MaCTTB_NCC"].Value);
 
-                    bool success = y.UpdataTrangThaiCTYCTB(maYC, maCTTB_NCC, 2, "", 0);
+                    bool success = y.UpdataTrangThaiCTYCTB_Mua(maYC, maCTTB_NCC, 2, "", 0);
 
                     if (success)
                     {
                         MessageBox.Show("Đã hoàn thành cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LamMoi();
+                        lamMoi();
                     }
                     else
                     {
@@ -304,7 +246,7 @@ namespace GUI
                 var btn1Bounds = new Rectangle(e.CellBounds.Left + 5, e.CellBounds.Top + 5, e.CellBounds.Width / 2 - 10, e.CellBounds.Height - 10);
                 var btn2Bounds = new Rectangle(e.CellBounds.Left + e.CellBounds.Width / 2 + 5, e.CellBounds.Top + 5, e.CellBounds.Width / 2 - 10, e.CellBounds.Height - 10);
 
-                Color completeButtonColor = Color.Green;  
+                Color completeButtonColor = Color.Green;
                 Color rejectButtonColor = Color.Red;
 
                 using (Brush brush = new SolidBrush(completeButtonColor))
@@ -321,6 +263,17 @@ namespace GUI
 
                 e.Handled = true;
             }
+        }
+
+        private void btnNhapThemTB_Click(object sender, EventArgs e)
+        {
+            ChonNhaCungCap_NhapHang frm = new ChonNhaCungCap_NhapHang();
+            frm.ShowDialog();
+        }
+
+        private void btnLamMoi_Click_1(object sender, EventArgs e)
+        {
+            lamMoi();
         }
     }
 }

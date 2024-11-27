@@ -10,9 +10,12 @@ namespace DTO
     {
         public int MaNhap { get; set; }
         public string MaNguoiDung { get; set; }
+        public string HoTen { get; set; }
         public DateTime? NgayNhap { get; set; }
         public int SoLuong { get; set; }
         public float TongTien { get; set; }
+        public int MaNCC { get; set; }
+        public string TenNCC { get; set; }
     }
 
 }
