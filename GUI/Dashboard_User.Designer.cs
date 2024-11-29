@@ -382,6 +382,6 @@
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
         private Guna.UI2.WinForms.Guna2Button btnYeuCauSuaThietBi;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
-        private System.Windows.Forms.Label lb_NameForm;
+        public System.Windows.Forms.Label lb_NameForm;
     }
 }

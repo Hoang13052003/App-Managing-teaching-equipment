@@ -36,6 +36,7 @@ namespace GUI
         private static Panel pannel_change;
 
         public static Panel Pannel_change { get => pannel_change; set => pannel_change = value; }
+        public static Label LbNameForm { get; set; }
 
         public static void OpenForm<T>(Form currentForm) where T : Form, new()
         {
@@ -145,7 +146,7 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dashboard_Admin());
+            Application.Run(new Login());
 
         }
     }

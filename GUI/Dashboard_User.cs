@@ -15,6 +15,7 @@ namespace GUI
         public Dashboard_User()
         {
             InitializeComponent();
+            FormTask.LbNameForm = lb_NameForm;
             FormTask.Pannel_change = Panel_Change_Form;
             FormTask.OpenFormInPanel<Home_User>(Panel_Change_Form);
         }

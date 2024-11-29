@@ -15,7 +15,11 @@ namespace BUS
         {
             return b.GetAll();
         }
-        public bool Delete(int maBD)
+        public BaoDuongDTO GetByID(int maBD, string maND)
+        { 
+         return b.GetByID(maBD, maND);
+        }
+            public bool Delete(int maBD)
         {
             return b.Delete(maBD);
         }

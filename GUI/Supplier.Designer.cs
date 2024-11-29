@@ -61,9 +61,9 @@
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.guna2GroupBox3 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLoaiThietBi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNCC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvThietBi)).BeginInit();
@@ -72,9 +72,9 @@
             this.guna2GroupBox2.SuspendLayout();
             this.guna2GroupBox3.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
-            this.guna2Panel2.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
+            this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLamMoi
@@ -275,6 +275,8 @@
             // 
             // dgvLoaiThietBi
             // 
+            this.dgvLoaiThietBi.AllowUserToAddRows = false;
+            this.dgvLoaiThietBi.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvLoaiThietBi.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvLoaiThietBi.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
@@ -301,6 +303,7 @@
             this.dgvLoaiThietBi.Location = new System.Drawing.Point(1, 41);
             this.dgvLoaiThietBi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvLoaiThietBi.Name = "dgvLoaiThietBi";
+            this.dgvLoaiThietBi.ReadOnly = true;
             this.dgvLoaiThietBi.RowHeadersVisible = false;
             this.dgvLoaiThietBi.Size = new System.Drawing.Size(682, 273);
             this.dgvLoaiThietBi.TabIndex = 2;
@@ -317,7 +320,7 @@
             this.dgvLoaiThietBi.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvLoaiThietBi.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvLoaiThietBi.ThemeStyle.HeaderStyle.Height = 40;
-            this.dgvLoaiThietBi.ThemeStyle.ReadOnly = false;
+            this.dgvLoaiThietBi.ThemeStyle.ReadOnly = true;
             this.dgvLoaiThietBi.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvLoaiThietBi.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvLoaiThietBi.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -368,7 +371,7 @@
             this.btnSearch.ImageRotate = 0F;
             this.btnSearch.ImageSize = new System.Drawing.Size(24, 24);
             this.btnSearch.Location = new System.Drawing.Point(1240, 6);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(5);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.PressedState.ImageSize = new System.Drawing.Size(24, 24);
             this.btnSearch.Size = new System.Drawing.Size(31, 39);
@@ -376,6 +379,8 @@
             // 
             // dgvNCC
             // 
+            this.dgvNCC.AllowUserToAddRows = false;
+            this.dgvNCC.AllowUserToDeleteRows = false;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
             this.dgvNCC.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvNCC.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
@@ -402,6 +407,7 @@
             this.dgvNCC.Location = new System.Drawing.Point(1, 41);
             this.dgvNCC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvNCC.Name = "dgvNCC";
+            this.dgvNCC.ReadOnly = true;
             this.dgvNCC.RowHeadersVisible = false;
             this.dgvNCC.Size = new System.Drawing.Size(753, 554);
             this.dgvNCC.TabIndex = 2;
@@ -418,7 +424,7 @@
             this.dgvNCC.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvNCC.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvNCC.ThemeStyle.HeaderStyle.Height = 40;
-            this.dgvNCC.ThemeStyle.ReadOnly = false;
+            this.dgvNCC.ThemeStyle.ReadOnly = true;
             this.dgvNCC.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvNCC.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvNCC.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -433,6 +439,8 @@
             // 
             // dgvThietBi
             // 
+            this.dgvThietBi.AllowUserToAddRows = false;
+            this.dgvThietBi.AllowUserToDeleteRows = false;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
             this.dgvThietBi.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvThietBi.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
@@ -459,6 +467,7 @@
             this.dgvThietBi.Location = new System.Drawing.Point(1, 41);
             this.dgvThietBi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvThietBi.Name = "dgvThietBi";
+            this.dgvThietBi.ReadOnly = true;
             this.dgvThietBi.RowHeadersVisible = false;
             this.dgvThietBi.Size = new System.Drawing.Size(682, 234);
             this.dgvThietBi.TabIndex = 2;
@@ -475,7 +484,7 @@
             this.dgvThietBi.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvThietBi.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvThietBi.ThemeStyle.HeaderStyle.Height = 40;
-            this.dgvThietBi.ThemeStyle.ReadOnly = false;
+            this.dgvThietBi.ThemeStyle.ReadOnly = true;
             this.dgvThietBi.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvThietBi.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvThietBi.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -569,16 +578,6 @@
             this.guna2Panel1.Size = new System.Drawing.Size(1444, 601);
             this.guna2Panel1.TabIndex = 20;
             // 
-            // guna2Panel2
-            // 
-            this.guna2Panel2.Controls.Add(this.guna2GroupBox1);
-            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 5);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.guna2Panel2.Size = new System.Drawing.Size(760, 596);
-            this.guna2Panel2.TabIndex = 20;
-            // 
             // guna2Panel3
             // 
             this.guna2Panel3.Controls.Add(this.guna2Panel4);
@@ -599,6 +598,16 @@
             this.guna2Panel4.Size = new System.Drawing.Size(684, 281);
             this.guna2Panel4.TabIndex = 20;
             // 
+            // guna2Panel2
+            // 
+            this.guna2Panel2.Controls.Add(this.guna2GroupBox1);
+            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 5);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.guna2Panel2.Size = new System.Drawing.Size(760, 596);
+            this.guna2Panel2.TabIndex = 20;
+            // 
             // Supplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -608,7 +617,7 @@
             this.Controls.Add(this.gbx_ThongTin);
             this.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Supplier";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý nhà cung cấp";
@@ -621,9 +630,9 @@
             this.guna2GroupBox2.ResumeLayout(false);
             this.guna2GroupBox3.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel4.ResumeLayout(false);
+            this.guna2Panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

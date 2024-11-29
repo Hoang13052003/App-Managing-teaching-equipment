@@ -294,9 +294,9 @@
             this.guna2HtmlLabel2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.guna2HtmlLabel2.Location = new System.Drawing.Point(252, 68);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(213, 23);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(203, 23);
             this.guna2HtmlLabel2.TabIndex = 4;
-            this.guna2HtmlLabel2.Text = "Mã giảng viên: GV0001";
+            this.guna2HtmlLabel2.Text = "Mã giáo viên: GV0001";
             // 
             // lb_Xem_Ho_So_Chi_Tiet
             // 
@@ -319,9 +319,9 @@
             this.guna2HtmlLabel1.Location = new System.Drawing.Point(15, 15);
             this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(5, 5, 3, 3);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(223, 27);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(212, 27);
             this.guna2HtmlLabel1.TabIndex = 0;
-            this.guna2HtmlLabel1.Text = "Thông tin giảng viên";
+            this.guna2HtmlLabel1.Text = "Thông tin giáo viên";
             // 
             // guna2CirclePictureBox1
             // 

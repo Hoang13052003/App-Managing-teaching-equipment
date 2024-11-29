@@ -731,7 +731,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.Name = "formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi";
-            this.Text = "formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi";
+            this.Text = "Yêu cầu mượn trả thiết bị";
             this.Load += new System.EventHandler(this.formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi_Load);
             this.gbx_ThongTin.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSTB)).EndInit();

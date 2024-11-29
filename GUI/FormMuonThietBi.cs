@@ -3,10 +3,13 @@ using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -226,15 +229,7 @@ namespace GUI
                     {
                         if (MessageBox.Show("Vui lòng nhập lý do trả muộn và chọn thiết bị thiếu trước khi cập nhật!", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-
-                            lb_GhiChu.Visible = true;
-                            txt_GhiChu.Visible = true;
-                            gbx_ThaoTac.Height = 253;
-
-                            dgv_DSChiTietThietBi.ReadOnly = false;
-                            dgv_DSChiTietThietBi.AllowUserToAddRows = false; // Không cho phép thêm hàng
-                            dgv_DSChiTietThietBi.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Chọn cả dòng
-                            loadData_DGV_DS_ChiTietThietBi_TrangThai(_list_ChiTiet_MuonTB);
+                            
 
                             if (!string.IsNullOrEmpty(txt_GhiChu.Text))
                             {
@@ -296,6 +291,8 @@ namespace GUI
             if (MessageBox.Show("Bạn có chắc muốn duyệt phiếu mượn này không?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 mtbBUS.Update_TrangThai(_MuonThietBi_Click_Row.MaMuon,true);
+
+                SendCodeEmail(new ThongTinCaNhanBUS().GetByMaNguoiDung(_MuonThietBi_Click_Row.MaNguoiDung).Email, _MuonThietBi_Click_Row);
                 FormMuonThietBi_Load(sender, e);
             }
         }
@@ -389,10 +386,9 @@ namespace GUI
                     btnCapNhat.Enabled = false;
                     btnDuyet.Visible = false;
                     btnDuyet.Enabled = false;
-                    
-                    lb_GhiChu.Visible = true;
-                    txt_GhiChu.Visible = true;
-                    gbx_ThaoTac.Height = 253;
+                    //lb_GhiChu.Visible = true;
+                    //txt_GhiChu.Visible = true;
+                    //gbx_ThaoTac.Height = 253;
                 }
                 btnExcel.Enabled = true;
             }
@@ -400,6 +396,25 @@ namespace GUI
 
         private void cbbTinhTrang_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(string.Equals(cbbTinhTrang.SelectedItem.ToString(), "Trả thiếu"))
+            {
+                lb_GhiChu.Visible = true;
+                txt_GhiChu.Visible = true;
+                gbx_ThaoTac.Height = 253;
+
+                dgv_DSChiTietThietBi.ReadOnly = false;
+                dgv_DSChiTietThietBi.AllowUserToAddRows = false; // Không cho phép thêm hàng
+                dgv_DSChiTietThietBi.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Chọn cả dòng
+                loadData_DGV_DS_ChiTietThietBi_TrangThai(_list_ChiTiet_MuonTB);
+            }
+            else
+            {
+                lb_GhiChu.Visible = false;
+                txt_GhiChu.Visible = false;
+                gbx_ThaoTac.Height = 94;
+                dgv_DSChiTietThietBi.DataSource = null;
+                loadData_DGV_DS_ChiTietThietBi(_list_ChiTiet_MuonTB);
+            }
             btnCapNhat.Enabled = true;
         }
 
@@ -438,6 +453,101 @@ namespace GUI
             {
                 // Commit thay đổi ngay lập tức khi checkbox được thay đổi
                 dgv_DSChiTietThietBi.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+        private void SendCodeEmail(string toEmail, MuonThietBiDTO item)
+        {
+            try
+            {
+                // Lấy thông tin cấu hình từ App.configs
+                string fromEmail = ConfigurationManager.AppSettings["EmailSender"];
+                string emailPassword = ConfigurationManager.AppSettings["EmailPassword"];
+                string smtpHost = ConfigurationManager.AppSettings["SmtpServer"];
+                int smtpPort = int.Parse(ConfigurationManager.AppSettings["SmtpPort"]);
+
+                if (string.IsNullOrEmpty(fromEmail) || string.IsNullOrEmpty(emailPassword) || string.IsNullOrEmpty(smtpHost))
+                {
+                    MessageBox.Show("Thông tin cấu hình email không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                using (var message = new MailMessage())
+                {
+                    message.To.Add(toEmail);
+                    message.Subject = "Yêu cầu sửa chữa thiết bị của bạn đã được thực hiện:";
+                    message.Body = $@"
+                                        <html>
+                                        <head>
+                                            <style>
+                                                body {{
+                                                    font-family: Arial, sans-serif;
+                                                    line-height: 1.6;
+                                                    color: #333;
+                                                    margin: 0;
+                                                    padding: 0;
+                                                }}
+                                                .email-container {{
+                                                    max-width: 600px;
+                                                    margin: 20px auto;
+                                                    padding: 20px;
+                                                    border: 1px solid #ddd;
+                                                    border-radius: 8px;
+                                                    background-color: #f9f9f9;
+                                                }}
+                                                .email-header {{
+                                                    font-size: 18px;
+                                                    font-weight: bold;
+                                                    margin-bottom: 20px;
+                                                    color: #0066cc;
+                                                }}
+                                                .email-content {{
+                                                    margin-bottom: 20px;
+                                                }}
+                                                .email-footer {{
+                                                    margin-top: 20px;
+                                                    font-size: 14px;
+                                                    color: #555;
+                                                    border-top: 1px solid #ddd;
+                                                    padding-top: 10px;
+                                                }}
+                                                .highlight {{
+                                                    font-weight: bold;
+                                                    color: #d9534f;
+                                                }}
+                                            </style>
+                                        </head>
+                                        <body>
+                                            <div class='email-container'>
+                                                <div class='email-header'>
+                                                    Yêu cầu mượn thiết bị của bạn đã được duyệt
+                                                </div>
+                                                <div class='email-content'>
+                                                    <p>Mã Mượn: <span class='highlight'>{item.MaMuon}</span> của: <span class='highlight'>{item.MaTKB}</span> đã được duyệt.</p>
+                                                    <p><b>Danh sách thiết bị:</b></p>
+                                                </div>
+                                                <div class='email-footer'>
+                                                    <p>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.</p>
+                                                </div>
+                                            </div>
+                                        </body>
+                                        </html>
+                                    ";
+                    message.From = new MailAddress(fromEmail);
+                    message.IsBodyHtml = true;
+
+
+                    using (var smtp = new SmtpClient(smtpHost, smtpPort))
+                    {
+                        smtp.Credentials = new NetworkCredential(fromEmail, emailPassword);
+                        smtp.EnableSsl = true;
+                        smtp.Send(message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi gửi email: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

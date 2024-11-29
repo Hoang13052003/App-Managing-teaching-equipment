@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
+using DTO;
 
 namespace GUI
 {
@@ -203,7 +204,8 @@ namespace GUI
                     int maCTTB_NCC = Convert.ToInt32(dgvChiTietYC.Rows[e.RowIndex].Cells["MaCTTB_NCC"].Value);
                     float chiPhi = Convert.ToSingle(txtChiPhiSua.Text);
 
-                    bool success = y.UpdataTrangThaiCTYCTB(maYC, maCTTB_NCC, 1, txtKetQuaSua.Text, chiPhi);
+                    YeuCauThietBiDTO yctb = y.getAllYeuCauThietBi().FirstOrDefault(item => item.MaYC == maYC);
+                    bool success = y.UpdataTrangThaiCTYCTB(maYC, maCTTB_NCC, yctb.MaNguoiDung, 1, txtKetQuaSua.Text, chiPhi);
 
                     if (success)
                     {

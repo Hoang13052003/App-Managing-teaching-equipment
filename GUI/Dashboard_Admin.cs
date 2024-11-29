@@ -12,11 +12,15 @@ namespace GUI
 {
     public partial class Dashboard_Admin : Form
     {
+        
         public Dashboard_Admin()
         {
             InitializeComponent();
         }
-
+        //public static void UpdateFormName(string formName)
+        //{
+        //    lb_NameForm.Text = formName;
+        //}
         private void guna2Button1_Click(object sender, EventArgs e)
         {
 
@@ -105,6 +109,11 @@ namespace GUI
             lb_NameForm.Text = x.Text;
         }
 
-       
+        private void btnThoiKhoaBieu_Click(object sender, EventArgs e)
+        {
+            FormTask.OpenFormInPanel<ThoiKhoaBieu>(Panel_Change_Form);
+            Form x = new ThoiKhoaBieu();
+            lb_NameForm.Text = x.Text;
+        }
     }
 }

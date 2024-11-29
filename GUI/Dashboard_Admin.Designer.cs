@@ -35,7 +35,7 @@
             this.btnBaoDuongThietBi = new Guna.UI2.WinForms.Guna2Button();
             this.btnMuonTraThietBi = new Guna.UI2.WinForms.Guna2Button();
             this.btnQuanLyThietBiHuHong = new Guna.UI2.WinForms.Guna2Button();
-            this.btnLoaiThietBi = new Guna.UI2.WinForms.Guna2Button();
+            this.btnThoiKhoaBieu = new Guna.UI2.WinForms.Guna2Button();
             this.btnQuanLyNhaCungCap = new Guna.UI2.WinForms.Guna2Button();
             this.btnHelp = new Guna.UI2.WinForms.Guna2Button();
             this.btnAccount = new Guna.UI2.WinForms.Guna2Button();
@@ -69,7 +69,7 @@
             this.Sidebar.Controls.Add(this.btnBaoDuongThietBi);
             this.Sidebar.Controls.Add(this.btnMuonTraThietBi);
             this.Sidebar.Controls.Add(this.btnQuanLyThietBiHuHong);
-            this.Sidebar.Controls.Add(this.btnLoaiThietBi);
+            this.Sidebar.Controls.Add(this.btnThoiKhoaBieu);
             this.Sidebar.Controls.Add(this.btnQuanLyNhaCungCap);
             this.Sidebar.Controls.Add(this.btnHelp);
             this.Sidebar.Controls.Add(this.btnAccount);
@@ -180,28 +180,29 @@
             this.btnQuanLyThietBiHuHong.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnQuanLyThietBiHuHong.Click += new System.EventHandler(this.btnQuanLyThietBiHuHong_Click);
             // 
-            // btnLoaiThietBi
+            // btnThoiKhoaBieu
             // 
-            this.btnLoaiThietBi.BackColor = System.Drawing.Color.Transparent;
-            this.btnLoaiThietBi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnLoaiThietBi.BorderRadius = 8;
-            this.btnLoaiThietBi.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLoaiThietBi.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLoaiThietBi.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLoaiThietBi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLoaiThietBi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLoaiThietBi.FillColor = System.Drawing.Color.Transparent;
-            this.btnLoaiThietBi.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
-            this.btnLoaiThietBi.ForeColor = System.Drawing.Color.Gray;
-            this.btnLoaiThietBi.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
-            this.btnLoaiThietBi.Image = global::GUI.Properties.Resources.icons8_schedule_25;
-            this.btnLoaiThietBi.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLoaiThietBi.Location = new System.Drawing.Point(12, 157);
-            this.btnLoaiThietBi.Name = "btnLoaiThietBi";
-            this.btnLoaiThietBi.Size = new System.Drawing.Size(210, 45);
-            this.btnLoaiThietBi.TabIndex = 7;
-            this.btnLoaiThietBi.Text = "Thời khóa biểu";
-            this.btnLoaiThietBi.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnThoiKhoaBieu.BackColor = System.Drawing.Color.Transparent;
+            this.btnThoiKhoaBieu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnThoiKhoaBieu.BorderRadius = 8;
+            this.btnThoiKhoaBieu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThoiKhoaBieu.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnThoiKhoaBieu.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnThoiKhoaBieu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnThoiKhoaBieu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnThoiKhoaBieu.FillColor = System.Drawing.Color.Transparent;
+            this.btnThoiKhoaBieu.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
+            this.btnThoiKhoaBieu.ForeColor = System.Drawing.Color.Gray;
+            this.btnThoiKhoaBieu.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
+            this.btnThoiKhoaBieu.Image = global::GUI.Properties.Resources.icons8_schedule_25;
+            this.btnThoiKhoaBieu.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnThoiKhoaBieu.Location = new System.Drawing.Point(12, 157);
+            this.btnThoiKhoaBieu.Name = "btnThoiKhoaBieu";
+            this.btnThoiKhoaBieu.Size = new System.Drawing.Size(210, 45);
+            this.btnThoiKhoaBieu.TabIndex = 7;
+            this.btnThoiKhoaBieu.Text = "Thời khóa biểu";
+            this.btnThoiKhoaBieu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnThoiKhoaBieu.Click += new System.EventHandler(this.btnThoiKhoaBieu_Click);
             // 
             // btnQuanLyNhaCungCap
             // 
@@ -482,11 +483,11 @@
         private Guna.UI2.WinForms.Guna2ControlBox controlClose;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
         private Guna.UI2.WinForms.Guna2Button btnQuanLyThietBiHuHong;
-        private Guna.UI2.WinForms.Guna2Button btnLoaiThietBi;
+        private Guna.UI2.WinForms.Guna2Button btnThoiKhoaBieu;
         private Guna.UI2.WinForms.Guna2Button btnBaoDuongThietBi;
         private Guna.UI2.WinForms.Guna2Button btnNhapThietBi;
         private Guna.UI2.WinForms.Guna2Button btnMuonTraThietBi;
-        private System.Windows.Forms.Label lb_NameForm;
+        public System.Windows.Forms.Label lb_NameForm;
     }
 }
 

@@ -332,7 +332,7 @@ namespace DAL
         public List<YeuCauThietBiDTO> getAllYeuCauThietBi()
         {
             List<YeuCauThietBiDTO> list = new List<YeuCauThietBiDTO>();
-            string query = @"SELECT YC.MaYC, YC.NgayYeuCau, ND.HoTen AS TenNguoiDung
+            string query = @"SELECT YC.MaYC, YC.NgayYeuCau, YC.MaNguoiDung, ND.HoTen AS TenNguoiDung
                             FROM YeuCauThietBi YC
                             JOIN ThongTinCaNhan ND ON YC.MaNguoiDung = ND.MaNguoiDung";
             DataTable dataTable = GetDataTable(query);
@@ -342,6 +342,7 @@ namespace DAL
                 list.Add(new YeuCauThietBiDTO
                 {
                     MaYC = Convert.ToInt32(row["MaYC"]),
+                    MaNguoiDung = row["MaNguoiDung"].ToString(),
                     TenNguoiDung = row["TenNguoiDung"].ToString(), 
                     NgayYeuCau = row["NgayYeuCau"] as DateTime?
                 });
@@ -388,7 +389,7 @@ namespace DAL
                             JOIN ThietBi TB ON CTTB.MaTB = TB.MaTB
                             LEFT JOIN ChiTietThietBi_Phong CP ON CP.MaCTTB = CTTB.MaCTTB
                             LEFT JOIN PhongHoc P ON P.MaPhong = CP.MaPhong
-                            WHERE CTYC.MaYC = '" + pMaYC + "' AND LoaiYeuCau = N'Sửa chữa'";
+                            WHERE CTYC.MaYC = '" + pMaYC + "' AND LoaiYeuCau = N'Sửa chữa' AND (CTYC.TrangThai = 0 OR CTYC.TrangThai = 2)";
             DataTable dataTable = GetDataTable(query);
 
             foreach (DataRow row in dataTable.Rows)
@@ -446,7 +447,7 @@ namespace DAL
                             JOIN ThietBi TB ON CTTB.MaTB = TB.MaTB
                             LEFT JOIN ChiTietThietBi_Phong CP ON CP.MaCTTB = CTTB.MaCTTB
                             LEFT JOIN PhongHoc P ON P.MaPhong = CP.MaPhong
-                            WHERE CTYC.MaYC = '" + pMaYC + "' AND LoaiYeuCau = N'Mua'";
+                            WHERE CTYC.MaYC = '" + pMaYC + "' AND LoaiYeuCau = N'Mua' AND (CTYC.TrangThai = 0 OR CTYC.TrangThai = 2)";
             DataTable dataTable = GetDataTable(query);
 
             foreach (DataRow row in dataTable.Rows)
@@ -465,15 +466,15 @@ namespace DAL
             return list;
         }
 
-        public bool UpdataTrangThaiCTYCTB(int pMaYC, int pMaCTTB_NCC, int pTrangThai, string pKetQua, float pChiPhi)
+        public bool UpdataTrangThaiCTYCTB(int pMaYC, int pMaCTTB_NCC, string pMaNguoiDung, int pTrangThai, string pKetQua, float pChiPhi)
         {
             string updateQuery = @"UPDATE ChiTietYeuCauThietBi 
                                 SET TrangThai = @TrangThai
                                 WHERE MaYC = @MaYC 
                                 AND MaCTTB_NCC = @MaCTTB_NCC";
 
-            string insertBaoDuongQuery = @"INSERT INTO BaoDuong (MaCTTB_NCC, NgayBD, KetQua, ChiPhi) 
-                                        VALUES (@MaCTTB_NCC, @NgayBD, @KetQua, @ChiPhi)";
+            string insertBaoDuongQuery = @"INSERT INTO BaoDuong (MaCTTB_NCC, MaNguoiDung, NgayBD, KetQua, ChiPhi) 
+                                        VALUES (@MaCTTB_NCC, @MaNguoiDung, @NgayBD, @KetQua, @ChiPhi)";
 
             using (SqlConnection connection = GetConnection())
             {
@@ -486,6 +487,7 @@ namespace DAL
                     {
                         updateCommand.Parameters.AddWithValue("@MaYC", pMaYC);
                         updateCommand.Parameters.AddWithValue("@MaCTTB_NCC", pMaCTTB_NCC);
+                        updateCommand.Parameters.AddWithValue("@MaNguoiDung", pMaNguoiDung);
                         updateCommand.Parameters.AddWithValue("@TrangThai", pTrangThai);
                         int rowsAffected = updateCommand.ExecuteNonQuery();
 
@@ -502,6 +504,7 @@ namespace DAL
                         using (SqlCommand insertCommand = new SqlCommand(insertBaoDuongQuery, connection, transaction))
                         {
                             insertCommand.Parameters.AddWithValue("@MaCTTB_NCC", pMaCTTB_NCC);
+                            insertCommand.Parameters.AddWithValue("@MaNguoiDung", pMaNguoiDung);
                             insertCommand.Parameters.AddWithValue("@NgayBD", DateTime.Now);
                             insertCommand.Parameters.AddWithValue("@KetQua", pKetQua);
                             insertCommand.Parameters.AddWithValue("@ChiPhi", pChiPhi);

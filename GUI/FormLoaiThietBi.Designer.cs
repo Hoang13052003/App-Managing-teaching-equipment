@@ -56,7 +56,8 @@
             // 
             // dgvDSLoaiTB
             // 
-            this.dgvDSLoaiTB.AllowUserToOrderColumns = true;
+            this.dgvDSLoaiTB.AllowUserToAddRows = false;
+            this.dgvDSLoaiTB.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvDSLoaiTB.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -82,6 +83,7 @@
             this.dgvDSLoaiTB.Location = new System.Drawing.Point(0, 40);
             this.dgvDSLoaiTB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvDSLoaiTB.Name = "dgvDSLoaiTB";
+            this.dgvDSLoaiTB.ReadOnly = true;
             this.dgvDSLoaiTB.RowHeadersVisible = false;
             this.dgvDSLoaiTB.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvDSLoaiTB.Size = new System.Drawing.Size(860, 257);
@@ -99,7 +101,7 @@
             this.dgvDSLoaiTB.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvDSLoaiTB.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvDSLoaiTB.ThemeStyle.HeaderStyle.Height = 4;
-            this.dgvDSLoaiTB.ThemeStyle.ReadOnly = false;
+            this.dgvDSLoaiTB.ThemeStyle.ReadOnly = true;
             this.dgvDSLoaiTB.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvDSLoaiTB.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvDSLoaiTB.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -112,6 +114,7 @@
             // 
             this.gbx_data.BorderRadius = 5;
             this.gbx_data.Controls.Add(this.dgvDSLoaiTB);
+            this.gbx_data.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.gbx_data.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbx_data.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbx_data.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
@@ -185,6 +188,7 @@
             this.gbx_ThaoTac.Controls.Add(this.btnThem);
             this.gbx_ThaoTac.Controls.Add(this.btnSua);
             this.gbx_ThaoTac.Controls.Add(this.btnXoa);
+            this.gbx_ThaoTac.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.gbx_ThaoTac.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gbx_ThaoTac.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbx_ThaoTac.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
@@ -263,6 +267,7 @@
             this.gbx_ThongTin.Controls.Add(this.txtMaLoaiTB);
             this.gbx_ThongTin.Controls.Add(this.guna2HtmlLabel5);
             this.gbx_ThongTin.Controls.Add(this.guna2HtmlLabel2);
+            this.gbx_ThongTin.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.gbx_ThongTin.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbx_ThongTin.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbx_ThongTin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));

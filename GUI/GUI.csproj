@@ -13,6 +13,9 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
@@ -41,6 +44,7 @@
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -56,12 +60,6 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="TextBoxNumber">
-      <HintPath>..\..\..\..\PTPM_AI\Buoi3\Buoi3_PTPM_AI\TextBoxNumber\bin\Debug\TextBoxNumber.dll</HintPath>
-    </Reference>
-    <Reference Include="ucBamGio">
-      <HintPath>..\..\..\..\PTPM_AI\Buoi3\Buoi3_PTPM_AI\ucBamGio\bin\Debug\ucBamGio.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaoCaoThietBiHuHong_TKB.cs">
@@ -192,6 +190,12 @@
     <Compile Include="BaoCaoThietBiHuHong.Designer.cs">
       <DependentUpon>BaoCaoThietBiHuHong.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThoiKhoaBieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThoiKhoaBieu.Designer.cs">
+      <DependentUpon>ThoiKhoaBieu.cs</DependentUpon>
+    </Compile>
     <Compile Include="XuLyThietBiHuHong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,6 +287,9 @@
     <EmbeddedResource Include="BaoCaoThietBiHuHong.resx">
       <DependentUpon>BaoCaoThietBiHuHong.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ThoiKhoaBieu.resx">
+      <DependentUpon>ThoiKhoaBieu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="XuLyThietBiHuHong.resx">
       <DependentUpon>XuLyThietBiHuHong.cs</DependentUpon>
     </EmbeddedResource>
@@ -331,6 +338,7 @@
     <Content Include="Image\icon\icons8-delete-25.png" />
     <Content Include="Image\icon\icons8-edit-25.png" />
     <Content Include="Image\icon\icons8-excel-25.png" />
+    <Content Include="Image\icon\icons8-filter-25.png" />
     <Content Include="Image\icon\icons8-home-25.png" />
     <Content Include="Image\icon\icons8-LoaiTB-MH-25.png" />
     <Content Include="Image\icon\icons8-logout-25.png" />
