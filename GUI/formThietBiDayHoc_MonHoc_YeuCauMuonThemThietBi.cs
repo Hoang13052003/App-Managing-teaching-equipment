@@ -437,5 +437,14 @@ namespace GUI
                 dgv_DSChiTietThietBi.Columns["NgayMua"].Visible = false;
             }
         }
+
+        private void btn_BaoCaoThietBiHuHong_Click(object sender, EventArgs e)
+        {
+            Form newForm = new BaoCaoThietBiHuHong_TKB
+            {
+                MaTKB = _tkbDTO.MaTKB
+            };
+            newForm.ShowDialog();
+        }
     }
 }

@@ -84,6 +84,7 @@ namespace GUI
             if (e.RowIndex >= 0)
             {
                 LoadImage(e.RowIndex, dgvChiTietBB);
+                txtMoTa.Text = dgvChiTietBB.Rows[e.RowIndex].Cells["MoTaChiTiet"].Value.ToString();
             }
         }
         void LoadImage(int rowIndex, DataGridView dgv)
@@ -101,8 +102,8 @@ namespace GUI
             {
                 pictureBox.Image = Image.FromFile(combinedImagePath);
                 pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                pictureBox.Width = 290;
-                pictureBox.Height = 220;
+                //pictureBox.Width = 290;
+                //pictureBox.Height = 220;
 
                 pictureBox.Anchor = AnchorStyles.None;
                 pictureBox.Margin = new Padding(10);
@@ -197,7 +198,7 @@ namespace GUI
             }
 
             txtChiPhi.Text = row.Cells["ChiPhiSuaChua"].Value?.ToString() ?? string.Empty;
-            cboTinhTrang.Text = row.Cells["TinhTrang"].Value?.ToString() ?? string.Empty;
+            cboTinhTrang.Text = Convert.ToInt32(row.Cells["TinhTrang"].Value) == 1 ? "Đã xử lý" : "Chưa xử lý";
         }
         void LoadCboVaiTro()
         {

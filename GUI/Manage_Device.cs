@@ -25,7 +25,6 @@ namespace GUI
             btnThem.Click += BtnThem_Click;
             btnSua.Click += BtnSua_Click;
             btnXoa.Click += BtnXoa_Click;
-            btnDong.Click += BtnDong_Click;
             btnLamMoi.Click += BtnLamMoi_Click;
             txtMaTB.Enabled = false;
         }

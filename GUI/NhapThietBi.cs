@@ -275,5 +275,7 @@ namespace GUI
         {
             lamMoi();
         }
+
+
     }
 }

@@ -48,7 +48,11 @@ namespace GUI
             newForm.FormClosed += (s, args) => currentForm.Show(); // Khi form mới đóng, hiển thị lại form hiện tại
             newForm.Show(); // Hiển thị form mới
         }
-
+        public static void OpenForm(Form newForm)
+        {
+            // Tạo một thể hiện mới của form cần mở
+            newForm.Show(); // Hiển thị form mới
+        }
         public static void OpenForm<T>(NguoiDungDTO nguoiDung) where T : Form
         {
             // Tạo một thể hiện mới của form cần mở
@@ -141,7 +145,7 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dashboard_User());
+            Application.Run(new Dashboard_Admin());
 
         }
     }

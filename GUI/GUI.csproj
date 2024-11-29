@@ -94,12 +94,6 @@
     <Compile Include="Dashboard_User.Designer.cs">
       <DependentUpon>Dashboard_User.cs</DependentUpon>
     </Compile>
-    <Compile Include="formConDemo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="formConDemo.Designer.cs">
-      <DependentUpon>formConDemo.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormMuonThietBi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,12 +111,6 @@
     </Compile>
     <Compile Include="Home_User.Designer.cs">
       <DependentUpon>Home_User.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormLoaiTB_MonHoc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLoaiTB_MonHoc.Designer.cs">
-      <DependentUpon>FormLoaiTB_MonHoc.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLoaiThietBi.cs">
       <SubType>Form</SubType>
@@ -148,7 +136,6 @@
     <Compile Include="Manage_Device.Designer.cs">
       <DependentUpon>Manage_Device.cs</DependentUpon>
     </Compile>
-
     <Compile Include="NhapThemThietBi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,9 +225,6 @@
     <EmbeddedResource Include="Dashboard_User.resx">
       <DependentUpon>Dashboard_User.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formConDemo.resx">
-      <DependentUpon>formConDemo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormMuonThietBi.resx">
       <DependentUpon>FormMuonThietBi.cs</DependentUpon>
     </EmbeddedResource>
@@ -249,9 +233,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home_User.resx">
       <DependentUpon>Home_User.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormLoaiTB_MonHoc.resx">
-      <DependentUpon>FormLoaiTB_MonHoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLoaiThietBi.resx">
       <DependentUpon>FormLoaiThietBi.cs</DependentUpon>
@@ -270,7 +251,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NhapThietBi.resx">
       <DependentUpon>NhapThietBi.cs</DependentUpon>
-</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="Profile_User.resx">
       <DependentUpon>Profile_User.cs</DependentUpon>
     </EmbeddedResource>
@@ -344,14 +325,29 @@
     <Content Include="Image\icon\Close_hover.png" />
     <Content Include="Image\icon\help.png" />
     <Content Include="Image\icon\icons8-add-100.png" />
+    <Content Include="Image\icon\icons8-add-25.png" />
     <Content Include="Image\icon\icons8-back-25.png" />
+    <Content Include="Image\icon\icons8-BaoDuong-25.png" />
+    <Content Include="Image\icon\icons8-delete-25.png" />
+    <Content Include="Image\icon\icons8-edit-25.png" />
+    <Content Include="Image\icon\icons8-excel-25.png" />
     <Content Include="Image\icon\icons8-home-25.png" />
+    <Content Include="Image\icon\icons8-LoaiTB-MH-25.png" />
     <Content Include="Image\icon\icons8-logout-25.png" />
+    <Content Include="Image\icon\icons8-MuonTra-25.png" />
     <Content Include="Image\icon\icons8-next-25.png" />
+    <Content Include="Image\icon\icons8-NhapThietBi-25.png" />
     <Content Include="Image\icon\icons8-notification-100.png" />
+    <Content Include="Image\icon\icons8-QLTB-25.png" />
     <Content Include="Image\icon\icons8-schedule-100.png" />
     <Content Include="Image\icon\icons8-schedule-25.png" />
+    <Content Include="Image\icon\icons8-search-25.png" />
+    <Content Include="Image\icon\icons8-supplier-25.png" />
+    <Content Include="Image\icon\icons8-tick-25.png" />
     <Content Include="Image\icon\icons8-Tiep-25.png" />
+    <Content Include="Image\icon\icons8-update-25.png" />
+    <Content Include="Image\icon\icons8-XuLyTB-25.png" />
+    <Content Include="Image\icon\icons8-YeuCauSuaChua-25.png" />
     <Content Include="Image\icon\Lock.png" />
     <Content Include="Image\icon\logoApp.jpg" />
     <Content Include="Image\icon\Notification.png" />

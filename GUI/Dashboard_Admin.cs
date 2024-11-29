@@ -66,36 +66,45 @@ namespace GUI
         private void btnQuanLyThietBi_Click(object sender, EventArgs e)
         {
             FormTask.OpenFormInPanel<Manage_Device>(Panel_Change_Form);
+            Form x = new Manage_Device();
+            lb_NameForm.Text = x.Text;
         }
 
         private void btnQuanLyNhaCungCap_Click(object sender, EventArgs e)
         {
             FormTask.OpenFormInPanel<Supplier>(Panel_Change_Form);
-        }
-
-        private void btnThoiKhoaBieu_Click(object sender, EventArgs e)
-        {
-            //FormTask.OpenFormInPanel<Supplier>(Panel_Change_Form);
+            Form x = new Supplier();
+            lb_NameForm.Text = x.Text;
         }
 
         private void btnMuonTraThietBi_Click(object sender, EventArgs e)
         {
             FormTask.OpenFormInPanel<FormMuonThietBi>(Panel_Change_Form);
+            Form x = new FormMuonThietBi();
+            lb_NameForm.Text = x.Text;
         }
 
         private void btnQuanLyThietBiHuHong_Click(object sender, EventArgs e)
         {
             FormTask.OpenFormInPanel<XuLyThietBiHuHong>(Panel_Change_Form);
+            Form x = new XuLyThietBiHuHong();
+            lb_NameForm.Text = x.Text;
         }
 
         private void btnBaoDuongThietBi_Click(object sender, EventArgs e)
         {
             FormTask.OpenFormInPanel<BaoDuong>(Panel_Change_Form);
+            Form x = new BaoDuong();
+            lb_NameForm.Text = x.Text;
         }
 
-        private void btnQuanLyNguoiDung_Click(object sender, EventArgs e)
+        private void btnNhapThietBi_Click(object sender, EventArgs e)
         {
-
+            FormTask.OpenFormInPanel<NhapThietBi>(Panel_Change_Form);
+            Form x = new NhapThietBi();
+            lb_NameForm.Text = x.Text;
         }
+
+       
     }
 }

@@ -39,7 +39,6 @@
             this.main = new System.Windows.Forms.Panel();
             this.Sidebar = new System.Windows.Forms.Panel();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.btnBaoCaoThietBiHuHong = new Guna.UI2.WinForms.Guna2Button();
             this.btnYeuCauSuaThietBi = new Guna.UI2.WinForms.Guna2Button();
             this.btn_Lich_Day = new Guna.UI2.WinForms.Guna2Button();
             this.btnAccount = new Guna.UI2.WinForms.Guna2Button();
@@ -48,6 +47,7 @@
             this.lbMenu = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnHome = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.lb_NameForm = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.Navbar.SuspendLayout();
             this.main.SuspendLayout();
@@ -111,13 +111,14 @@
             this.Panel_Change_Form.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Change_Form.Location = new System.Drawing.Point(240, 65);
             this.Panel_Change_Form.Name = "Panel_Change_Form";
-            this.Panel_Change_Form.Padding = new System.Windows.Forms.Padding(5);
+            this.Panel_Change_Form.Padding = new System.Windows.Forms.Padding(3);
             this.Panel_Change_Form.Size = new System.Drawing.Size(1200, 895);
             this.Panel_Change_Form.TabIndex = 3;
             // 
             // Navbar
             // 
             this.Navbar.BackColor = System.Drawing.Color.White;
+            this.Navbar.Controls.Add(this.lb_NameForm);
             this.Navbar.Controls.Add(this.guna2ControlBox2);
             this.Navbar.Controls.Add(this.controlClose);
             this.Navbar.Controls.Add(this.panel1);
@@ -145,7 +146,6 @@
             // 
             this.Sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
             this.Sidebar.Controls.Add(this.guna2Button1);
-            this.Sidebar.Controls.Add(this.btnBaoCaoThietBiHuHong);
             this.Sidebar.Controls.Add(this.btnYeuCauSuaThietBi);
             this.Sidebar.Controls.Add(this.btn_Lich_Day);
             this.Sidebar.Controls.Add(this.btnAccount);
@@ -183,30 +183,6 @@
             this.guna2Button1.Text = "Đăng xuất";
             this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // btnBaoCaoThietBiHuHong
-            // 
-            this.btnBaoCaoThietBiHuHong.BackColor = System.Drawing.Color.Transparent;
-            this.btnBaoCaoThietBiHuHong.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnBaoCaoThietBiHuHong.BorderRadius = 8;
-            this.btnBaoCaoThietBiHuHong.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBaoCaoThietBiHuHong.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnBaoCaoThietBiHuHong.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnBaoCaoThietBiHuHong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnBaoCaoThietBiHuHong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnBaoCaoThietBiHuHong.FillColor = System.Drawing.Color.Transparent;
-            this.btnBaoCaoThietBiHuHong.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
-            this.btnBaoCaoThietBiHuHong.ForeColor = System.Drawing.Color.Gray;
-            this.btnBaoCaoThietBiHuHong.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
-            this.btnBaoCaoThietBiHuHong.Image = global::GUI.Properties.Resources.icons8_schedule_25;
-            this.btnBaoCaoThietBiHuHong.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnBaoCaoThietBiHuHong.Location = new System.Drawing.Point(12, 208);
-            this.btnBaoCaoThietBiHuHong.Name = "btnBaoCaoThietBiHuHong";
-            this.btnBaoCaoThietBiHuHong.Size = new System.Drawing.Size(210, 45);
-            this.btnBaoCaoThietBiHuHong.TabIndex = 8;
-            this.btnBaoCaoThietBiHuHong.Text = "Báo cáo thiết bị hư hỏng";
-            this.btnBaoCaoThietBiHuHong.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnBaoCaoThietBiHuHong.Click += new System.EventHandler(this.btnBaoCaoThietBiHuHong_Click);
-            // 
             // btnYeuCauSuaThietBi
             // 
             this.btnYeuCauSuaThietBi.BackColor = System.Drawing.Color.Transparent;
@@ -221,7 +197,7 @@
             this.btnYeuCauSuaThietBi.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
             this.btnYeuCauSuaThietBi.ForeColor = System.Drawing.Color.Gray;
             this.btnYeuCauSuaThietBi.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
-            this.btnYeuCauSuaThietBi.Image = global::GUI.Properties.Resources.icons8_schedule_25;
+            this.btnYeuCauSuaThietBi.Image = global::GUI.Properties.Resources.icons8_YeuCauSuaChua_25;
             this.btnYeuCauSuaThietBi.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnYeuCauSuaThietBi.Location = new System.Drawing.Point(12, 157);
             this.btnYeuCauSuaThietBi.Name = "btnYeuCauSuaThietBi";
@@ -352,6 +328,16 @@
             // 
             this.guna2Elipse2.BorderRadius = 10;
             // 
+            // lb_NameForm
+            // 
+            this.lb_NameForm.AutoSize = true;
+            this.lb_NameForm.Font = new System.Drawing.Font("JetBrains Mono", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_NameForm.Location = new System.Drawing.Point(264, 21);
+            this.lb_NameForm.Name = "lb_NameForm";
+            this.lb_NameForm.Size = new System.Drawing.Size(60, 26);
+            this.lb_NameForm.TabIndex = 11;
+            this.lb_NameForm.Text = "Home";
+            // 
             // Dashboard_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -368,6 +354,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.Navbar.ResumeLayout(false);
+            this.Navbar.PerformLayout();
             this.main.ResumeLayout(false);
             this.Sidebar.ResumeLayout(false);
             this.Sidebar.PerformLayout();
@@ -393,8 +380,8 @@
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel lb_home;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
-        private Guna.UI2.WinForms.Guna2Button btnBaoCaoThietBiHuHong;
         private Guna.UI2.WinForms.Guna2Button btnYeuCauSuaThietBi;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private System.Windows.Forms.Label lb_NameForm;
     }
 }

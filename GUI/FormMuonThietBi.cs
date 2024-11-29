@@ -16,21 +16,15 @@ namespace GUI
     public partial class FormMuonThietBi : Form
     {
         //Biến
-        private bool _is_dgv_DSTB_Clicked = false;
 
 
         //Models
         private MuonThietBiDTO _MuonThietBi_Click_Row = null;
-        private ThoiKhoaBieuDTO _tkbChiTiet;
 
         //BUS
-        private ThietBiBUS tbBUS = new ThietBiBUS();
         private MuonThietBiBUS mtbBUS = new MuonThietBiBUS();
         private ChiTietMuonThietBiBUS ctmtbBUS = new ChiTietMuonThietBiBUS();
-        private ChiTietThietBi_ThietBiBUS cttbBUS = new ChiTietThietBi_ThietBiBUS();
         private ThongTinCaNhanBUS ttcnBUS = new ThongTinCaNhanBUS();
-
-        private ThoiKhoaBieuBUS tkbBUS = new ThoiKhoaBieuBUS();
 
         //List
         private List<MuonThietBiDTO> _list_DS_PhieuMuon = new List<MuonThietBiDTO>();

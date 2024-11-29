@@ -46,21 +46,24 @@ namespace GUI
         private void btnHome_Click(object sender, EventArgs e)
         {
             FormTask.OpenFormInPanel<Home_User>(Panel_Change_Form);
+            Form x = new Home_User();
+            lb_NameForm.Text = x.Text;
         }
 
         private void btn_Lich_Day_Click(object sender, EventArgs e)
         {
             FormTask.OpenFormInPanel<Teaching_Schedule>(Panel_Change_Form);
+            Form x = new Teaching_Schedule();
+            lb_NameForm.Text = x.Text;
         }
 
         private void btnYeuCauSuaThietBi_Click(object sender, EventArgs e)
         {
             FormTask.OpenFormInPanel<YeuCauSuaThietBi>(Panel_Change_Form);
+            Form x = new YeuCauSuaThietBi();
+            lb_NameForm.Text = x.Text;
         }
-        private void btnBaoCaoThietBiHuHong_Click(object sender, EventArgs e)
-        {
-            FormTask.OpenFormInPanel<BaoCaoThietBiHuHong>(Panel_Change_Form);
-        }
+        
 
         private void controlClose_Click(object sender, EventArgs e)
         {
