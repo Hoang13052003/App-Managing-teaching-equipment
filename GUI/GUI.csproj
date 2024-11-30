@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
-    Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -13,6 +12,9 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -37,12 +39,12 @@
     <Reference Include="DAL">
       <HintPath>..\DAL\bin\Debug\DAL.dll</HintPath>
     </Reference>
-    <Reference
-      Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+    <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -58,16 +60,25 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="ucBamGio">
-      <HintPath>..\..\..\..\PTPM_AI\Buoi3\Buoi3_PTPM_AI\ucBamGio\bin\Debug\ucBamGio.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCaoThietBiHuHong_TKB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaoCaoThietBiHuHong_TKB.Designer.cs">
+      <DependentUpon>BaoCaoThietBiHuHong_TKB.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaoDuong.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BaoDuong.Designer.cs">
       <DependentUpon>BaoDuong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChonNhaCungCap_NhapHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChonNhaCungCap_NhapHang.Designer.cs">
+      <DependentUpon>ChonNhaCungCap_NhapHang.cs</DependentUpon>
     </Compile>
     <Compile Include="Dashboard_Admin.cs">
       <SubType>Form</SubType>
@@ -81,11 +92,23 @@
     <Compile Include="Dashboard_User.Designer.cs">
       <DependentUpon>Dashboard_User.cs</DependentUpon>
     </Compile>
-    <Compile Include="formConDemo.cs">
+    <Compile Include="Loading.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formConDemo.Designer.cs">
-      <DependentUpon>formConDemo.cs</DependentUpon>
+    <Compile Include="Loading.Designer.cs">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMuonThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMuonThietBi.designer.cs">
+      <DependentUpon>FormMuonThietBi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi.Designer.cs">
+      <DependentUpon>formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi.cs</DependentUpon>
     </Compile>
     <Compile Include="Home_User.cs">
       <SubType>Form</SubType>
@@ -93,23 +116,11 @@
     <Compile Include="Home_User.Designer.cs">
       <DependentUpon>Home_User.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLoaiTB_MonHoc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLoaiTB_MonHoc.Designer.cs">
-      <DependentUpon>FormLoaiTB_MonHoc.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormLoaiThietBi.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormLoaiThietBi.Designer.cs">
       <DependentUpon>FormLoaiThietBi.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormMuonThietBi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormMuonThietBi.Designer.cs">
-      <DependentUpon>FormMuonThietBi.cs</DependentUpon>
     </Compile>
     <Compile Include="Layout.cs">
       <SubType>Form</SubType>
@@ -128,6 +139,24 @@
     </Compile>
     <Compile Include="Manage_Device.Designer.cs">
       <DependentUpon>Manage_Device.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhapThemThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhapThemThietBi.Designer.cs">
+      <DependentUpon>NhapThemThietBi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhapThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhapThietBi.Designer.cs">
+      <DependentUpon>NhapThietBi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profile.Designer.cs">
+      <DependentUpon>Profile.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -167,6 +196,12 @@
     <Compile Include="BaoCaoThietBiHuHong.Designer.cs">
       <DependentUpon>BaoCaoThietBiHuHong.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThoiKhoaBieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThoiKhoaBieu.Designer.cs">
+      <DependentUpon>ThoiKhoaBieu.cs</DependentUpon>
+    </Compile>
     <Compile Include="XuLyThietBiHuHong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,8 +220,14 @@
     <Compile Include="YeuCauSuaThietBi.Designer.cs">
       <DependentUpon>YeuCauSuaThietBi.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BaoCaoThietBiHuHong_TKB.resx">
+      <DependentUpon>BaoCaoThietBiHuHong_TKB.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoDuong.resx">
       <DependentUpon>BaoDuong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChonNhaCungCap_NhapHang.resx">
+      <DependentUpon>ChonNhaCungCap_NhapHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard_Admin.resx">
       <DependentUpon>Dashboard_Admin.cs</DependentUpon>
@@ -194,20 +235,20 @@
     <EmbeddedResource Include="Dashboard_User.resx">
       <DependentUpon>Dashboard_User.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formConDemo.resx">
-      <DependentUpon>formConDemo.cs</DependentUpon>
+    <EmbeddedResource Include="Loading.resx">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMuonThietBi.resx">
+      <DependentUpon>FormMuonThietBi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi.resx">
+      <DependentUpon>formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home_User.resx">
       <DependentUpon>Home_User.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormLoaiTB_MonHoc.resx">
-      <DependentUpon>FormLoaiTB_MonHoc.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormLoaiThietBi.resx">
       <DependentUpon>FormLoaiThietBi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormMuonThietBi.resx">
-      <DependentUpon>FormMuonThietBi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Layout.resx">
       <DependentUpon>Layout.cs</DependentUpon>
@@ -217,6 +258,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Manage_Device.resx">
       <DependentUpon>Manage_Device.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhapThemThietBi.resx">
+      <DependentUpon>NhapThemThietBi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhapThietBi.resx">
+      <DependentUpon>NhapThietBi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile.resx">
+      <DependentUpon>Profile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -245,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCaoThietBiHuHong.resx">
       <DependentUpon>BaoCaoThietBiHuHong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThoiKhoaBieu.resx">
+      <DependentUpon>ThoiKhoaBieu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="XuLyThietBiHuHong.resx">
       <DependentUpon>XuLyThietBiHuHong.cs</DependentUpon>
@@ -287,13 +340,33 @@
     <Content Include="Image\icon\close.png" />
     <Content Include="Image\icon\Close_hover.png" />
     <Content Include="Image\icon\help.png" />
+    <Content Include="Image\icon\icons8-add-100.png" />
+    <Content Include="Image\icon\icons8-add-25.png" />
     <Content Include="Image\icon\icons8-back-25.png" />
+    <Content Include="Image\icon\icons8-BaoDuong-25.png" />
+    <Content Include="Image\icon\icons8-CapNhatThongTin-25.png" />
+    <Content Include="Image\icon\icons8-delete-25.png" />
+    <Content Include="Image\icon\icons8-edit-25.png" />
+    <Content Include="Image\icon\icons8-excel-25.png" />
+    <Content Include="Image\icon\icons8-filter-25.png" />
     <Content Include="Image\icon\icons8-home-25.png" />
+    <Content Include="Image\icon\icons8-LoaiTB-MH-25.png" />
+    <Content Include="Image\icon\icons8-logout-25.png" />
+    <Content Include="Image\icon\icons8-MuonTra-25.png" />
     <Content Include="Image\icon\icons8-next-25.png" />
+    <Content Include="Image\icon\icons8-NhapThietBi-25.png" />
     <Content Include="Image\icon\icons8-notification-100.png" />
+    <Content Include="Image\icon\icons8-password-window-25.png" />
+    <Content Include="Image\icon\icons8-QLTB-25.png" />
     <Content Include="Image\icon\icons8-schedule-100.png" />
     <Content Include="Image\icon\icons8-schedule-25.png" />
+    <Content Include="Image\icon\icons8-search-25.png" />
+    <Content Include="Image\icon\icons8-supplier-25.png" />
+    <Content Include="Image\icon\icons8-tick-25.png" />
     <Content Include="Image\icon\icons8-Tiep-25.png" />
+    <Content Include="Image\icon\icons8-update-25.png" />
+    <Content Include="Image\icon\icons8-XuLyTB-25.png" />
+    <Content Include="Image\icon\icons8-YeuCauSuaChua-25.png" />
     <Content Include="Image\icon\Lock.png" />
     <Content Include="Image\icon\logoApp.jpg" />
     <Content Include="Image\icon\Notification.png" />
@@ -302,6 +375,18 @@
     <Content Include="Image\icon\Search.png" />
     <Content Include="Image\icon\setting.png" />
     <Content Include="Image\icon\User.png" />
+    <Content Include="Image\thietBiHuHong\img_10_20241116223637.jpg" />
+    <Content Include="Image\thietBiHuHong\img_10_20241116224008.jpg" />
+    <Content Include="Image\thietBiHuHong\img_11_20241104124806.jpg" />
+    <Content Include="Image\thietBiHuHong\img_13_20241104131819.jpg" />
+    <Content Include="Image\thietBiHuHong\img_14_20241104134038.jpg" />
+    <Content Include="Image\thietBiHuHong\img_19_20241116223623.jpg" />
+    <Content Include="Image\thietBiHuHong\img_19_20241116223637.jpg" />
+    <Content Include="Image\thietBiHuHong\img_20_20241116224008.jpg" />
+    <Content Include="Image\thietBiHuHong\img_20_20241116224701.jpg" />
+    <Content Include="Image\thietBiHuHong\img_3_20241104134311.jpg" />
+    <Content Include="Image\thietBiHuHong\img_5_20241104124806.jpg" />
+    <Content Include="Image\thietBiHuHong\img_7_20241104135107.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

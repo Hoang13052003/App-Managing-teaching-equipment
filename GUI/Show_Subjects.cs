@@ -6,13 +6,21 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using BUS;
 using DTO;
 namespace GUI
 {
     public partial class Show_Subjects : Form
     {
-        private ThoiKhoaBieuChiTietDTO _tkbDTO;
+        public ThoiKhoaBieuChiTietDTO _tkbDTO { get; set; }
+        public Color _color { get; set; }
+
+        public Show_Subjects()
+        {
+            InitializeComponent();
+        }
         public Show_Subjects(ThoiKhoaBieuChiTietDTO tkbDTO)
         {
             InitializeComponent();
@@ -26,6 +34,17 @@ namespace GUI
             lb_Ten_Bai_Hoc.Text = _tkbDTO.TenBaiHoc.ToString();
             lb_Phong_Hoc.Text = _tkbDTO.TenPhong.ToString();
             lb_Gio_Hoc.Text = _tkbDTO.GioHoc.ToString();
+
+            ThoiKhoaBieuDTO item = new ThoiKhoaBieuBUS().GetByID(_tkbDTO.MaTKB);
+            if (item.NgayHoc < DateTime.Now.Date || (item.NgayHoc == DateTime.Now.Date && item.GioHoc.Value < DateTime.Now.TimeOfDay))
+            {
+                pannel_Lich_Hoc.FillColor = Color.FromArgb(179,200, 207);
+                pannel_Lich_Hoc.Enabled = false;
+            }
+            else
+            {
+                pannel_Lich_Hoc.FillColor = _color;
+            }
         }
 
         private void pannel_Lich_Hoc_Paint(object sender, PaintEventArgs e)
@@ -35,7 +54,9 @@ namespace GUI
 
         private void pannel_Lich_Hoc_Click(object sender, EventArgs e)
         {
-
+            FormTask.OpenFormInPanel<formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi>(FormTask.Pannel_change, _tkbDTO);
+            Form x = new formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi();
+            FormTask.LbNameForm.Text = x.Text;
         }
 
 

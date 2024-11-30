@@ -24,7 +24,7 @@ namespace GUI
             this.cboNCC.SelectedIndexChanged += CboNCC_SelectedIndexChanged;
             this.cboLoaiTB.SelectedIndexChanged += CboLoaiTB_SelectedIndexChanged;
             this.btnLamMoi.Click += BtnLamMoi_Click;
-            this.btnSearch.Click += BtnSearch_Click;
+            //this.btnSearch.Click += BtnSearch_Click;
             this.btnThem.Click += BtnThem_Click;
             this.btnXoa.Click += BtnXoa_Click;
             this.btnGuiYeuCau.Click += BtnGuiYeuCau_Click;
@@ -153,11 +153,11 @@ namespace GUI
             }
         }
 
-        private void BtnSearch_Click(object sender, EventArgs e)
-        {
-            if (txtSearch.Text == string.Empty) return;
-            dgvDSChiTietThietBi.DataSource = y.SearchKeyChiTietThietBi(txtSearch.Text);
-        }
+        //private void BtnSearch_Click(object sender, EventArgs e)
+        //{
+        //    if (txtSearch.Text == string.Empty) return;
+        //    dgvDSChiTietThietBi.DataSource = y.SearchKeyChiTietThietBi(txtSearch.Text);
+        //}
 
         private void BtnLamMoi_Click(object sender, EventArgs e)
         {
@@ -173,9 +173,10 @@ namespace GUI
                 dgvDSChiTietThietBi.DataSource = y.SearchChiTietThietBi2(maLoai);
                 dgvDSChiTietThietBi.Columns[0].HeaderText = "Mã chi tiết";
                 dgvDSChiTietThietBi.Columns[1].HeaderText = "Tên thiết bị";
-                dgvDSChiTietThietBi.Columns[2].HeaderText = "Tình trạng";
-                dgvDSChiTietThietBi.Columns[3].HeaderText = "Trạng thái";
-                dgvDSChiTietThietBi.Columns[4].HeaderText = "Ngày mua";
+                dgvDSChiTietThietBi.Columns[2].HeaderText = "Tên phòng";
+                dgvDSChiTietThietBi.Columns[3].HeaderText = "Tình trạng";
+                dgvDSChiTietThietBi.Columns[4].HeaderText = "Trạng thái";
+                dgvDSChiTietThietBi.Columns[5].HeaderText = "Ngày mua";
             }
         }
 
@@ -183,9 +184,9 @@ namespace GUI
         {
             if (cboNCC.SelectedValue != null && int.TryParse(cboNCC.SelectedValue.ToString(), out int maNCC))
             {
-                cboNCC.DataSource = y.SearchThietBi(maNCC);
-                cboNCC.DisplayMember = "TenNCC";
-                cboNCC.ValueMember = "MaNCC";
+                cboLoaiTB.DataSource = sup.SearchLoaiTB(maNCC);
+                cboLoaiTB.DisplayMember = "TenLoai";
+                cboLoaiTB.ValueMember = "MaLoai";
             }
         }
 
@@ -213,6 +214,7 @@ namespace GUI
         {
             dgvDSThietBiMua.Columns.Add("MaCTTB_NCC", "Mã chi tiết");
             dgvDSThietBiMua.Columns.Add("TenTB", "Tên thiết bị");
+            dgvDSThietBiMua.Columns.Add("TenPhong", "Tên phòng");
             dgvDSThietBiMua.Columns.Add("TinhTrang", "Tình trạng");
             dgvDSThietBiMua.Columns.Add("TrangThai", "Trạng thái");
             dgvDSThietBiMua.Columns.Add("NgayMua", "Ngày mua");
@@ -222,9 +224,10 @@ namespace GUI
             dgvDSChiTietThietBi.DataSource = y.getAllChiTietThietBi();
             dgvDSChiTietThietBi.Columns[0].HeaderText = "Mã chi tiết";
             dgvDSChiTietThietBi.Columns[1].HeaderText = "Tên thiết bị";
-            dgvDSChiTietThietBi.Columns[2].HeaderText = "Tình trạng";
-            dgvDSChiTietThietBi.Columns[3].HeaderText = "Trạng thái";
-            dgvDSChiTietThietBi.Columns[4].HeaderText = "Ngày mua";
+            dgvDSChiTietThietBi.Columns[2].HeaderText = "Tên phòng";
+            dgvDSChiTietThietBi.Columns[3].HeaderText = "Tình trạng";
+            dgvDSChiTietThietBi.Columns[4].HeaderText = "Trạng thái";
+            dgvDSChiTietThietBi.Columns[5].HeaderText = "Ngày mua";
 
             dgvDSChiTietThietBi.CellFormatting += DgvDSChiTietThietBi_CellFormatting;
         }

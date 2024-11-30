@@ -17,11 +17,13 @@ namespace DAL
         public List<BaoDuongDTO> GetAll()
         {
             List<BaoDuongDTO> list = new List<BaoDuongDTO>();
-            string query = @"Select MaBD, BD.MaCTTB_NCC, TenTB, NgayBD, KetQua, ChiPhi
+            string query = @"Select MaBD, BD.MaCTTB_NCC, TenTB, TenPhong, NgayBD, KetQua, ChiPhi
                             From BaoDuong BD
                             JOIN ChiTietThietBi_NhaCungCap CTTBNCC ON CTTBNCC.MaCTTB_NCC = BD.MaCTTB_NCC
                             JOIN ChiTietThietBi CTTB ON CTTB.MaCTTB = CTTBNCC.MaCTTB
-                            JOIN ThietBi TB ON TB.MaTB = CTTB.MaTB";
+                            JOIN ThietBi TB ON TB.MaTB = CTTB.MaTB
+                            LEFT JOIN ChiTietThietBi_Phong CP ON CTTB.MaCTTB = CP.MaCTTB
+                            LEFT JOIN PhongHoc P ON P.MaPhong = CP.MaPhong";
             DataTable dataTable = GetDataTable(query);
 
             foreach (DataRow row in dataTable.Rows)
@@ -31,6 +33,7 @@ namespace DAL
                     MaBD = Convert.ToInt32(row["MaBD"]),
                     MaCTTB_NCC = Convert.ToInt32(row["MaCTTB_NCC"]),
                     TenTB = row["TenTB"].ToString(),
+                    TenPhong = row["TenPhong"].ToString(),
                     NgayBD = row["NgayBD"] as DateTime?,
                     KetQua = row["KetQua"].ToString(),
                     ChiPhi = Convert.ToSingle(row["ChiPhi"])
@@ -39,13 +42,20 @@ namespace DAL
             return list;
         }
 
-        public BaoDuongDTO GetByID(int maBD)
+        public BaoDuongDTO GetByID(int MaCTTB_NCC, string maMD)
         {
-            string query = "SELECT * FROM BaoDuong WHERE MaBD = @MaBD";
+            string query = "SELECT BD.*, TB.TenTB, P.TenPhong FROM " +
+                "BaoDuong BD JOIN ChiTietThietBi_NhaCungCap CTTBNCC ON CTTBNCC.MaCTTB_NCC = BD.MaCTTB_NCC " +
+                "JOIN ChiTietThietBi CTTB ON CTTB.MaCTTB = CTTBNCC.MaCTTB "+
+                "JOIN ThietBi TB ON TB.MaTB = CTTB.MaTB " +
+                "LEFT JOIN ChiTietThietBi_Phong CP ON CTTB.MaCTTB = CP.MaCTTB "+
+                "LEFT JOIN PhongHoc P ON P.MaPhong = CP.MaPhong "+
+                "WHERE BD.MaCTTB_NCC = @MaCTTB_NCC AND BD.MaNguoiDung = @MaNguoiDung";
             using (SqlConnection connection = GetConnection())
             {
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@MaBD", maBD);
+                command.Parameters.AddWithValue("@MaCTTB_NCC", MaCTTB_NCC);
+                command.Parameters.AddWithValue("@MaNguoiDung", maMD);
                 connection.Open();
                 DataTable dataTable = new DataTable();
                 using (SqlDataAdapter adapter = new SqlDataAdapter(command))
@@ -62,7 +72,9 @@ namespace DAL
                         MaCTTB_NCC = Convert.ToInt32(row["MaCTTB_NCC"]),
                         NgayBD = row["NgayBD"] as DateTime?,
                         KetQua = row["KetQua"].ToString(),
-                        ChiPhi = Convert.ToSingle(row["ChiPhi"])
+                        ChiPhi = Convert.ToSingle(row["ChiPhi"]),
+                        TenTB = row["TenTB"].ToString(),
+                        TenPhong = row["TenPhong"].ToString()
                     };
                 }
             }

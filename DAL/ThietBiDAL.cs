@@ -1,4 +1,5 @@
 ﻿using DTO;
+using Microsoft.VisualBasic.Devices;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -33,6 +34,8 @@ namespace DAL
             }
             return list;
         }
+        
+
         // Hàm tìm kiếm thiết bị theo tên
         public List<ThietBiDTO> SearchThietBi(string keyword)
         {

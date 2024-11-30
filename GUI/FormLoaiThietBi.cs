@@ -21,7 +21,6 @@ namespace GUI
             dgvDSLoaiTB.CellClick += DgvDSLoaiTB_CellClick;
             txtMaLoaiTB.Enabled = false;
             btnTimKiem.Click += BtnTimKiem_Click;
-            btnDong.Click += BtnDong_Click;
             btnLamMoi.Click += BtnLamMoi_Click;
             btnThem.Click += BtnThem_Click;
             btnSua.Click += BtnSua_Click;

@@ -16,6 +16,7 @@ namespace DTO
         public int? MaLopHoc { get; set; }
         public TimeSpan? GioHoc { get; set; }
         public DateTime? NgayHoc { get; set; }
+        public bool TinhTrang { get; set; }
     }
 
 }

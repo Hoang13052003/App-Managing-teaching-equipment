@@ -59,9 +59,33 @@ namespace BUS
         {
             return y.searchChiTietYeuCauSuaThietBi(pMaYC);
         }
-        public bool UpdataTrangThaiCTYCTB(int pMaYC, int pMaCTTB_NCC, int pTrangThai, string pKetQua, float pChiPhi)
+        public bool UpdataTrangThaiCTYCTB(int pMaYC, int pMaCTTB_NCC, string pMaNguoiDung, int pTrangThai, string pKetQua, float pChiPhi)
         {
-            return y.UpdataTrangThaiCTYCTB(pMaYC, pMaCTTB_NCC, pTrangThai, pKetQua, pChiPhi);
+            return y.UpdataTrangThaiCTYCTB(pMaYC, pMaCTTB_NCC, pMaNguoiDung, pTrangThai, pKetQua, pChiPhi);
+        }
+        public List<ChiTietThietBi_TKBDTO> getAllChiTietThietBi_TKB(int pMaTKB)
+        {
+            return y.getAllChiTietThietBi_TKB(pMaTKB);
+        }
+        public DateTime ngayHoc_TKB(int pMaTKB)
+        {
+            return y.ngayHoc_TKB(pMaTKB);
+        }
+        public TimeSpan gioHoc_TKB(int pMaTKB)
+        {
+            return y.gioHoc_TKB(pMaTKB);
+        }
+        public List<ChiTietYeuCauThietBiDTO> getAllChiTietYeuCauMuaThietBi()
+        {
+            return y.getAllChiTietYeuCauMuaThietBi();
+        }
+        public List<ChiTietYeuCauThietBiDTO> searchChiTietYeuCauMuaThietBi(int pMaYC)
+        {
+            return y.searchChiTietYeuCauMuaThietBi(pMaYC);
+        }
+        public bool UpdataTrangThaiCTYCTB_Mua(int pMaYC, int pMaCTTB_NCC, int pTrangThai, string pKetQua, float pChiPhi)
+        {
+            return y.UpdataTrangThaiCTYCTB_Mua(pMaYC, pMaCTTB_NCC, pTrangThai, pKetQua, pChiPhi);
         }
     }
 }

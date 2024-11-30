@@ -45,10 +45,13 @@
     <Compile Include="BaiHocBUS.cs" />
     <Compile Include="BaoDuongBUS.cs" />
     <Compile Include="BienBanXuLyBUS.cs" />
+    <Compile Include="ChiTietMuonThietBiBUS.cs" />
+    <Compile Include="ChiTietThietBi_ThietBiBUS.cs" />
     <Compile Include="LoaiThietBiBUS.cs" />
     <Compile Include="LoginBUS.cs" />
     <Compile Include="LopHocBUS.cs" />
     <Compile Include="MonHocBUS.cs" />
+    <Compile Include="MonHoc_BaiHoc_ChiTietTB_BUS.cs" />
     <Compile Include="MuonThietBiBUS.cs" />
     <Compile Include="NguoiDungBUS.cs" />
     <Compile Include="NhapThietBiBUS.cs" />

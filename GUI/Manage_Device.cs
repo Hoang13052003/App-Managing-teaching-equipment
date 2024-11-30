@@ -25,7 +25,6 @@ namespace GUI
             btnThem.Click += BtnThem_Click;
             btnSua.Click += BtnSua_Click;
             btnXoa.Click += BtnXoa_Click;
-            btnDong.Click += BtnDong_Click;
             btnLamMoi.Click += BtnLamMoi_Click;
             txtMaTB.Enabled = false;
         }
@@ -193,6 +192,11 @@ namespace GUI
         {
             var listThietBi = bus.GetAll();
             dgvDSTB.DataSource = listThietBi;
+            dgvDSTB.Columns["MaTB"].HeaderText = "Mã thiết bị";
+            dgvDSTB.Columns["TenTB"].HeaderText = "Tên thiết bị";
+            dgvDSTB.Columns["MaLoai"].HeaderText = "Mã loại";
+            dgvDSTB.Columns["NSX"].HeaderText = "Nhà sản xuất";
+            dgvDSTB.Columns["SoLuong"].HeaderText = "Số lượng";
         }
 
         private void loadCBB_LoaiTB()

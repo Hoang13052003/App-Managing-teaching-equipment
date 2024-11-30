@@ -1,0 +1,419 @@
+﻿using BUS;
+using DTO;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace GUI
+{
+    public partial class BaoCaoThietBiHuHong_TKB : Form
+    {
+        int maTKB; //307, 308, 309, 337
+        private Dictionary<int, List<string>> deviceImages = new Dictionary<int, List<string>>();
+        YeuCauThietBiBUS y = new YeuCauThietBiBUS();
+        BienBanXuLyBUS b = new BienBanXuLyBUS();
+
+        public int MaTKB
+        {
+            get { return maTKB; }
+            set { maTKB = value; }
+        }
+        public BaoCaoThietBiHuHong_TKB()
+        {
+            InitializeComponent();
+            this.btnThemAnh.Click += BtnThemAnh_Click;
+            this.Load += BaoCaoThietBiHuHong_Load;
+            this.btnThem.Click += BtnThem_Click;
+            this.btnXoa.Click += BtnXoa_Click;
+            this.btnGui.Click += BtnGui_Click;
+            this.btnReset.Click += BtnReset_Click;
+            this.dgvThietBi.CellClick += DgvThietBi_CellClick;
+        }
+
+        private void DgvThietBi_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) BingDingDSChiTietThietBi(e.RowIndex);
+        }
+
+        private void BtnReset_Click(object sender, EventArgs e)
+        {
+            Reset();
+        }
+
+        private void BtnGui_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Xác nhận gửi báo cáo?",
+                "Thông báo",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                // Kiểm tra điều kiện cho dgvThietBiHong
+                if (dgvThietBiHong.Rows.Count == 0 ||
+                (dgvThietBiHong.Rows.Count == 1 && dgvThietBiHong.Rows[0].Cells["MaCTTB"].Value == null))
+                {
+                    MessageBox.Show("Danh sách thiết bị hỏng không được để trống.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                // Kiểm tra các trường thông tin
+                if (string.IsNullOrWhiteSpace(txtHoTen.Text))
+                {
+                    MessageBox.Show("Họ tên không được để trống.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtHoTen.Focus();
+                    return;
+                }
+
+                if (cboVaiTro.SelectedIndex <= 0)
+                {
+                    MessageBox.Show("Vui lòng chọn vai trò.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                DateTime thoiGian;
+                if (string.IsNullOrWhiteSpace(txtThoiGian.Text) || !DateTime.TryParseExact(txtThoiGian.Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out thoiGian))
+                {
+                    MessageBox.Show("Thời gian không hợp lệ hoặc không đúng định dạng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                BienBanXuLyDTO bienBan = new BienBanXuLyDTO
+                {
+                    TenNguoiLamHong = txtHoTen.Text,
+                    VaiTro = cboVaiTro.Text,
+                    ThoiGianLamHong = thoiGian,
+                    ThoiGianXuLy = null,
+                    ChiPhiSuaChua = 0,
+                    TinhTrang = 0
+                };
+                List<ChiTietBienBanDTO> chiTietList = new List<ChiTietBienBanDTO>();
+
+                string projectDirectory = Directory.GetParent(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.FullName).FullName;
+                string commonImageFolder = Path.Combine(projectDirectory, "Image", "thietBiHuHong");
+
+                if (!Directory.Exists(commonImageFolder))
+                {
+                    Directory.CreateDirectory(commonImageFolder);
+                }
+                int validImageCount = 0;
+                foreach (DataGridViewRow row in dgvThietBiHong.Rows)
+                {
+                    if (row.Cells["MaCTTB"].Value != null && row.Cells["MaCTTB"].Value != DBNull.Value)
+                    {
+                        int maCTTB = (int)row.Cells["MaCTTB"].Value;
+                        string moTaChiTiet = row.Cells["MoTaChiTiet"].Value.ToString();
+                        string hinhAnh = "";
+
+                        if (deviceImages.ContainsKey(maCTTB) && deviceImages[maCTTB].Count > 0)
+                        {
+                            string originalImagePath = deviceImages[maCTTB][0];
+                            string imageName = $"img_{maCTTB}_{DateTime.Now:yyyyMMddHHmmss}.jpg";
+                            string newImagePath = Path.Combine(commonImageFolder, imageName);
+
+                            try
+                            {
+                                File.Copy(originalImagePath, newImagePath, true); // Sao chép ảnh vào thư mục chung
+                                hinhAnh = Path.Combine(imageName); // Lưu đường dẫn tương đối để sử dụng trong project
+                                validImageCount++;
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show($"Không thể lưu ảnh cho thiết bị {maCTTB}: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Thiết bị {maCTTB} không có hình ảnh.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        ChiTietBienBanDTO chiTiet = new ChiTietBienBanDTO
+                        {
+                            MaCTTB_NCC = maCTTB,
+                            MoTaChiTiet = moTaChiTiet,
+                            HinhAnh = hinhAnh // Lưu đường dẫn tương đối
+                        };
+
+                        chiTietList.Add(chiTiet);
+                    }
+                }
+
+                if (validImageCount != chiTietList.Count)
+                {
+                    MessageBox.Show("Số lượng hình ảnh không khớp với số lượng thiết bị.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (b.Insert(bienBan, chiTietList))
+                {
+                    MessageBox.Show("Gửi báo cáo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LamMoi();
+                    Reset();
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi xảy ra khi gửi báo cáo.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void BtnLamMoi_Click(object sender, EventArgs e)
+        {
+            LamMoi();
+        }
+        void LamMoi()
+        {
+            LoadDgvDSChiTietThietBi();
+        }
+        void Reset()
+        {
+            txtHoTen.Text = string.Empty;
+            txtMoTa.Text = string.Empty;
+            cboVaiTro.Items.Clear();
+            LoadCboVaiTro();
+            DateTime now = DateTime.Now;
+            txtThoiGian.Text = now.ToString("dd/MM/yyyy HH:mm");
+            foreach (Control control in flowLayoutPanelHinhAnh.Controls.OfType<PictureBox>().ToList())
+            {
+                flowLayoutPanelHinhAnh.Controls.Remove(control);
+                control.Dispose();
+            }
+
+            dgvThietBiHong.Rows.Clear();
+
+            deviceImages.Clear();
+        }
+
+        private void BtnXoa_Click(object sender, EventArgs e)
+        {
+            if (dgvThietBiHong.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dgvThietBiHong.SelectedRows)
+                {
+                    if (row.Cells["MaCTTB"].Value != null)
+                    {
+                        int selectedDeviceId = (int)row.Cells["MaCTTB"].Value;
+
+                        // Xóa ảnh khỏi deviceImages nếu tồn tại
+                        if (deviceImages.ContainsKey(selectedDeviceId))
+                        {
+                            deviceImages.Remove(selectedDeviceId);
+                        }
+
+                        // Xóa PictureBox khỏi flowLayoutPanelHinhAnh
+                        var pictureBoxToRemove = flowLayoutPanelHinhAnh.Controls
+                            .OfType<PictureBox>()
+                            .Where(p => p.Tag != null && (int)p.Tag == selectedDeviceId)
+                            .ToList();
+
+                        foreach (var picBox in pictureBoxToRemove)
+                        {
+                            flowLayoutPanelHinhAnh.Controls.Remove(picBox);
+                            picBox.Dispose();
+                        }
+                    }
+
+                    // Xóa dòng trong DataGridView
+                    dgvThietBiHong.Rows.Remove(row);
+                }
+                dgvThietBiHong.ClearSelection();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một thiết bị!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void BtnThem_Click(object sender, EventArgs e)
+        {
+            if (dgvThietBiHong.Rows.Count >= 6)
+            {
+                MessageBox.Show("Mỗi lần báo cáo chỉ tối đa 6 thiết bị!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (dgvThietBi.SelectedRows.Count > 0)
+            {
+                if (txtMoTa.Text == string.Empty)
+                {
+                    MessageBox.Show("Cần nhập mô tả chi tiết hư hỏng cho thiết bị này trước khi thêm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                {
+                    DataGridViewRow selectedRow = dgvThietBi.SelectedRows[0];
+
+                    var trangThaiCell = selectedRow.Cells["TinhTrang"].Value;
+                    if (trangThaiCell != null && trangThaiCell.ToString() == "Hỏng")
+                    {
+                        MessageBox.Show("Thiết bị đã được báo cáo hư hỏng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    DataGridViewRow newRow = new DataGridViewRow();
+                    newRow.CreateCells(dgvThietBiHong);
+
+                    for (int i = 0; i < selectedRow.Cells.Count; i++)
+                    {
+                        newRow.Cells[i].Value = selectedRow.Cells[i].Value;
+                    }
+
+                    newRow.Cells[8].Value = txtMoTa.Text.Trim();
+
+                    bool exists = false;
+                    foreach (DataGridViewRow row in dgvThietBiHong.Rows)
+                    {
+                        var cellValue1 = row.Cells["MaCTTB"].Value;
+                        var cellValue2 = selectedRow.Cells["MaCTTB"].Value;
+
+                        if (cellValue1 == null || cellValue2 == null)
+                            continue;
+
+                        if (cellValue1.ToString() == cellValue2.ToString())
+                        {
+                            exists = true;
+                            break;
+                        }
+                    }
+
+                    if (!exists)
+                    {
+                        dgvThietBiHong.Rows.Add(newRow);
+                    }
+                    txtMoTa.ResetText();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một thiết bị để thêm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void BaoCaoThietBiHuHong_Load(object sender, EventArgs e)
+        {
+            LoadDgvDSChiTietThietBi();
+            LoadThietBiHong();
+            LoadCboVaiTro();
+            txtMaTKB.Text = maTKB.ToString(); // maTKB.ToString();
+            txtNgayHoc.Text = y.ngayHoc_TKB(maTKB).ToString(); //maTKB
+            txtGioHoc.Text = y.gioHoc_TKB(maTKB).ToString(); //maTKB
+            DateTime now = DateTime.Now;
+            txtThoiGian.Text = now.ToString("dd/MM/yyyy HH:mm");
+        }
+
+        void LoadCboVaiTro()
+        {
+            cboVaiTro.Items.Add(new { Text = "Chọn vai trò", Value = 0 });
+            cboVaiTro.Items.Add(new { Text = "Giáo viên", Value = 1 });
+            cboVaiTro.Items.Add(new { Text = "Học sinh", Value = 2 });
+            cboVaiTro.Items.Add(new { Text = "Bộ phận kỹ thuật", Value = 3 });
+            cboVaiTro.Items.Add(new { Text = "Bộ phận quản lý", Value = 4 });
+            cboVaiTro.Items.Add(new { Text = "Khách", Value = 4 });
+
+            cboVaiTro.DisplayMember = "Text";
+            cboVaiTro.ValueMember = "Value";
+
+            cboVaiTro.SelectedIndex = 0;
+        }
+        void BingDingDSChiTietThietBi(int rowIndex)
+        {
+            DataGridViewRow row = dgvThietBi.Rows[rowIndex];
+            txtMaCTTB.Text = row.Cells[0].Value.ToString();
+            txtTenTB.Text = row.Cells[1].Value.ToString();
+            txtPhong.Text = row.Cells[2].Value.ToString();
+        }
+        void LoadDgvDSChiTietThietBi()
+        {
+            dgvThietBi.DataSource = y.getAllChiTietThietBi_TKB(maTKB); //thay 1 thành maTKB khi lấy được mã
+            dgvThietBi.Columns["MaCTTB"].HeaderText = "Mã chi tiết";
+            dgvThietBi.Columns["TenTB"].HeaderText = "Tên thiết bị";
+            dgvThietBi.Columns["TenPhong"].HeaderText = "Tên phòng";
+            dgvThietBi.Columns["TinhTrang"].Visible = false;
+            dgvThietBi.Columns["TrangThai"].HeaderText = "Trạng thái";
+            dgvThietBi.Columns["MaMuon"].Visible = false;
+            dgvThietBi.Columns["NgayHoc"].HeaderText = "Ngày mượn";
+            dgvThietBi.Columns["GioHoc"].HeaderText = "Giờ mượn";
+        }
+
+        void LoadThietBiHong()
+        {
+            dgvThietBiHong.Columns.Add("MaCTTB", "Mã chi tiết");
+            dgvThietBiHong.Columns.Add("TenTB", "Tên thiết bị");
+            dgvThietBiHong.Columns.Add("TenPhong", "Tên phòng");
+            dgvThietBiHong.Columns.Add("TinhTrang", "Tình trạng");
+            dgvThietBiHong.Columns.Add("TrangThai", "Trạng thái");
+            dgvThietBiHong.Columns.Add("MaMuon", "Mã mượn");
+            dgvThietBiHong.Columns.Add("NgayHoc", "Ngày học");
+            dgvThietBiHong.Columns.Add("GioHoc", "Giờ học");
+            dgvThietBiHong.Columns.Add("MoTaChiTiet", "Mô tả chi tiết");
+            dgvThietBiHong.Columns["TinhTrang"].Visible=false;
+            dgvThietBiHong.Columns["MaMuon"].Visible = false;
+
+        }
+
+        private void BtnThemAnh_Click(object sender, EventArgs e)
+        {
+            // Kiểm tra nếu không có dòng nào được chọn
+            if (dgvThietBiHong.SelectedRows.Count == 0 || dgvThietBiHong.SelectedRows[0].Cells["MaCTTB"].Value == null)
+            {
+                MessageBox.Show("Vui lòng chọn một thiết bị trong danh sách 'Thiết bị hư hỏng' trước khi thêm hình ảnh!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedFilePath = openFileDialog.FileName;
+                int selectedDeviceId = (int)dgvThietBiHong.SelectedRows[0].Cells["MaCTTB"].Value;
+
+                // Kiểm tra nếu thiết bị đã có ảnh
+                if (deviceImages.ContainsKey(selectedDeviceId) && deviceImages[selectedDeviceId].Count > 0)
+                {
+                    // Cập nhật đường dẫn ảnh trong danh sách
+                    deviceImages[selectedDeviceId][0] = selectedFilePath;
+
+                    // Cập nhật ảnh trong PictureBox đã có sẵn trong FlowLayoutPanel
+                    PictureBox existingPicBox = flowLayoutPanelHinhAnh.Controls
+                        .OfType<PictureBox>()
+                        .FirstOrDefault(p => p.Tag != null && (int)p.Tag == selectedDeviceId);
+
+                    if (existingPicBox != null)
+                    {
+                        existingPicBox.Image = Image.FromFile(selectedFilePath);
+                    }
+                }
+                else
+                {
+                    // Nếu thiết bị chưa có ảnh, thêm đường dẫn vào danh sách và tạo PictureBox mới
+                    if (!deviceImages.ContainsKey(selectedDeviceId))
+                    {
+                        deviceImages[selectedDeviceId] = new List<string>();
+                    }
+                    deviceImages[selectedDeviceId].Add(selectedFilePath);
+
+                    PictureBox picBox = new PictureBox();
+                    picBox.Image = Image.FromFile(selectedFilePath);
+                    picBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    picBox.Width = 100;
+                    picBox.Height = 100;
+                    picBox.Tag = selectedDeviceId; // Gắn Tag để dễ dàng nhận diện PictureBox cho thiết bị này
+
+                    flowLayoutPanelHinhAnh.Controls.Add(picBox);
+                }
+            }
+        }
+
+    }
+}

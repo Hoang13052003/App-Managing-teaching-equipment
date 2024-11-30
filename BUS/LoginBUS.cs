@@ -1,6 +1,7 @@
 ﻿using DTO;
 using DAL;
 using System;
+using System.Runtime.Remoting.Messaging;
 
 namespace BUS
 {
@@ -44,6 +45,11 @@ namespace BUS
             }
 
             return loginDAL.RecoverPassword(tenDangNhap);
+        }
+
+        public string CheckRoles(String maNguoiDung)
+        {
+            return loginDAL.CheckRoles(maNguoiDung);
         }
     }
 }

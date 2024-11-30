@@ -58,43 +58,14 @@ namespace BUS
         {
             return sup.SearchThietBi(pMaLoai);
         }
-        //QLThietBiDayHocDataContext qltb = new QLThietBiDayHocDataContext();
-        //SupplierDAL sup = new SupplierDAL();
-        //public SupplierBUS()
-        //{
 
-        //}
-        //public List<NhaCungCap> getNCC()
-        //{
-        //    return sup.getNCC();
-        //}
-
-        //public bool KTKC(int pMaNCC)
-        //{
-        //    NhaCungCap dt = qltb.NhaCungCaps.Where(d => d.MaNCC == pMaNCC).FirstOrDefault();
-        //    if (dt != null)
-        //        return true;
-        //    else return false;
-        //}
-
-        //public bool ThemNCC(NhaCungCap pNCC)
-        //{
-        //    return sup.ThemNCC(pNCC);
-        //}
-
-        //public bool XoaNCC(int pMaNCC)
-        //{
-        //    return sup.XoaNCC(pMaNCC);
-        //}
-
-        //public bool SuaNCC(int pMaNCC, string pTenNCC, string pDiaChi, string pSDT)
-        //{
-        //    return sup.SuaDiemSV(pMaNCC, pTenNCC, pDiaChi, pSDT);
-        //}
-
-        //public IQueryable searchNCC(string keyword)
-        //{
-        //    return sup.searchNCC(keyword);
-        //}
+        public List<ThietBiDTO> SearchThietBi_NCC(int pMaNCC)
+        {
+            return sup.SearchThietBi_NCC(pMaNCC);
+        }
+        public string tenNCC(int pMaNCC)
+        {
+            return sup.tenNCC(pMaNCC);
+        }
     }
 }
