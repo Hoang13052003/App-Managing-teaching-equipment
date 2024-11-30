@@ -40,6 +40,7 @@
             this.dgv_DSTB = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.gbx_ThongTinMonHoc = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.btn_BaoCaoThietBiHuHong = new Guna.UI2.WinForms.Guna2Button();
             this.txtNgayHoc = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.txtPhongHoc = new Guna.UI2.WinForms.Guna2TextBox();
@@ -93,6 +94,7 @@
             // 
             this.gbx_ThongTin.Controls.Add(this.dgv_DSTB);
             this.gbx_ThongTin.Controls.Add(this.guna2PictureBox1);
+            this.gbx_ThongTin.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.gbx_ThongTin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbx_ThongTin.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbx_ThongTin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
@@ -173,6 +175,8 @@
             // 
             // gbx_ThongTinMonHoc
             // 
+            this.gbx_ThongTinMonHoc.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.gbx_ThongTinMonHoc.Controls.Add(this.btn_BaoCaoThietBiHuHong);
             this.gbx_ThongTinMonHoc.Controls.Add(this.txtNgayHoc);
             this.gbx_ThongTinMonHoc.Controls.Add(this.guna2HtmlLabel1);
             this.gbx_ThongTinMonHoc.Controls.Add(this.txtPhongHoc);
@@ -181,6 +185,7 @@
             this.gbx_ThongTinMonHoc.Controls.Add(this.txtTenMonHoc);
             this.gbx_ThongTinMonHoc.Controls.Add(this.guna2HtmlLabel7);
             this.gbx_ThongTinMonHoc.Controls.Add(this.guna2HtmlLabel8);
+            this.gbx_ThongTinMonHoc.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.gbx_ThongTinMonHoc.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbx_ThongTinMonHoc.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbx_ThongTinMonHoc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
@@ -191,6 +196,22 @@
             this.gbx_ThongTinMonHoc.Size = new System.Drawing.Size(1660, 140);
             this.gbx_ThongTinMonHoc.TabIndex = 18;
             this.gbx_ThongTinMonHoc.Text = "Thông tin môn học";
+            // 
+            // btn_BaoCaoThietBiHuHong
+            // 
+            this.btn_BaoCaoThietBiHuHong.BorderRadius = 5;
+            this.btn_BaoCaoThietBiHuHong.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_BaoCaoThietBiHuHong.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btn_BaoCaoThietBiHuHong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btn_BaoCaoThietBiHuHong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btn_BaoCaoThietBiHuHong.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_BaoCaoThietBiHuHong.ForeColor = System.Drawing.Color.White;
+            this.btn_BaoCaoThietBiHuHong.Location = new System.Drawing.Point(1415, 53);
+            this.btn_BaoCaoThietBiHuHong.Name = "btn_BaoCaoThietBiHuHong";
+            this.btn_BaoCaoThietBiHuHong.Size = new System.Drawing.Size(228, 45);
+            this.btn_BaoCaoThietBiHuHong.TabIndex = 16;
+            this.btn_BaoCaoThietBiHuHong.Text = "Báo cáo thiết bị hư hỏng";
+            this.btn_BaoCaoThietBiHuHong.Click += new System.EventHandler(this.btn_BaoCaoThietBiHuHong_Click);
             // 
             // txtNgayHoc
             // 
@@ -348,6 +369,7 @@
             this.guna2GroupBox1.Controls.Add(this.guna2HtmlLabel10);
             this.guna2GroupBox1.Controls.Add(this.txtTenNguoiMuon);
             this.guna2GroupBox1.Controls.Add(this.guna2HtmlLabel12);
+            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.guna2GroupBox1.Location = new System.Drawing.Point(3, 616);
@@ -460,6 +482,7 @@
             this.guna2GroupBox3.Controls.Add(this.guna2HtmlLabel13);
             this.guna2GroupBox3.Controls.Add(this.txtMaTB);
             this.guna2GroupBox3.Controls.Add(this.guna2HtmlLabel15);
+            this.guna2GroupBox3.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.guna2GroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2GroupBox3.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
@@ -708,7 +731,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.Name = "formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi";
-            this.Text = "formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi";
+            this.Text = "Yêu cầu mượn trả thiết bị";
             this.Load += new System.EventHandler(this.formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi_Load);
             this.gbx_ThongTin.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSTB)).EndInit();
@@ -766,5 +789,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel12;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
         private Guna.UI2.WinForms.Guna2DataGridView dgv_DSChiTietThietBi;
+        private Guna.UI2.WinForms.Guna2Button btn_BaoCaoThietBiHuHong;
     }
 }

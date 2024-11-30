@@ -9,8 +9,8 @@ using System.Windows.Forms;
 public class DatabaseHelper
 {
 
-    //private readonly string connectionString = "Data Source=LAPTOP-H0BOFLN9;Initial Catalog=QlyThietBiDayHoc;User ID=sa;Password=123;Encrypt=False";
-    private readonly string connectionString = "Data Source=DESKTOP-FGB2G23;Initial Catalog=QlyThietBiDayHoc;Integrated Security=True";
+    private readonly string connectionString = "Data Source=LAPTOP-H0BOFLN9;Initial Catalog=QlyThietBiDayHoc;User ID=sa;Password=123;Encrypt=False";
+    //private readonly string connectionString = "Data Source=DESKTOP-FGB2G23;Initial Catalog=QlyThietBiDayHoc;Integrated Security=True";
 
     //private readonly string connectionString = "Data Source=LAPTOPTQT03;Initial Catalog=QLThietBiDayHoc;Integrated Security=True;Encrypt=False";
 

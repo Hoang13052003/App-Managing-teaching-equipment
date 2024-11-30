@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +9,103 @@ namespace BUS
 {
     public class ThoiKhoaBieuBUS
     {
-        private ThoiKhoaBieuDAL tkb = new ThoiKhoaBieuDAL();
+        private ThoiKhoaBieuDAL _tkb = new ThoiKhoaBieuDAL();
 
+        public List<ThoiKhoaBieuDTO> GetAll()
+        {
+            return _tkb.GetAll();
+        }
+        public List<ThoiKhoaBieuChiTiet_NguoiDungDTO> GetAllTKBChiTiet()
+        {
+            return _tkb.GetAllThoiKhoaBieuChiTiet();
+        }
         public ThoiKhoaBieuDTO GetByID(int maTKB)
         {
-            return tkb.GetByID(maTKB);  
+            return _tkb.GetByID(maTKB);  
         }
+
+        // Thêm mới thời khóa biểu
+        public bool Insert(ThoiKhoaBieuDTO tkb)
+        {
+            try
+            {
+                // Thực hiện thêm
+                if (_tkb.Insert(tkb))
+                {
+                    // Thông báo thành công
+                    Console.WriteLine("Thêm mới thời khóa biểu thành công!", "Thông báo");
+                    return true;
+                }
+                else
+                {
+                    // Thông báo thất bại
+                    Console.WriteLine("Thêm mới thời khóa biểu thất bại.");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ
+                Console.WriteLine($"Đã xảy ra lỗi: {ex.Message}");
+                return false;
+            }
+        }
+
+        // Cập nhật thời khóa biểu
+        public bool Update(ThoiKhoaBieuDTO tkb)
+        {
+            try
+            {
+                // Thực hiện cập nhật
+                if (_tkb.Update(tkb))
+                {
+                    // Thông báo thành công
+                    Console.WriteLine("Cập nhật thời khóa biểu thành công!");
+                    return true;
+                }
+                else
+                {
+                    // Thông báo thất bại
+                    Console.WriteLine("Cập nhật thời khóa biểu thất bại.");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ
+                Console.WriteLine($"Đã xảy ra lỗi: {ex.Message}", "Lỗi");
+                return false;
+            }
+        }
+
+        // Xóa thời khóa biểu
+        public bool Delete(int maTKB)
+        {
+            try
+            {
+                // Thực hiện xóa
+                if (_tkb.Delete(maTKB))
+                {
+                    // Thông báo thành công
+                    Console.WriteLine("Xóa thời khóa biểu thành công!");
+                    return true;
+                }
+                else
+                {
+                    // Thông báo thất bại
+                    Console.WriteLine("Xóa thời khóa biểu thất bại.", "Lỗi");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ
+                Console.WriteLine($"Đã xảy ra lỗi: {ex.Message}", "Lỗi");
+                return false;
+            }
+        }
+
+
         public List<ThoiKhoaBieuChiTietDTO> GetThoiKhoaBieuByUser(string maNguoiDung, DateTime startDate, DateTime endDate)
         {
             if (string.IsNullOrWhiteSpace(maNguoiDung))
@@ -23,7 +115,7 @@ namespace BUS
 
             try
             {
-                var result = tkb.GetThoiKhoaBieuByUser(maNguoiDung, startDate, endDate);
+                var result = _tkb.GetThoiKhoaBieuByUser(maNguoiDung, startDate, endDate);
 
                 if (result == null || result.Count == 0)
                 {
@@ -47,7 +139,7 @@ namespace BUS
 
             try
             {
-                var result = tkb.GetThoiKhoaBieuByUserAndDate(maNguoiDung, startDate, endDate);
+                var result = _tkb.GetThoiKhoaBieuByUserAndDate(maNguoiDung, startDate, endDate);
 
                 if (result == null || result.Count == 0)
                 {

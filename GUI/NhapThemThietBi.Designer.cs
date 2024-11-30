@@ -50,7 +50,6 @@
             this.Navbar = new System.Windows.Forms.Panel();
             this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.controlClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.main.SuspendLayout();
@@ -91,9 +90,9 @@
             this.txtTenNCC.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.txtTenNCC.Enabled = false;
             this.txtTenNCC.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTenNCC.Font = new System.Drawing.Font("JetBrains Mono", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenNCC.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTenNCC.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTenNCC.Location = new System.Drawing.Point(152, 75);
+            this.txtTenNCC.Location = new System.Drawing.Point(12, 92);
             this.txtTenNCC.Name = "txtTenNCC";
             this.txtTenNCC.PasswordChar = '\0';
             this.txtTenNCC.PlaceholderText = "";
@@ -105,44 +104,44 @@
             // 
             this.txtSoLuong.BackColor = System.Drawing.Color.Transparent;
             this.txtSoLuong.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSoLuong.Font = new System.Drawing.Font("JetBrains Mono", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoLuong.Location = new System.Drawing.Point(152, 119);
+            this.txtSoLuong.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSoLuong.Location = new System.Drawing.Point(224, 92);
             this.txtSoLuong.Name = "txtSoLuong";
-            this.txtSoLuong.Size = new System.Drawing.Size(100, 28);
+            this.txtSoLuong.Size = new System.Drawing.Size(115, 28);
             this.txtSoLuong.TabIndex = 5;
             // 
             // guna2HtmlLabel3
             // 
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(424, 162);
+            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(424, 134);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(273, 23);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(218, 25);
             this.guna2HtmlLabel3.TabIndex = 4;
             this.guna2HtmlLabel3.Text = "Danh sách thiết bị cần nhập";
             // 
             // guna2HtmlLabel2
             // 
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(12, 162);
+            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(12, 134);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(223, 23);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(179, 25);
             this.guna2HtmlLabel2.TabIndex = 4;
             this.guna2HtmlLabel2.Text = "Chọn thiết bị cần nhập";
             // 
             // btnGuiYeuCau
             // 
-            this.btnGuiYeuCau.BorderRadius = 10;
+            this.btnGuiYeuCau.BorderRadius = 5;
             this.btnGuiYeuCau.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnGuiYeuCau.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnGuiYeuCau.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnGuiYeuCau.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnGuiYeuCau.Font = new System.Drawing.Font("JetBrains Mono", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuiYeuCau.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.btnGuiYeuCau.ForeColor = System.Drawing.Color.White;
-            this.btnGuiYeuCau.Location = new System.Drawing.Point(608, 75);
+            this.btnGuiYeuCau.Location = new System.Drawing.Point(573, 87);
             this.btnGuiYeuCau.Name = "btnGuiYeuCau";
-            this.btnGuiYeuCau.Size = new System.Drawing.Size(160, 35);
+            this.btnGuiYeuCau.Size = new System.Drawing.Size(195, 35);
             this.btnGuiYeuCau.TabIndex = 3;
             this.btnGuiYeuCau.Text = "Tạo phiếu nhập →";
             this.btnGuiYeuCau.Click += new System.EventHandler(this.btnGuiYeuCau_Click_1);
@@ -150,34 +149,34 @@
             // guna2HtmlLabel4
             // 
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel4.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(13, 82);
+            this.guna2HtmlLabel4.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(12, 61);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(123, 23);
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(110, 25);
             this.guna2HtmlLabel4.TabIndex = 4;
             this.guna2HtmlLabel4.Text = "Nhà cung cấp";
             // 
             // guna2HtmlLabel1
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(12, 122);
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(224, 65);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(133, 23);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(115, 25);
             this.guna2HtmlLabel1.TabIndex = 4;
             this.guna2HtmlLabel1.Text = "Số lượng nhập";
             // 
             // btnXoa
             // 
-            this.btnXoa.BorderRadius = 10;
+            this.btnXoa.BorderRadius = 5;
             this.btnXoa.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnXoa.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnXoa.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnXoa.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnXoa.FillColor = System.Drawing.Color.Red;
-            this.btnXoa.Font = new System.Drawing.Font("JetBrains Mono", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.Font = new System.Drawing.Font("JetBrains Mono", 20.25F, System.Drawing.FontStyle.Bold);
             this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(362, 339);
+            this.btnXoa.Location = new System.Drawing.Point(358, 257);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(45, 45);
             this.btnXoa.TabIndex = 3;
@@ -186,15 +185,15 @@
             // 
             // btnThem
             // 
-            this.btnThem.BorderRadius = 10;
+            this.btnThem.BorderRadius = 5;
             this.btnThem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnThem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnThem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnThem.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnThem.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnThem.Font = new System.Drawing.Font("JetBrains Mono", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.Font = new System.Drawing.Font("JetBrains Mono", 20.25F, System.Drawing.FontStyle.Bold);
             this.btnThem.ForeColor = System.Drawing.Color.White;
-            this.btnThem.Location = new System.Drawing.Point(362, 247);
+            this.btnThem.Location = new System.Drawing.Point(358, 165);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(45, 45);
             this.btnThem.TabIndex = 3;
@@ -226,7 +225,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDSThietBiNhap.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDSThietBiNhap.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvDSThietBiNhap.Location = new System.Drawing.Point(424, 191);
+            this.dgvDSThietBiNhap.Location = new System.Drawing.Point(424, 165);
             this.dgvDSThietBiNhap.Name = "dgvDSThietBiNhap";
             this.dgvDSThietBiNhap.RowHeadersVisible = false;
             this.dgvDSThietBiNhap.Size = new System.Drawing.Size(344, 231);
@@ -277,7 +276,7 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDSThietBi.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvDSThietBi.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvDSThietBi.Location = new System.Drawing.Point(12, 191);
+            this.dgvDSThietBi.Location = new System.Drawing.Point(12, 165);
             this.dgvDSThietBi.Name = "dgvDSThietBi";
             this.dgvDSThietBi.RowHeadersVisible = false;
             this.dgvDSThietBi.Size = new System.Drawing.Size(327, 231);
@@ -309,24 +308,23 @@
             this.Navbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.Navbar.Controls.Add(this.guna2HtmlLabel5);
             this.Navbar.Controls.Add(this.guna2ControlBox2);
-            this.Navbar.Controls.Add(this.guna2ControlBox1);
             this.Navbar.Controls.Add(this.controlClose);
             this.Navbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.Navbar.Location = new System.Drawing.Point(0, 0);
             this.Navbar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Navbar.Name = "Navbar";
-            this.Navbar.Size = new System.Drawing.Size(780, 65);
+            this.Navbar.Size = new System.Drawing.Size(780, 53);
             this.Navbar.TabIndex = 1;
             // 
             // guna2HtmlLabel5
             // 
             this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel5.Font = new System.Drawing.Font("JetBrains Mono", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel5.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel5.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel5.Location = new System.Drawing.Point(22, 13);
+            this.guna2HtmlLabel5.Location = new System.Drawing.Point(13, 8);
             this.guna2HtmlLabel5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            this.guna2HtmlLabel5.Size = new System.Drawing.Size(291, 38);
+            this.guna2HtmlLabel5.Size = new System.Drawing.Size(281, 39);
             this.guna2HtmlLabel5.TabIndex = 0;
             this.guna2HtmlLabel5.Text = "NHẬP THÊM THIẾT BỊ";
             // 
@@ -336,28 +334,17 @@
             this.guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
             this.guna2ControlBox2.FillColor = System.Drawing.Color.White;
             this.guna2ControlBox2.IconColor = System.Drawing.Color.DimGray;
-            this.guna2ControlBox2.Location = new System.Drawing.Point(657, 17);
+            this.guna2ControlBox2.Location = new System.Drawing.Point(702, 12);
             this.guna2ControlBox2.Name = "guna2ControlBox2";
             this.guna2ControlBox2.Size = new System.Drawing.Size(30, 30);
             this.guna2ControlBox2.TabIndex = 9;
-            // 
-            // guna2ControlBox1
-            // 
-            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MaximizeBox;
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.IconColor = System.Drawing.Color.DimGray;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(693, 17);
-            this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.Size = new System.Drawing.Size(30, 30);
-            this.guna2ControlBox1.TabIndex = 8;
             // 
             // controlClose
             // 
             this.controlClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.controlClose.FillColor = System.Drawing.Color.White;
             this.controlClose.IconColor = System.Drawing.Color.DimGray;
-            this.controlClose.Location = new System.Drawing.Point(729, 17);
+            this.controlClose.Location = new System.Drawing.Point(738, 12);
             this.controlClose.Name = "controlClose";
             this.controlClose.Size = new System.Drawing.Size(30, 30);
             this.controlClose.TabIndex = 7;
@@ -404,7 +391,6 @@
         private System.Windows.Forms.Panel Navbar;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
-        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
         private Guna.UI2.WinForms.Guna2ControlBox controlClose;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
     }

@@ -27,7 +27,7 @@ namespace GUI
             currentDate = DateTime.Now; // Khởi tạo ngày hiện tại
             Load_Visible_Pannel(false);
             Load_Clear_Pannel();
-            AccountInfo.MaNguoiDung = "ND00000001";
+            //AccountInfo.MaNguoiDung = "ND00000001";
         }
 
         private void Teaching_Schedule_Load(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace GUI
             DateTime startOfWeek = currentDate.AddDays(-(int)(currentDate.DayOfWeek == DayOfWeek.Sunday ? 7 : currentDate.DayOfWeek - DayOfWeek.Monday));
             DateTime endOfWeek = startOfWeek.AddDays(6);
             
-            _listTKB = tkbBUS.GetThoiKhoaBieuByUser("ND00000001", startOfWeek.Date, endOfWeek.Date);
+            _listTKB = tkbBUS.GetThoiKhoaBieuByUser(AccountInfo.MaNguoiDung, startOfWeek.Date, endOfWeek.Date);
             if (_listTKB.Count()>0)
             {
                 scheduleByDay.Clear();

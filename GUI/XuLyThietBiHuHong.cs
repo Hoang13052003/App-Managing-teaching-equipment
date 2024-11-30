@@ -23,7 +23,7 @@ namespace GUI
             this.Load += XuLyThietBiHuHong_Load;
             this.dgvDSBienBan.CellClick += DgvDSBienBan_CellClick;
             this.btnLamMoi.Click += BtnLamMoi_Click;
-            this.btnSearch.Click += BtnSearch_Click;
+            //this.btnSearch.Click += BtnSearch_Click;
             this.dgvChiTietBB.CellClick += DgvChiTietBB_CellClick;
             this.btnCapNhat.Click += BtnCapNhat_Click;
         }
@@ -84,6 +84,7 @@ namespace GUI
             if (e.RowIndex >= 0)
             {
                 LoadImage(e.RowIndex, dgvChiTietBB);
+                txtMoTa.Text = dgvChiTietBB.Rows[e.RowIndex].Cells["MoTaChiTiet"].Value.ToString();
             }
         }
         void LoadImage(int rowIndex, DataGridView dgv)
@@ -101,8 +102,8 @@ namespace GUI
             {
                 pictureBox.Image = Image.FromFile(combinedImagePath);
                 pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                pictureBox.Width = 290;
-                pictureBox.Height = 220;
+                //pictureBox.Width = 290;
+                //pictureBox.Height = 220;
 
                 pictureBox.Anchor = AnchorStyles.None;
                 pictureBox.Margin = new Padding(10);
@@ -112,13 +113,13 @@ namespace GUI
                 MessageBox.Show("Không tìm thấy ảnh!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        private void BtnSearch_Click(object sender, EventArgs e)
-        {
-            if (txtSearch.Text != string.Empty)
-            {
-                searchBienBan(txtSearch.Text);
-            }
-        }
+        //private void BtnSearch_Click(object sender, EventArgs e)
+        //{
+        //    if (txtSearch.Text != string.Empty)
+        //    {
+        //        searchBienBan(txtSearch.Text);
+        //    }
+        //}
 
         void searchBienBan(string keyword)
         {
@@ -150,7 +151,7 @@ namespace GUI
             LoadCboVaiTro();
             LoadDSBienBan();
             LoadChiTietBB();
-            txtSearch.Text = txtHoTen.Text = txtMaBB.Text = txtChiPhi.Text = txtMoTa.Text = txtThoiGian.Text = string.Empty;
+            //txtSearch.Text = txtHoTen.Text = txtMaBB.Text = txtChiPhi.Text = txtMoTa.Text = txtThoiGian.Text = string.Empty;
             pictureBox.Image = null;
         }
         private void DgvDSBienBan_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -197,7 +198,7 @@ namespace GUI
             }
 
             txtChiPhi.Text = row.Cells["ChiPhiSuaChua"].Value?.ToString() ?? string.Empty;
-            cboTinhTrang.Text = row.Cells["TinhTrang"].Value?.ToString() ?? string.Empty;
+            cboTinhTrang.Text = Convert.ToInt32(row.Cells["TinhTrang"].Value) == 1 ? "Đã xử lý" : "Chưa xử lý";
         }
         void LoadCboVaiTro()
         {

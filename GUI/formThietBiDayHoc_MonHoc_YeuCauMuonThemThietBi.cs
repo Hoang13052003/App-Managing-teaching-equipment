@@ -41,11 +41,15 @@ namespace GUI
 
 
         //Controls_Form
+        public formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi()
+        {
+            InitializeComponent();
+        }
         public formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi(ThoiKhoaBieuChiTietDTO tkbDTO)
         {
             InitializeComponent();
             _tkbDTO = tkbDTO;
-            AccountInfo.MaNguoiDung = "ND00000001";
+            //AccountInfo.MaNguoiDung = "ND00000001";
         }
 
         private void formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi_Load(object sender, EventArgs e)
@@ -56,7 +60,8 @@ namespace GUI
                 btn_XoaTB.Enabled = false;
                 btnGuiPhieuMuon.Enabled = false;
                 MessageBox.Show("Chú ý, Bạn đã gửi phiếu mượn thiết bị của môn học này!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+                btn_BaoCaoThietBiHuHong.Enabled = true;
+
                 // Create data
                 _tkbChiTiet = tkbBUS.GetByID(_tkbDTO.MaTKB);
                 _list_MonHoc_BaiHoc_ChiTietTB = monHoc_BaiHoc_ChiTietTB_BUS.GetAllGetByMaMH_MaBH(_tkbChiTiet.MaMon, _tkbChiTiet.MaBaiHoc);
@@ -86,7 +91,7 @@ namespace GUI
                 //Controls
                 btn_ThemTB.Enabled = false;
                 btn_XoaTB.Enabled = false;
-
+                btn_BaoCaoThietBiHuHong.Enabled = false;
 
                 //Load thông tin
                 loadThongTinMonHoc();
@@ -436,6 +441,15 @@ namespace GUI
                 dgv_DSChiTietThietBi.Columns["TrangThai"].Visible = false;
                 dgv_DSChiTietThietBi.Columns["NgayMua"].Visible = false;
             }
+        }
+
+        private void btn_BaoCaoThietBiHuHong_Click(object sender, EventArgs e)
+        {
+            Form newForm = new BaoCaoThietBiHuHong_TKB
+            {
+                MaTKB = _tkbDTO.MaTKB
+            };
+            newForm.ShowDialog();
         }
     }
 }

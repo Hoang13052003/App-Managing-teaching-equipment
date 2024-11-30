@@ -21,7 +21,6 @@ D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Lo
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.ResetPassword.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Dashboard_Admin.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Dashboard_User.resources
-D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.formConDemo.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Home_User.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Teaching_Schedule.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Show_Subjects.resources
@@ -84,7 +83,6 @@ D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.BaoDuon
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.BaoCaoThietBiHuHong.resources
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.XuLyThietBiHuHong.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.BaoDuong.resources
-D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.FormLoaiTB_MonHoc.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.FormLoaiThietBi.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.FormMuonThietBi.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Manage_Device.resources
@@ -93,7 +91,6 @@ D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Ba
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.XuLyThietBiHuHong.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.YeuCauMuaThietBi.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.YeuCauSuaThietBi.resources
-D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Profile_User.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi.resources
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.FormLoaiTB_MonHoc.resources
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.FormLoaiThietBi.resources
@@ -108,3 +105,10 @@ D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.Home_Us
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.Profile_User.resources
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.Show_Subjects.resources
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.Teaching_Schedule.resources
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.BaoCaoThietBiHuHong_TKB.resources
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.ChonNhaCungCap_NhapHang.resources
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.NhapThemThietBi.resources
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.NhapThietBi.resources
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.ThoiKhoaBieu.resources
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Loading.resources
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Profile.resources

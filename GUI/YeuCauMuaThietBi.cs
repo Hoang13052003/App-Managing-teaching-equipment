@@ -24,7 +24,7 @@ namespace GUI
             this.cboNCC.SelectedIndexChanged += CboNCC_SelectedIndexChanged;
             this.cboLoaiTB.SelectedIndexChanged += CboLoaiTB_SelectedIndexChanged;
             this.btnLamMoi.Click += BtnLamMoi_Click;
-            this.btnSearch.Click += BtnSearch_Click;
+            //this.btnSearch.Click += BtnSearch_Click;
             this.btnThem.Click += BtnThem_Click;
             this.btnXoa.Click += BtnXoa_Click;
             this.btnGuiYeuCau.Click += BtnGuiYeuCau_Click;
@@ -153,11 +153,11 @@ namespace GUI
             }
         }
 
-        private void BtnSearch_Click(object sender, EventArgs e)
-        {
-            if (txtSearch.Text == string.Empty) return;
-            dgvDSChiTietThietBi.DataSource = y.SearchKeyChiTietThietBi(txtSearch.Text);
-        }
+        //private void BtnSearch_Click(object sender, EventArgs e)
+        //{
+        //    if (txtSearch.Text == string.Empty) return;
+        //    dgvDSChiTietThietBi.DataSource = y.SearchKeyChiTietThietBi(txtSearch.Text);
+        //}
 
         private void BtnLamMoi_Click(object sender, EventArgs e)
         {

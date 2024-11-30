@@ -157,7 +157,7 @@ namespace GUI
                         {
                             MaTB = Convert.ToInt32(row.Cells["MaTB"].Value),
                             GiaNhap = 1,
-                            SoLuong = Convert.ToInt32(row.Cells["SoLuong"].Value),
+                            SoLuong = Convert.ToInt32(row.Cells[5].Value),
                             ThanhTien = 1
                         });
                     }

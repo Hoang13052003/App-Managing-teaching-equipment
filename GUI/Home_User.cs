@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BUS;
+using DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,11 @@ namespace GUI
 {
     public partial class Home_User : Form
     {
+        private ThongTinCaNhanBUS _ttcnBUS;
         public Home_User()
         {
             InitializeComponent();
+            _ttcnBUS = new ThongTinCaNhanBUS();
         }
 
         private void pannel_Lich_Day_Paint(object sender, PaintEventArgs e)
@@ -35,6 +39,19 @@ namespace GUI
         private void pannel_Lich_Day_Click(object sender, EventArgs e)
         {
             FormTask.OpenFormInPanel<Teaching_Schedule>(FormTask.Pannel_change);
+        }
+
+        private void Home_User_Load(object sender, EventArgs e)
+        {
+            ThongTinCaNhanDTO item = _ttcnBUS.GetByMaNguoiDung(AccountInfo.MaNguoiDung);
+            if (item != null)
+            {
+                lbMaGiaoVien.Text = "Mã giáo viên: " + item.MaNguoiDung.ToString();
+                lbHoTen.Text = "Họ và tên: "+item.HoTen.ToString();
+                lbGioTinh.Text = "Giớ tính: "+item.GioiTinh.ToString();
+                lbNgaySinh.Text ="Ngày sinh: "+ item.NgaySinh.ToString();
+                lbDiaChi.Text = "Địa chỉ: "+item.DiaChi.ToString();
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace GUI
 {
@@ -47,10 +48,21 @@ namespace GUI
                 if (NDBUS.UpdateUser(_nguoiDung))
                 {
                     MessageBox.Show("Đặt lại mật khẩu thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    UpdateLoginState(false);
                     this.Close();
                 }
             }
 
+        }
+        private void UpdateLoginState(bool isLoggedIn)
+        {
+            // Truy cập Registry và cập nhật trạng thái đăng nhập
+            RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\MyApp", true);
+            if (key != null)
+            {
+                key.SetValue("IsLoggedIn", isLoggedIn);
+                key.Close();
+            }
         }
     }
 }

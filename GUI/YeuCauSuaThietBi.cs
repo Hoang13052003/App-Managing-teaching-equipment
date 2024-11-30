@@ -21,7 +21,7 @@ namespace GUI
             this.Load += YeuCauSuaThietBi_Load;
             this.cboLoaiTB.SelectedIndexChanged += CboLoaiTB_SelectedIndexChanged;
             this.cboThietBi.SelectedIndexChanged += CboThietBi_SelectedIndexChanged;
-            this.btnSearch.Click += BtnSearch_Click;
+            //this.btnSearch.Click += BtnSearch_Click;
             this.btnLamMoi.Click += BtnLamMoi_Click;
             this.btnGuiYeuCau.Click += BtnGuiYeuCau_Click;
             this.btnThem.Click += BtnThem_Click;
@@ -168,11 +168,11 @@ namespace GUI
             LoadThietBi();
             LoadDgvDSChiTietThietBi();
         }
-        private void BtnSearch_Click(object sender, EventArgs e)
-        {
-            if (txtSearch.Text == string.Empty) return;
-            dgvDSChiTietThietBi.DataSource = y.SearchKeyChiTietThietBi(txtSearch.Text);
-        }
+        //private void BtnSearch_Click(object sender, EventArgs e)
+        //{
+        //    if (txtSearch.Text == string.Empty) return;
+        //    dgvDSChiTietThietBi.DataSource = y.SearchKeyChiTietThietBi(txtSearch.Text);
+        //}
 
         private void CboThietBi_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -11,6 +11,7 @@ public class ThoiKhoaBieuDAL : DatabaseHelper
     {
         List<ThoiKhoaBieuDTO> list = new List<ThoiKhoaBieuDTO>();
         string query = "SELECT * FROM ThoiKhoaBieu";
+
         DataTable dataTable = GetDataTable(query);
 
         foreach (DataRow row in dataTable.Rows)
@@ -29,6 +30,51 @@ public class ThoiKhoaBieuDAL : DatabaseHelper
         }
         return list;
     }
+    public List<ThoiKhoaBieuChiTiet_NguoiDungDTO> GetAllThoiKhoaBieuChiTiet()
+    {
+        List<ThoiKhoaBieuChiTiet_NguoiDungDTO> list = new List<ThoiKhoaBieuChiTiet_NguoiDungDTO>();
+        string query = @"
+        SELECT 
+            tkb.*,
+            ttcn.HoTen,
+            mh.TenMon,
+            bh.TenBaiHoc,
+            ph.TenPhong,
+            lh.TenLopHoc,
+            tkb.GioHoc,
+            tkb.NgayHoc
+        FROM ThoiKhoaBieu tkb
+        LEFT JOIN ThongTinCaNhan ttcn ON tkb.MaNguoiDung = ttcn.MaNguoiDung
+        LEFT JOIN MonHoc mh ON tkb.MaMon = mh.MaMon
+        LEFT JOIN BaiHoc bh ON tkb.MaBaiHoc = bh.MaBaiHoc
+        LEFT JOIN PhongHoc ph ON tkb.MaPhong = ph.MaPhong
+        LEFT JOIN LopHoc lh ON tkb.MaLopHoc = lh.MaLopHoc";
+
+        DataTable dataTable = GetDataTable(query);
+
+        foreach (DataRow row in dataTable.Rows)
+        {
+            list.Add(new ThoiKhoaBieuChiTiet_NguoiDungDTO
+            {
+                MaTKB = Convert.ToInt32(row["MaTKB"]),
+                MaNguoiDung = row["MaNguoiDung"].ToString(),
+                MaMon = row["MaMon"] as int?,
+                MaBaiHoc = row["MaBaiHoc"] as int?,
+                MaPhong = row["MaPhong"] as int?,
+                MaLopHoc = row["MaLopHoc"] as int?,
+                HoTen = row["HoTen"].ToString(),
+                TenMonHoc = row["TenMon"].ToString(),
+                TenBaiHoc = row["TenBaiHoc"].ToString(),
+                TenPhong = row["TenPhong"].ToString(),
+                TenLop = row["TenLopHoc"].ToString(),
+                GioHoc = row["GioHoc"] == DBNull.Value ? null : (TimeSpan?)row["GioHoc"],
+                NgayHoc = row["NgayHoc"] == DBNull.Value ? null : (DateTime?)row["NgayHoc"]
+            });
+        }
+
+        return list;
+    }
+
     public List<ThoiKhoaBieuChiTietDTO> GetThoiKhoaBieuByUser(string maNguoiDung)
     {
         // Khởi tạo danh sách kết quả
