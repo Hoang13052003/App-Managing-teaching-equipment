@@ -36,9 +36,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.Panel_Change_Form = new Guna.UI2.WinForms.Guna2Panel();
             this.Navbar = new System.Windows.Forms.Panel();
+            this.lb_NameForm = new System.Windows.Forms.Label();
             this.main = new System.Windows.Forms.Panel();
             this.Sidebar = new System.Windows.Forms.Panel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDangXuat = new Guna.UI2.WinForms.Guna2Button();
             this.btnYeuCauSuaThietBi = new Guna.UI2.WinForms.Guna2Button();
             this.btn_Lich_Day = new Guna.UI2.WinForms.Guna2Button();
             this.btnAccount = new Guna.UI2.WinForms.Guna2Button();
@@ -47,7 +48,6 @@
             this.lbMenu = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnHome = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.lb_NameForm = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.Navbar.SuspendLayout();
             this.main.SuspendLayout();
@@ -130,6 +130,16 @@
             this.Navbar.TabIndex = 1;
             this.Navbar.Paint += new System.Windows.Forms.PaintEventHandler(this.Navbar_Paint);
             // 
+            // lb_NameForm
+            // 
+            this.lb_NameForm.AutoSize = true;
+            this.lb_NameForm.Font = new System.Drawing.Font("JetBrains Mono", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_NameForm.Location = new System.Drawing.Point(264, 21);
+            this.lb_NameForm.Name = "lb_NameForm";
+            this.lb_NameForm.Size = new System.Drawing.Size(60, 26);
+            this.lb_NameForm.TabIndex = 11;
+            this.lb_NameForm.Text = "Home";
+            // 
             // main
             // 
             this.main.Controls.Add(this.Panel_Change_Form);
@@ -145,7 +155,7 @@
             // Sidebar
             // 
             this.Sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
-            this.Sidebar.Controls.Add(this.guna2Button1);
+            this.Sidebar.Controls.Add(this.btnDangXuat);
             this.Sidebar.Controls.Add(this.btnYeuCauSuaThietBi);
             this.Sidebar.Controls.Add(this.btn_Lich_Day);
             this.Sidebar.Controls.Add(this.btnAccount);
@@ -160,28 +170,30 @@
             this.Sidebar.Size = new System.Drawing.Size(240, 895);
             this.Sidebar.TabIndex = 2;
             // 
-            // guna2Button1
+            // btnDangXuat
             // 
-            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.guna2Button1.BorderRadius = 8;
-            this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.Gray;
-            this.guna2Button1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
-            this.guna2Button1.Image = global::GUI.Properties.Resources.icons8_logout_25;
-            this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.Location = new System.Drawing.Point(12, 791);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(210, 45);
-            this.guna2Button1.TabIndex = 9;
-            this.guna2Button1.Text = "Đăng xuất";
-            this.guna2Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDangXuat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDangXuat.BackColor = System.Drawing.Color.Transparent;
+            this.btnDangXuat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnDangXuat.BorderRadius = 8;
+            this.btnDangXuat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDangXuat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDangXuat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDangXuat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDangXuat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDangXuat.FillColor = System.Drawing.Color.Transparent;
+            this.btnDangXuat.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
+            this.btnDangXuat.ForeColor = System.Drawing.Color.Gray;
+            this.btnDangXuat.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
+            this.btnDangXuat.Image = global::GUI.Properties.Resources.icons8_logout_25;
+            this.btnDangXuat.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDangXuat.Location = new System.Drawing.Point(12, 815);
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.Size = new System.Drawing.Size(210, 45);
+            this.btnDangXuat.TabIndex = 9;
+            this.btnDangXuat.Text = "Đăng xuất";
+            this.btnDangXuat.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
             // btnYeuCauSuaThietBi
             // 
@@ -233,6 +245,7 @@
             // 
             // btnAccount
             // 
+            this.btnAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAccount.BackColor = System.Drawing.Color.Transparent;
             this.btnAccount.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnAccount.BorderRadius = 8;
@@ -247,15 +260,17 @@
             this.btnAccount.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
             this.btnAccount.Image = global::GUI.Properties.Resources.account;
             this.btnAccount.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnAccount.Location = new System.Drawing.Point(12, 740);
+            this.btnAccount.Location = new System.Drawing.Point(12, 762);
             this.btnAccount.Name = "btnAccount";
             this.btnAccount.Size = new System.Drawing.Size(210, 45);
             this.btnAccount.TabIndex = 4;
             this.btnAccount.Text = "Tài khoản";
             this.btnAccount.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
             // 
             // btnSetting
             // 
+            this.btnSetting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSetting.BackColor = System.Drawing.Color.Transparent;
             this.btnSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnSetting.BorderRadius = 8;
@@ -270,7 +285,7 @@
             this.btnSetting.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
             this.btnSetting.Image = global::GUI.Properties.Resources.setting;
             this.btnSetting.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnSetting.Location = new System.Drawing.Point(11, 684);
+            this.btnSetting.Location = new System.Drawing.Point(11, 709);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Size = new System.Drawing.Size(210, 45);
             this.btnSetting.TabIndex = 3;
@@ -279,10 +294,11 @@
             // 
             // guna2HtmlLabel1
             // 
+            this.guna2HtmlLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("JetBrains Mono", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Gray;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(23, 651);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(23, 676);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(69, 27);
             this.guna2HtmlLabel1.TabIndex = 2;
@@ -328,16 +344,6 @@
             // 
             this.guna2Elipse2.BorderRadius = 10;
             // 
-            // lb_NameForm
-            // 
-            this.lb_NameForm.AutoSize = true;
-            this.lb_NameForm.Font = new System.Drawing.Font("JetBrains Mono", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_NameForm.Location = new System.Drawing.Point(264, 21);
-            this.lb_NameForm.Name = "lb_NameForm";
-            this.lb_NameForm.Size = new System.Drawing.Size(60, 26);
-            this.lb_NameForm.TabIndex = 11;
-            this.lb_NameForm.Text = "Home";
-            // 
             // Dashboard_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -351,6 +357,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard_User";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_User_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.Navbar.ResumeLayout(false);
@@ -381,7 +388,7 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel lb_home;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
         private Guna.UI2.WinForms.Guna2Button btnYeuCauSuaThietBi;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button btnDangXuat;
         public System.Windows.Forms.Label lb_NameForm;
     }
 }

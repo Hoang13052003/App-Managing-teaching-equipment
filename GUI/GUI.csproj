@@ -92,6 +92,12 @@
     <Compile Include="Dashboard_User.Designer.cs">
       <DependentUpon>Dashboard_User.cs</DependentUpon>
     </Compile>
+    <Compile Include="Loading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loading.Designer.cs">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMuonThietBi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,11 +152,11 @@
     <Compile Include="NhapThietBi.Designer.cs">
       <DependentUpon>NhapThietBi.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profile_User.cs">
+    <Compile Include="Profile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Profile_User.Designer.cs">
-      <DependentUpon>Profile_User.cs</DependentUpon>
+    <Compile Include="Profile.Designer.cs">
+      <DependentUpon>Profile.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -229,6 +235,9 @@
     <EmbeddedResource Include="Dashboard_User.resx">
       <DependentUpon>Dashboard_User.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Loading.resx">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMuonThietBi.resx">
       <DependentUpon>FormMuonThietBi.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,8 +265,8 @@
     <EmbeddedResource Include="NhapThietBi.resx">
       <DependentUpon>NhapThietBi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Profile_User.resx">
-      <DependentUpon>Profile_User.cs</DependentUpon>
+    <EmbeddedResource Include="Profile.resx">
+      <DependentUpon>Profile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -335,6 +344,7 @@
     <Content Include="Image\icon\icons8-add-25.png" />
     <Content Include="Image\icon\icons8-back-25.png" />
     <Content Include="Image\icon\icons8-BaoDuong-25.png" />
+    <Content Include="Image\icon\icons8-CapNhatThongTin-25.png" />
     <Content Include="Image\icon\icons8-delete-25.png" />
     <Content Include="Image\icon\icons8-edit-25.png" />
     <Content Include="Image\icon\icons8-excel-25.png" />
@@ -346,6 +356,7 @@
     <Content Include="Image\icon\icons8-next-25.png" />
     <Content Include="Image\icon\icons8-NhapThietBi-25.png" />
     <Content Include="Image\icon\icons8-notification-100.png" />
+    <Content Include="Image\icon\icons8-password-window-25.png" />
     <Content Include="Image\icon\icons8-QLTB-25.png" />
     <Content Include="Image\icon\icons8-schedule-100.png" />
     <Content Include="Image\icon\icons8-schedule-25.png" />

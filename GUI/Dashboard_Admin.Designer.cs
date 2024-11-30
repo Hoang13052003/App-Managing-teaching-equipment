@@ -37,7 +37,7 @@
             this.btnQuanLyThietBiHuHong = new Guna.UI2.WinForms.Guna2Button();
             this.btnThoiKhoaBieu = new Guna.UI2.WinForms.Guna2Button();
             this.btnQuanLyNhaCungCap = new Guna.UI2.WinForms.Guna2Button();
-            this.btnHelp = new Guna.UI2.WinForms.Guna2Button();
+            this.btnDangXuat = new Guna.UI2.WinForms.Guna2Button();
             this.btnAccount = new Guna.UI2.WinForms.Guna2Button();
             this.btnSetting = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -71,7 +71,7 @@
             this.Sidebar.Controls.Add(this.btnQuanLyThietBiHuHong);
             this.Sidebar.Controls.Add(this.btnThoiKhoaBieu);
             this.Sidebar.Controls.Add(this.btnQuanLyNhaCungCap);
-            this.Sidebar.Controls.Add(this.btnHelp);
+            this.Sidebar.Controls.Add(this.btnDangXuat);
             this.Sidebar.Controls.Add(this.btnAccount);
             this.Sidebar.Controls.Add(this.btnSetting);
             this.Sidebar.Controls.Add(this.guna2HtmlLabel1);
@@ -228,31 +228,34 @@
             this.btnQuanLyNhaCungCap.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnQuanLyNhaCungCap.Click += new System.EventHandler(this.btnQuanLyNhaCungCap_Click);
             // 
-            // btnHelp
+            // btnDangXuat
             // 
-            this.btnHelp.BackColor = System.Drawing.Color.Transparent;
-            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnHelp.BorderRadius = 8;
-            this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHelp.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnHelp.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnHelp.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnHelp.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnHelp.FillColor = System.Drawing.Color.Transparent;
-            this.btnHelp.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
-            this.btnHelp.ForeColor = System.Drawing.Color.Gray;
-            this.btnHelp.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
-            this.btnHelp.Image = global::GUI.Properties.Resources.help;
-            this.btnHelp.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnHelp.Location = new System.Drawing.Point(11, 661);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(210, 45);
-            this.btnHelp.TabIndex = 5;
-            this.btnHelp.Text = "Help";
-            this.btnHelp.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDangXuat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDangXuat.BackColor = System.Drawing.Color.Transparent;
+            this.btnDangXuat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnDangXuat.BorderRadius = 8;
+            this.btnDangXuat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDangXuat.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDangXuat.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDangXuat.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDangXuat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDangXuat.FillColor = System.Drawing.Color.Transparent;
+            this.btnDangXuat.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
+            this.btnDangXuat.ForeColor = System.Drawing.Color.Gray;
+            this.btnDangXuat.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
+            this.btnDangXuat.Image = global::GUI.Properties.Resources.icons8_logout_25;
+            this.btnDangXuat.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDangXuat.Location = new System.Drawing.Point(11, 815);
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.Size = new System.Drawing.Size(210, 45);
+            this.btnDangXuat.TabIndex = 5;
+            this.btnDangXuat.Text = "Đăng xuất";
+            this.btnDangXuat.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
             // btnAccount
             // 
+            this.btnAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAccount.BackColor = System.Drawing.Color.Transparent;
             this.btnAccount.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnAccount.BorderRadius = 8;
@@ -267,15 +270,16 @@
             this.btnAccount.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
             this.btnAccount.Image = global::GUI.Properties.Resources.account;
             this.btnAccount.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnAccount.Location = new System.Drawing.Point(12, 605);
+            this.btnAccount.Location = new System.Drawing.Point(12, 761);
             this.btnAccount.Name = "btnAccount";
             this.btnAccount.Size = new System.Drawing.Size(210, 45);
             this.btnAccount.TabIndex = 4;
-            this.btnAccount.Text = "Account";
+            this.btnAccount.Text = "Tài khoản";
             this.btnAccount.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // btnSetting
             // 
+            this.btnSetting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSetting.BackColor = System.Drawing.Color.Transparent;
             this.btnSetting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnSetting.BorderRadius = 8;
@@ -290,20 +294,21 @@
             this.btnSetting.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
             this.btnSetting.Image = global::GUI.Properties.Resources.setting;
             this.btnSetting.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnSetting.Location = new System.Drawing.Point(11, 549);
+            this.btnSetting.Location = new System.Drawing.Point(11, 707);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Size = new System.Drawing.Size(210, 45);
             this.btnSetting.TabIndex = 3;
-            this.btnSetting.Text = "Setting";
+            this.btnSetting.Text = "Cài đặt";
             this.btnSetting.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
             // 
             // guna2HtmlLabel1
             // 
+            this.guna2HtmlLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("JetBrains Mono", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Gray;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(23, 516);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(23, 674);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(69, 27);
             this.guna2HtmlLabel1.TabIndex = 2;
@@ -389,9 +394,9 @@
             this.lb_NameForm.Font = new System.Drawing.Font("JetBrains Mono", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_NameForm.Location = new System.Drawing.Point(260, 17);
             this.lb_NameForm.Name = "lb_NameForm";
-            this.lb_NameForm.Size = new System.Drawing.Size(60, 26);
+            this.lb_NameForm.Size = new System.Drawing.Size(120, 26);
             this.lb_NameForm.TabIndex = 10;
-            this.lb_NameForm.Text = "Home";
+            this.lb_NameForm.Text = "Trang chủ";
             // 
             // guna2ControlBox2
             // 
@@ -453,6 +458,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_Admin_FormClosing);
             this.Sidebar.ResumeLayout(false);
             this.Sidebar.PerformLayout();
             this.main.ResumeLayout(false);
@@ -478,7 +484,7 @@
         private Guna.UI2.WinForms.Guna2Button btnAccount;
         private Guna.UI2.WinForms.Guna2Button btnSetting;
         private Guna.UI2.WinForms.Guna2Button btnQuanLyNhaCungCap;
-        private Guna.UI2.WinForms.Guna2Button btnHelp;
+        private Guna.UI2.WinForms.Guna2Button btnDangXuat;
         private Guna.UI2.WinForms.Guna2Panel Panel_Change_Form;
         private Guna.UI2.WinForms.Guna2ControlBox controlClose;
         private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;

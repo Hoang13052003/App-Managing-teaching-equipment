@@ -296,40 +296,40 @@ namespace GUI
             }
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (_ThoiKhoaBieu_Click_Row == null)
-                {
-                    MessageBox.Show("Vui lòng chọn một thời khóa biểu để sửa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+        //private void btnSua_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (_ThoiKhoaBieu_Click_Row == null)
+        //        {
+        //            MessageBox.Show("Vui lòng chọn một thời khóa biểu để sửa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            return;
+        //        }
 
-                var tkb = new ThoiKhoaBieuDTO
-                {
-                    //MaTKB = _ThoiKhoaBieu_Click_Row.MaTKB,
-                    //MaNguoiDung = txtMaNguoiDung.Text,
-                    //MaMon = Convert.ToInt32(cbbMonHoc.SelectedValue),
-                    //GioHoc = TimeSpan.Parse(cbbGioHoc.SelectedItem.ToString()),
-                    //NgayHoc = dtbNgayHoc.Value.Date
-                };
+        //        var tkb = new ThoiKhoaBieuDTO
+        //        {
+        //            //MaTKB = _ThoiKhoaBieu_Click_Row.MaTKB,
+        //            //MaNguoiDung = txtMaNguoiDung.Text,
+        //            //MaMon = Convert.ToInt32(cbbMonHoc.SelectedValue),
+        //            //GioHoc = TimeSpan.Parse(cbbGioHoc.SelectedItem.ToString()),
+        //            //NgayHoc = dtbNgayHoc.Value.Date
+        //        };
 
-                if (_tkbBUS.Update(tkb))
-                {
-                    MessageBox.Show("Cập nhật thời khóa biểu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ThoiKhoaBieu_Load(sender, e);
-                }
-                else
-                {
-                    MessageBox.Show("Cập nhật thời khóa biểu thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi cập nhật thời khóa biểu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        //        if (_tkbBUS.Update(tkb))
+        //        {
+        //            MessageBox.Show("Cập nhật thời khóa biểu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            ThoiKhoaBieu_Load(sender, e);
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Cập nhật thời khóa biểu thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Lỗi khi cập nhật thời khóa biểu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
 
         private void btnXoa_Click(object sender, EventArgs e)
         {

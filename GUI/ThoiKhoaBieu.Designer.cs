@@ -39,7 +39,6 @@
             this.btnThemExcel = new Guna.UI2.WinForms.Guna2Button();
             this.btnLamMoi = new Guna.UI2.WinForms.Guna2Button();
             this.btnXoa = new Guna.UI2.WinForms.Guna2Button();
-            this.btnSua = new Guna.UI2.WinForms.Guna2Button();
             this.cbbLopHoc = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.cbbPhongHoc = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -55,10 +54,10 @@
             this.guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.dtbNgayHoc_Filter = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.btnFilter = new Guna.UI2.WinForms.Guna2Button();
             this.dgvTKB = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.dtbNgayHoc_Filter = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2GroupBox2.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTKB)).BeginInit();
@@ -78,7 +77,6 @@
             this.guna2GroupBox2.Controls.Add(this.btnThemExcel);
             this.guna2GroupBox2.Controls.Add(this.btnLamMoi);
             this.guna2GroupBox2.Controls.Add(this.btnXoa);
-            this.guna2GroupBox2.Controls.Add(this.btnSua);
             this.guna2GroupBox2.Controls.Add(this.cbbLopHoc);
             this.guna2GroupBox2.Controls.Add(this.guna2HtmlLabel4);
             this.guna2GroupBox2.Controls.Add(this.cbbPhongHoc);
@@ -142,7 +140,7 @@
             this.btnThemExcel.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.btnThemExcel.ForeColor = System.Drawing.Color.White;
             this.btnThemExcel.Image = global::GUI.Properties.Resources.icons8_excel_25;
-            this.btnThemExcel.Location = new System.Drawing.Point(1100, 274);
+            this.btnThemExcel.Location = new System.Drawing.Point(1316, 274);
             this.btnThemExcel.Name = "btnThemExcel";
             this.btnThemExcel.Size = new System.Drawing.Size(137, 40);
             this.btnThemExcel.TabIndex = 21;
@@ -185,24 +183,6 @@
             this.btnXoa.TabIndex = 18;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // btnSua
-            // 
-            this.btnSua.BorderRadius = 5;
-            this.btnSua.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSua.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSua.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSua.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSua.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnSua.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            this.btnSua.ForeColor = System.Drawing.Color.White;
-            this.btnSua.Image = global::GUI.Properties.Resources.icons8_edit_25;
-            this.btnSua.Location = new System.Drawing.Point(1290, 274);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(137, 40);
-            this.btnSua.TabIndex = 19;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // cbbLopHoc
             // 
@@ -414,6 +394,23 @@
             this.guna2GroupBox1.TabIndex = 4;
             this.guna2GroupBox1.Text = "Danh sách thời khóa biểu";
             // 
+            // dtbNgayHoc_Filter
+            // 
+            this.dtbNgayHoc_Filter.BackColor = System.Drawing.Color.Transparent;
+            this.dtbNgayHoc_Filter.BorderRadius = 5;
+            this.dtbNgayHoc_Filter.Checked = true;
+            this.dtbNgayHoc_Filter.FillColor = System.Drawing.Color.White;
+            this.dtbNgayHoc_Filter.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtbNgayHoc_Filter.ForeColor = System.Drawing.Color.Black;
+            this.dtbNgayHoc_Filter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtbNgayHoc_Filter.Location = new System.Drawing.Point(1316, 5);
+            this.dtbNgayHoc_Filter.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtbNgayHoc_Filter.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtbNgayHoc_Filter.Name = "dtbNgayHoc_Filter";
+            this.dtbNgayHoc_Filter.Size = new System.Drawing.Size(183, 40);
+            this.dtbNgayHoc_Filter.TabIndex = 32;
+            this.dtbNgayHoc_Filter.Value = new System.DateTime(2024, 11, 2, 15, 57, 44, 307);
+            // 
             // btnFilter
             // 
             this.btnFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -499,23 +496,6 @@
             this.guna2Panel1.Size = new System.Drawing.Size(1644, 571);
             this.guna2Panel1.TabIndex = 5;
             // 
-            // dtbNgayHoc_Filter
-            // 
-            this.dtbNgayHoc_Filter.BackColor = System.Drawing.Color.Transparent;
-            this.dtbNgayHoc_Filter.BorderRadius = 5;
-            this.dtbNgayHoc_Filter.Checked = true;
-            this.dtbNgayHoc_Filter.FillColor = System.Drawing.Color.White;
-            this.dtbNgayHoc_Filter.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtbNgayHoc_Filter.ForeColor = System.Drawing.Color.Black;
-            this.dtbNgayHoc_Filter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtbNgayHoc_Filter.Location = new System.Drawing.Point(1316, 5);
-            this.dtbNgayHoc_Filter.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtbNgayHoc_Filter.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtbNgayHoc_Filter.Name = "dtbNgayHoc_Filter";
-            this.dtbNgayHoc_Filter.Size = new System.Drawing.Size(183, 40);
-            this.dtbNgayHoc_Filter.TabIndex = 32;
-            this.dtbNgayHoc_Filter.Value = new System.DateTime(2024, 11, 2, 15, 57, 44, 307);
-            // 
             // ThoiKhoaBieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -560,7 +540,6 @@
         private Guna.UI2.WinForms.Guna2Button btnThemExcel;
         private Guna.UI2.WinForms.Guna2Button btnLamMoi;
         private Guna.UI2.WinForms.Guna2Button btnXoa;
-        private Guna.UI2.WinForms.Guna2Button btnSua;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private Guna.UI2.WinForms.Guna2DataGridView dgvTKB;

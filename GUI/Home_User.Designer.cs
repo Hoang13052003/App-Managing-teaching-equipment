@@ -43,11 +43,11 @@
             this.guna2HtmlLabel7 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lbDiaChi = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lbGioTinh = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lbNgaySinh = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lbHoTen = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lbMaGiaoVien = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lb_Xem_Ho_So_Chi_Tiet = new System.Windows.Forms.LinkLabel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
@@ -224,11 +224,11 @@
             // guna2ShadowPanel1
             // 
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ShadowPanel1.Controls.Add(this.guna2HtmlLabel6);
-            this.guna2ShadowPanel1.Controls.Add(this.guna2HtmlLabel5);
-            this.guna2ShadowPanel1.Controls.Add(this.guna2HtmlLabel4);
-            this.guna2ShadowPanel1.Controls.Add(this.guna2HtmlLabel3);
-            this.guna2ShadowPanel1.Controls.Add(this.guna2HtmlLabel2);
+            this.guna2ShadowPanel1.Controls.Add(this.lbDiaChi);
+            this.guna2ShadowPanel1.Controls.Add(this.lbGioTinh);
+            this.guna2ShadowPanel1.Controls.Add(this.lbNgaySinh);
+            this.guna2ShadowPanel1.Controls.Add(this.lbHoTen);
+            this.guna2ShadowPanel1.Controls.Add(this.lbMaGiaoVien);
             this.guna2ShadowPanel1.Controls.Add(this.lb_Xem_Ho_So_Chi_Tiet);
             this.guna2ShadowPanel1.Controls.Add(this.guna2HtmlLabel1);
             this.guna2ShadowPanel1.Controls.Add(this.guna2CirclePictureBox1);
@@ -243,60 +243,60 @@
             this.guna2ShadowPanel1.Size = new System.Drawing.Size(640, 280);
             this.guna2ShadowPanel1.TabIndex = 0;
             // 
-            // guna2HtmlLabel6
+            // lbDiaChi
             // 
-            this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel6.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.guna2HtmlLabel6.Location = new System.Drawing.Point(252, 184);
-            this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            this.guna2HtmlLabel6.Size = new System.Drawing.Size(223, 23);
-            this.guna2HtmlLabel6.TabIndex = 8;
-            this.guna2HtmlLabel6.Text = "Địa chỉ: Thành Phố HCM";
+            this.lbDiaChi.BackColor = System.Drawing.Color.Transparent;
+            this.lbDiaChi.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDiaChi.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lbDiaChi.Location = new System.Drawing.Point(252, 184);
+            this.lbDiaChi.Name = "lbDiaChi";
+            this.lbDiaChi.Size = new System.Drawing.Size(223, 23);
+            this.lbDiaChi.TabIndex = 8;
+            this.lbDiaChi.Text = "Địa chỉ: Thành Phố HCM";
             // 
-            // guna2HtmlLabel5
+            // lbGioTinh
             // 
-            this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel5.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.guna2HtmlLabel5.Location = new System.Drawing.Point(252, 126);
-            this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            this.guna2HtmlLabel5.Size = new System.Drawing.Size(133, 23);
-            this.guna2HtmlLabel5.TabIndex = 7;
-            this.guna2HtmlLabel5.Text = "Giới tính:  Nữ";
+            this.lbGioTinh.BackColor = System.Drawing.Color.Transparent;
+            this.lbGioTinh.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbGioTinh.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lbGioTinh.Location = new System.Drawing.Point(252, 126);
+            this.lbGioTinh.Name = "lbGioTinh";
+            this.lbGioTinh.Size = new System.Drawing.Size(133, 23);
+            this.lbGioTinh.TabIndex = 7;
+            this.lbGioTinh.Text = "Giới tính:  Nữ";
             // 
-            // guna2HtmlLabel4
+            // lbNgaySinh
             // 
-            this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel4.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel4.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(252, 155);
-            this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(213, 23);
-            this.guna2HtmlLabel4.TabIndex = 6;
-            this.guna2HtmlLabel4.Text = "Ngày sinh: 00/00/0000 ";
+            this.lbNgaySinh.BackColor = System.Drawing.Color.Transparent;
+            this.lbNgaySinh.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNgaySinh.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lbNgaySinh.Location = new System.Drawing.Point(252, 155);
+            this.lbNgaySinh.Name = "lbNgaySinh";
+            this.lbNgaySinh.Size = new System.Drawing.Size(213, 23);
+            this.lbNgaySinh.TabIndex = 6;
+            this.lbNgaySinh.Text = "Ngày sinh: 00/00/0000 ";
             // 
-            // guna2HtmlLabel3
+            // lbHoTen
             // 
-            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(252, 97);
-            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(313, 23);
-            this.guna2HtmlLabel3.TabIndex = 5;
-            this.guna2HtmlLabel3.Text = "Họ và tên: Nguyễn Thị Thu Trang";
+            this.lbHoTen.BackColor = System.Drawing.Color.Transparent;
+            this.lbHoTen.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbHoTen.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lbHoTen.Location = new System.Drawing.Point(252, 97);
+            this.lbHoTen.Name = "lbHoTen";
+            this.lbHoTen.Size = new System.Drawing.Size(313, 23);
+            this.lbHoTen.TabIndex = 5;
+            this.lbHoTen.Text = "Họ và tên: Nguyễn Thị Thu Trang";
             // 
-            // guna2HtmlLabel2
+            // lbMaGiaoVien
             // 
-            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(252, 68);
-            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(203, 23);
-            this.guna2HtmlLabel2.TabIndex = 4;
-            this.guna2HtmlLabel2.Text = "Mã giáo viên: GV0001";
+            this.lbMaGiaoVien.BackColor = System.Drawing.Color.Transparent;
+            this.lbMaGiaoVien.Font = new System.Drawing.Font("JetBrains Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMaGiaoVien.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lbMaGiaoVien.Location = new System.Drawing.Point(252, 68);
+            this.lbMaGiaoVien.Name = "lbMaGiaoVien";
+            this.lbMaGiaoVien.Size = new System.Drawing.Size(203, 23);
+            this.lbMaGiaoVien.TabIndex = 4;
+            this.lbMaGiaoVien.Text = "Mã giáo viên: GV0001";
             // 
             // lb_Xem_Ho_So_Chi_Tiet
             // 
@@ -357,6 +357,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Home_User";
             this.Text = "Trang chủ";
+            this.Load += new System.EventHandler(this.Home_User_Load);
             this.guna2GradientPanel1.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
             this.pannel_Lich_Day.ResumeLayout(false);
@@ -383,11 +384,11 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private System.Windows.Forms.LinkLabel lb_Xem_Ho_So_Chi_Tiet;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lbDiaChi;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lbGioTinh;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lbNgaySinh;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lbHoTen;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lbMaGiaoVien;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private System.Windows.Forms.LinkLabel lb_Xem_Danh_Sach_Thong_Bao;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel8;

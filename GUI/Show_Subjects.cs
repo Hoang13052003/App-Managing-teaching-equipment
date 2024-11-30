@@ -35,7 +35,8 @@ namespace GUI
             lb_Phong_Hoc.Text = _tkbDTO.TenPhong.ToString();
             lb_Gio_Hoc.Text = _tkbDTO.GioHoc.ToString();
 
-            if(new ThoiKhoaBieuBUS().GetByID(_tkbDTO.MaTKB).NgayHoc < DateTime.Now)
+            ThoiKhoaBieuDTO item = new ThoiKhoaBieuBUS().GetByID(_tkbDTO.MaTKB);
+            if (item.NgayHoc < DateTime.Now.Date || (item.NgayHoc == DateTime.Now.Date && item.GioHoc.Value < DateTime.Now.TimeOfDay))
             {
                 pannel_Lich_Hoc.FillColor = Color.FromArgb(179,200, 207);
                 pannel_Lich_Hoc.Enabled = false;

@@ -23,7 +23,7 @@ namespace GUI
             this.Load += XuLyThietBiHuHong_Load;
             this.dgvDSBienBan.CellClick += DgvDSBienBan_CellClick;
             this.btnLamMoi.Click += BtnLamMoi_Click;
-            this.btnSearch.Click += BtnSearch_Click;
+            //this.btnSearch.Click += BtnSearch_Click;
             this.dgvChiTietBB.CellClick += DgvChiTietBB_CellClick;
             this.btnCapNhat.Click += BtnCapNhat_Click;
         }
@@ -113,13 +113,13 @@ namespace GUI
                 MessageBox.Show("Không tìm thấy ảnh!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        private void BtnSearch_Click(object sender, EventArgs e)
-        {
-            if (txtSearch.Text != string.Empty)
-            {
-                searchBienBan(txtSearch.Text);
-            }
-        }
+        //private void BtnSearch_Click(object sender, EventArgs e)
+        //{
+        //    if (txtSearch.Text != string.Empty)
+        //    {
+        //        searchBienBan(txtSearch.Text);
+        //    }
+        //}
 
         void searchBienBan(string keyword)
         {
@@ -151,7 +151,7 @@ namespace GUI
             LoadCboVaiTro();
             LoadDSBienBan();
             LoadChiTietBB();
-            txtSearch.Text = txtHoTen.Text = txtMaBB.Text = txtChiPhi.Text = txtMoTa.Text = txtThoiGian.Text = string.Empty;
+            //txtSearch.Text = txtHoTen.Text = txtMaBB.Text = txtChiPhi.Text = txtMoTa.Text = txtThoiGian.Text = string.Empty;
             pictureBox.Image = null;
         }
         private void DgvDSBienBan_CellClick(object sender, DataGridViewCellEventArgs e)

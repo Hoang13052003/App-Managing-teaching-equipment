@@ -8,17 +8,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Drawing;
+using System.Threading;
+using Timer = System.Windows.Forms.Timer;
 
 namespace GUI
 {
     internal static class AccountInfo
     {
         public static string MaNguoiDung { get; set; }
-        public static string TenNguoiDung { get; set; }
+        public static string TenDangNhap { get; set; }
 
         public static void SetAccountInfo(NguoiDungDTO user)
         {
             MaNguoiDung = user.MaNguoiDung;
+            TenDangNhap = user.TenDangNhap;
         }
         public static void Clear()
         {
@@ -41,12 +44,10 @@ namespace GUI
         public static void OpenForm<T>(Form currentForm) where T : Form, new()
         {
             // Đóng form hiện tại
-            currentForm.Hide(); // Ẩn form hiện tại
+            currentForm.Close(); // Đóng hoàn toàn form hiện tại
 
             // Tạo một thể hiện mới của form cần mở
             T newForm = new T();
-
-            newForm.FormClosed += (s, args) => currentForm.Show(); // Khi form mới đóng, hiển thị lại form hiện tại
             newForm.Show(); // Hiển thị form mới
         }
         public static void OpenForm(Form newForm)
@@ -123,6 +124,115 @@ namespace GUI
 
             //newForm.Dock = DockStyle.Fill;
             newForm.Show();
+        }
+
+        public static void OpenDashboard<T>(Form currentForm) where T : Form, new()
+        {
+            Loading loading = new Loading();
+            loading.Show();
+
+            // Ẩn form hiện tại với hiệu ứng fade out
+            FadeOut(currentForm);
+            // Chạy trong thread riêng biệt để không làm chậm UI chính
+            Thread thread = new Thread(() =>
+            {
+                // Tạo form mới và hiển thị
+                T newForm = new T();
+
+                // Mở form mới
+                newForm.ShowDialog();  // Sử dụng ShowDialog để chặn thread chính cho đến khi form mới đóng
+                // Đảm bảo đóng form hiện tại sau khi form mới đóng
+                currentForm.Invoke((MethodInvoker)(() =>
+                {
+                    currentForm.Close();
+                }));
+            });
+
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        public static void OpenDashboard_In<T>(Form currentForm) where T : Form, new()
+        {
+            // Ẩn form hiện tại với hiệu ứng fade out
+            FadeOut(currentForm);
+            // Chạy trong thread riêng biệt để không làm chậm UI chính
+            Thread thread = new Thread(() =>
+            {
+                // Tạo form mới và hiển thị
+                T newForm = new T();
+
+                // Mở form mới
+                newForm.ShowDialog();  // Sử dụng ShowDialog để chặn thread chính cho đến khi form mới đóng
+                //// Đảm bảo đóng form hiện tại sau khi form mới đóng
+                //currentForm.Invoke((MethodInvoker)(() =>
+                //{
+                //    currentForm.Close();
+                //}));
+            });
+
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        public static void OpenDashboard_Out<T>(Form currentForm) where T : Form, new()
+        {
+            // Ẩn form hiện tại với hiệu ứng fade out
+            FadeOut(currentForm);
+            // Chạy trong thread riêng biệt để không làm chậm UI chính
+            Thread thread = new Thread(() =>
+            {
+                // Tạo form mới và hiển thị
+                T newForm = new T();
+
+                // Mở form mới
+                newForm.ShowDialog();  // Sử dụng ShowDialog để chặn thread chính cho đến khi form mới đóng
+                //// Đảm bảo đóng form hiện tại sau khi form mới đóng
+                //currentForm.Invoke((MethodInvoker)(() =>
+                //{
+                //    currentForm.Close();
+                //}));
+            });
+
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private static void FadeOut(Form form)
+        {
+            Timer timer = new Timer();
+            timer.Interval = 30; // Đặt tốc độ fade
+            double opacity = 1.0; // Mức độ mờ ban đầu
+
+            timer.Tick += (sender, e) =>
+            {
+                opacity -= 0.05; // Giảm dần độ mờ
+                if (opacity <= 0)
+                {
+                    timer.Stop();
+                    form.Hide();  // Ẩn form sau khi fade out xong
+                }
+                form.Opacity = opacity;
+            };
+            timer.Start();
+        }
+
+        private static void FadeIn(Form form)
+        {
+            Timer timer = new Timer();
+            timer.Interval = 30; // Đặt tốc độ fade
+            double opacity = 0.01; // Mức độ mờ ban đầu
+
+            timer.Tick += (sender, e) =>
+            {
+                opacity += 0.05; // Tăng dần độ mờ
+                if (opacity >= 1)
+                {
+                    timer.Stop();
+                }
+                form.Opacity = opacity;
+            };
+            timer.Start();
         }
     }
 

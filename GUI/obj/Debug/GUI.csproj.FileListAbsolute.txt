@@ -91,7 +91,6 @@ D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Ba
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.XuLyThietBiHuHong.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.YeuCauMuaThietBi.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.YeuCauSuaThietBi.resources
-D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Profile_User.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.formThietBiDayHoc_MonHoc_YeuCauMuonThemThietBi.resources
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.FormLoaiTB_MonHoc.resources
 D:\DOAN_TOTNGHIEP\Code\App-Managing-teaching-equipment\GUI\obj\Debug\GUI.FormLoaiThietBi.resources
@@ -111,3 +110,5 @@ D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Ch
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.NhapThemThietBi.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.NhapThietBi.resources
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.ThoiKhoaBieu.resources
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Loading.resources
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.Profile.resources
