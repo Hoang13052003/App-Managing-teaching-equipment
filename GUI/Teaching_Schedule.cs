@@ -331,7 +331,17 @@ namespace GUI
         //Action
         private void btn_Hien_Tai_Click(object sender, EventArgs e)
         {
-            
+            currentDate = DateTime.Now;
+            Load_Visible_Pannel(false);
+            Load_Clear_Pannel();
+            LoadSchedule(currentDate);
+        }
+        private void dtp_Tuan_Hoc_ValueChanged(object sender, EventArgs e)
+        {
+            currentDate = dtp_Tuan_Hoc.Value;
+            Load_Visible_Pannel(false);
+            Load_Clear_Pannel();
+            LoadSchedule(currentDate);
         }
 
         private void btn_Tiep_Click(object sender, EventArgs e)
@@ -350,9 +360,6 @@ namespace GUI
             LoadSchedule(currentDate);
         }
 
-        private void guna2TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

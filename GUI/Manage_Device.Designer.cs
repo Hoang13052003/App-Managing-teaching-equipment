@@ -33,7 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbx_ThongTin = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnUpdateLoaiTB = new Guna.UI2.WinForms.Guna2Button();
             this.txtNSX = new Guna.UI2.WinForms.Guna2TextBox();
             this.cbbLoaiTB = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtSL = new Guna.UI2.WinForms.Guna2TextBox();
@@ -54,24 +54,24 @@
             this.gbx_TimKiem = new Guna.UI2.WinForms.Guna2GroupBox();
             this.dgvDSTB = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             this.gbx_ThongTin.SuspendLayout();
             this.gbx_ThaoTac.SuspendLayout();
             this.gbx_TimKiem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
-            this.guna2Panel3.SuspendLayout();
-            this.guna2Panel2.SuspendLayout();
-            this.guna2Panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbx_ThongTin
             // 
+            this.gbx_ThongTin.AutoScroll = true;
             this.gbx_ThongTin.BorderRadius = 5;
-            this.gbx_ThongTin.Controls.Add(this.guna2Button1);
+            this.gbx_ThongTin.Controls.Add(this.btnUpdateLoaiTB);
             this.gbx_ThongTin.Controls.Add(this.txtNSX);
             this.gbx_ThongTin.Controls.Add(this.cbbLoaiTB);
             this.gbx_ThongTin.Controls.Add(this.txtSL);
@@ -89,25 +89,26 @@
             this.gbx_ThongTin.Location = new System.Drawing.Point(0, 0);
             this.gbx_ThongTin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbx_ThongTin.Name = "gbx_ThongTin";
-            this.gbx_ThongTin.Size = new System.Drawing.Size(817, 314);
+            this.gbx_ThongTin.Size = new System.Drawing.Size(822, 318);
             this.gbx_ThongTin.TabIndex = 0;
             this.gbx_ThongTin.Text = "Thông tin thiết bị";
             // 
-            // guna2Button1
+            // btnUpdateLoaiTB
             // 
-            this.guna2Button1.BorderRadius = 5;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(767, 174);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(36, 36);
-            this.guna2Button1.TabIndex = 13;
-            this.guna2Button1.Text = "✎";
+            this.btnUpdateLoaiTB.BorderRadius = 5;
+            this.btnUpdateLoaiTB.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnUpdateLoaiTB.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnUpdateLoaiTB.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnUpdateLoaiTB.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnUpdateLoaiTB.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            this.btnUpdateLoaiTB.ForeColor = System.Drawing.Color.White;
+            this.btnUpdateLoaiTB.Location = new System.Drawing.Point(767, 174);
+            this.btnUpdateLoaiTB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnUpdateLoaiTB.Name = "btnUpdateLoaiTB";
+            this.btnUpdateLoaiTB.Size = new System.Drawing.Size(36, 36);
+            this.btnUpdateLoaiTB.TabIndex = 13;
+            this.btnUpdateLoaiTB.Text = "✎";
+            this.btnUpdateLoaiTB.Click += new System.EventHandler(this.btnUpdateLoaiTB_Click);
             // 
             // txtNSX
             // 
@@ -267,6 +268,7 @@
             // 
             // gbx_ThaoTac
             // 
+            this.gbx_ThaoTac.AutoScroll = true;
             this.gbx_ThaoTac.BorderRadius = 5;
             this.gbx_ThaoTac.Controls.Add(this.btnLamMoi);
             this.gbx_ThaoTac.Controls.Add(this.txtTimKiem);
@@ -281,7 +283,7 @@
             this.gbx_ThaoTac.Location = new System.Drawing.Point(0, 0);
             this.gbx_ThaoTac.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbx_ThaoTac.Name = "gbx_ThaoTac";
-            this.gbx_ThaoTac.Size = new System.Drawing.Size(822, 314);
+            this.gbx_ThaoTac.Size = new System.Drawing.Size(818, 318);
             this.gbx_ThaoTac.TabIndex = 2;
             this.gbx_ThaoTac.Text = "Thao tác thực hiện";
             // 
@@ -401,11 +403,11 @@
             this.gbx_TimKiem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbx_TimKiem.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbx_TimKiem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.gbx_TimKiem.Location = new System.Drawing.Point(0, 0);
+            this.gbx_TimKiem.Location = new System.Drawing.Point(0, 5);
             this.gbx_TimKiem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbx_TimKiem.Name = "gbx_TimKiem";
             this.gbx_TimKiem.Padding = new System.Windows.Forms.Padding(1);
-            this.gbx_TimKiem.Size = new System.Drawing.Size(1644, 537);
+            this.gbx_TimKiem.Size = new System.Drawing.Size(1644, 533);
             this.gbx_TimKiem.TabIndex = 3;
             this.gbx_TimKiem.Text = "Danh sách thiết bị";
             // 
@@ -442,7 +444,7 @@
             this.dgvDSTB.ReadOnly = true;
             this.dgvDSTB.RowHeadersVisible = false;
             this.dgvDSTB.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvDSTB.Size = new System.Drawing.Size(1642, 495);
+            this.dgvDSTB.Size = new System.Drawing.Size(1642, 491);
             this.dgvDSTB.TabIndex = 4;
             this.dgvDSTB.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvDSTB.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -471,52 +473,41 @@
             this.guna2Elipse1.BorderRadius = 0;
             this.guna2Elipse1.TargetControl = this;
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.gbx_ThongTin);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.gbx_ThaoTac);
+            this.splitContainer1.Size = new System.Drawing.Size(1644, 318);
+            this.splitContainer1.SplitterDistance = 822;
+            this.splitContainer1.TabIndex = 7;
+            // 
             // guna2Panel1
             // 
-            this.guna2Panel1.Controls.Add(this.guna2Panel3);
-            this.guna2Panel1.Controls.Add(this.guna2Panel2);
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Controls.Add(this.gbx_TimKiem);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 318);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.guna2Panel1.Size = new System.Drawing.Size(1644, 319);
-            this.guna2Panel1.TabIndex = 5;
-            // 
-            // guna2Panel3
-            // 
-            this.guna2Panel3.Controls.Add(this.gbx_ThaoTac);
-            this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel3.Location = new System.Drawing.Point(822, 0);
-            this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(822, 314);
-            this.guna2Panel3.TabIndex = 1;
-            // 
-            // guna2Panel2
-            // 
-            this.guna2Panel2.Controls.Add(this.gbx_ThongTin);
-            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.guna2Panel2.Size = new System.Drawing.Size(822, 314);
-            this.guna2Panel2.TabIndex = 0;
-            // 
-            // guna2Panel4
-            // 
-            this.guna2Panel4.Controls.Add(this.gbx_TimKiem);
-            this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel4.Location = new System.Drawing.Point(0, 319);
-            this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Size = new System.Drawing.Size(1644, 537);
-            this.guna2Panel4.TabIndex = 6;
+            this.guna2Panel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.guna2Panel1.Size = new System.Drawing.Size(1644, 538);
+            this.guna2Panel1.TabIndex = 8;
             // 
             // Manage_Device
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1644, 856);
-            this.Controls.Add(this.guna2Panel4);
             this.Controls.Add(this.guna2Panel1);
+            this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -527,10 +518,11 @@
             this.gbx_ThaoTac.ResumeLayout(false);
             this.gbx_TimKiem.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSTB)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel3.ResumeLayout(false);
-            this.guna2Panel2.ResumeLayout(false);
-            this.guna2Panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -558,10 +550,8 @@
         private Guna.UI2.WinForms.Guna2Button btnLamMoi;
         private Guna.UI2.WinForms.Guna2TextBox txtNSX;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
+        private Guna.UI2.WinForms.Guna2Button btnUpdateLoaiTB;
+        private System.Windows.Forms.SplitContainer splitContainer1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

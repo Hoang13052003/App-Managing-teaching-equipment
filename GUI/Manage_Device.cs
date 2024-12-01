@@ -27,22 +27,16 @@ namespace GUI
             btnXoa.Click += BtnXoa_Click;
             btnLamMoi.Click += BtnLamMoi_Click;
             txtMaTB.Enabled = false;
+            btnXoa.Enabled = false;
+            btnSua.Enabled = false;
         }
 
         private void BtnLamMoi_Click(object sender, EventArgs e)
         {
             ClearFields();
             LoadDataToDataGridView();
-        }
-
-        private void BtnDong_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đóng form này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                this.Close();
-            }
-
+            btnXoa.Enabled = false;
+            btnSua.Enabled = false;
         }
 
         private void BtnXoa_Click(object sender, EventArgs e)
@@ -212,6 +206,9 @@ namespace GUI
         {
             if (e.RowIndex >= 0)
             {
+                btnXoa.Enabled = true;
+                btnSua.Enabled = true;
+                btnThem.Enabled = false;
                 // Lấy dòng đã chọn
                 DataGridViewRow row = dgvDSTB.Rows[e.RowIndex];
 
@@ -224,5 +221,9 @@ namespace GUI
             }
         }
 
+        private void btnUpdateLoaiTB_Click(object sender, EventArgs e)
+        {
+            new FormLoaiThietBi().ShowDialog();
+        }
     }
 }

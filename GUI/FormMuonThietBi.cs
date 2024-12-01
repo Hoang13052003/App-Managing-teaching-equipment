@@ -177,7 +177,8 @@ namespace GUI
             txt_GhiChu.Visible = false;
             dgv_DSChiTietThietBi.ReadOnly = true;
             gbx_ThaoTac.Height = 94;
-            
+            gbx_ThongTin.Height = 232;
+
             LoadTinhTrangComboBox();
             //LoadTrangThaiComboBox();
             Load_CBB_Filter_TinhTrang();
@@ -330,6 +331,7 @@ namespace GUI
         {
             if (e.RowIndex >= 0)
             {
+
                 // Get the selected row
                 DataGridViewRow row = dgvDSPhieuMuon.Rows[e.RowIndex];
 
@@ -366,11 +368,11 @@ namespace GUI
                 _list_ChiTiet_MuonTB = ctmtbBUS.GetByMaMuon(_MuonThietBi_Click_Row.MaMuon);
                 loadData_DGV_DS_ThietBi(_list_ChiTiet_MuonTB);
                 loadData_DGV_DS_ChiTietThietBi(_list_ChiTiet_MuonTB);
-
+                gbx_ThongTin.Height = 280;
 
 
                 ////Controls
-                if(_MuonThietBi_Click_Row.TrangThai == false)
+                if (_MuonThietBi_Click_Row.TrangThai == false)
                 {
                     cbbTinhTrang.Enabled = false;
                     btnCapNhat.Enabled = false;
