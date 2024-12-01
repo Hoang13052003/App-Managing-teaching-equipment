@@ -189,7 +189,6 @@
             this.guna2TextBox1.SelectedText = "";
             this.guna2TextBox1.Size = new System.Drawing.Size(34, 22);
             this.guna2TextBox1.TabIndex = 6;
-            this.guna2TextBox1.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
             // 
             // label11
             // 
@@ -270,6 +269,7 @@
             this.dtp_Tuan_Hoc.TabIndex = 0;
             this.dtp_Tuan_Hoc.UseTransparentBackground = true;
             this.dtp_Tuan_Hoc.Value = new System.DateTime(2024, 11, 5, 0, 55, 51, 981);
+            this.dtp_Tuan_Hoc.ValueChanged += new System.EventHandler(this.dtp_Tuan_Hoc_ValueChanged);
             // 
             // btn_Hien_Tai
             // 

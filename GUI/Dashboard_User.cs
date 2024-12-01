@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace GUI
 {
@@ -87,7 +88,7 @@ namespace GUI
                 UpdateLoginState(false);
 
                 // Mở lại form đăng nhập
-                FormTask.OpenDashboard_Out<Login>(this);
+                FormTask.OpenDashboard<Login>(this);
             }
             else
             {
@@ -104,6 +105,8 @@ namespace GUI
             if (key != null)
             {
                 key.SetValue("IsLoggedIn", isLoggedIn);
+                key.SetValue("UserName", string.Empty);
+                key.SetValue("PassWord", string.Empty);
                 key.Close();
             }
         }

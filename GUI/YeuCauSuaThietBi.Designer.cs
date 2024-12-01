@@ -50,17 +50,25 @@
             this.gbx_ThongTin = new Guna.UI2.WinForms.Guna2GroupBox();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThietBiSua)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSChiTietThietBi)).BeginInit();
             this.gbx_ThongTin.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
+            this.guna2Panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
-            this.guna2Panel3.SuspendLayout();
-            this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -78,7 +86,7 @@
             this.btnLamMoi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnLamMoi.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.btnLamMoi.ForeColor = System.Drawing.Color.White;
-            this.btnLamMoi.Location = new System.Drawing.Point(1526, 6);
+            this.btnLamMoi.Location = new System.Drawing.Point(1422, 5);
             this.btnLamMoi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(113, 40);
@@ -87,6 +95,7 @@
             // 
             // btnYeuCauMua
             // 
+            this.btnYeuCauMua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnYeuCauMua.BorderRadius = 5;
             this.btnYeuCauMua.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnYeuCauMua.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -94,7 +103,7 @@
             this.btnYeuCauMua.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnYeuCauMua.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.btnYeuCauMua.ForeColor = System.Drawing.Color.White;
-            this.btnYeuCauMua.Location = new System.Drawing.Point(1266, 62);
+            this.btnYeuCauMua.Location = new System.Drawing.Point(1267, 97);
             this.btnYeuCauMua.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnYeuCauMua.Name = "btnYeuCauMua";
             this.btnYeuCauMua.Size = new System.Drawing.Size(260, 40);
@@ -157,6 +166,7 @@
             // 
             // btnGuiYeuCau
             // 
+            this.btnGuiYeuCau.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGuiYeuCau.BorderRadius = 5;
             this.btnGuiYeuCau.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnGuiYeuCau.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -164,7 +174,7 @@
             this.btnGuiYeuCau.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnGuiYeuCau.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.btnGuiYeuCau.ForeColor = System.Drawing.Color.White;
-            this.btnGuiYeuCau.Location = new System.Drawing.Point(1266, 112);
+            this.btnGuiYeuCau.Location = new System.Drawing.Point(471, 2);
             this.btnGuiYeuCau.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnGuiYeuCau.Name = "btnGuiYeuCau";
             this.btnGuiYeuCau.Size = new System.Drawing.Size(260, 40);
@@ -181,15 +191,16 @@
             this.btnXoa.FillColor = System.Drawing.Color.Red;
             this.btnXoa.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(845, 162);
+            this.btnXoa.Location = new System.Drawing.Point(2, 2);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(203, 40);
+            this.btnXoa.Size = new System.Drawing.Size(110, 40);
             this.btnXoa.TabIndex = 3;
             this.btnXoa.Text = "← Xóa";
             // 
             // btnThem
             // 
+            this.btnThem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnThem.BorderRadius = 5;
             this.btnThem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnThem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -198,10 +209,10 @@
             this.btnThem.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnThem.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.btnThem.ForeColor = System.Drawing.Color.White;
-            this.btnThem.Location = new System.Drawing.Point(634, 162);
+            this.btnThem.Location = new System.Drawing.Point(681, 2);
             this.btnThem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(203, 40);
+            this.btnThem.Size = new System.Drawing.Size(110, 40);
             this.btnThem.TabIndex = 3;
             this.btnThem.Text = "Thêm →";
             // 
@@ -232,12 +243,12 @@
             this.dgvDSThietBiSua.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDSThietBiSua.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDSThietBiSua.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvDSThietBiSua.Location = new System.Drawing.Point(1, 51);
+            this.dgvDSThietBiSua.Location = new System.Drawing.Point(1, 41);
             this.dgvDSThietBiSua.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvDSThietBiSua.Name = "dgvDSThietBiSua";
             this.dgvDSThietBiSua.ReadOnly = true;
             this.dgvDSThietBiSua.RowHeadersVisible = false;
-            this.dgvDSThietBiSua.Size = new System.Drawing.Size(798, 589);
+            this.dgvDSThietBiSua.Size = new System.Drawing.Size(741, 600);
             this.dgvDSThietBiSua.TabIndex = 2;
             this.dgvDSThietBiSua.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvDSThietBiSua.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -288,12 +299,12 @@
             this.dgvDSChiTietThietBi.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvDSChiTietThietBi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDSChiTietThietBi.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvDSChiTietThietBi.Location = new System.Drawing.Point(1, 51);
+            this.dgvDSChiTietThietBi.Location = new System.Drawing.Point(1, 41);
             this.dgvDSChiTietThietBi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvDSChiTietThietBi.Name = "dgvDSChiTietThietBi";
             this.dgvDSChiTietThietBi.ReadOnly = true;
             this.dgvDSChiTietThietBi.RowHeadersVisible = false;
-            this.dgvDSChiTietThietBi.Size = new System.Drawing.Size(837, 589);
+            this.dgvDSChiTietThietBi.Size = new System.Drawing.Size(791, 600);
             this.dgvDSChiTietThietBi.TabIndex = 2;
             this.dgvDSChiTietThietBi.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvDSChiTietThietBi.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -320,14 +331,12 @@
             // gbx_ThongTin
             // 
             this.gbx_ThongTin.BorderRadius = 5;
+            this.gbx_ThongTin.Controls.Add(this.splitContainer2);
             this.gbx_ThongTin.Controls.Add(this.btnYeuCauMua);
-            this.gbx_ThongTin.Controls.Add(this.btnXoa);
             this.gbx_ThongTin.Controls.Add(this.cboThietBi);
-            this.gbx_ThongTin.Controls.Add(this.btnThem);
             this.gbx_ThongTin.Controls.Add(this.cboLoaiTB);
             this.gbx_ThongTin.Controls.Add(this.btnLamMoi);
             this.gbx_ThongTin.Controls.Add(this.guna2HtmlLabel7);
-            this.gbx_ThongTin.Controls.Add(this.btnGuiYeuCau);
             this.gbx_ThongTin.Controls.Add(this.guna2HtmlLabel6);
             this.gbx_ThongTin.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.gbx_ThongTin.CustomBorderThickness = new System.Windows.Forms.Padding(0, 50, 0, 0);
@@ -337,7 +346,7 @@
             this.gbx_ThongTin.Location = new System.Drawing.Point(0, 0);
             this.gbx_ThongTin.Name = "gbx_ThongTin";
             this.gbx_ThongTin.Padding = new System.Windows.Forms.Padding(1);
-            this.gbx_ThongTin.Size = new System.Drawing.Size(1644, 210);
+            this.gbx_ThongTin.Size = new System.Drawing.Size(1540, 198);
             this.gbx_ThongTin.TabIndex = 17;
             this.gbx_ThongTin.Text = "Thông tin nhà cùng cấp";
             // 
@@ -346,14 +355,13 @@
             this.guna2GroupBox1.BorderRadius = 5;
             this.guna2GroupBox1.Controls.Add(this.dgvDSChiTietThietBi);
             this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.guna2GroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 50, 0, 0);
             this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.guna2GroupBox1.Location = new System.Drawing.Point(0, 0);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Padding = new System.Windows.Forms.Padding(1);
-            this.guna2GroupBox1.Size = new System.Drawing.Size(839, 641);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(793, 642);
             this.guna2GroupBox1.TabIndex = 18;
             this.guna2GroupBox1.Text = "Danh sách thiết bị";
             // 
@@ -362,54 +370,84 @@
             this.guna2GroupBox2.BorderRadius = 5;
             this.guna2GroupBox2.Controls.Add(this.dgvDSThietBiSua);
             this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.guna2GroupBox2.CustomBorderThickness = new System.Windows.Forms.Padding(0, 50, 0, 0);
             this.guna2GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.guna2GroupBox2.Location = new System.Drawing.Point(0, 0);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
             this.guna2GroupBox2.Padding = new System.Windows.Forms.Padding(1);
-            this.guna2GroupBox2.Size = new System.Drawing.Size(800, 641);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(743, 642);
             this.guna2GroupBox2.TabIndex = 19;
             this.guna2GroupBox2.Text = "Danh sách thiết bị yêu cầu sửa chửa";
             // 
+            // guna2Panel4
+            // 
+            this.guna2Panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2Panel4.AutoScroll = true;
+            this.guna2Panel4.Controls.Add(this.guna2Panel1);
+            this.guna2Panel4.Controls.Add(this.gbx_ThongTin);
+            this.guna2Panel4.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel4.Name = "guna2Panel4";
+            this.guna2Panel4.Size = new System.Drawing.Size(1540, 845);
+            this.guna2Panel4.TabIndex = 19;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 5);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.guna2GroupBox1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.guna2GroupBox2);
+            this.splitContainer1.Size = new System.Drawing.Size(1540, 642);
+            this.splitContainer1.SplitterDistance = 793;
+            this.splitContainer1.TabIndex = 21;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitContainer2.Location = new System.Drawing.Point(1, 152);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer2.Panel1.Controls.Add(this.btnThem);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer2.Panel2.Controls.Add(this.btnXoa);
+            this.splitContainer2.Panel2.Controls.Add(this.btnGuiYeuCau);
+            this.splitContainer2.Size = new System.Drawing.Size(1538, 45);
+            this.splitContainer2.SplitterDistance = 791;
+            this.splitContainer2.TabIndex = 10;
+            // 
             // guna2Panel1
             // 
-            this.guna2Panel1.Controls.Add(this.guna2Panel3);
-            this.guna2Panel1.Controls.Add(this.guna2Panel2);
+            this.guna2Panel1.Controls.Add(this.splitContainer1);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 210);
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 198);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.guna2Panel1.Size = new System.Drawing.Size(1644, 646);
-            this.guna2Panel1.TabIndex = 18;
-            // 
-            // guna2Panel3
-            // 
-            this.guna2Panel3.Controls.Add(this.guna2GroupBox2);
-            this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel3.Location = new System.Drawing.Point(844, 5);
-            this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(800, 641);
-            this.guna2Panel3.TabIndex = 4;
-            // 
-            // guna2Panel2
-            // 
-            this.guna2Panel2.Controls.Add(this.guna2GroupBox1);
-            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 5);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.guna2Panel2.Size = new System.Drawing.Size(844, 641);
-            this.guna2Panel2.TabIndex = 3;
+            this.guna2Panel1.Size = new System.Drawing.Size(1540, 647);
+            this.guna2Panel1.TabIndex = 22;
             // 
             // YeuCauSuaThietBi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1644, 856);
-            this.Controls.Add(this.guna2Panel1);
-            this.Controls.Add(this.gbx_ThongTin);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1540, 845);
+            this.Controls.Add(this.guna2Panel4);
             this.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -422,9 +460,16 @@
             this.gbx_ThongTin.PerformLayout();
             this.guna2GroupBox1.ResumeLayout(false);
             this.guna2GroupBox2.ResumeLayout(false);
+            this.guna2Panel4.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel3.ResumeLayout(false);
-            this.guna2Panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -445,8 +490,9 @@
         private Guna.UI2.WinForms.Guna2GroupBox gbx_ThongTin;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox2;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
     }
 }

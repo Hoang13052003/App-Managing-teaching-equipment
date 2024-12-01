@@ -35,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DAL">
       <HintPath>..\DAL\bin\Debug\DAL.dll</HintPath>
@@ -333,12 +336,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="favicon.ico" />
     <Content Include="Image\backround_schedule.jpg" />
     <Content Include="Image\demo_image_giang_vien.jpg" />
     <Content Include="Image\Background_Login.png" />
     <Content Include="Image\icon\account.png" />
     <Content Include="Image\icon\close.png" />
     <Content Include="Image\icon\Close_hover.png" />
+    <Content Include="Image\icon\favicon.ico" />
     <Content Include="Image\icon\help.png" />
     <Content Include="Image\icon\icons8-add-100.png" />
     <Content Include="Image\icon\icons8-add-25.png" />
@@ -350,6 +355,7 @@
     <Content Include="Image\icon\icons8-excel-25.png" />
     <Content Include="Image\icon\icons8-filter-25.png" />
     <Content Include="Image\icon\icons8-home-25.png" />
+    <Content Include="Image\icon\icons8-image-25.png" />
     <Content Include="Image\icon\icons8-LoaiTB-MH-25.png" />
     <Content Include="Image\icon\icons8-logout-25.png" />
     <Content Include="Image\icon\icons8-MuonTra-25.png" />
@@ -361,6 +367,7 @@
     <Content Include="Image\icon\icons8-schedule-100.png" />
     <Content Include="Image\icon\icons8-schedule-25.png" />
     <Content Include="Image\icon\icons8-search-25.png" />
+    <Content Include="Image\icon\icons8-send-25.png" />
     <Content Include="Image\icon\icons8-supplier-25.png" />
     <Content Include="Image\icon\icons8-tick-25.png" />
     <Content Include="Image\icon\icons8-Tiep-25.png" />
@@ -374,6 +381,7 @@
     <Content Include="Image\icon\Pasword.png" />
     <Content Include="Image\icon\Search.png" />
     <Content Include="Image\icon\setting.png" />
+    <Content Include="Image\icon\Spinner-3.gif" />
     <Content Include="Image\icon\User.png" />
     <Content Include="Image\thietBiHuHong\img_10_20241116223637.jpg" />
     <Content Include="Image\thietBiHuHong\img_10_20241116224008.jpg" />

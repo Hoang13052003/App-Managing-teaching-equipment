@@ -13,7 +13,7 @@ namespace DTO
         public string HoTen { get; set; }
         public DateTime? NgayNhap { get; set; }
         public int SoLuong { get; set; }
-        public float TongTien { get; set; }
+        public decimal TongTien { get; set; }
         public int MaNCC { get; set; }
         public string TenNCC { get; set; }
     }

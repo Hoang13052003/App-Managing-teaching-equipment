@@ -134,7 +134,7 @@ namespace GUI
                 UpdateLoginState(false);
 
                 // Mở lại form đăng nhập
-                FormTask.OpenDashboard_Out<Login>(this);
+                FormTask.OpenDashboard<Login>(this);
             }
             else
             {
@@ -149,6 +149,8 @@ namespace GUI
             if (key != null)
             {
                 key.SetValue("IsLoggedIn", isLoggedIn);
+                key.SetValue("UserName", string.Empty);
+                key.SetValue("PassWord", string.Empty);
                 key.Close();
             }
         }
