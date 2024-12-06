@@ -48,27 +48,27 @@
             this.dgvDSThietBiSua = new Guna.UI2.WinForms.Guna2DataGridView();
             this.dgvDSChiTietThietBi = new Guna.UI2.WinForms.Guna2DataGridView();
             this.gbx_ThongTin = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThietBiSua)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSChiTietThietBi)).BeginInit();
             this.gbx_ThongTin.SuspendLayout();
-            this.guna2GroupBox1.SuspendLayout();
-            this.guna2GroupBox2.SuspendLayout();
-            this.guna2Panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.guna2GroupBox1.SuspendLayout();
+            this.guna2GroupBox2.SuspendLayout();
+            this.guna2Panel4.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -241,7 +241,6 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDSThietBiSua.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvDSThietBiSua.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDSThietBiSua.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDSThietBiSua.Location = new System.Drawing.Point(1, 41);
             this.dgvDSThietBiSua.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -297,7 +296,6 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDSChiTietThietBi.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvDSChiTietThietBi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDSChiTietThietBi.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDSChiTietThietBi.Location = new System.Drawing.Point(1, 41);
             this.dgvDSChiTietThietBi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -350,6 +348,27 @@
             this.gbx_ThongTin.TabIndex = 17;
             this.gbx_ThongTin.Text = "Thông tin nhà cùng cấp";
             // 
+            // splitContainer2
+            // 
+            this.splitContainer2.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitContainer2.Location = new System.Drawing.Point(1, 152);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer2.Panel1.Controls.Add(this.btnThem);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer2.Panel2.Controls.Add(this.btnXoa);
+            this.splitContainer2.Panel2.Controls.Add(this.btnGuiYeuCau);
+            this.splitContainer2.Size = new System.Drawing.Size(1538, 45);
+            this.splitContainer2.SplitterDistance = 791;
+            this.splitContainer2.TabIndex = 10;
+            // 
             // guna2GroupBox1
             // 
             this.guna2GroupBox1.BorderRadius = 5;
@@ -393,6 +412,16 @@
             this.guna2Panel4.Size = new System.Drawing.Size(1540, 845);
             this.guna2Panel4.TabIndex = 19;
             // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.Controls.Add(this.splitContainer1);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 198);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.guna2Panel1.Size = new System.Drawing.Size(1540, 647);
+            this.guna2Panel1.TabIndex = 22;
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -409,37 +438,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(1540, 642);
             this.splitContainer1.SplitterDistance = 793;
             this.splitContainer1.TabIndex = 21;
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.BackColor = System.Drawing.Color.Transparent;
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitContainer2.Location = new System.Drawing.Point(1, 152);
-            this.splitContainer2.Name = "splitContainer2";
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.BackColor = System.Drawing.Color.Transparent;
-            this.splitContainer2.Panel1.Controls.Add(this.btnThem);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.BackColor = System.Drawing.Color.Transparent;
-            this.splitContainer2.Panel2.Controls.Add(this.btnXoa);
-            this.splitContainer2.Panel2.Controls.Add(this.btnGuiYeuCau);
-            this.splitContainer2.Size = new System.Drawing.Size(1538, 45);
-            this.splitContainer2.SplitterDistance = 791;
-            this.splitContainer2.TabIndex = 10;
-            // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.Controls.Add(this.splitContainer1);
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 198);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.guna2Panel1.Size = new System.Drawing.Size(1540, 647);
-            this.guna2Panel1.TabIndex = 22;
             // 
             // YeuCauSuaThietBi
             // 
@@ -458,18 +456,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSChiTietThietBi)).EndInit();
             this.gbx_ThongTin.ResumeLayout(false);
             this.gbx_ThongTin.PerformLayout();
-            this.guna2GroupBox1.ResumeLayout(false);
-            this.guna2GroupBox2.ResumeLayout(false);
-            this.guna2Panel4.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.guna2GroupBox1.ResumeLayout(false);
+            this.guna2GroupBox2.ResumeLayout(false);
+            this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
