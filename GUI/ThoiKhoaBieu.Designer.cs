@@ -131,6 +131,7 @@
             // 
             // btnThemExcel
             // 
+            this.btnThemExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnThemExcel.BorderRadius = 5;
             this.btnThemExcel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnThemExcel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -168,6 +169,7 @@
             // 
             // btnXoa
             // 
+            this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnXoa.BorderRadius = 5;
             this.btnXoa.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnXoa.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -396,6 +398,7 @@
             // 
             // dtbNgayHoc_Filter
             // 
+            this.dtbNgayHoc_Filter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtbNgayHoc_Filter.BackColor = System.Drawing.Color.Transparent;
             this.dtbNgayHoc_Filter.BorderRadius = 5;
             this.dtbNgayHoc_Filter.Checked = true;

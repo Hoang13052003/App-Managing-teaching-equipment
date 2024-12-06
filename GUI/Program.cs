@@ -65,21 +65,60 @@ namespace GUI
 
         public static void OpenFormInPanel<T>(Panel panel) where T : Form, new()
         {
-            // Tạo một thể hiện mới của form cần mở
             T newForm = new T();
-            newForm.TopLevel = false; // Thiết lập form không phải là form cấp cao
-            newForm.FormBorderStyle = FormBorderStyle.None; // Không hiển thị viền
-            panel.Controls.Clear(); // Xóa tất cả điều khiển trong panel
-            panel.Controls.Add(newForm); // Thêm form mới vào panel
+            newForm.TopLevel = false;
+            newForm.FormBorderStyle = FormBorderStyle.None;
+            panel.Controls.Clear();
+            panel.Controls.Add(newForm);
 
-            newForm.Dock = DockStyle.Fill; // Đảm bảo form lấp đầy panel
-            newForm.Show(); // Hiển thị form mới
+            newForm.Dock = DockStyle.Fill;
+            newForm.Show();
         }
+        public static async Task OpenFormInPanelAsync<T>(Panel panel, Form loadingForm) where T : Form, new()
+        {
+            // Hiển thị form loading trước
+            loadingForm.TopLevel = false;
+            loadingForm.FormBorderStyle = FormBorderStyle.None;
+            loadingForm.Dock = DockStyle.Fill;
+            panel.Controls.Add(loadingForm);
+            loadingForm.Show();
+            loadingForm.BringToFront();
+
+            // Giả lập tác vụ "nặng" (thay bằng công việc thực tế nếu có)
+            await Task.Delay(100); // Hoặc thay bằng tác vụ thực tế bạn muốn chạy
+
+            // Tạo form mới
+            T newForm = new T();
+            newForm.TopLevel = false;
+            newForm.FormBorderStyle = FormBorderStyle.None;
+            newForm.Dock = DockStyle.Fill;
+            newForm.Opacity = 0;  // Để form mới bắt đầu ở trạng thái trong suốt
+
+            // Hiển thị form mới
+            panel.Controls.Clear(); // Dọn dẹp các control cũ trong panel
+            panel.Controls.Add(newForm); // Thêm form mới vào panel
+            newForm.Show();
+
+            // Dần dần tăng độ mờ của form mới (Hiệu ứng chuyển động mượt mà)
+            for (double opacity = 0; opacity <= 1; opacity += 0.05)
+            {
+                newForm.Opacity = opacity;
+                await Task.Delay(30); // Điều chỉnh độ mượt bằng thời gian delay
+            }
+
+            // Đóng form loading sau khi form mới mở xong
+            loadingForm.Close();
+        }
+
+
+
+
         public static void OpenFormInPanel(Panel panel, Form newForm)
         {
             // Tạo một thể hiện mới của form cần mở
             newForm.TopLevel = false;
             newForm.FormBorderStyle = FormBorderStyle.None;
+            //newForm.Dock = DockStyle.Fill;
 
             //panel.Controls.Clear();
             panel.Controls.Add(newForm);
@@ -126,114 +165,82 @@ namespace GUI
             newForm.Show();
         }
 
-        public static void OpenDashboard<T>(Form currentForm) where T : Form, new()
+        public static async void OpenDashboard<T>(Form currentForm) where T : Form, new()
         {
-            Loading loading = new Loading();
-            loading.Show();
 
-            // Ẩn form hiện tại với hiệu ứng fade out
-            FadeOut(currentForm);
-            // Chạy trong thread riêng biệt để không làm chậm UI chính
-            Thread thread = new Thread(() =>
-            {
-                // Tạo form mới và hiển thị
-                T newForm = new T();
+            // Tạo form mới
+            T newForm = new T();
+            newForm.Opacity = 0;
+            newForm.Hide();
+            
+            await FadeOutAsync(currentForm);
 
-                // Mở form mới
-                newForm.ShowDialog();  // Sử dụng ShowDialog để chặn thread chính cho đến khi form mới đóng
-                // Đảm bảo đóng form hiện tại sau khi form mới đóng
-                currentForm.Invoke((MethodInvoker)(() =>
-                {
-                    currentForm.Close();
-                }));
-            });
+            await Task.Delay(500);
 
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
+            newForm.Show();
+            // Hiển thị form mới với hiệu ứng fade in
+            await FadeInAsync(newForm);
         }
 
-        public static void OpenDashboard_In<T>(Form currentForm) where T : Form, new()
+        public static async void OpenDashboard_Loading<T>(Form currentForm, bool check) where T : Form, new()
         {
-            // Ẩn form hiện tại với hiệu ứng fade out
-            FadeOut(currentForm);
-            // Chạy trong thread riêng biệt để không làm chậm UI chính
-            Thread thread = new Thread(() =>
+            await FadeOutAsync_Loading(currentForm);
+
+            // Tạo form mới
+            T newForm = new T();
+            newForm.Opacity = 0;
+            newForm.Show();
+
+            // Chờ 10 giây trước khi hiện form mới
+            await Task.Delay(500);
+
+            if (check)
             {
-                // Tạo form mới và hiển thị
-                T newForm = new T();
-
-                // Mở form mới
-                newForm.ShowDialog();  // Sử dụng ShowDialog để chặn thread chính cho đến khi form mới đóng
-                //// Đảm bảo đóng form hiện tại sau khi form mới đóng
-                //currentForm.Invoke((MethodInvoker)(() =>
-                //{
-                //    currentForm.Close();
-                //}));
-            });
-
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
+                await FadeInAsync(newForm);
+            }
+            else
+            {
+                newForm.Hide();
+            }
+            // Hiển thị form mới với hiệu ứng fade in
         }
 
-        public static void OpenDashboard_Out<T>(Form currentForm) where T : Form, new()
+        private static async Task FadeOutAsync(Form form)
         {
-            // Ẩn form hiện tại với hiệu ứng fade out
-            FadeOut(currentForm);
-            // Chạy trong thread riêng biệt để không làm chậm UI chính
-            Thread thread = new Thread(() =>
+            for (double opacity = form.Opacity; opacity > 0; opacity -= 0.1)
             {
-                // Tạo form mới và hiển thị
-                T newForm = new T();
-
-                // Mở form mới
-                newForm.ShowDialog();  // Sử dụng ShowDialog để chặn thread chính cho đến khi form mới đóng
-                //// Đảm bảo đóng form hiện tại sau khi form mới đóng
-                //currentForm.Invoke((MethodInvoker)(() =>
-                //{
-                //    currentForm.Close();
-                //}));
-            });
-
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
-        private static void FadeOut(Form form)
-        {
-            Timer timer = new Timer();
-            timer.Interval = 30; // Đặt tốc độ fade
-            double opacity = 1.0; // Mức độ mờ ban đầu
-
-            timer.Tick += (sender, e) =>
-            {
-                opacity -= 0.05; // Giảm dần độ mờ
-                if (opacity <= 0)
-                {
-                    timer.Stop();
-                    form.Hide();  // Ẩn form sau khi fade out xong
-                }
                 form.Opacity = opacity;
-            };
-            timer.Start();
+                await Task.Delay(25); // Khoảng thời gian giữa các lần giảm độ mờ
+            }
+            form.Close();
         }
-
-        private static void FadeIn(Form form)
+        private static async Task FadeOutAsync_Loading(Form form)
         {
-            Timer timer = new Timer();
-            timer.Interval = 30; // Đặt tốc độ fade
-            double opacity = 0.01; // Mức độ mờ ban đầu
-
-            timer.Tick += (sender, e) =>
+            for (double opacity = form.Opacity; opacity >= 0; opacity -= 0.1)
             {
-                opacity += 0.05; // Tăng dần độ mờ
-                if (opacity >= 1)
-                {
-                    timer.Stop();
-                }
                 form.Opacity = opacity;
-            };
-            timer.Start();
+                await Task.Delay(25); // Khoảng thời gian giữa các lần giảm độ mờ
+            }
+            form.Hide();
         }
+        private static async Task FadeInAsync(Form form)
+        {
+            for (double opacity = form.Opacity; opacity < 1.1; opacity += 0.1)
+            {
+                form.Opacity = opacity;
+                await Task.Delay(25);
+            }
+        }
+        //private static async Task FadeInAsync_Loading(Form form)
+        //{
+        //    form.Hide();
+        //    //for (double opacity = form.Opacity; opacity < 1.1; opacity += 0.1)
+        //    //{
+        //    //    form.Opacity = opacity;
+        //    //    await Task.Delay(25);
+        //    //}
+        //}
+
     }
 
     public static class DateTimeExtensions
@@ -256,7 +263,7 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new Loading());
 
         }
     }

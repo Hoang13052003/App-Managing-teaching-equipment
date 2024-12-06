@@ -19,8 +19,9 @@ namespace GUI
         private LoginBUS loginBUS = new LoginBUS();
         public Login()
         {
-            this.Hide();
             InitializeComponent();
+            this.ShowInTaskbar = false;
+            this.Visible = false;
         }
         
         //Controls
@@ -61,7 +62,8 @@ namespace GUI
             }
             else
             {
-                this.Opacity = 100;
+                this.ShowInTaskbar = true;
+                this.Visible = true;
             }
         }
         private void btnChuyenQuaDangNhap_Click(object sender, EventArgs e)
@@ -94,13 +96,13 @@ namespace GUI
                         case "Admin":
                             MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             AccountInfo.SetAccountInfo(loginResult.User);
-                            FormTask.OpenDashboard_In<Dashboard_Admin>(this);
+                            FormTask.OpenDashboard<Dashboard_Admin>(this);
                             break;
 
                         case "Teacher":
                             MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             AccountInfo.SetAccountInfo(loginResult.User);
-                            FormTask.OpenDashboard_In<Dashboard_User>(this);
+                            FormTask.OpenDashboard<Dashboard_User>(this);
                             break;
 
                         default:
@@ -249,9 +251,9 @@ namespace GUI
 
         private void controlClose_Click(object sender, EventArgs e)
         {
-
-
             Environment.Exit(0);
         }
+
+        
     }
 }

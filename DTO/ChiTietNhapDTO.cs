@@ -11,9 +11,9 @@ namespace DTO
         public int MaNhap { get; set; }
         public int MaTB { get; set; }
         public string TenTB { get; set; }
-        public float GiaNhap { get; set; }
+        public decimal GiaNhap { get; set; }
         public int SoLuong { get; set; }
-        public float ThanhTien { get; set; }
+        public decimal ThanhTien { get; set; }
     }
 
 }

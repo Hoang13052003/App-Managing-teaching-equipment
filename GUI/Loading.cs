@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,8 @@ namespace GUI
 {
     public partial class Loading : Form
     {
-        private int maxWidth = 995; // Kích thước tối đa của thanh loading
-        private Timer autoCloseTimer;
+        private Timer autoCloseTimer, start;
+        private bool _isLogin = false;
         public Loading()
         {
             InitializeComponent();
@@ -22,36 +23,62 @@ namespace GUI
         private void InitializeAutoCloseTimer()
         {
             autoCloseTimer = new Timer();
-            autoCloseTimer.Interval = 9500; // 5000 milliseconds = 5 seconds
+            autoCloseTimer.Interval = 7200;
             autoCloseTimer.Tick += AutoCloseTimer_Tick;
+
+            start = new Timer();
+            start.Interval = 5500;
+            start.Tick += start_Tick;
         }
         private void AutoCloseTimer_Tick(object sender, EventArgs e)
         {
-            autoCloseTimer.Stop(); // Dừng timer sau khi form tự tắt
-            this.Close(); // Đóng form loading sau 5 giây
+            this.Hide();
+            timer1.Stop();
+            autoCloseTimer.Stop();
         }
-
+        private void start_Tick(object sender, EventArgs e)
+        {
+            if (_isLogin)
+            {
+                FormTask.OpenDashboard_Loading<Login>(this, false);
+                start.Stop();
+            }
+            else
+            {
+                FormTask.OpenDashboard_Loading<Login>(this, true);
+                start.Stop();
+            }
+        }
         // Tạo hàm để bắt đầu hoạt ảnh
         private void timer1_Tick(object sender, EventArgs e)
         {
-            panelSlide.Width += 10; // Mỗi lần tick, thanh tiến sẽ rộng thêm 10px
-            if (panelSlide.Width > 995)
+            panelSlide.Width += 15;
+            if (panelSlide.Width > 1000)
             {
                 panelSlide.Width = 0;
             }
-            // Kiểm tra nếu thanh đã đạt tới chiều rộng tối đa
-            if (panelSlide.Width >= maxWidth)
-            {
-                // Dừng timer khi đạt đến chiều rộng tối đa
-                timer1.Stop();
-            }
         }
-
+        private (string UserName, string PassWord, bool IsLoggedIn) LoadLoginStateFromRegistry()
+        {
+            RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\MyApp");
+            if (key != null)
+            {
+                string userName = key.GetValue("UserName")?.ToString();
+                string passWord = key.GetValue("PassWord")?.ToString();
+                bool isLoggedIn = Convert.ToBoolean(key.GetValue("IsLoggedIn"));
+                key.Close();
+                return (userName, passWord, isLoggedIn);
+            }
+            return (null, null, false);
+        }
         private void Loading_Load(object sender, EventArgs e)
         {
+            var (userName, password, isLoggedIn) = LoadLoginStateFromRegistry();
+            _isLogin = isLoggedIn;
+
             timer1.Start();
-            // Khởi động timer tự động đóng form sau 5 giây
             autoCloseTimer.Start();
+            start.Start();
         }
     }
 }

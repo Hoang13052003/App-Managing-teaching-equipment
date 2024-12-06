@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard_User));
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.lb_home = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
@@ -48,6 +49,7 @@
             this.lbMenu = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnHome = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.timer_show_form = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.Navbar.SuspendLayout();
             this.main.SuspendLayout();
@@ -344,6 +346,11 @@
             // 
             this.guna2Elipse2.BorderRadius = 10;
             // 
+            // timer_show_form
+            // 
+            this.timer_show_form.Interval = 5000;
+            this.timer_show_form.Tick += new System.EventHandler(this.timer_show_form_Tick);
+            // 
             // Dashboard_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -352,10 +359,10 @@
             this.Controls.Add(this.main);
             this.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Dashboard_User";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Dashboard_User";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_User_FormClosing);
             this.panel1.ResumeLayout(false);
@@ -390,5 +397,6 @@
         private Guna.UI2.WinForms.Guna2Button btnYeuCauSuaThietBi;
         private Guna.UI2.WinForms.Guna2Button btnDangXuat;
         public System.Windows.Forms.Label lb_NameForm;
+        private System.Windows.Forms.Timer timer_show_form;
     }
 }
