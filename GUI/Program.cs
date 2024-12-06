@@ -65,21 +65,60 @@ namespace GUI
 
         public static void OpenFormInPanel<T>(Panel panel) where T : Form, new()
         {
-            // Tạo một thể hiện mới của form cần mở
             T newForm = new T();
-            newForm.TopLevel = false; // Thiết lập form không phải là form cấp cao
-            newForm.FormBorderStyle = FormBorderStyle.None; // Không hiển thị viền
-            panel.Controls.Clear(); // Xóa tất cả điều khiển trong panel
-            panel.Controls.Add(newForm); // Thêm form mới vào panel
+            newForm.TopLevel = false;
+            newForm.FormBorderStyle = FormBorderStyle.None;
+            panel.Controls.Clear();
+            panel.Controls.Add(newForm);
 
-            newForm.Dock = DockStyle.Fill; // Đảm bảo form lấp đầy panel
-            newForm.Show(); // Hiển thị form mới
+            newForm.Dock = DockStyle.Fill;
+            newForm.Show();
         }
+        public static async Task OpenFormInPanelAsync<T>(Panel panel, Form loadingForm) where T : Form, new()
+        {
+            // Hiển thị form loading trước
+            loadingForm.TopLevel = false;
+            loadingForm.FormBorderStyle = FormBorderStyle.None;
+            loadingForm.Dock = DockStyle.Fill;
+            panel.Controls.Add(loadingForm);
+            loadingForm.Show();
+            loadingForm.BringToFront();
+
+            // Giả lập tác vụ "nặng" (thay bằng công việc thực tế nếu có)
+            await Task.Delay(100); // Hoặc thay bằng tác vụ thực tế bạn muốn chạy
+
+            // Tạo form mới
+            T newForm = new T();
+            newForm.TopLevel = false;
+            newForm.FormBorderStyle = FormBorderStyle.None;
+            newForm.Dock = DockStyle.Fill;
+            newForm.Opacity = 0;  // Để form mới bắt đầu ở trạng thái trong suốt
+
+            // Hiển thị form mới
+            panel.Controls.Clear(); // Dọn dẹp các control cũ trong panel
+            panel.Controls.Add(newForm); // Thêm form mới vào panel
+            newForm.Show();
+
+            // Dần dần tăng độ mờ của form mới (Hiệu ứng chuyển động mượt mà)
+            for (double opacity = 0; opacity <= 1; opacity += 0.05)
+            {
+                newForm.Opacity = opacity;
+                await Task.Delay(30); // Điều chỉnh độ mượt bằng thời gian delay
+            }
+
+            // Đóng form loading sau khi form mới mở xong
+            loadingForm.Close();
+        }
+
+
+
+
         public static void OpenFormInPanel(Panel panel, Form newForm)
         {
             // Tạo một thể hiện mới của form cần mở
             newForm.TopLevel = false;
             newForm.FormBorderStyle = FormBorderStyle.None;
+            //newForm.Dock = DockStyle.Fill;
 
             //panel.Controls.Clear();
             panel.Controls.Add(newForm);
@@ -125,32 +164,6 @@ namespace GUI
             //newForm.Dock = DockStyle.Fill;
             newForm.Show();
         }
-
-        //public static void OpenDashboard<T>(Form currentForm) where T : Form, new()
-        //{
-        //    Loading loading = new Loading();
-        //    loading.Show();
-
-        //    // Ẩn form hiện tại với hiệu ứng fade out
-        //    FadeOut(currentForm);
-        //    // Chạy trong thread riêng biệt để không làm chậm UI chính
-        //    Thread thread = new Thread(() =>
-        //    {
-        //        // Tạo form mới và hiển thị
-        //        T newForm = new T();
-
-        //        // Mở form mới
-        //        newForm.ShowDialog();  // Sử dụng ShowDialog để chặn thread chính cho đến khi form mới đóng
-        //        // Đảm bảo đóng form hiện tại sau khi form mới đóng
-        //        currentForm.Invoke((MethodInvoker)(() =>
-        //        {
-        //            currentForm.Close();
-        //        }));
-        //    });
-
-        //    thread.SetApartmentState(ApartmentState.STA);
-        //    thread.Start();
-        //}
 
         public static async void OpenDashboard<T>(Form currentForm) where T : Form, new()
         {

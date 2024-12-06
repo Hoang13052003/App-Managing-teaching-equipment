@@ -49,6 +49,7 @@
             this.lbMenu = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnHome = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.timer_show_form = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.Navbar.SuspendLayout();
             this.main.SuspendLayout();
@@ -345,6 +346,11 @@
             // 
             this.guna2Elipse2.BorderRadius = 10;
             // 
+            // timer_show_form
+            // 
+            this.timer_show_form.Interval = 5000;
+            this.timer_show_form.Tick += new System.EventHandler(this.timer_show_form_Tick);
+            // 
             // Dashboard_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -391,5 +397,6 @@
         private Guna.UI2.WinForms.Guna2Button btnYeuCauSuaThietBi;
         private Guna.UI2.WinForms.Guna2Button btnDangXuat;
         public System.Windows.Forms.Label lb_NameForm;
+        private System.Windows.Forms.Timer timer_show_form;
     }
 }

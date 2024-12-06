@@ -20,6 +20,8 @@ namespace GUI
         public Login()
         {
             InitializeComponent();
+            this.ShowInTaskbar = false;
+            this.Visible = false;
         }
         
         //Controls
@@ -60,7 +62,8 @@ namespace GUI
             }
             else
             {
-                this.Opacity = 1;
+                this.ShowInTaskbar = true;
+                this.Visible = true;
             }
         }
         private void btnChuyenQuaDangNhap_Click(object sender, EventArgs e)

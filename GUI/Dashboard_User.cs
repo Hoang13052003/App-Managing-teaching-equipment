@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -14,6 +15,7 @@ namespace GUI
 {
     public partial class Dashboard_User : Form
     {
+        private bool isLoggingOut = false;
         public Dashboard_User()
         {
             InitializeComponent();
@@ -53,11 +55,36 @@ namespace GUI
             lb_NameForm.Text = x.Text;
         }
 
-        private void btn_Lich_Day_Click(object sender, EventArgs e)
+        private async void btn_Lich_Day_Click(object sender, EventArgs e)
         {
-            FormTask.OpenFormInPanel<Teaching_Schedule>(Panel_Change_Form);
-            Form x = new Teaching_Schedule();
-            lb_NameForm.Text = x.Text;
+            loading_panel loading = new loading_panel();
+            loading.TopLevel = false;
+            Panel_Change_Form.Controls.Clear();
+            Panel_Change_Form.Controls.Add(loading);
+            loading.Dock = DockStyle.Fill;
+            loading.Show();
+
+            // Mở form Teaching_Schedule ngầm (ẩn)
+            Teaching_Schedule newForm = new Teaching_Schedule();
+            newForm.TopLevel = false;
+            newForm.FormBorderStyle = FormBorderStyle.None;
+            newForm.Dock = DockStyle.Fill;
+            newForm.Visible = false; // Form không hiển thị ngay lập tức
+            Panel_Change_Form.Controls.Add(newForm);
+
+            // Giả lập thời gian chờ 5 giây (bạn có thể thay thế bằng các tác vụ nặng thực tế)
+            await Task.Delay(5000); // 5 giây
+
+            // Ẩn loading và hiển thị form Teaching_Schedule
+            loading.Close(); // Đóng loading
+            newForm.Visible = true; // Hiển thị Teaching_Schedule form
+
+            lb_NameForm.Text = newForm.Text;
+        }
+        
+        private void timer_show_form_Tick(object sender, EventArgs e)
+        {
+            
         }
 
         private void btnYeuCauSuaThietBi_Click(object sender, EventArgs e)
@@ -84,6 +111,7 @@ namespace GUI
 
             if (result == DialogResult.Yes)
             {
+                isLoggingOut = true;
                 // Cập nhật trạng thái đăng nhập trong Registry về false
                 UpdateLoginState(false);
 
@@ -113,16 +141,23 @@ namespace GUI
 
         private void Dashboard_User_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (isLoggingOut)
+            {
+                // Nếu đang đăng xuất, không cần xác nhận và không hủy thao tác đóng form
+                isLoggingOut = false;
+                return;  // Không làm gì cả, form sẽ đóng
+            }
+
             DialogResult result = MessageBox.Show(
-               "Bạn có chắc chắn muốn thoát ứng dụng không?",
-               "Xác nhận",
-               MessageBoxButtons.YesNo,
-               MessageBoxIcon.Question
-           );
+              "Bạn có chắc chắn muốn thoát ứng dụng không?",
+              "Xác nhận",
+              MessageBoxButtons.YesNo,
+              MessageBoxIcon.Question
+            );
 
             if (result == DialogResult.No)
             {
-                e.Cancel = true;  // Hủy hành động đóng form
+                e.Cancel = true;
             }
             else
             {
@@ -134,5 +169,7 @@ namespace GUI
         {
             new Profile().ShowDialog();
         }
+
+        
     }
 }

@@ -13,10 +13,7 @@ namespace GUI
 {
     public partial class Loading : Form
     {
-        //private int maxWidth = 995;
-        //private int startWidth = 800;
         private Timer autoCloseTimer, start;
-        private Login login = new Login();
         private bool _isLogin = false;
         public Loading()
         {
