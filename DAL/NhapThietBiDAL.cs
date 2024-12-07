@@ -67,47 +67,87 @@ public class NhapThietBiDAL : DatabaseHelper
     public bool InsertNhapThietBi(NhapThietBiDTO nhapThietBi, List<ChiTietNhapDTO> chiTietList)
     {
         string insertNhapThietBiQuery = @"
-        INSERT INTO NhapThietBi (MaNguoiDung, NgayNhap, SoLuong, TongTien, MaNCC) 
-        VALUES (@MaNguoiDung, @NgayNhap, @SoLuong, @TongTien, @MaNCC); 
-        SELECT SCOPE_IDENTITY();";
+            INSERT INTO NhapThietBi (MaNguoiDung, NgayNhap, SoLuong, TongTien, MaNCC) 
+            VALUES (@MaNguoiDung, @NgayNhap, @SoLuong, @TongTien, @MaNCC); 
+            SELECT SCOPE_IDENTITY();";
 
         using (SqlConnection connection = GetConnection())
         {
-            SqlCommand command = new SqlCommand(insertNhapThietBiQuery, connection);
-            command.Parameters.AddWithValue("@MaNguoiDung", nhapThietBi.MaNguoiDung);
-            command.Parameters.AddWithValue("@NgayNhap", nhapThietBi.NgayNhap.HasValue ? (object)nhapThietBi.NgayNhap.Value : DBNull.Value);
-            command.Parameters.AddWithValue("@SoLuong", nhapThietBi.SoLuong);
-            command.Parameters.AddWithValue("@TongTien", nhapThietBi.TongTien);
-            command.Parameters.AddWithValue("@MaNCC", nhapThietBi.MaNCC);
-
             connection.Open();
-
-            // Lấy MaNhap mới thêm
-            int newMaNhap = Convert.ToInt32(command.ExecuteScalar());
-
-            if (newMaNhap > 0)
+            using (SqlTransaction transaction = connection.BeginTransaction())
             {
-                foreach (var chiTiet in chiTietList)
+                try
                 {
-                    string insertChiTietNhapQuery = @"
-                    INSERT INTO ChiTietNhap (MaNhap, MaTB, GiaNhap, SoLuong, ThanhTien) 
-                    VALUES (@MaNhap, @MaTB, @GiaNhap, @SoLuong, @ThanhTien)";
+                    SqlCommand command = new SqlCommand(insertNhapThietBiQuery, connection, transaction);
+                    command.Parameters.AddWithValue("@MaNguoiDung", nhapThietBi.MaNguoiDung);
+                    command.Parameters.AddWithValue("@NgayNhap", nhapThietBi.NgayNhap.HasValue ? (object)nhapThietBi.NgayNhap.Value : DBNull.Value);
+                    command.Parameters.AddWithValue("@SoLuong", nhapThietBi.SoLuong);
+                    command.Parameters.AddWithValue("@TongTien", nhapThietBi.TongTien);
+                    command.Parameters.AddWithValue("@MaNCC", nhapThietBi.MaNCC);
 
-                    SqlCommand chiTietCommand = new SqlCommand(insertChiTietNhapQuery, connection);
-                    chiTietCommand.Parameters.AddWithValue("@MaNhap", newMaNhap);
-                    chiTietCommand.Parameters.AddWithValue("@MaTB", chiTiet.MaTB);
-                    chiTietCommand.Parameters.AddWithValue("@GiaNhap", chiTiet.GiaNhap);
-                    chiTietCommand.Parameters.AddWithValue("@SoLuong", chiTiet.SoLuong);
-                    chiTietCommand.Parameters.AddWithValue("@ThanhTien", chiTiet.ThanhTien);
+                    int newMaNhap = Convert.ToInt32(command.ExecuteScalar());
 
-                    chiTietCommand.ExecuteNonQuery();
+                    if (newMaNhap > 0)
+                    {
+                        foreach (var chiTiet in chiTietList)
+                        {
+                            // Thêm chi tiết nhập
+                            string insertChiTietNhapQuery = @"
+                                INSERT INTO ChiTietNhap (MaNhap, MaTB, GiaNhap, SoLuong, ThanhTien) 
+                                VALUES (@MaNhap, @MaTB, @GiaNhap, @SoLuong, @ThanhTien)";
+                            SqlCommand chiTietCommand = new SqlCommand(insertChiTietNhapQuery, connection, transaction);
+                            chiTietCommand.Parameters.AddWithValue("@MaNhap", newMaNhap);
+                            chiTietCommand.Parameters.AddWithValue("@MaTB", chiTiet.MaTB);
+                            chiTietCommand.Parameters.AddWithValue("@GiaNhap", chiTiet.GiaNhap);
+                            chiTietCommand.Parameters.AddWithValue("@SoLuong", chiTiet.SoLuong);
+                            chiTietCommand.Parameters.AddWithValue("@ThanhTien", chiTiet.ThanhTien);
+                            chiTietCommand.ExecuteNonQuery();
+
+                            // 1. Cập nhật số lượng thiết bị
+                            string updateSoLuongQuery = @"
+                                UPDATE ThietBi 
+                                SET SoLuong = SoLuong + @SoLuong
+                                WHERE MaTB = @MaTB";
+                            SqlCommand updateSoLuongCommand = new SqlCommand(updateSoLuongQuery, connection, transaction);
+                            updateSoLuongCommand.Parameters.AddWithValue("@SoLuong", chiTiet.SoLuong);
+                            updateSoLuongCommand.Parameters.AddWithValue("@MaTB", chiTiet.MaTB);
+                            updateSoLuongCommand.ExecuteNonQuery();
+
+                            // 2. Thêm dòng vào ChiTietThietBi
+                            for (int i = 0; i < chiTiet.SoLuong; i++)
+                            {
+                                string insertChiTietThietBiQuery = @"
+                                    INSERT INTO ChiTietThietBi (MaTB, TinhTrang, TrangThai, NgayMua) 
+                                    VALUES (@MaTB, N'Mới', 1, GETDATE());
+                                    SELECT SCOPE_IDENTITY();";
+                                SqlCommand insertChiTietThietBiCommand = new SqlCommand(insertChiTietThietBiQuery, connection, transaction);
+                                insertChiTietThietBiCommand.Parameters.AddWithValue("@MaTB", chiTiet.MaTB);
+                                int newMaCTTB = Convert.ToInt32(insertChiTietThietBiCommand.ExecuteScalar());
+
+                                // 3. Thêm dòng vào ChiTietThietBi_NhaCungCap
+                                string insertChiTietThietBiNCCQuery = @"
+                                    INSERT INTO ChiTietThietBi_NhaCungCap (MaCTTB, MaNCC, NgayBatDau) 
+                                    VALUES (@MaCTTB, @MaNCC, GETDATE())";
+                                SqlCommand insertChiTietThietBiNCCCommand = new SqlCommand(insertChiTietThietBiNCCQuery, connection, transaction);
+                                insertChiTietThietBiNCCCommand.Parameters.AddWithValue("@MaCTTB", newMaCTTB);
+                                insertChiTietThietBiNCCCommand.Parameters.AddWithValue("@MaNCC", nhapThietBi.MaNCC);
+                                insertChiTietThietBiNCCCommand.ExecuteNonQuery();
+                            }
+                        }
+
+                        transaction.Commit();
+                        return true;
+                    }
                 }
-                return true;
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw new Exception("Lỗi khi thêm bản ghi nhập thiết bị: " + ex.Message);
+                }
             }
         }
         return false;
     }
-
 
     // Cập nhật bản ghi nhập thiết bị
     public bool Update(NhapThietBiDTO nhapThietBi)
