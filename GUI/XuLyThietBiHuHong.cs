@@ -32,7 +32,7 @@ namespace GUI
         {
             // Kiểm tra thông tin đầu vào
             if (txtMaBB.Text == string.Empty || txtHoTen.Text == string.Empty || cboVaiTro.SelectedIndex <= 0
-                || txtThoiGian.Text == string.Empty || txtThoiGianXuLy.Text == string.Empty || txtMoTa.Text == string.Empty
+                || txtThoiGian.Text == string.Empty || txtThoiGianXuLy.Text == string.Empty
                 || txtChiPhi.Text == string.Empty || cboTinhTrang.SelectedIndex < 0)
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -83,8 +83,14 @@ namespace GUI
         {
             if (e.RowIndex >= 0)
             {
+                BingDingCTBB(e.RowIndex);
                 LoadImage(e.RowIndex, dgvChiTietBB);
             }
+        }
+        void BingDingCTBB(int rowIndex)
+        {
+            DataGridViewRow row = dgvChiTietBB.Rows[rowIndex];
+            txtMoTa.Text = row.Cells["MoTaChiTiet"].Value?.ToString() ?? string.Empty;
         }
         void LoadImage(int rowIndex, DataGridView dgv)
         {
