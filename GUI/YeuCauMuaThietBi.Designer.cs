@@ -54,6 +54,7 @@
             this.btnThem = new Guna.UI2.WinForms.Guna2Button();
             this.main = new System.Windows.Forms.Panel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.txtGhiChu = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSThietBiMua)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSChiTietThietBi)).BeginInit();
             this.Navbar.SuspendLayout();
@@ -384,6 +385,7 @@
             this.main.Controls.Add(this.btnLamMoi);
             this.main.Controls.Add(this.guna2HtmlLabel1);
             this.main.Controls.Add(this.guna2HtmlLabel7);
+            this.main.Controls.Add(this.txtGhiChu);
             this.main.Controls.Add(this.btnGuiYeuCau);
             this.main.Controls.Add(this.btnXoa);
             this.main.Controls.Add(this.btnThem);
@@ -405,6 +407,35 @@
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(57, 15);
             this.guna2HtmlLabel1.TabIndex = 5;
             this.guna2HtmlLabel1.Text = "Loại thiết bị";
+            // 
+            // txtGhiChu
+            // 
+            this.txtGhiChu.BackColor = System.Drawing.Color.Transparent;
+            this.txtGhiChu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.txtGhiChu.BorderColor = System.Drawing.Color.White;
+            this.txtGhiChu.BorderRadius = 10;
+            this.txtGhiChu.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+            this.txtGhiChu.BorderThickness = 0;
+            this.txtGhiChu.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtGhiChu.DefaultText = "";
+            this.txtGhiChu.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtGhiChu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtGhiChu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtGhiChu.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtGhiChu.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
+            this.txtGhiChu.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtGhiChu.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
+            this.txtGhiChu.ForeColor = System.Drawing.Color.Black;
+            this.txtGhiChu.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtGhiChu.Location = new System.Drawing.Point(411, 123);
+            this.txtGhiChu.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtGhiChu.Name = "txtGhiChu";
+            this.txtGhiChu.PasswordChar = '\0';
+            this.txtGhiChu.PlaceholderForeColor = System.Drawing.Color.Black;
+            this.txtGhiChu.PlaceholderText = "Ghi chú ...";
+            this.txtGhiChu.SelectedText = "";
+            this.txtGhiChu.Size = new System.Drawing.Size(397, 40);
+            this.txtGhiChu.TabIndex = 0;
             // 
             // YeuCauMuaThietBi
             // 
@@ -449,5 +480,6 @@
         private Guna.UI2.WinForms.Guna2Button btnThem;
         private System.Windows.Forms.Panel main;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2TextBox txtGhiChu;
     }
 }

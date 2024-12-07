@@ -60,7 +60,7 @@ namespace GUI
                     {
                         MaCTTB_NCC = Convert.ToInt32(row.Cells["MaCTTB_NCC"].Value),
                         LoaiYeuCau = "Mua",
-                        GhiChu = "Mua thiết bị mới.",
+                        GhiChu = row.Cells["GhiChu"].Value.ToString(),
                         TrangThai = 0
                     };
                     chiTiet.Add(chiTietYeuCauThietBiDTO);
@@ -106,45 +106,53 @@ namespace GUI
         {
             if (dgvDSChiTietThietBi.SelectedRows.Count > 0)
             {
+                if(txtGhiChu.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("Vui lòng thêm ghi chú cho thiết bị cần mua ví dụ như số lượng cần mua!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 DataGridViewRow selectedRow = dgvDSChiTietThietBi.SelectedRows[0];
 
-                if (dgvDSThietBiMua.Rows.Count == 0)
+                // Kiểm tra xem thiết bị đã tồn tại trong danh sách mua chưa
+                bool exists = false;
+                foreach (DataGridViewRow row in dgvDSThietBiMua.Rows)
                 {
-                    DataGridViewRow newRow = (DataGridViewRow)selectedRow.Clone();
-                    foreach (DataGridViewCell cell in selectedRow.Cells)
+                    var cellValue1 = row.Cells["TenTB"].Value; // Giá trị trong dgvDSThietBiMua
+                    var cellValue2 = selectedRow.Cells["TenTB"].Value; // Giá trị trong dgvDSChiTietThietBi
+
+                    if (cellValue1 == null || cellValue2 == null)
+                        continue;
+
+                    if (cellValue1.ToString() == cellValue2.ToString())
                     {
-                        newRow.Cells[cell.ColumnIndex].Value = cell.Value;
+                        exists = true;
+                        break;
                     }
+                }
+
+                if (!exists)
+                {
+                    // Tạo hàng mới cho dgvDSThietBiMua
+                    DataGridViewRow newRow = new DataGridViewRow();
+
+                    // Thêm giá trị cho từng cột (dựa theo cấu trúc của dgvDSThietBiMua)
+                    newRow.CreateCells(dgvDSThietBiMua); // Đảm bảo cấu trúc hàng khớp với dgvDSThietBiMua
+                    newRow.Cells[0].Value = selectedRow.Cells[0].Value; // MaCTTB_NCC
+                    newRow.Cells[1].Value = selectedRow.Cells[1].Value; // TenTB
+                    newRow.Cells[2].Value = selectedRow.Cells[2].Value; // TenPhong
+                    newRow.Cells[3].Value = selectedRow.Cells[3].Value; // TinhTrang
+                    newRow.Cells[4].Value = selectedRow.Cells[4].Value; // TrangThai
+                    newRow.Cells[5].Value = selectedRow.Cells[5].Value; // NgayMua
+
+                    // Gán giá trị cho cột "GhiChu" từ TextBox
+                    newRow.Cells[6].Value = txtGhiChu.Text; // Ghi chú
+
+                    // Thêm hàng vào dgvDSThietBiMua
                     dgvDSThietBiMua.Rows.Add(newRow);
                 }
                 else
                 {
-                    bool exists = false;
-
-                    foreach (DataGridViewRow row in dgvDSThietBiMua.Rows)
-                    {
-                        var cellValue1 = row.Cells["TenTB"].Value;
-                        var cellValue2 = selectedRow.Cells["TenTB"].Value;
-
-                        if (cellValue1 == null || cellValue2 == null)
-                            continue;
-
-                        if (cellValue1.ToString() == cellValue2.ToString())
-                        {
-                            exists = true;
-                            break;
-                        }
-                    }
-
-                    if (!exists)
-                    {
-                        DataGridViewRow newRow = (DataGridViewRow)selectedRow.Clone();
-                        foreach (DataGridViewCell cell in selectedRow.Cells)
-                        {
-                            newRow.Cells[cell.ColumnIndex].Value = cell.Value;
-                        }
-                        dgvDSThietBiMua.Rows.Add(newRow);
-                    }
+                    MessageBox.Show("Thiết bị này đã có trong danh sách mua!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
@@ -218,6 +226,7 @@ namespace GUI
             dgvDSThietBiMua.Columns.Add("TinhTrang", "Tình trạng");
             dgvDSThietBiMua.Columns.Add("TrangThai", "Trạng thái");
             dgvDSThietBiMua.Columns.Add("NgayMua", "Ngày mua");
+            dgvDSThietBiMua.Columns.Add("GhiChu", "Ghi chú");
         }
         void LoadCTTB()
         {
