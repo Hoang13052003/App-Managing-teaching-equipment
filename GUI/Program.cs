@@ -141,7 +141,7 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dashboard_User());
+            Application.Run(new BaoDuong());
 
         }
     }

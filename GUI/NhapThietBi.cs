@@ -203,7 +203,7 @@ namespace GUI
                     int maCTTB_NCC = Convert.ToInt32(dgvChiTietYC.Rows[e.RowIndex].Cells["MaCTTB_NCC"].Value);
                     float chiPhi = Convert.ToSingle(txtChiPhiSua.Text);
 
-                    bool success = y.UpdataTrangThaiCTYCTB(maYC, maCTTB_NCC, 1, txtKetQuaSua.Text, chiPhi);
+                    bool success = y.UpdateTrangThaiCTYCTB(maYC, maCTTB_NCC, 1, txtKetQuaSua.Text, chiPhi);
 
                     if (success)
                     {

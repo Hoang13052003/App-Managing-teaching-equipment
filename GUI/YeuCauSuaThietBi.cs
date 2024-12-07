@@ -242,11 +242,11 @@ namespace GUI
                 string trangThai = e.Value.ToString();
                 switch (trangThai)
                 {
-                    case "Không sử dụng": //0
+                    case "Không sử dụng": //1
                         e.CellStyle.BackColor = Color.White;
                         e.CellStyle.ForeColor = Color.Black;
                         break;
-                    case "Đang sử dụng": //1
+                    case "Đang sử dụng": //0
                         e.CellStyle.BackColor = Color.LightGreen;
                         e.CellStyle.ForeColor = Color.Black;
                         break;
