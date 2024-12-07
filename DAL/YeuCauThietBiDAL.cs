@@ -469,12 +469,20 @@ namespace DAL
         public bool UpdataTrangThaiCTYCTB(int pMaYC, int pMaCTTB_NCC, string pMaNguoiDung, int pTrangThai, string pKetQua, float pChiPhi)
         {
             string updateQuery = @"UPDATE ChiTietYeuCauThietBi 
-                                SET TrangThai = @TrangThai
-                                WHERE MaYC = @MaYC 
-                                AND MaCTTB_NCC = @MaCTTB_NCC";
+            SET TrangThai = @TrangThai
+            WHERE MaYC = @MaYC 
+            AND MaCTTB_NCC = @MaCTTB_NCC";
 
-            string insertBaoDuongQuery = @"INSERT INTO BaoDuong (MaCTTB_NCC, MaNguoiDung, NgayBD, KetQua, ChiPhi) 
-                                        VALUES (@MaCTTB_NCC, @MaNguoiDung, @NgayBD, @KetQua, @ChiPhi)";
+            string insertBaoDuongQuery = @"INSERT INTO BaoDuong (MaCTTB_NCC, NgayBD, KetQua, ChiPhi) 
+                    VALUES (@MaCTTB_NCC, @NgayBD, @KetQua, @ChiPhi)";
+
+            string updateTrangThaiQuery = @"UPDATE ChiTietThietBi 
+                        SET TrangThai = 1 
+                        WHERE MaCTTB = (
+                            SELECT TOP 1 MaCTTB 
+                            FROM ChiTietThietBi_NhaCungCap 
+                            WHERE MaCTTB_NCC = @MaCTTB_NCC
+                        )";
 
             using (SqlConnection connection = GetConnection())
             {
@@ -483,41 +491,57 @@ namespace DAL
 
                 try
                 {
+                    // Cập nhật TrangThai trong bảng ChiTietYeuCauThietBi
                     using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection, transaction))
                     {
                         updateCommand.Parameters.AddWithValue("@MaYC", pMaYC);
                         updateCommand.Parameters.AddWithValue("@MaCTTB_NCC", pMaCTTB_NCC);
-                        updateCommand.Parameters.AddWithValue("@MaNguoiDung", pMaNguoiDung);
                         updateCommand.Parameters.AddWithValue("@TrangThai", pTrangThai);
                         int rowsAffected = updateCommand.ExecuteNonQuery();
 
-                        // Kiểm tra xem có cập nhật được không
                         if (rowsAffected == 0)
                         {
                             throw new Exception("Không tìm thấy bản ghi để cập nhật.");
                         }
                     }
 
-                    // Chỉ thêm vào BaoDuong nếu TrangThai khác 2
+                    // Nếu TrangThai khác 2, thêm bản ghi vào BaoDuong và cập nhật trạng thái thiết bị
                     if (pTrangThai != 2)
                     {
+                        // Thêm bản ghi vào BaoDuong
                         using (SqlCommand insertCommand = new SqlCommand(insertBaoDuongQuery, connection, transaction))
                         {
                             insertCommand.Parameters.AddWithValue("@MaCTTB_NCC", pMaCTTB_NCC);
-                            insertCommand.Parameters.AddWithValue("@MaNguoiDung", pMaNguoiDung);
                             insertCommand.Parameters.AddWithValue("@NgayBD", DateTime.Now);
                             insertCommand.Parameters.AddWithValue("@KetQua", pKetQua);
                             insertCommand.Parameters.AddWithValue("@ChiPhi", pChiPhi);
 
-                            insertCommand.ExecuteNonQuery();
+                            int insertResult = insertCommand.ExecuteNonQuery();
+                            if (insertResult == 0)
+                            {
+                                throw new Exception("Không thể thêm bản ghi vào bảng BaoDuong.");
+                            }
+                        }
+
+                        // Cập nhật trạng thái của thiết bị trong ChiTietThietBi
+                        using (SqlCommand updateTrangThaiCommand = new SqlCommand(updateTrangThaiQuery, connection, transaction))
+                        {
+                            updateTrangThaiCommand.Parameters.AddWithValue("@MaCTTB_NCC", pMaCTTB_NCC);
+                            int updateResult = updateTrangThaiCommand.ExecuteNonQuery();
+                            if (updateResult == 0)
+                            {
+                                throw new Exception("Không thể cập nhật trạng thái của thiết bị trong ChiTietThietBi.");
+                            }
                         }
                     }
 
+                    // Commit transaction nếu mọi thứ thành công
                     transaction.Commit();
                     return true;
                 }
                 catch (Exception ex)
                 {
+                    // Rollback transaction nếu có lỗi
                     transaction.Rollback();
                     Console.WriteLine("Lỗi: " + ex.Message);
                     return false;

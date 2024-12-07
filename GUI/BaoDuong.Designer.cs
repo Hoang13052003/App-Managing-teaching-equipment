@@ -499,7 +499,7 @@
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1444, 856);
+            this.guna2Panel1.Size = new System.Drawing.Size(1386, 788);
             this.guna2Panel1.TabIndex = 4;
             // 
             // guna2Panel7
@@ -510,7 +510,7 @@
             this.guna2Panel7.Location = new System.Drawing.Point(699, 0);
             this.guna2Panel7.Name = "guna2Panel7";
             this.guna2Panel7.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.guna2Panel7.Size = new System.Drawing.Size(745, 856);
+            this.guna2Panel7.Size = new System.Drawing.Size(687, 788);
             this.guna2Panel7.TabIndex = 5;
             // 
             // guna2Panel2
@@ -520,7 +520,7 @@
             this.guna2Panel2.Location = new System.Drawing.Point(5, 365);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.guna2Panel2.Size = new System.Drawing.Size(740, 491);
+            this.guna2Panel2.Size = new System.Drawing.Size(682, 423);
             this.guna2Panel2.TabIndex = 2;
             // 
             // guna2GroupBox1
@@ -535,7 +535,7 @@
             this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(0);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Padding = new System.Windows.Forms.Padding(1);
-            this.guna2GroupBox1.Size = new System.Drawing.Size(740, 486);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(682, 418);
             this.guna2GroupBox1.TabIndex = 1;
             this.guna2GroupBox1.Text = "Thông tin thiết bị";
             // 
@@ -569,7 +569,7 @@
             this.dgvBD.Name = "dgvBD";
             this.dgvBD.ReadOnly = true;
             this.dgvBD.RowHeadersVisible = false;
-            this.dgvBD.Size = new System.Drawing.Size(738, 444);
+            this.dgvBD.Size = new System.Drawing.Size(680, 376);
             this.dgvBD.TabIndex = 30;
             this.dgvBD.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvBD.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -619,7 +619,7 @@
             this.gbx_ThongTin.Location = new System.Drawing.Point(5, 0);
             this.gbx_ThongTin.Margin = new System.Windows.Forms.Padding(0);
             this.gbx_ThongTin.Name = "gbx_ThongTin";
-            this.gbx_ThongTin.Size = new System.Drawing.Size(740, 365);
+            this.gbx_ThongTin.Size = new System.Drawing.Size(682, 365);
             this.gbx_ThongTin.TabIndex = 1;
             this.gbx_ThongTin.Text = "Thông tin bảo dưỡng thiết bị";
             // 
@@ -631,7 +631,7 @@
             this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.guna2Panel4.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Size = new System.Drawing.Size(699, 856);
+            this.guna2Panel4.Size = new System.Drawing.Size(699, 788);
             this.guna2Panel4.TabIndex = 4;
             // 
             // guna2Panel6
@@ -846,7 +846,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1444, 856);
+            this.ClientSize = new System.Drawing.Size(1386, 788);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "BaoDuong";

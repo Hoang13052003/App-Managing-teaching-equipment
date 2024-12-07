@@ -255,7 +255,7 @@ namespace GUI
                 // Kiểm tra vị trí nhấn nút
                 if (btn1Bounds.Contains(clickLocation)) // Nút "Hoàn thành"
                 {
-                    if (txtChiPhiSua.Text == string.Empty || txtKetQuaSua.Text == string.Empty)
+                    if (txtChiPhiSua.Text.Trim() == string.Empty || txtKetQuaSua.Text.Trim() == string.Empty)
                     {
                         MessageBox.Show("Cần cho biết kết quả và chi phí sửa chữa trước khi xác nhận!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -264,13 +264,9 @@ namespace GUI
                     int maCTTB_NCC = Convert.ToInt32(dgvChiTietYC.Rows[e.RowIndex].Cells["MaCTTB_NCC"].Value);
                     float chiPhi = Convert.ToSingle(txtChiPhiSua.Text);
 
-
-
                     YeuCauThietBiDTO yctb = y.getAllYeuCauThietBi().FirstOrDefault(item => item.MaYC == maYC);
 
                     bool success = y.UpdataTrangThaiCTYCTB(maYC, maCTTB_NCC, yctb.MaNguoiDung, 1, txtKetQuaSua.Text, chiPhi);
-
-
 
                     if (success)
                     {
