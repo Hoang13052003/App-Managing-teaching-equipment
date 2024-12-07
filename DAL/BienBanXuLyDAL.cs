@@ -158,10 +158,10 @@ public class BienBanXuLyDAL : DatabaseHelper
 
     public bool Update(BienBanXuLyDTO bienBan, List<ChiTietBienBanDTO> chiTietList)
     {
-        string updateBBQuery = "UPDATE BienBanXuLy SET TenNguoiLamHong = @TenNguoiLamHong, " +
-                                "VaiTro = @VaiTro, ThoiGianLamHong = @ThoiGianLamHong, ThoiGianXuLy = @ThoiGianXuLy, " +
-                                "MoTaChiTiet = @MoTaChiTiet, ChiPhiSuaChua = @ChiPhiSuaChua, TinhTrang = @TinhTrang " +
-                                "WHERE MaBB = @MaBB";
+        string updateBBQuery = @"UPDATE BienBanXuLy SET TenNguoiLamHong = @TenNguoiLamHong, 
+                                VaiTro = @VaiTro, ThoiGianLamHong = @ThoiGianLamHong, ThoiGianXuLy = @ThoiGianXuLy,
+                                ChiPhiSuaChua = @ChiPhiSuaChua, TinhTrang = @TinhTrang
+                                WHERE MaBB = @MaBB";
 
         using (SqlConnection connection = GetConnection())
         {
@@ -185,7 +185,7 @@ public class BienBanXuLyDAL : DatabaseHelper
                     foreach (var chiTiet in chiTietList)
                     {
                         string updateCTTQuery = @"UPDATE ChiTietThietBi
-                                                SET TinhTrang = N'Cũ'
+                                                SET TinhTrang = N'Cũ', TrangThai = 1
                                                 WHERE MaCTTB = (
                                                     SELECT MaCTTB 
                                                     FROM ChiTietThietBi_NhaCungCap 
