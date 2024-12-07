@@ -141,7 +141,7 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new XuLyThietBiHuHong());
+            Application.Run(new ChonNhaCungCap_NhapHang());
 
         }
     }

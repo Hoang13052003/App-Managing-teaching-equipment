@@ -35,9 +35,9 @@ namespace GUI
             dgvDSThietBi.DataSource = sup.SearchThietBi_NCC(maNCC);
             dgvDSThietBi.Columns["MaTB"].HeaderText = "Mã thiết bị";
             dgvDSThietBi.Columns["TenTB"].HeaderText = "Tên thiết bị";
+            dgvDSThietBi.Columns["SoLuong"].HeaderText = "Số lượng có";
             dgvDSThietBi.Columns["MaLoai"].Visible = false;
             dgvDSThietBi.Columns["NSX"].Visible = false;
-            dgvDSThietBi.Columns["SoLuong"].Visible = false;
         }
         void LoadThietBiNhap()
         {
@@ -46,10 +46,8 @@ namespace GUI
             dgvDSThietBiNhap.Columns.Add("SoLuong", "Số lượng");
             dgvDSThietBiNhap.Columns.Add("MaLoai", "Mã loại");
             dgvDSThietBiNhap.Columns.Add("NSX", "NSX");
-            dgvDSThietBiNhap.Columns.Add("SoLuong", "Số lượng");
             dgvDSThietBiNhap.Columns["MaLoai"].Visible = false;
             dgvDSThietBiNhap.Columns["NSX"].Visible = false;
-            dgvDSThietBiNhap.Columns["SoLuong"].Visible = false;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -73,7 +71,7 @@ namespace GUI
                         newRow.Cells[i].Value = selectedRow.Cells[i].Value;
                     }
 
-                    newRow.Cells[5].Value = txtSoLuong.Value.ToString();
+                    newRow.Cells[2].Value = txtSoLuong.Value.ToString();
 
                     bool exists = false;
                     foreach (DataGridViewRow row in dgvDSThietBiNhap.Rows)
