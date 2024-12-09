@@ -36,6 +36,10 @@ namespace GUI
                 dgvThietBi.DataSource = sup.SearchThietBi(Convert.ToInt32(dgvLoaiThietBi.Rows[e.RowIndex].Cells[0].Value));
                 dgvThietBi.Columns[0].HeaderText = "Mã thiết bị";
                 dgvThietBi.Columns[1].HeaderText = "Tên thiết bị";
+                dgvThietBi.Columns["MaLoai"].Visible = false;
+                dgvThietBi.Columns["SoLuong"].Visible = false;
+                dgvThietBi.Columns["NSX"].Visible = false;
+
             }
         }
 
@@ -174,11 +178,11 @@ namespace GUI
             dgvLoaiThietBi.Columns[0].HeaderText = "Mã loại";
             dgvLoaiThietBi.Columns[1].HeaderText = "Tên loại";
 
-            dgvLoaiThietBi.Columns[0].Width = 70; 
-            dgvLoaiThietBi.Columns[1].Width = 200;
+            //dgvLoaiThietBi.Columns[0].Width = 70; 
+            //dgvLoaiThietBi.Columns[1].Width = 200;
 
-            dgvLoaiThietBi.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvLoaiThietBi.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dgvLoaiThietBi.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dgvLoaiThietBi.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         public void LoadThietBi()
         {
@@ -186,11 +190,11 @@ namespace GUI
             dgvThietBi.Columns[0].HeaderText = "Mã thiết bị";
             dgvThietBi.Columns[1].HeaderText = "Tên thiết bị";
 
-            dgvThietBi.Columns[0].Width = 70;
-            dgvThietBi.Columns[1].Width = 200;
+            //dgvThietBi.Columns[0].Width = 70;
+            //dgvThietBi.Columns[1].Width = 200;
 
-            dgvThietBi.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvThietBi.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dgvThietBi.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dgvThietBi.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
     }
 }

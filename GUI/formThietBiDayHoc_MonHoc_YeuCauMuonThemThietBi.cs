@@ -34,10 +34,21 @@ namespace GUI
 
 
         //List
+
+        //Danh sách thiết bị theo môn học bài học
         private List<MonHoc_BaiHoc_ChiTietTB_DTO> _list_MonHoc_BaiHoc_ChiTietTB = new List<MonHoc_BaiHoc_ChiTietTB_DTO>();
-        List<ChiTietThietBi_ThietBiDTO> _List_CTTB = new List<ChiTietThietBi_ThietBiDTO>();
-        List<ChiTietThietBi_ThietBiDTO> _List_CTTB_Change = new List<ChiTietThietBi_ThietBiDTO>();
-        private List<ChiTietThietBi_ThietBiDTO> _List_CTTB_Filter;
+
+        //Danh sách lưu danh sách thiết bị mượn
+        private List<ChiTietThietBi_ThietBiDTO> _List_CTTB_Muon = new List<ChiTietThietBi_ThietBiDTO>();
+
+        //Danh sách tất cả các thiết bị
+        private List<ChiTietThietBi_ThietBiDTO> _List_CTTB = new List<ChiTietThietBi_ThietBiDTO>();
+
+        //Danh sách tất cả các thiết bị có thao tác Add, Remove
+        private List<ChiTietThietBi_ThietBiDTO> _List_CTTB_Change = new List<ChiTietThietBi_ThietBiDTO>();
+
+        //Danh sách tất cả các thiết bị khi dgv_DSTB_Click
+        private List<ChiTietThietBi_ThietBiDTO> _List_CTTB_Muon_Filter;
 
 
         //Controls_Form
@@ -88,6 +99,11 @@ namespace GUI
                 _List_CTTB = cttbBUS.GetAll();
                 _List_CTTB_Change = cttbBUS.GetAll();
 
+
+
+                _List_CTTB_Muon = fiter_List_CTTB_Muon(_list_MonHoc_BaiHoc_ChiTietTB, _List_CTTB);
+
+
                 //Controls
                 btn_ThemTB.Enabled = false;
                 btn_XoaTB.Enabled = false;
@@ -106,6 +122,25 @@ namespace GUI
                 loadDGVCTTB_MonHoc_BaiHoc(_list_MonHoc_BaiHoc_ChiTietTB);
             }
             
+        }
+
+        private List<ChiTietThietBi_ThietBiDTO> fiter_List_CTTB_Muon(List<MonHoc_BaiHoc_ChiTietTB_DTO> _list_MonHoc_BaiHoc_ChiTietTB, List<ChiTietThietBi_ThietBiDTO> _List_CTTB)
+        {
+            List<ChiTietThietBi_ThietBiDTO> filteredList = new List<ChiTietThietBi_ThietBiDTO>();
+
+            foreach (var item in _list_MonHoc_BaiHoc_ChiTietTB)
+            {
+                // Lọc các thiết bị có mã trùng khớp với MaTB và lấy đúng số lượng
+                var matchedItems = _List_CTTB
+                    .Where(x => x.MaTB == item.MaTB)
+                    .Take(item.SoLuong)
+                    .ToList();
+
+                // Thêm các thiết bị phù hợp vào danh sách kết quả
+                filteredList.AddRange(matchedItems);
+            }
+
+            return filteredList;
         }
 
         private void loadThongTinPhieuMuon()
@@ -140,28 +175,32 @@ namespace GUI
 
         private void loadDGVCTTB_MonHoc_BaiHoc(List<MonHoc_BaiHoc_ChiTietTB_DTO> _list_MonHoc_BaiHoc_ChiTietTB)
         {
+            dgv_DSTB.DataSource = null;
             // Gán dữ liệu cho DataGridView từ BUS
-            dgv_DSTB.DataSource = GetUniqueThietBiList(_list_MonHoc_BaiHoc_ChiTietTB);
+            dgv_DSTB.DataSource = _list_MonHoc_BaiHoc_ChiTietTB;
             dgv_DSTB.Columns["MaTB"].HeaderText = "Mã thiết bị";
             dgv_DSTB.Columns["TenTB"].HeaderText = "Tên thiết bị";
             dgv_DSTB.Columns["SoLuong"].HeaderText = "Số lượng";
+            dgv_DSTB.Columns["MaMH"].Visible = false;
+            dgv_DSTB.Columns["MaBH"].Visible = false;
+            dgv_DSTB.Columns["MaLoai"].Visible = false;
         }
 
-        public List<MonHoc_BaiHoc_ThietBi_DTO> GetUniqueThietBiList(List<MonHoc_BaiHoc_ChiTietTB_DTO> _list_MonHoc_BaiHoc_ChiTietTB)
-        {
-            // Sử dụng LINQ để nhóm theo MaTB và tính số lượng
-            var groupedResult = _list_MonHoc_BaiHoc_ChiTietTB
-                .GroupBy(tb => new { tb.MaTB, tb.TenTB }) // Nhóm theo MaTB và TenTB
-                .Select(group => new MonHoc_BaiHoc_ThietBi_DTO
-                {
-                    MaTB = group.Key.MaTB,                 // Lấy MaTB
-                    TenTB = group.Key.TenTB,               // Lấy TenTB
-                    SoLuong = group.Count()         // Lấy MaCTTB bất kỳ từ nhóm
-                })
-                .ToList();
+        //public List<MonHoc_BaiHoc_ThietBi_DTO> GetUniqueThietBiList(List<MonHoc_BaiHoc_ChiTietTB_DTO> _list_MonHoc_BaiHoc_ChiTietTB)
+        //{
+        //    // Sử dụng LINQ để nhóm theo MaTB và tính số lượng
+        //    var groupedResult = _list_MonHoc_BaiHoc_ChiTietTB
+        //        .GroupBy(tb => new { tb.MaTB, tb.TenTB }) // Nhóm theo MaTB và TenTB
+        //        .Select(group => new MonHoc_BaiHoc_ThietBi_DTO
+        //        {
+        //            MaTB = group.Key.MaTB,                 // Lấy MaTB
+        //            TenTB = group.Key.TenTB,               // Lấy TenTB
+        //            SoLuong = group.Count()         // Lấy MaCTTB bất kỳ từ nhóm
+        //        })
+        //        .ToList();
 
-            return groupedResult;
-        }
+        //    return groupedResult;
+        //}
 
         private void cbb_LoaiTB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -184,33 +223,30 @@ namespace GUI
         {
             if (cbb_ThietBi.SelectedValue != null && int.TryParse(cbb_ThietBi.SelectedValue.ToString(), out int maTB))
             {
-                ThietBiDTO item = tbBUS.GetAll().Find(tb => tb.MaTB == maTB);
-                if (item != null)
-                {
-                    //Controls
-                    _is_dgv_DSTB_Clicked = false;
-                    btn_ThemTB.Enabled = false;
-                    btn_XoaTB.Enabled = false;
+                //Controls
+                _is_dgv_DSTB_Clicked = false;
+                btn_ThemTB.Enabled = false;
+                btn_XoaTB.Enabled = false;
 
-                    var List_CTTB = _List_CTTB_Change.Where(x => x.MaTB == maTB).ToList();
-                    List_CTTB = List_CTTB.Where(cttb => !_list_MonHoc_BaiHoc_ChiTietTB.Any(mhcttb => mhcttb.MaCTTB == cttb.MaCTTB)).ToList();
-                    var filteredCTTB = List_CTTB.AsParallel().Where(cttb => string.Equals(cttb.TinhTrang, "Mới") || string.Equals(cttb.TinhTrang, "Cũ")).ToList();
-                    
-                    loadDGV_DSChiTietThietBi(List_CTTB);
-                }
+                var List_CTTB = _List_CTTB.Where(x => x.MaTB == maTB).ToList();
+
+                loadDGV_DSChiTietThietBi(List_CTTB);
             }
         }
         private void loadDGV_DSChiTietThietBi(List<ChiTietThietBi_ThietBiDTO> List_CTTB)
         {
             if(List_CTTB != null)
             {
-                List_CTTB = List_CTTB.Where(cttb => !_list_MonHoc_BaiHoc_ChiTietTB.Any(mhcttb => mhcttb.MaCTTB == cttb.MaCTTB)).ToList();
-                var filteredCTTB = List_CTTB.AsParallel()
+                //List_CTTB = List_CTTB.Where(cttb => !_list_MonHoc_BaiHoc_ChiTietTB.Any(mhcttb => mhcttb.MaTB == cttb.MaTB)).ToList();
+                var filteredCTTB = List_CTTB.Where(cttb => !_List_CTTB_Muon.Any(mhcttb => mhcttb.MaCTTB == cttb.MaCTTB)).ToList();
+                filteredCTTB = filteredCTTB.AsParallel()
                 .Where(cttb => (string.Equals(cttb.TinhTrang, "Mới") || string.Equals(cttb.TinhTrang, "Cũ"))
                                && cttb.TrangThai == 1)
                 .ToList();
                 if (filteredCTTB != null)
                 {
+                    dgv_DSChiTietThietBi.DataSource = null;
+
                     dgv_DSChiTietThietBi.DataSource = filteredCTTB;
                     dgv_DSChiTietThietBi.Columns["MaCTTB"].HeaderText = "Mã CT thiết bị";
                     dgv_DSChiTietThietBi.Columns["MaTB"].HeaderText = "Mã thiết bị";
@@ -233,25 +269,40 @@ namespace GUI
             {
                 btn_ThemTB.Enabled = false;
 
-                _list_MonHoc_BaiHoc_ChiTietTB.Add(new MonHoc_BaiHoc_ChiTietTB_DTO
-                {
-                    MaMH = _tkbChiTiet.MaMon,
-                    MaBH = _tkbChiTiet.MaBaiHoc,
-                    MaCTTB = _chiTietThietBi_Click_Row.MaCTTB,
-                    MaTB = _chiTietThietBi_Click_Row.MaTB,
-                    TenTB = _chiTietThietBi_Click_Row.TenTB,
-                });
 
-                _List_CTTB_Change.RemoveAll(cttb => cttb.MaCTTB == _chiTietThietBi_Click_Row.MaCTTB);
+                bool isExist = _list_MonHoc_BaiHoc_ChiTietTB.Any(item => item.MaTB == _chiTietThietBi_Click_Row.MaTB);
+
+                if (isExist)
+                {
+                    _List_CTTB_Muon.Add(_chiTietThietBi_Click_Row);
+
+                    _list_MonHoc_BaiHoc_ChiTietTB.Where(x => x.MaTB == _chiTietThietBi_Click_Row.MaTB)
+                        .ToList()
+                            .ForEach(x => x.SoLuong++);
+
+                }
+                else
+                {
+                    _List_CTTB_Muon.Add(_chiTietThietBi_Click_Row);
+
+
+                    _list_MonHoc_BaiHoc_ChiTietTB.Add(new MonHoc_BaiHoc_ChiTietTB_DTO
+                    {
+                        MaMH = _tkbChiTiet.MaMon,
+                        MaBH = _tkbChiTiet.MaBaiHoc,
+                        MaTB = _chiTietThietBi_Click_Row.MaTB,
+                        SoLuong = 1
+                    });
+
+                }
 
                 loadDGVCTTB_MonHoc_BaiHoc(_list_MonHoc_BaiHoc_ChiTietTB);
-                loadDGV_DSChiTietThietBi(_List_CTTB_Change.Where(x => x.MaTB == _chiTietThietBi_Click_Row.MaTB).ToList());
+                loadDGV_DSChiTietThietBi(_List_CTTB);
 
                 //
                 _chiTietThietBi_Click_Row = null;
             }
         }
-
 
 
         private void btn_XoaTB_Click(object sender, EventArgs e)
@@ -262,22 +313,16 @@ namespace GUI
                 {
                     btn_XoaTB.Enabled = false;
 
-                    // Thêm thiết bị vào danh sách thay đổi (_List_CTTB_Change)
-                    var selectedItem = _List_CTTB.FirstOrDefault(x => x.MaCTTB == _chiTietThietBi_Click_Row.MaCTTB);
-                    if (selectedItem != null)
-                    {
-                        _List_CTTB_Change.Add(selectedItem);
-                    }
-
                     // Xóa thiết bị khỏi danh sách chính (_list_MonHoc_BaiHoc_ChiTietTB)
-                    _list_MonHoc_BaiHoc_ChiTietTB.RemoveAll(item => item.MaCTTB == _chiTietThietBi_Click_Row.MaCTTB);
+                    _List_CTTB_Muon.RemoveAll(item => item.MaCTTB == _chiTietThietBi_Click_Row.MaCTTB);
 
-                    // Xóa thiết bị khỏi danh sách lọc (_List_CTTB_Filter)
-                    _List_CTTB_Filter.RemoveAll(item => item.MaCTTB == _chiTietThietBi_Click_Row.MaCTTB);
+                    _list_MonHoc_BaiHoc_ChiTietTB.Where(x => x.MaTB == _chiTietThietBi_Click_Row.MaTB)
+                       .ToList()
+                           .ForEach(x => x.SoLuong--);
 
-                    // Tải lại danh sách lên DataGridView
+
                     loadDGVCTTB_MonHoc_BaiHoc(_list_MonHoc_BaiHoc_ChiTietTB);
-                    loadDGV_DSChiTietThietBi_Xoa(_List_CTTB_Filter);
+                    loadDGV_DSChiTietThietBi(_List_CTTB);
 
                     // Đặt lại biến chi tiết thiết bị
                     _chiTietThietBi_Click_Row = null;
@@ -292,20 +337,7 @@ namespace GUI
                 }
             }
         }
-        private void loadDGV_DSChiTietThietBi_Xoa(List<ChiTietThietBi_ThietBiDTO> List_CTTB)
-        {
-            dgv_DSChiTietThietBi.DataSource = null;
-            if (List_CTTB != null)
-            {
-                dgv_DSChiTietThietBi.DataSource = List_CTTB;
-                dgv_DSChiTietThietBi.Columns["MaCTTB"].HeaderText = "Mã CT thiết bị";
-                dgv_DSChiTietThietBi.Columns["MaTB"].HeaderText = "Mã thiết bị";
-                dgv_DSChiTietThietBi.Columns["TenTB"].HeaderText = "Tên thiết bị";
-                dgv_DSChiTietThietBi.Columns["TinhTrang"].HeaderText = "Tình trạng";
-                dgv_DSChiTietThietBi.Columns["TrangThai"].Visible = false;
-                dgv_DSChiTietThietBi.Columns["NgayMua"].Visible = false;
-            }
-        }
+        
         private void btnGuiPhieuMuon_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có chắc muốn gửi phiếu mượn không?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -326,7 +358,7 @@ namespace GUI
                         MuonThietBiDTO item = mtbBUS.GetByMaND_MaTKB(AccountInfo.MaNguoiDung, _tkbChiTiet.MaTKB);
                         if (item != null)
                         {
-                            foreach (var value in _list_MonHoc_BaiHoc_ChiTietTB)
+                            foreach (var value in _List_CTTB_Muon)
                             {
                                 ChiTietMuonThietBiDTO ctmtbDTO = new ChiTietMuonThietBiDTO
                                 {
@@ -398,9 +430,9 @@ namespace GUI
                 var maTB = Convert.ToInt32(row.Cells["MaTB"].Value);
 
                 // Lọc danh sách ChiTietThietBi theo MaTB và chỉ lấy các MaCTTB đã tồn tại
-                _List_CTTB_Filter = filtered_List_MonHoc_BaiHoc_ChiTietTB(_list_MonHoc_BaiHoc_ChiTietTB, maTB);
+                _List_CTTB_Muon_Filter = _List_CTTB_Muon.Where(x => x.MaTB == maTB).ToList();   
 
-                loadDGV_DSChiTietThietBi_dgv_DSTB_Click(_List_CTTB_Filter);
+                loadDGV_DSChiTietThietBi_dgv_DSTB_Click(_List_CTTB_Muon_Filter);
 
 
                 //Controls
@@ -410,24 +442,24 @@ namespace GUI
             }
         }
 
-        private List<ChiTietThietBi_ThietBiDTO> filtered_List_MonHoc_BaiHoc_ChiTietTB(List<MonHoc_BaiHoc_ChiTietTB_DTO> _list_MonHoc_BaiHoc_ChiTietTB, int maTB)
-        {
-            var _MonHoc_BaiHoc_ChiTietTB_Dgv_Row_Click = _list_MonHoc_BaiHoc_ChiTietTB
-                    .Where(mhcttb => mhcttb.MaTB == maTB)
-                    .ToList();
+        //private List<ChiTietThietBi_ThietBiDTO> filtered_List_MonHoc_BaiHoc_ChiTietTB(List<MonHoc_BaiHoc_ChiTietTB_DTO> _list_MonHoc_BaiHoc_ChiTietTB, int maTB)
+        //{
+        //    var _MonHoc_BaiHoc_ChiTietTB_Dgv_Row_Click = _list_MonHoc_BaiHoc_ChiTietTB
+        //            .Where(mhcttb => mhcttb.MaTB == maTB)
+        //            .ToList();
 
-            // Lấy danh sách MaCTTB từ _list_MonHoc_BaiHoc_ChiTietTB_Click
-            var existingMaCTTB = _MonHoc_BaiHoc_ChiTietTB_Dgv_Row_Click
-                .Select(x => x.MaCTTB)
-                .ToHashSet(); // Sử dụng HashSet để tăng hiệu suất kiểm tra
+        //    // Lấy danh sách MaCTTB từ _list_MonHoc_BaiHoc_ChiTietTB_Click
+        //    var existingMaCTTB = _MonHoc_BaiHoc_ChiTietTB_Dgv_Row_Click
+        //        .Select(x => x.MaCTTB)
+        //        .ToHashSet(); // Sử dụng HashSet để tăng hiệu suất kiểm tra
 
-            // Lọc danh sách ChiTietThietBi theo MaTB và chỉ lấy các MaCTTB đã tồn tại
-            var filteredCTTB = _List_CTTB
-                .Where(cttb => cttb.MaTB == maTB && existingMaCTTB.Contains(cttb.MaCTTB))
-                .ToList();
+        //    // Lọc danh sách ChiTietThietBi theo MaTB và chỉ lấy các MaCTTB đã tồn tại
+        //    var filteredCTTB = _List_CTTB
+        //        .Where(cttb => cttb.MaTB == maTB && existingMaCTTB.Contains(cttb.MaCTTB))
+        //        .ToList();
 
-            return filteredCTTB;
-        } 
+        //    return filteredCTTB;
+        //} 
 
         private void loadDGV_DSChiTietThietBi_dgv_DSTB_Click(List<ChiTietThietBi_ThietBiDTO> filteredCTTB)
         {

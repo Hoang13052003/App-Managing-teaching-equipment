@@ -10,16 +10,23 @@ namespace DTO
     {
         public int? MaMH { get; set; }
         public int? MaBH { get; set; }
-        public int? MaCTTB { get; set; }
         public int? MaTB { get; set; }
         public string TenTB { get; set; }
         public int MaLoai { get; set; }
+        public int SoLuong { get; set; }
     }
 
     public class MonHoc_BaiHoc_ThietBi_DTO
     {
+        public int? MaMH { get; set; }
+        public string TenMon { get; set; }
+        public int? MaBH { get; set; }
+        public string TenBaiHoc { get; set; }
         public int? MaTB { get; set; }
         public string TenTB { get; set; }
+        public int MaLoai { get; set; }
         public int SoLuong { get; set; }
     }
+
+
 }

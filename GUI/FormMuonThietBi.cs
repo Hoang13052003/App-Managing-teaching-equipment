@@ -29,6 +29,8 @@ namespace GUI
         private ChiTietMuonThietBiBUS ctmtbBUS = new ChiTietMuonThietBiBUS();
         private ThongTinCaNhanBUS ttcnBUS = new ThongTinCaNhanBUS();
 
+        private ChiTietThietBi_ThietBiBUS cttbBUS = new ChiTietThietBi_ThietBiBUS();
+
         //List
         private List<MuonThietBiDTO> _list_DS_PhieuMuon = new List<MuonThietBiDTO>();
         private List<ChiTietMuonThietBiDTO> _list_ChiTiet_MuonTB = new List<ChiTietMuonThietBiDTO>();
@@ -292,7 +294,10 @@ namespace GUI
             if (MessageBox.Show("Bạn có chắc muốn duyệt phiếu mượn này không?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 mtbBUS.Update_TrangThai(_MuonThietBi_Click_Row.MaMuon,true);
-
+                foreach (var item in ctmtbBUS.GetByMaMuon(_MuonThietBi_Click_Row.MaMuon))
+                {
+                    cttbBUS.Update_TrangThai(item.MaCTTB, 1);
+                }
                 SendCodeEmail(new ThongTinCaNhanBUS().GetByMaNguoiDung(_MuonThietBi_Click_Row.MaNguoiDung).Email, _MuonThietBi_Click_Row);
                 FormMuonThietBi_Load(sender, e);
             }

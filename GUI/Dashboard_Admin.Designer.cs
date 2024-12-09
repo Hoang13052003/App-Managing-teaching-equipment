@@ -52,6 +52,7 @@
             this.controlClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lb_home = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.btnTB_MH_BH = new Guna.UI2.WinForms.Guna2Button();
             this.Sidebar.SuspendLayout();
             this.main.SuspendLayout();
             this.Navbar.SuspendLayout();
@@ -66,6 +67,7 @@
             // Sidebar
             // 
             this.Sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
+            this.Sidebar.Controls.Add(this.btnTB_MH_BH);
             this.Sidebar.Controls.Add(this.btnNhapThietBi);
             this.Sidebar.Controls.Add(this.btnBaoDuongThietBi);
             this.Sidebar.Controls.Add(this.btnMuonTraThietBi);
@@ -446,6 +448,30 @@
             this.lb_home.Text = "ADMIN";
             this.lb_home.Click += new System.EventHandler(this.lb_home_Click);
             // 
+            // btnTB_MH_BH
+            // 
+            this.btnTB_MH_BH.BackColor = System.Drawing.Color.Transparent;
+            this.btnTB_MH_BH.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnTB_MH_BH.BorderRadius = 8;
+            this.btnTB_MH_BH.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTB_MH_BH.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTB_MH_BH.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTB_MH_BH.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTB_MH_BH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTB_MH_BH.FillColor = System.Drawing.Color.Transparent;
+            this.btnTB_MH_BH.Font = new System.Drawing.Font("JetBrains Mono", 9.75F);
+            this.btnTB_MH_BH.ForeColor = System.Drawing.Color.Gray;
+            this.btnTB_MH_BH.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(217)))), ((int)(((byte)(242)))));
+            this.btnTB_MH_BH.Image = global::GUI.Properties.Resources.icons8_QLTB_25;
+            this.btnTB_MH_BH.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnTB_MH_BH.Location = new System.Drawing.Point(15, 425);
+            this.btnTB_MH_BH.Name = "btnTB_MH_BH";
+            this.btnTB_MH_BH.Size = new System.Drawing.Size(210, 45);
+            this.btnTB_MH_BH.TabIndex = 12;
+            this.btnTB_MH_BH.Text = "Quản lý thiết bị theo môn học bài học";
+            this.btnTB_MH_BH.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnTB_MH_BH.Click += new System.EventHandler(this.btnTB_MH_BH_Click);
+            // 
             // Dashboard_Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -495,6 +521,7 @@
         private Guna.UI2.WinForms.Guna2Button btnNhapThietBi;
         private Guna.UI2.WinForms.Guna2Button btnMuonTraThietBi;
         public System.Windows.Forms.Label lb_NameForm;
+        private Guna.UI2.WinForms.Guna2Button btnTB_MH_BH;
     }
 }
 
