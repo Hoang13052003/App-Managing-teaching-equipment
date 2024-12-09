@@ -180,5 +180,12 @@ namespace GUI
                 Environment.Exit(0);
             }
         }
+
+        private void btnTB_MH_BH_Click(object sender, EventArgs e)
+        {
+            FormTask.OpenFormInPanel<QuanLyThietBi_MonHoc_BaiHoc>(Panel_Change_Form);
+            Form x = new QuanLyThietBi_MonHoc_BaiHoc();
+            lb_NameForm.Text = x.Text;
+        }
     }
 }

@@ -127,7 +127,7 @@ namespace GUI
             {
                 YeuCauThietBiDTO yeuCauThietBiDTO = new YeuCauThietBiDTO
                 {
-                    MaNguoiDung = "ND00000001",
+                    MaNguoiDung = AccountInfo.MaNguoiDung,
                     NgayYeuCau = DateTime.Now
                 };
                 var chiTiet = new List<ChiTietYeuCauThietBiDTO>();

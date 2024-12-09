@@ -140,7 +140,7 @@ namespace GUI
             {
                 NhapThietBiDTO nhapThietBi = new NhapThietBiDTO
                 {
-                    MaNguoiDung = "ND00000002",
+                    MaNguoiDung = AccountInfo.MaNguoiDung,
                     NgayNhap = DateTime.Now,
                     SoLuong = dgvDSThietBiNhap.Rows.Count,
                     TongTien = 1,

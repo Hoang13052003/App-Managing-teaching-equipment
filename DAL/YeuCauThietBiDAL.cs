@@ -73,7 +73,7 @@ namespace DAL
         public List<ChiTietThietBiDTO> getAllChiTietThietBi()
         {
             List<ChiTietThietBiDTO> list = new List<ChiTietThietBiDTO>();
-            string query = @"Select cn.MaCTTB_NCC, TenTB, TenPhong, TinhTrang, TrangThai, NgayMua
+            string query = @"Select cn.MaCTTB_NCC, t.TenTB, p.TenPhong, ct.TinhTrang, ct.TrangThai, ct.NgayMua
                             FROM ThietBi t
                             LEFT JOIN ChiTietThietBi ct ON t.MaTB = ct.MaTB
                             LEFT JOIN ChiTietThietBi_Phong cp ON ct.MaCTTB = cp.MaCTTB
@@ -87,10 +87,10 @@ namespace DAL
                 string trangThaiText;
                 switch (trangThai)
                 {
-                    case 0:
+                    case 1:
                         trangThaiText = "Đang sử dụng";
                         break;
-                    case 1:
+                    case 0:
                         trangThaiText = "Không sử dụng";
                         break;
                     case 2:
