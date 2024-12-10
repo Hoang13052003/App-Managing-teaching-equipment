@@ -29,7 +29,7 @@ public class NguoiDungBUS
 
         return nguoiDungDAL.Insert(nguoiDung);
     }
-
+    
     // Cập nhật người dùng
     public bool UpdateUser(NguoiDungDTO nguoiDung)
     {

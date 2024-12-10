@@ -6,10 +6,12 @@ using System.Net;
 using System.Windows.Forms;
 using System.Configuration;
 using Microsoft.VisualBasic;
+using System.Data.Common;
 namespace DAL
 {
     public class LoginDAL : DatabaseHelper
     {
+        private string _MaNguoiDungNew;
         private NguoiDungDAL NDDAL = new NguoiDungDAL();
         private ThongTinCaNhanDAL TTCNDAL = new ThongTinCaNhanDAL();
         public NguoiDungDTO Login(string tenDangNhap, string matKhau)
@@ -62,6 +64,7 @@ namespace DAL
         public bool Register(NguoiDungDTO nguoiDung)
         {
             SqlConnection connection = null;
+            SqlTransaction transaction = null;
             SqlCommand command = null;
 
             try
@@ -75,23 +78,48 @@ namespace DAL
 
                 // Mã hóa mật khẩu trực tiếp mà không sử dụng salt
                 string hashedPassword = HashPassword(nguoiDung.MatKhau);
+                _MaNguoiDungNew = NDDAL.GenerateUniqueUserCode();
 
                 connection = GetConnection();
-                command = new SqlCommand(
-                    "INSERT INTO NguoiDung (MaNguoiDung, TenDangNhap, MatKhau, TrangThai) VALUES (@MaNguoiDung, @TenDangNhap, @MatKhau, @TrangThai)",
-                    connection);
-                command.Parameters.AddWithValue("@MaNguoiDung", NDDAL.GenerateUniqueUserCode());
-                command.Parameters.AddWithValue("@TenDangNhap", nguoiDung.TenDangNhap);
-                command.Parameters.AddWithValue("@MatKhau", hashedPassword);
-                command.Parameters.AddWithValue("@TrangThai", true); // Trạng thái mặc định là true (hoạt động)
                 connection.Open();
 
-                return command.ExecuteNonQuery() > 0;
+                // Bắt đầu một giao dịch
+                transaction = connection.BeginTransaction();
+
+                // Thêm tài khoản vào bảng NguoiDung
+                command = new SqlCommand(
+                    "INSERT INTO NguoiDung (MaNguoiDung, TenDangNhap, MatKhau, TrangThai) VALUES (@MaNguoiDung, @TenDangNhap, @MatKhau, @TrangThai)",
+                    connection, transaction);
+                command.Parameters.AddWithValue("@MaNguoiDung", _MaNguoiDungNew);
+                command.Parameters.AddWithValue("@TenDangNhap", nguoiDung.TenDangNhap);
+                command.Parameters.AddWithValue("@MatKhau", hashedPassword);
+                command.Parameters.AddWithValue("@TrangThai", true); // Trạng thái mặc định là true
+                if (command.ExecuteNonQuery() <= 0)
+                {
+                    throw new Exception("Không thể thêm tài khoản vào bảng NguoiDung.");
+                }
+
+                // Thêm thông tin nhóm người dùng vào bảng NguoiDungNhomNguoiDung
+                command = new SqlCommand(
+                    "INSERT INTO NguoiDungNhomNguoiDung (MaNguoiDung, MaNhom, GhiChu) VALUES (@MaNguoiDung, @MaNhom, @GhiChu)",
+                    connection, transaction);
+                command.Parameters.AddWithValue("@MaNguoiDung", _MaNguoiDungNew);
+                command.Parameters.AddWithValue("@MaNhom", "N000000002"); // Mặc định nhóm người dùng là "Giáo viên"
+                command.Parameters.AddWithValue("@GhiChu", "Giáo viên");
+                if (command.ExecuteNonQuery() <= 0)
+                {
+                    throw new Exception("Không thể thêm tài khoản vào nhóm người dùng.");
+                }
+
+                // Commit giao dịch nếu tất cả các bước thành công
+                transaction.Commit();
+                return true;
             }
             catch (System.Exception ex)
             {
                 // Log lỗi thay vì hiển thị
                 System.Console.WriteLine("Lỗi khi đăng ký: " + ex.Message);
+                _MaNguoiDungNew = null; 
                 return false;
             }
             finally
@@ -101,7 +129,19 @@ namespace DAL
                 connection?.Close();
             }
         }
-
+        public bool InsertNhomNguoiDung(string maNguoiDung)
+        {
+            string query = "INSERT INTO NguoiDungNhomNguoiDung (MaNguoiDung, MaNhom, GhiChu) VALUES (@MaNguoiDung, @MaNhom, @GhiChu)";
+            using (SqlConnection connection = GetConnection())
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@MaNguoiDung", _MaNguoiDungNew);
+                command.Parameters.AddWithValue("@MaNhom", "N000000002");
+                command.Parameters.AddWithValue("@GhiChu", "Giáo viên");
+                connection.Open();
+                return command.ExecuteNonQuery() > 0;
+            }
+        }
 
         public NguoiDungDTO RecoverPassword(string tenDangNhap)
         {
