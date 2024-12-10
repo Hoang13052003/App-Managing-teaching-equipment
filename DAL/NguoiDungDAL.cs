@@ -85,7 +85,6 @@ public class NguoiDungDAL : DatabaseHelper
     {
         // Mã hóa mật khẩu trước khi lưu
         nguoiDung.MatKhau = HashPassword(nguoiDung.MatKhau);
-
         string query = "INSERT INTO NguoiDung (MaNguoiDung, TenDangNhap, MatKhau, TrangThai) VALUES (@MaNguoiDung, @TenDangNhap, @MatKhau, @TrangThai)";
         using (SqlConnection connection = GetConnection())
         {
@@ -97,8 +96,9 @@ public class NguoiDungDAL : DatabaseHelper
             connection.Open();
             return command.ExecuteNonQuery() > 0;
         }
-    }
 
+    }
+    
 
     public bool Update(NguoiDungDTO nguoiDung)
     {
