@@ -24,10 +24,43 @@ namespace GUI
         public Teaching_Schedule()
         {
             InitializeComponent();
-            currentDate = DateTime.Now; // Khởi tạo ngày hiện tại
+            //InitializeSchedule();
+            currentDate = DateTime.Now;
             Load_Visible_Pannel(false);
             Load_Clear_Pannel();
-            AccountInfo.MaNguoiDung = "ND00000001";
+            
+        }
+        private void InitializeSchedule()
+        {
+            // Tạo một TableLayoutPanel mới
+            TableLayoutPanel scheduleTable = new TableLayoutPanel();
+            //panel_show_lich.Controls.Add(scheduleTable);
+            scheduleTable.Dock = DockStyle.Fill;
+            scheduleTable.ColumnCount = 7; // 7 cột cho các ngày trong tuần
+            scheduleTable.RowCount = 2;   // 2 hàng cho sáng và chiều
+
+            // Đặt chiều rộng cột bằng cách phân chia đều
+            for (int i = 0; i < 7; i++)
+            {
+                scheduleTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857f)); // Tính 100% cho 7 ngày
+            }
+
+            // Đặt chiều cao hàng
+            scheduleTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50f)); // Hàng sáng
+            scheduleTable.RowStyles.Add(new RowStyle(SizeType.Percent, 50f)); // Hàng chiều
+
+            // Thêm các controls vào TableLayoutPanel
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 2; j++) // 2 hàng: sáng và chiều
+                {
+                    Panel dayPanel = new Panel();
+                    dayPanel.BackColor = Color.LightGray;
+                    dayPanel.Dock = DockStyle.Fill;
+                    dayPanel.Name = $"Day{i}_Period{j}"; // Đặt tên panel theo ngày và ca
+                    scheduleTable.Controls.Add(dayPanel, i, j); // Thêm panel vào bảng
+                }
+            }
         }
 
         private void Teaching_Schedule_Load(object sender, EventArgs e)
@@ -41,7 +74,7 @@ namespace GUI
             DateTime startOfWeek = currentDate.AddDays(-(int)(currentDate.DayOfWeek == DayOfWeek.Sunday ? 7 : currentDate.DayOfWeek - DayOfWeek.Monday));
             DateTime endOfWeek = startOfWeek.AddDays(6);
             
-            _listTKB = tkbBUS.GetThoiKhoaBieuByUser("ND00000001", startOfWeek.Date, endOfWeek.Date);
+            _listTKB = tkbBUS.GetThoiKhoaBieuByUser(AccountInfo.MaNguoiDung, startOfWeek.Date, endOfWeek.Date);
             if (_listTKB.Count()>0)
             {
                 scheduleByDay.Clear();
@@ -331,7 +364,17 @@ namespace GUI
         //Action
         private void btn_Hien_Tai_Click(object sender, EventArgs e)
         {
-            
+            currentDate = DateTime.Now;
+            Load_Visible_Pannel(false);
+            Load_Clear_Pannel();
+            LoadSchedule(currentDate);
+        }
+        private void dtp_Tuan_Hoc_ValueChanged(object sender, EventArgs e)
+        {
+            currentDate = dtp_Tuan_Hoc.Value.Date;
+            Load_Visible_Pannel(false);
+            Load_Clear_Pannel();
+            LoadSchedule(currentDate);
         }
 
         private void btn_Tiep_Click(object sender, EventArgs e)
@@ -350,9 +393,6 @@ namespace GUI
             LoadSchedule(currentDate);
         }
 
-        private void guna2TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

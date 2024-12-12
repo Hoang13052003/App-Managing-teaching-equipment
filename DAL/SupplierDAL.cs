@@ -174,11 +174,12 @@ namespace DAL
         {
             List<ThietBiDTO> listThietBi = new List<ThietBiDTO>();
             string query = @"SELECT DISTINCT TB.MaTB, TB.TenTB, TB.SoLuong
-                            FROM NhaCungCap NCC
-                            JOIN ChiTietThietBi_NhaCungCap CTTB_NCC ON NCC.MaNCC = CTTB_NCC.MaNCC
-                            JOIN ChiTietThietBi CTTB ON CTTB.MaCTTB = CTTB_NCC.MaCTTB
-                            JOIN ThietBi TB ON CTTB.MaTB = TB.MaTB
-                            WHERE NCC.MaNCC = @MaNCC";
+                    FROM NhaCungCap NCC
+                    JOIN ChiTietThietBi_NhaCungCap CTTB_NCC ON NCC.MaNCC = CTTB_NCC.MaNCC
+                    JOIN ChiTietThietBi CTTB ON CTTB.MaCTTB = CTTB_NCC.MaCTTB
+                    JOIN ThietBi TB ON CTTB.MaTB = TB.MaTB
+                    WHERE NCC.MaNCC = @MaNCC";
+
 
             using (SqlConnection connection = GetConnection())
             {

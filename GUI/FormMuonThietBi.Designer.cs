@@ -45,11 +45,11 @@
             this.cbbTinhTrang = new Guna.UI2.WinForms.Guna2ComboBox();
             this.btnLoadDing = new Guna.UI2.WinForms.Guna2Button();
             this.btnCapNhat = new Guna.UI2.WinForms.Guna2Button();
-            this.btnDuyet = new Guna.UI2.WinForms.Guna2Button();
             this.gbx_ThongTin = new Guna.UI2.WinForms.Guna2GroupBox();
             this.txt_NgayMuon = new Guna.UI2.WinForms.Guna2TextBox();
             this.txt_TrangThai = new Guna.UI2.WinForms.Guna2TextBox();
             this.txt_TinhTrang = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnDuyet = new Guna.UI2.WinForms.Guna2Button();
             this.guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -68,14 +68,13 @@
             this.dgv_DSTB = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Panel7 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2GroupBox3 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.btnExcel = new Guna.UI2.WinForms.Guna2Button();
             this.dgv_DSChiTietThietBi = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.gbx_ThaoTac.SuspendLayout();
             this.gbx_ThongTin.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
@@ -84,13 +83,15 @@
             this.guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSTB)).BeginInit();
             this.guna2Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
+            this.guna2Panel3.SuspendLayout();
             this.guna2Panel5.SuspendLayout();
-            this.guna2Panel7.SuspendLayout();
             this.guna2GroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSChiTietThietBi)).BeginInit();
-            this.guna2Panel2.SuspendLayout();
-            this.guna2Panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbx_ThaoTac
@@ -102,6 +103,7 @@
             this.gbx_ThaoTac.Controls.Add(this.cbbTinhTrang);
             this.gbx_ThaoTac.Controls.Add(this.btnLoadDing);
             this.gbx_ThaoTac.Controls.Add(this.btnCapNhat);
+            this.gbx_ThaoTac.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.gbx_ThaoTac.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbx_ThaoTac.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbx_ThaoTac.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
@@ -109,7 +111,7 @@
             this.gbx_ThaoTac.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbx_ThaoTac.Name = "gbx_ThaoTac";
             this.gbx_ThaoTac.Padding = new System.Windows.Forms.Padding(3);
-            this.gbx_ThaoTac.Size = new System.Drawing.Size(824, 94);
+            this.gbx_ThaoTac.Size = new System.Drawing.Size(823, 94);
             this.gbx_ThaoTac.TabIndex = 12;
             this.gbx_ThaoTac.Text = "Thao tác xử lý phiếu mượn";
             // 
@@ -174,7 +176,8 @@
             this.btnLoadDing.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnLoadDing.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.btnLoadDing.ForeColor = System.Drawing.Color.White;
-            this.btnLoadDing.Location = new System.Drawing.Point(671, 48);
+            this.btnLoadDing.Image = global::GUI.Properties.Resources.icons8_update_25;
+            this.btnLoadDing.Location = new System.Drawing.Point(670, 48);
             this.btnLoadDing.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLoadDing.Name = "btnLoadDing";
             this.btnLoadDing.Size = new System.Drawing.Size(143, 36);
@@ -191,6 +194,7 @@
             this.btnCapNhat.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnCapNhat.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.btnCapNhat.ForeColor = System.Drawing.Color.White;
+            this.btnCapNhat.Image = global::GUI.Properties.Resources.icons8_edit_25;
             this.btnCapNhat.Location = new System.Drawing.Point(391, 48);
             this.btnCapNhat.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCapNhat.Name = "btnCapNhat";
@@ -198,23 +202,6 @@
             this.btnCapNhat.TabIndex = 1;
             this.btnCapNhat.Text = "Cập nhật";
             this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
-            // 
-            // btnDuyet
-            // 
-            this.btnDuyet.BorderRadius = 5;
-            this.btnDuyet.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnDuyet.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnDuyet.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnDuyet.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnDuyet.Font = new System.Drawing.Font("Segoe UI", 12.75F);
-            this.btnDuyet.ForeColor = System.Drawing.Color.White;
-            this.btnDuyet.Location = new System.Drawing.Point(673, 229);
-            this.btnDuyet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnDuyet.Name = "btnDuyet";
-            this.btnDuyet.Size = new System.Drawing.Size(143, 36);
-            this.btnDuyet.TabIndex = 2;
-            this.btnDuyet.Text = "Duyệt";
-            this.btnDuyet.Click += new System.EventHandler(this.btnDuyet_Click);
             // 
             // gbx_ThongTin
             // 
@@ -232,13 +219,14 @@
             this.gbx_ThongTin.Controls.Add(this.txtMaMuon);
             this.gbx_ThongTin.Controls.Add(this.guna2HtmlLabel5);
             this.gbx_ThongTin.Controls.Add(this.guna2HtmlLabel2);
+            this.gbx_ThongTin.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.gbx_ThongTin.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbx_ThongTin.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbx_ThongTin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.gbx_ThongTin.Location = new System.Drawing.Point(0, 0);
             this.gbx_ThongTin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gbx_ThongTin.Name = "gbx_ThongTin";
-            this.gbx_ThongTin.Size = new System.Drawing.Size(827, 273);
+            this.gbx_ThongTin.Size = new System.Drawing.Size(827, 232);
             this.gbx_ThongTin.TabIndex = 10;
             this.gbx_ThongTin.Text = "Thông tin phiếu mượn";
             // 
@@ -304,6 +292,24 @@
             this.txt_TinhTrang.SelectedText = "";
             this.txt_TinhTrang.Size = new System.Drawing.Size(268, 35);
             this.txt_TinhTrang.TabIndex = 23;
+            // 
+            // btnDuyet
+            // 
+            this.btnDuyet.BorderRadius = 5;
+            this.btnDuyet.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDuyet.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDuyet.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDuyet.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDuyet.Font = new System.Drawing.Font("Segoe UI", 12.75F);
+            this.btnDuyet.ForeColor = System.Drawing.Color.White;
+            this.btnDuyet.Image = global::GUI.Properties.Resources.icons8_tick_25;
+            this.btnDuyet.Location = new System.Drawing.Point(673, 235);
+            this.btnDuyet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnDuyet.Name = "btnDuyet";
+            this.btnDuyet.Size = new System.Drawing.Size(143, 36);
+            this.btnDuyet.TabIndex = 2;
+            this.btnDuyet.Text = "Duyệt";
+            this.btnDuyet.Click += new System.EventHandler(this.btnDuyet_Click);
             // 
             // guna2HtmlLabel9
             // 
@@ -446,14 +452,16 @@
             this.guna2GroupBox2.BorderRadius = 5;
             this.guna2GroupBox2.Controls.Add(this.dgvDSPhieuMuon);
             this.guna2GroupBox2.Controls.Add(this.guna2GroupBox4);
+            this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.guna2GroupBox2.CustomBorderThickness = new System.Windows.Forms.Padding(0, 50, 0, 0);
             this.guna2GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2GroupBox2.Location = new System.Drawing.Point(0, 3);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(0, 5);
             this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(827, 613);
+            this.guna2GroupBox2.Padding = new System.Windows.Forms.Padding(1);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(827, 652);
             this.guna2GroupBox2.TabIndex = 16;
             this.guna2GroupBox2.Text = "Danh sách phiếu mượn mới (Chưa duyệt)";
             this.guna2GroupBox2.TextOffset = new System.Drawing.Point(0, 5);
@@ -464,6 +472,7 @@
             this.dgvDSPhieuMuon.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvDSPhieuMuon.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDSPhieuMuon.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -484,11 +493,11 @@
             this.dgvDSPhieuMuon.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDSPhieuMuon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDSPhieuMuon.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvDSPhieuMuon.Location = new System.Drawing.Point(0, 50);
+            this.dgvDSPhieuMuon.Location = new System.Drawing.Point(1, 51);
             this.dgvDSPhieuMuon.Name = "dgvDSPhieuMuon";
             this.dgvDSPhieuMuon.ReadOnly = true;
             this.dgvDSPhieuMuon.RowHeadersVisible = false;
-            this.dgvDSPhieuMuon.Size = new System.Drawing.Size(827, 563);
+            this.dgvDSPhieuMuon.Size = new System.Drawing.Size(825, 600);
             this.dgvDSPhieuMuon.TabIndex = 29;
             this.dgvDSPhieuMuon.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvDSPhieuMuon.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -567,13 +576,15 @@
             // 
             this.guna2GroupBox1.BorderRadius = 5;
             this.guna2GroupBox1.Controls.Add(this.dgv_DSTB);
+            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.guna2GroupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2GroupBox1.Location = new System.Drawing.Point(0, 3);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(0, 5);
             this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(824, 292);
+            this.guna2GroupBox1.Padding = new System.Windows.Forms.Padding(1);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(823, 295);
             this.guna2GroupBox1.TabIndex = 17;
             this.guna2GroupBox1.Text = "Danh sách thiết bị";
             // 
@@ -583,6 +594,7 @@
             this.dgv_DSTB.AllowUserToDeleteRows = false;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
             this.dgv_DSTB.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_DSTB.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -603,11 +615,11 @@
             this.dgv_DSTB.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgv_DSTB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_DSTB.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgv_DSTB.Location = new System.Drawing.Point(0, 40);
+            this.dgv_DSTB.Location = new System.Drawing.Point(1, 41);
             this.dgv_DSTB.Name = "dgv_DSTB";
             this.dgv_DSTB.ReadOnly = true;
             this.dgv_DSTB.RowHeadersVisible = false;
-            this.dgv_DSTB.Size = new System.Drawing.Size(824, 252);
+            this.dgv_DSTB.Size = new System.Drawing.Size(821, 253);
             this.dgv_DSTB.TabIndex = 2;
             this.dgv_DSTB.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgv_DSTB.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -637,8 +649,7 @@
             // 
             // guna2Panel1
             // 
-            this.guna2Panel1.Controls.Add(this.guna2Panel4);
-            this.guna2Panel1.Controls.Add(this.guna2Panel2);
+            this.guna2Panel1.Controls.Add(this.splitContainer1);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
@@ -646,48 +657,70 @@
             this.guna2Panel1.Size = new System.Drawing.Size(1660, 895);
             this.guna2Panel1.TabIndex = 18;
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.guna2Panel4);
+            this.splitContainer1.Panel1.Controls.Add(this.gbx_ThongTin);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.guna2Panel3);
+            this.splitContainer1.Panel2.Controls.Add(this.gbx_ThaoTac);
+            this.splitContainer1.Size = new System.Drawing.Size(1654, 889);
+            this.splitContainer1.SplitterDistance = 827;
+            this.splitContainer1.TabIndex = 17;
+            // 
             // guna2Panel4
             // 
-            this.guna2Panel4.Controls.Add(this.guna2Panel5);
-            this.guna2Panel4.Controls.Add(this.gbx_ThaoTac);
+            this.guna2Panel4.Controls.Add(this.guna2GroupBox2);
             this.guna2Panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel4.Location = new System.Drawing.Point(833, 3);
+            this.guna2Panel4.Location = new System.Drawing.Point(0, 232);
             this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Size = new System.Drawing.Size(824, 889);
-            this.guna2Panel4.TabIndex = 19;
+            this.guna2Panel4.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.guna2Panel4.Size = new System.Drawing.Size(827, 657);
+            this.guna2Panel4.TabIndex = 11;
+            // 
+            // guna2Panel3
+            // 
+            this.guna2Panel3.Controls.Add(this.guna2Panel5);
+            this.guna2Panel3.Controls.Add(this.guna2GroupBox1);
+            this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel3.Location = new System.Drawing.Point(0, 94);
+            this.guna2Panel3.Name = "guna2Panel3";
+            this.guna2Panel3.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.guna2Panel3.Size = new System.Drawing.Size(823, 795);
+            this.guna2Panel3.TabIndex = 13;
             // 
             // guna2Panel5
             // 
-            this.guna2Panel5.Controls.Add(this.guna2Panel7);
-            this.guna2Panel5.Controls.Add(this.guna2GroupBox1);
+            this.guna2Panel5.Controls.Add(this.guna2GroupBox3);
             this.guna2Panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel5.Location = new System.Drawing.Point(0, 94);
+            this.guna2Panel5.Location = new System.Drawing.Point(0, 300);
             this.guna2Panel5.Name = "guna2Panel5";
-            this.guna2Panel5.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.guna2Panel5.Size = new System.Drawing.Size(824, 795);
+            this.guna2Panel5.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.guna2Panel5.Size = new System.Drawing.Size(823, 495);
             this.guna2Panel5.TabIndex = 18;
-            // 
-            // guna2Panel7
-            // 
-            this.guna2Panel7.Controls.Add(this.guna2GroupBox3);
-            this.guna2Panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel7.Location = new System.Drawing.Point(0, 295);
-            this.guna2Panel7.Name = "guna2Panel7";
-            this.guna2Panel7.Size = new System.Drawing.Size(824, 500);
-            this.guna2Panel7.TabIndex = 20;
             // 
             // guna2GroupBox3
             // 
             this.guna2GroupBox3.BorderRadius = 5;
             this.guna2GroupBox3.Controls.Add(this.btnExcel);
             this.guna2GroupBox3.Controls.Add(this.dgv_DSChiTietThietBi);
+            this.guna2GroupBox3.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.guna2GroupBox3.CustomBorderThickness = new System.Windows.Forms.Padding(0, 50, 0, 0);
             this.guna2GroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2GroupBox3.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2GroupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2GroupBox3.Location = new System.Drawing.Point(0, 0);
+            this.guna2GroupBox3.Location = new System.Drawing.Point(0, 5);
             this.guna2GroupBox3.Name = "guna2GroupBox3";
-            this.guna2GroupBox3.Size = new System.Drawing.Size(824, 500);
+            this.guna2GroupBox3.Padding = new System.Windows.Forms.Padding(1);
+            this.guna2GroupBox3.Size = new System.Drawing.Size(823, 490);
             this.guna2GroupBox3.TabIndex = 19;
             this.guna2GroupBox3.Text = "Danh sách thiết bị mượn chi tiết";
             this.guna2GroupBox3.TextOffset = new System.Drawing.Point(0, 5);
@@ -703,7 +736,8 @@
             this.btnExcel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnExcel.Font = new System.Drawing.Font("Segoe UI", 12.75F);
             this.btnExcel.ForeColor = System.Drawing.Color.White;
-            this.btnExcel.Location = new System.Drawing.Point(677, 8);
+            this.btnExcel.Image = global::GUI.Properties.Resources.icons8_excel_25;
+            this.btnExcel.Location = new System.Drawing.Point(675, 7);
             this.btnExcel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(143, 36);
@@ -716,6 +750,7 @@
             this.dgv_DSChiTietThietBi.AllowUserToDeleteRows = false;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
             this.dgv_DSChiTietThietBi.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgv_DSChiTietThietBi.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -736,10 +771,10 @@
             this.dgv_DSChiTietThietBi.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgv_DSChiTietThietBi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_DSChiTietThietBi.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgv_DSChiTietThietBi.Location = new System.Drawing.Point(0, 50);
+            this.dgv_DSChiTietThietBi.Location = new System.Drawing.Point(1, 51);
             this.dgv_DSChiTietThietBi.Name = "dgv_DSChiTietThietBi";
             this.dgv_DSChiTietThietBi.RowHeadersVisible = false;
-            this.dgv_DSChiTietThietBi.Size = new System.Drawing.Size(824, 450);
+            this.dgv_DSChiTietThietBi.Size = new System.Drawing.Size(821, 438);
             this.dgv_DSChiTietThietBi.TabIndex = 29;
             this.dgv_DSChiTietThietBi.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgv_DSChiTietThietBi.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -765,38 +800,18 @@
             this.dgv_DSChiTietThietBi.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DSChiTietThietBi_CellValueChanged);
             this.dgv_DSChiTietThietBi.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgv_DSChiTietThietBi_CurrentCellDirtyStateChanged);
             // 
-            // guna2Panel2
-            // 
-            this.guna2Panel2.Controls.Add(this.guna2Panel3);
-            this.guna2Panel2.Controls.Add(this.gbx_ThongTin);
-            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2Panel2.Location = new System.Drawing.Point(3, 3);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.guna2Panel2.Size = new System.Drawing.Size(830, 889);
-            this.guna2Panel2.TabIndex = 18;
-            // 
-            // guna2Panel3
-            // 
-            this.guna2Panel3.Controls.Add(this.guna2GroupBox2);
-            this.guna2Panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel3.Location = new System.Drawing.Point(0, 273);
-            this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.guna2Panel3.Size = new System.Drawing.Size(827, 616);
-            this.guna2Panel3.TabIndex = 11;
-            // 
             // FormMuonThietBi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1660, 895);
             this.Controls.Add(this.guna2Panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormMuonThietBi";
-            this.Text = "FormMuonThietBi";
+            this.Text = "Quản lý mượn trả thiết bị";
             this.Load += new System.EventHandler(this.FormMuonThietBi_Load);
             this.gbx_ThaoTac.ResumeLayout(false);
             this.gbx_ThaoTac.PerformLayout();
@@ -808,13 +823,15 @@
             this.guna2GroupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSTB)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.guna2Panel4.ResumeLayout(false);
+            this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel5.ResumeLayout(false);
-            this.guna2Panel7.ResumeLayout(false);
             this.guna2GroupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DSChiTietThietBi)).EndInit();
-            this.guna2Panel2.ResumeLayout(false);
-            this.guna2Panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -839,17 +856,12 @@
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox3;
         private Guna.UI2.WinForms.Guna2DataGridView dgv_DSChiTietThietBi;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2TextBox txt_TrangThai;
         private Guna.UI2.WinForms.Guna2TextBox txt_TinhTrang;
         private Guna.UI2.WinForms.Guna2TextBox txt_NgayMuon;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel7;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox4;
         private Guna.UI2.WinForms.Guna2ComboBox cbb_filter_TrangThai;
         private Guna.UI2.WinForms.Guna2DataGridView dgvDSPhieuMuon;
@@ -858,5 +870,9 @@
         private Guna.UI2.WinForms.Guna2ComboBox cbb_Filter_TinhTrang;
         private System.Windows.Forms.RichTextBox txt_GhiChu;
         private Guna.UI2.WinForms.Guna2HtmlLabel lb_GhiChu;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
     }
 }

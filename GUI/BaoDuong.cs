@@ -5,12 +5,15 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using BUS;
 using DTO;
+using System.Configuration;
 
 namespace GUI
 {
@@ -252,7 +255,7 @@ namespace GUI
                 // Kiểm tra vị trí nhấn nút
                 if (btn1Bounds.Contains(clickLocation)) // Nút "Hoàn thành"
                 {
-                    if (txtChiPhiSua.Text == string.Empty || txtKetQuaSua.Text == string.Empty)
+                    if (txtChiPhiSua.Text.Trim() == string.Empty || txtKetQuaSua.Text.Trim() == string.Empty)
                     {
                         MessageBox.Show("Cần cho biết kết quả và chi phí sửa chữa trước khi xác nhận!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -261,11 +264,22 @@ namespace GUI
                     int maCTTB_NCC = Convert.ToInt32(dgvChiTietYC.Rows[e.RowIndex].Cells["MaCTTB_NCC"].Value);
                     float chiPhi = Convert.ToSingle(txtChiPhiSua.Text);
 
-                    bool success = y.UpdateTrangThaiCTYCTB(maYC, maCTTB_NCC, 1, txtKetQuaSua.Text, chiPhi);
+                    YeuCauThietBiDTO yctb = y.getAllYeuCauThietBi().FirstOrDefault(item => item.MaYC == maYC);
+
+                    bool success = y.UpdataTrangThaiCTYCTB(maYC, maCTTB_NCC, yctb.MaNguoiDung, 1, txtKetQuaSua.Text, chiPhi);
+
 
                     if (success)
                     {
                         MessageBox.Show("Đã hoàn thành cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
+                        if (yctb != null)
+                        {
+                            BaoDuongDTO bd = b.GetByID(maCTTB_NCC, yctb.MaNguoiDung);
+                            ThongTinCaNhanDTO item = new ThongTinCaNhanBUS().GetByMaNguoiDung(yctb.MaNguoiDung);
+                            SendCodeEmail(item.Email, bd);
+                        }
+
                         LamMoi();
                     }
                     else
@@ -279,7 +293,8 @@ namespace GUI
                     int maYC = Convert.ToInt32(dgvChiTietYC.Rows[e.RowIndex].Cells["MaYC"].Value); 
                     int maCTTB_NCC = Convert.ToInt32(dgvChiTietYC.Rows[e.RowIndex].Cells["MaCTTB_NCC"].Value);
 
-                    bool success = y.UpdateTrangThaiCTYCTB(maYC, maCTTB_NCC, 2, "", 0);
+                    YeuCauThietBiDTO yctb = y.getAllYeuCauThietBi().FirstOrDefault(item => item.MaYC == maYC);
+                    bool success = y.UpdataTrangThaiCTYCTB(maYC, maCTTB_NCC, yctb.MaNguoiDung, 2, "", 0);
 
                     if (success)
                     {
@@ -292,6 +307,102 @@ namespace GUI
                         return;
                     }
                 }
+            }
+        }
+        private void SendCodeEmail(string toEmail, BaoDuongDTO item)
+        {
+            try
+            {
+                // Lấy thông tin cấu hình từ App.configs
+                string fromEmail = ConfigurationManager.AppSettings["EmailSender"];
+                string emailPassword = ConfigurationManager.AppSettings["EmailPassword"];
+                string smtpHost = ConfigurationManager.AppSettings["SmtpServer"];
+                int smtpPort = int.Parse(ConfigurationManager.AppSettings["SmtpPort"]);
+
+                if (string.IsNullOrEmpty(fromEmail) || string.IsNullOrEmpty(emailPassword) || string.IsNullOrEmpty(smtpHost))
+                {
+                    MessageBox.Show("Thông tin cấu hình email không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                using (var message = new MailMessage())
+                {
+                    message.To.Add(toEmail);
+                    message.Subject = "Yêu cầu sửa chữa thiết bị của bạn đã được thực hiện:";
+                    message.Body = $@"
+                                        <html>
+                                        <head>
+                                            <style>
+                                                body {{
+                                                    font-family: Arial, sans-serif;
+                                                    line-height: 1.6;
+                                                    color: #333;
+                                                    margin: 0;
+                                                    padding: 0;
+                                                }}
+                                                .email-container {{
+                                                    max-width: 600px;
+                                                    margin: 20px auto;
+                                                    padding: 20px;
+                                                    border: 1px solid #ddd;
+                                                    border-radius: 8px;
+                                                    background-color: #f9f9f9;
+                                                }}
+                                                .email-header {{
+                                                    font-size: 18px;
+                                                    font-weight: bold;
+                                                    margin-bottom: 20px;
+                                                    color: #0066cc;
+                                                }}
+                                                .email-content {{
+                                                    margin-bottom: 20px;
+                                                }}
+                                                .email-footer {{
+                                                    margin-top: 20px;
+                                                    font-size: 14px;
+                                                    color: #555;
+                                                    border-top: 1px solid #ddd;
+                                                    padding-top: 10px;
+                                                }}
+                                                .highlight {{
+                                                    font-weight: bold;
+                                                    color: #d9534f;
+                                                }}
+                                            </style>
+                                        </head>
+                                        <body>
+                                            <div class='email-container'>
+                                                <div class='email-header'>
+                                                    Yêu cầu sửa chữa thiết bị đã được thực hiện
+                                                </div>
+                                                <div class='email-content'>
+                                                    <p>Thiết bị: <span class='highlight'>{item.TenTB.ToString()}</span> tại phòng: <span class='highlight'>{item.TenPhong.ToString()}</span> đã được bảo dưỡng.</p>
+                                                    <p><b>Thông tin hỏng:</b></p>
+                                                    <p>- {item.KetQua.ToString()}</p>
+                                                    <p><b>Tổng chi phí sửa chữa:</b> <span class='highlight'>{item.ChiPhi.ToString()} VND</span></p>
+                                                </div>
+                                                <div class='email-footer'>
+                                                    <p>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.</p>
+                                                </div>
+                                            </div>
+                                        </body>
+                                        </html>
+                                    ";
+                    message.From = new MailAddress(fromEmail);
+                    message.IsBodyHtml = true;
+
+
+                    using (var smtp = new SmtpClient(smtpHost, smtpPort))
+                    {
+                        smtp.Credentials = new NetworkCredential(fromEmail, emailPassword);
+                        smtp.EnableSsl = true;
+                        smtp.Send(message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi gửi email: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -322,5 +433,7 @@ namespace GUI
                 e.Handled = true;
             }
         }
+
+        
     }
 }

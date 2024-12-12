@@ -24,7 +24,7 @@ namespace GUI
             this.cboNCC.SelectedIndexChanged += CboNCC_SelectedIndexChanged;
             this.cboLoaiTB.SelectedIndexChanged += CboLoaiTB_SelectedIndexChanged;
             this.btnLamMoi.Click += BtnLamMoi_Click;
-            this.btnSearch.Click += BtnSearch_Click;
+            //this.btnSearch.Click += BtnSearch_Click;
             this.btnThem.Click += BtnThem_Click;
             this.btnXoa.Click += BtnXoa_Click;
             this.btnGuiYeuCau.Click += BtnGuiYeuCau_Click;
@@ -113,12 +113,11 @@ namespace GUI
                 }
                 DataGridViewRow selectedRow = dgvDSChiTietThietBi.SelectedRows[0];
 
-                // Kiểm tra xem thiết bị đã tồn tại trong danh sách mua chưa
                 bool exists = false;
                 foreach (DataGridViewRow row in dgvDSThietBiMua.Rows)
                 {
-                    var cellValue1 = row.Cells["TenTB"].Value; // Giá trị trong dgvDSThietBiMua
-                    var cellValue2 = selectedRow.Cells["TenTB"].Value; // Giá trị trong dgvDSChiTietThietBi
+                    var cellValue1 = row.Cells["TenTB"].Value; 
+                    var cellValue2 = selectedRow.Cells["TenTB"].Value; 
 
                     if (cellValue1 == null || cellValue2 == null)
                         continue;
@@ -132,22 +131,18 @@ namespace GUI
 
                 if (!exists)
                 {
-                    // Tạo hàng mới cho dgvDSThietBiMua
                     DataGridViewRow newRow = new DataGridViewRow();
 
-                    // Thêm giá trị cho từng cột (dựa theo cấu trúc của dgvDSThietBiMua)
-                    newRow.CreateCells(dgvDSThietBiMua); // Đảm bảo cấu trúc hàng khớp với dgvDSThietBiMua
-                    newRow.Cells[0].Value = selectedRow.Cells[0].Value; // MaCTTB_NCC
-                    newRow.Cells[1].Value = selectedRow.Cells[1].Value; // TenTB
-                    newRow.Cells[2].Value = selectedRow.Cells[2].Value; // TenPhong
-                    newRow.Cells[3].Value = selectedRow.Cells[3].Value; // TinhTrang
-                    newRow.Cells[4].Value = selectedRow.Cells[4].Value; // TrangThai
-                    newRow.Cells[5].Value = selectedRow.Cells[5].Value; // NgayMua
+                    newRow.CreateCells(dgvDSThietBiMua); 
+                    newRow.Cells[0].Value = selectedRow.Cells[0].Value; 
+                    newRow.Cells[1].Value = selectedRow.Cells[1].Value; 
+                    newRow.Cells[2].Value = selectedRow.Cells[2].Value; 
+                    newRow.Cells[3].Value = selectedRow.Cells[3].Value; 
+                    newRow.Cells[4].Value = selectedRow.Cells[4].Value; 
+                    newRow.Cells[5].Value = selectedRow.Cells[5].Value; 
 
-                    // Gán giá trị cho cột "GhiChu" từ TextBox
-                    newRow.Cells[6].Value = txtGhiChu.Text; // Ghi chú
+                    newRow.Cells[6].Value = txtGhiChu.Text; 
 
-                    // Thêm hàng vào dgvDSThietBiMua
                     dgvDSThietBiMua.Rows.Add(newRow);
                 }
                 else
@@ -161,11 +156,11 @@ namespace GUI
             }
         }
 
-        private void BtnSearch_Click(object sender, EventArgs e)
-        {
-            if (txtSearch.Text == string.Empty) return;
-            dgvDSChiTietThietBi.DataSource = y.SearchKeyChiTietThietBi(txtSearch.Text);
-        }
+        //private void BtnSearch_Click(object sender, EventArgs e)
+        //{
+        //    if (txtSearch.Text == string.Empty) return;
+        //    dgvDSChiTietThietBi.DataSource = y.SearchKeyChiTietThietBi(txtSearch.Text);
+        //}
 
         private void BtnLamMoi_Click(object sender, EventArgs e)
         {

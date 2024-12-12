@@ -59,9 +59,11 @@ namespace BUS
         {
             return y.searchChiTietYeuCauSuaThietBi(pMaYC);
         }
-        public bool UpdateTrangThaiCTYCTB(int pMaYC, int pMaCTTB_NCC, int pTrangThai, string pKetQua, float pChiPhi)
+
+        public bool UpdataTrangThaiCTYCTB(int pMaYC, int pMaCTTB_NCC, string pMaNguoiDung, int pTrangThai, string pKetQua, float pChiPhi)
         {
-            return y.UpdateTrangThaiCTYCTB(pMaYC, pMaCTTB_NCC, pTrangThai, pKetQua, pChiPhi);
+            return y.UpdataTrangThaiCTYCTB(pMaYC, pMaCTTB_NCC, pMaNguoiDung, pTrangThai, pKetQua, pChiPhi);
+
         }
         public List<ChiTietThietBi_TKBDTO> getAllChiTietThietBi_TKB(int pMaTKB)
         {

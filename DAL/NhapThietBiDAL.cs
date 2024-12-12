@@ -25,7 +25,7 @@ public class NhapThietBiDAL : DatabaseHelper
                 HoTen = row["HoTen"].ToString(),
                 NgayNhap = row["NgayNhap"] as DateTime?,
                 SoLuong = Convert.ToInt32(row["SoLuong"]),
-                TongTien = Convert.ToSingle(row["TongTien"]),
+                TongTien = Convert.ToDecimal(row["TongTien"]),
                 TenNCC = row["TenNCC"].ToString(),
             });
         }
@@ -56,7 +56,7 @@ public class NhapThietBiDAL : DatabaseHelper
                     MaNguoiDung = row["MaNguoiDung"].ToString(),
                     NgayNhap = row["NgayNhap"] as DateTime?,
                     SoLuong = Convert.ToInt32(row["SoLuong"]),
-                    TongTien = Convert.ToSingle(row["TongTien"])
+                    TongTien = Convert.ToDecimal(row["TongTien"])
                 };
             }
         }
@@ -148,7 +148,6 @@ public class NhapThietBiDAL : DatabaseHelper
         return false;
     }
 
-
     // Cập nhật bản ghi nhập thiết bị
     public bool Update(NhapThietBiDTO nhapThietBi)
     {
@@ -203,9 +202,9 @@ public class NhapThietBiDAL : DatabaseHelper
                 {
                     MaNhap = Convert.ToInt32(row["MaNhap"]),
                     TenTB = row["TenTB"].ToString(),
-                    GiaNhap = Convert.ToSingle(row["GiaNhap"]),
+                    GiaNhap = Convert.ToDecimal(row["GiaNhap"]),
                     SoLuong = Convert.ToInt32(row["SoLuong"]),
-                    ThanhTien = Convert.ToSingle(row["ThanhTien"])
+                    ThanhTien = Convert.ToDecimal(row["ThanhTien"])
                 });
             }
         }

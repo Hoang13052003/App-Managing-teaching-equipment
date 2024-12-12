@@ -25,25 +25,18 @@ namespace GUI
             btnThem.Click += BtnThem_Click;
             btnSua.Click += BtnSua_Click;
             btnXoa.Click += BtnXoa_Click;
-            btnDong.Click += BtnDong_Click;
             btnLamMoi.Click += BtnLamMoi_Click;
             txtMaTB.Enabled = false;
+            btnXoa.Enabled = false;
+            btnSua.Enabled = false;
         }
 
         private void BtnLamMoi_Click(object sender, EventArgs e)
         {
             ClearFields();
             LoadDataToDataGridView();
-        }
-
-        private void BtnDong_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đóng form này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                this.Close();
-            }
-
+            btnXoa.Enabled = false;
+            btnSua.Enabled = false;
         }
 
         private void BtnXoa_Click(object sender, EventArgs e)
@@ -193,6 +186,11 @@ namespace GUI
         {
             var listThietBi = bus.GetAll();
             dgvDSTB.DataSource = listThietBi;
+            dgvDSTB.Columns["MaTB"].HeaderText = "Mã thiết bị";
+            dgvDSTB.Columns["TenTB"].HeaderText = "Tên thiết bị";
+            dgvDSTB.Columns["MaLoai"].HeaderText = "Mã loại";
+            dgvDSTB.Columns["NSX"].HeaderText = "Nhà sản xuất";
+            dgvDSTB.Columns["SoLuong"].HeaderText = "Số lượng";
         }
 
         private void loadCBB_LoaiTB()
@@ -208,6 +206,9 @@ namespace GUI
         {
             if (e.RowIndex >= 0)
             {
+                btnXoa.Enabled = true;
+                btnSua.Enabled = true;
+                btnThem.Enabled = false;
                 // Lấy dòng đã chọn
                 DataGridViewRow row = dgvDSTB.Rows[e.RowIndex];
 
@@ -220,5 +221,9 @@ namespace GUI
             }
         }
 
+        private void btnUpdateLoaiTB_Click(object sender, EventArgs e)
+        {
+            new FormLoaiThietBi().ShowDialog();
+        }
     }
 }

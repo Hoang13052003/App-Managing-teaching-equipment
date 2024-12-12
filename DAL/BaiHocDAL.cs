@@ -54,7 +54,34 @@ public class BaiHocDAL : DatabaseHelper
         }
         return null;
     }
+    //public BaiHocDTO GetByIDMonHoc(int maMonHoc)
+    //{
+    //    string query = "SELECT * FROM BaiHoc WHERE MaMon = @MaMonHoc";
+    //    using (SqlConnection connection = GetConnection())
+    //    {
+    //        SqlCommand command = new SqlCommand(query, connection);
+    //        command.Parameters.AddWithValue("@MaMonHoc", maMonHoc);
+    //        connection.Open();
 
+    //        DataTable dataTable = new DataTable();
+    //        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+    //        {
+    //            adapter.Fill(dataTable);
+    //        }
+
+    //        if (dataTable.Rows.Count == 1)
+    //        {
+    //            DataRow row = dataTable.Rows[0];
+    //            return new BaiHocDTO
+    //            {
+    //                MaBaiHoc = Convert.ToInt32(row["MaBaiHoc"]),
+    //                TenBaiHoc = row["TenBaiHoc"].ToString(),
+    //                MaMon = Convert.ToInt32(row["MaMon"])
+    //            };
+    //        }
+    //    }
+    //    return null;
+    //}
     // Thêm bài học
     public bool Insert(BaiHocDTO baiHoc)
     {

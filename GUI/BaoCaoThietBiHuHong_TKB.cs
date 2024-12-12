@@ -304,9 +304,9 @@ namespace GUI
             LoadDgvDSChiTietThietBi();
             LoadThietBiHong();
             LoadCboVaiTro();
-            txtMaTKB.Text = "1"; // maTKB.ToString();
-            txtNgayHoc.Text = y.ngayHoc_TKB(1).ToString(); //maTKB
-            txtGioHoc.Text = y.gioHoc_TKB(1).ToString(); //maTKB
+            txtMaTKB.Text = maTKB.ToString(); // maTKB.ToString();
+            txtNgayHoc.Text = y.ngayHoc_TKB(maTKB).ToString(); //maTKB
+            txtGioHoc.Text = y.gioHoc_TKB(maTKB).ToString(); //maTKB
             DateTime now = DateTime.Now;
             txtThoiGian.Text = now.ToString("dd/MM/yyyy HH:mm");
         }
@@ -334,13 +334,13 @@ namespace GUI
         }
         void LoadDgvDSChiTietThietBi()
         {
-            dgvThietBi.DataSource = y.getAllChiTietThietBi_TKB(1); //thay 1 thành maTKB khi lấy được mã
+            dgvThietBi.DataSource = y.getAllChiTietThietBi_TKB(maTKB); //thay 1 thành maTKB khi lấy được mã
             dgvThietBi.Columns["MaCTTB"].HeaderText = "Mã chi tiết";
             dgvThietBi.Columns["TenTB"].HeaderText = "Tên thiết bị";
             dgvThietBi.Columns["TenPhong"].HeaderText = "Tên phòng";
-            dgvThietBi.Columns["TinhTrang"].HeaderText = "Tình trạng";
+            dgvThietBi.Columns["TinhTrang"].Visible = false;
             dgvThietBi.Columns["TrangThai"].HeaderText = "Trạng thái";
-            dgvThietBi.Columns["MaMuon"].HeaderText = "Mã mượn";
+            dgvThietBi.Columns["MaMuon"].Visible = false;
             dgvThietBi.Columns["NgayHoc"].HeaderText = "Ngày mượn";
             dgvThietBi.Columns["GioHoc"].HeaderText = "Giờ mượn";
         }
@@ -356,6 +356,9 @@ namespace GUI
             dgvThietBiHong.Columns.Add("NgayHoc", "Ngày học");
             dgvThietBiHong.Columns.Add("GioHoc", "Giờ học");
             dgvThietBiHong.Columns.Add("MoTaChiTiet", "Mô tả chi tiết");
+            dgvThietBiHong.Columns["TinhTrang"].Visible=false;
+            dgvThietBiHong.Columns["MaMuon"].Visible = false;
+
         }
 
         private void BtnThemAnh_Click(object sender, EventArgs e)

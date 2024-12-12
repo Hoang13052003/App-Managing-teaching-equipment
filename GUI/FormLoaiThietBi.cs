@@ -21,17 +21,21 @@ namespace GUI
             dgvDSLoaiTB.CellClick += DgvDSLoaiTB_CellClick;
             txtMaLoaiTB.Enabled = false;
             btnTimKiem.Click += BtnTimKiem_Click;
-            btnDong.Click += BtnDong_Click;
             btnLamMoi.Click += BtnLamMoi_Click;
             btnThem.Click += BtnThem_Click;
             btnSua.Click += BtnSua_Click;
             btnXoa.Click += BtnXoa_Click;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
         }
 
         private void DgvDSLoaiTB_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < dgvDSLoaiTB.Rows.Count) // Kiểm tra chỉ số hàng hợp lệ
             {
+                btnSua.Enabled = true;
+                btnXoa.Enabled = true;
+                btnThem.Enabled = false;
                 // Lấy dòng đã chọn
                 DataGridViewRow row = dgvDSLoaiTB.Rows[e.RowIndex];
 
@@ -140,6 +144,8 @@ namespace GUI
 
         private void BtnLamMoi_Click(object sender, EventArgs e)
         {
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
             ClearFields();
             LoadDataToDataGridView();
         }
