@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using BUS;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,8 @@ namespace GUI
     public partial class Dashboard_User : Form
     {
         private bool isLoggingOut = false;
+
+        private ThongTinCaNhanBUS _ttcnBUS = new ThongTinCaNhanBUS();
         public Dashboard_User()
         {
             InitializeComponent();
@@ -170,6 +173,21 @@ namespace GUI
             new Profile().ShowDialog();
         }
 
-        
+        private async void Dashboard_User_Load(object sender, EventArgs e)
+        {
+            // Kiểm tra tồn tại thông tin cá nhân
+            bool checkThongTinCaNhan = _ttcnBUS.CheckIfCodeExists(AccountInfo.MaNguoiDung);
+            if (!checkThongTinCaNhan)
+            {
+                _ttcnBUS.InsertNewNull(AccountInfo.MaNguoiDung);
+
+                // Delay 2 giây
+                await Task.Delay(1000);
+
+                // Hiển thị thông báo và mở form nhập thông tin cá nhân
+                MessageBox.Show("Bạn vui lòng nhập đầy đủ thông tin cá nhân để tránh mất tài khoản!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                new Profile().ShowDialog();
+            }
+        }
     }
 }

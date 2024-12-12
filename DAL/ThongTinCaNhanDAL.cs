@@ -80,7 +80,17 @@ public class ThongTinCaNhanDAL : DatabaseHelper
             return command.ExecuteNonQuery() > 0;
         }
     }
-
+    public bool InsertNewNull(string maNguoiDung)
+    {
+        string query = "INSERT INTO ThongTinCaNhan (MaNguoiDung) VALUES (@MaNguoiDung)";
+        using (SqlConnection connection = GetConnection())
+        {
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@MaNguoiDung", maNguoiDung);
+            connection.Open();
+            return command.ExecuteNonQuery() > 0;
+        }
+    }
     // Cập nhật thông tin cá nhân
     public bool Update(ThongTinCaNhanDTO thongTinCaNhan)
     {
@@ -123,6 +133,24 @@ public class ThongTinCaNhanDAL : DatabaseHelper
             command.Parameters.AddWithValue("@MaNguoiDung", maNguoiDung);
             connection.Open();
             return (int)command.ExecuteScalar() > 0; // Nếu kết quả > 0, mã đã tồn tại
+        }
+    }
+    public bool CheckIfDataExists(string maNguoiDung)
+    {
+        string query = @"
+        SELECT COUNT(*)
+        FROM ThongTinCaNhan
+        WHERE MaNguoiDung = @MaNguoiDung
+          AND (HoTen IS NULL OR NgaySinh IS NULL OR Email IS NULL OR DiaChi IS NULL OR GioiTinh IS NULL OR SDT IS NULL)";
+
+        using (SqlConnection connection = GetConnection())
+        {
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@MaNguoiDung", maNguoiDung);
+
+            connection.Open();
+            int count = (int)command.ExecuteScalar();
+            return count > 0; // Trả về true nếu có trường bị NULL
         }
     }
 }

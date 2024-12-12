@@ -187,5 +187,10 @@ namespace GUI
             Form x = new QuanLyThietBi_MonHoc_BaiHoc();
             lb_NameForm.Text = x.Text;
         }
+
+        private void btnAccount_Click(object sender, EventArgs e)
+        {
+            new Profile().ShowDialog();
+        }
     }
 }

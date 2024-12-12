@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.dtbNgaySinh = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnResetPassWord = new Guna.UI2.WinForms.Guna2GradientButton();
             this.txtGmail = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -51,8 +53,6 @@
             this.lbName = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.dtbNgaySinh = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2Panel1.SuspendLayout();
             this.guna2GradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
@@ -99,6 +99,33 @@
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
             this.guna2GradientPanel1.Size = new System.Drawing.Size(1200, 700);
             this.guna2GradientPanel1.TabIndex = 0;
+            // 
+            // dtbNgaySinh
+            // 
+            this.dtbNgaySinh.BackColor = System.Drawing.Color.Transparent;
+            this.dtbNgaySinh.BorderRadius = 5;
+            this.dtbNgaySinh.Checked = true;
+            this.dtbNgaySinh.FillColor = System.Drawing.Color.White;
+            this.dtbNgaySinh.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtbNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtbNgaySinh.Location = new System.Drawing.Point(659, 362);
+            this.dtbNgaySinh.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtbNgaySinh.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtbNgaySinh.Name = "dtbNgaySinh";
+            this.dtbNgaySinh.Size = new System.Drawing.Size(432, 40);
+            this.dtbNgaySinh.TabIndex = 38;
+            this.dtbNgaySinh.Value = new System.DateTime(2024, 12, 1, 0, 46, 46, 711);
+            // 
+            // guna2HtmlLabel2
+            // 
+            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(659, 326);
+            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(79, 25);
+            this.guna2HtmlLabel2.TabIndex = 37;
+            this.guna2HtmlLabel2.Text = "Ngày sinh";
             // 
             // btnResetPassWord
             // 
@@ -418,33 +445,6 @@
             this.guna2Elipse1.BorderRadius = 20;
             this.guna2Elipse1.TargetControl = this;
             // 
-            // guna2HtmlLabel2
-            // 
-            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(659, 326);
-            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(79, 25);
-            this.guna2HtmlLabel2.TabIndex = 37;
-            this.guna2HtmlLabel2.Text = "Ngày sinh";
-            // 
-            // dtbNgaySinh
-            // 
-            this.dtbNgaySinh.BackColor = System.Drawing.Color.Transparent;
-            this.dtbNgaySinh.BorderRadius = 5;
-            this.dtbNgaySinh.Checked = true;
-            this.dtbNgaySinh.FillColor = System.Drawing.Color.White;
-            this.dtbNgaySinh.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dtbNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtbNgaySinh.Location = new System.Drawing.Point(659, 362);
-            this.dtbNgaySinh.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.dtbNgaySinh.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtbNgaySinh.Name = "dtbNgaySinh";
-            this.dtbNgaySinh.Size = new System.Drawing.Size(432, 40);
-            this.dtbNgaySinh.TabIndex = 38;
-            this.dtbNgaySinh.Value = new System.DateTime(2024, 12, 1, 0, 46, 46, 711);
-            // 
             // Profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -457,6 +457,7 @@
             this.Name = "Profile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Profile";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Profile_FormClosing);
             this.Load += new System.EventHandler(this.Profile_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2GradientPanel1.ResumeLayout(false);

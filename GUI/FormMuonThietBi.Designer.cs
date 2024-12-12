@@ -743,6 +743,7 @@
             this.btnExcel.Size = new System.Drawing.Size(143, 36);
             this.btnExcel.TabIndex = 26;
             this.btnExcel.Text = "Excel";
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // dgv_DSChiTietThietBi
             // 

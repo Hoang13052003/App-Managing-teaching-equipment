@@ -13,6 +13,8 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using OfficeOpenXml;
 
 namespace GUI
 {
@@ -51,13 +53,6 @@ namespace GUI
             cbbTinhTrang.SelectedIndex = 0; // Chọn "Chưa trả" là mặc định
         }
 
-        //private void LoadTrangThaiComboBox()
-        //{
-        //    cbbTrangThai.Items.Clear();
-        //    cbbTrangThai.Items.Add("Chưa duyệt");
-        //    cbbTrangThai.Items.Add("Đã duyệt");
-        //    cbbTrangThai.SelectedIndex = 0; // Chọn "Chưa trả" là mặc định
-        //}
         private void Load_CBB_Filter_TinhTrang()
         {
             cbb_Filter_TinhTrang.Items.Clear();
@@ -68,6 +63,7 @@ namespace GUI
             cbb_Filter_TinhTrang.Items.Add("Trả muộn");
             cbb_Filter_TinhTrang.SelectedIndex = 0; // Chọn "Chưa trả" là mặc định
         }
+        
         private void Load_CBB_Filter_TrangThai()
         {
             cbb_filter_TrangThai.Items.Clear(); 
@@ -75,6 +71,7 @@ namespace GUI
             cbb_filter_TrangThai.Items.Add("Đã duyệt");
             cbb_filter_TrangThai.SelectedIndex = 0; // Chọn "Chưa trả" là mặc định
         }
+        
         private void LoadData_DGV_DSPhieuMuon(List<MuonThietBiDTO> _list_DS_PhieuMuon, string _Tinh_Trang, bool _Trang_Thai)
         {
             var data = _list_DS_PhieuMuon.Where(item => item.TrangThai == _Trang_Thai).ToList();
@@ -190,7 +187,6 @@ namespace GUI
             loading_focus();
         }
 
-
         private void cbb_filter_TrangThai_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedTinhTrang = cbb_Filter_TinhTrang.SelectedItem?.ToString();
@@ -280,6 +276,49 @@ namespace GUI
                 {
                     MessageBox.Show("Cập nhật tình trạng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    var list = ctmtbBUS.GetByMaMuon(_MuonThietBi_Click_Row.MaMuon);
+                    switch (selectedTinhTrang)
+                    {
+                        case "Đã trả":
+                            {
+                                foreach (var item in list)
+                                {
+                                    if (item != null)
+                                    {
+                                        cttbBUS.Update_TrangThai(item.MaCTTB, 0);
+                                    }
+                                }
+                            }
+                            break;
+
+                        case "Trả thiếu":
+                            {
+                                foreach (var item in list)
+                                {
+                                    if (item != null && item.TrangThai == true)
+                                    {
+                                        cttbBUS.Update_TrangThai(item.MaCTTB, 0);
+                                    }
+                                }
+                            }
+                            break;
+
+                        case "Trả muộn":
+                            {
+                                foreach (var item in list)
+                                {
+                                    if (item != null)
+                                    {
+                                        cttbBUS.Update_TrangThai(item.MaCTTB, 0);
+                                    }
+                                }
+                            }
+                            break;
+
+                        default:
+
+                            break;
+                    }
                     FormMuonThietBi_Load(sender, e);
                 }
                 else
@@ -287,7 +326,7 @@ namespace GUI
                     MessageBox.Show("Cập nhật tình trạng thất bại. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
+        }        
 
         private void btnDuyet_Click(object sender, EventArgs e)
         {
@@ -298,7 +337,7 @@ namespace GUI
                 {
                     cttbBUS.Update_TrangThai(item.MaCTTB, 1);
                 }
-                SendCodeEmail(new ThongTinCaNhanBUS().GetByMaNguoiDung(_MuonThietBi_Click_Row.MaNguoiDung).Email, _MuonThietBi_Click_Row);
+                SendCodeEmail(new ThongTinCaNhanBUS().GetByMaNguoiDung(_MuonThietBi_Click_Row.MaNguoiDung).Email, _MuonThietBi_Click_Row, _list_ChiTiet_MuonTB);
                 FormMuonThietBi_Load(sender, e);
             }
         }
@@ -307,6 +346,7 @@ namespace GUI
         {
             FormMuonThietBi_Load(sender, e);
         }
+ 
         private void loading_focus()
         {
             txtMaMuon.Text = string.Empty;
@@ -325,11 +365,6 @@ namespace GUI
             btnCapNhat.Enabled = false;
             btnDuyet.Enabled = false;
             btnExcel.Enabled = false;
-        }
-
-        private void btnXuatExcel_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void dgvDSPhieuMuon_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -463,7 +498,7 @@ namespace GUI
             }
         }
 
-        private void SendCodeEmail(string toEmail, MuonThietBiDTO item)
+        private void SendCodeEmail(string toEmail, MuonThietBiDTO item, List<ChiTietMuonThietBiDTO> _list)
         {
             try
             {
@@ -473,76 +508,183 @@ namespace GUI
                 string smtpHost = ConfigurationManager.AppSettings["SmtpServer"];
                 int smtpPort = int.Parse(ConfigurationManager.AppSettings["SmtpPort"]);
 
+
                 if (string.IsNullOrEmpty(fromEmail) || string.IsNullOrEmpty(emailPassword) || string.IsNullOrEmpty(smtpHost))
                 {
                     MessageBox.Show("Thông tin cấu hình email không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
+                var thoiKhoaBieu = new ThoiKhoaBieuBUS().GetByID(_MuonThietBi_Click_Row.MaTKB);
+                var monHoc = new MonHocBUS().GetByID(thoiKhoaBieu.MaMon);
+                var baiHoc = new BaiHocBUS().GetByID(thoiKhoaBieu.MaBaiHoc);
+
+                string excelFilePath = Path.Combine(Path.GetTempPath(), "DanhSachThietBi.xlsx");
+                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+
+                // Tạo một file Excel mới
+                using (var package = new ExcelPackage())
+                {
+                    var worksheet = package.Workbook.Worksheets.Add("Sheet1");
+
+
+                    // Tiêu đề
+                    worksheet.Cells[1, 2, 1, 5].Merge = true; // Hợp nhất từ B1 đến D1
+                    worksheet.Cells[1, 2, 1, 5].Value = "Phiếu đăng ký mượn thiết bị";
+                    worksheet.Cells[1, 2, 1, 5].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center; // Căn giữa nội dung
+                    worksheet.Cells[1, 2, 1, 5].Style.Font.Bold = true;
+                    worksheet.Cells[1, 2, 1, 5].Style.Font.Size = 20;
+
+                    worksheet.Cells[2, 2, 2, 5].Merge = true;
+                    worksheet.Cells[2, 2, 2, 5].Value = "Họ và tên giáo viên: " + new ThongTinCaNhanBUS().GetByMaNguoiDung(_MuonThietBi_Click_Row.MaNguoiDung).HoTen;
+                    worksheet.Cells[2, 2, 2, 5].Style.Font.Bold = true;
+                    worksheet.Cells[2, 2, 2, 5].Style.Font.Size = 16;
+
+
+                    worksheet.Cells[3, 2, 3, 5].Merge = true;
+                    if (thoiKhoaBieu != null)
+                    {
+                        if (monHoc != null)
+                        {
+                            worksheet.Cells[3, 2, 3, 5].Value = "Môn học: " + monHoc.TenMon;
+                        }
+                        else
+                        {
+                            worksheet.Cells[3, 2, 3, 5].Value = "Môn học: Không tìm thấy thông tin.";
+                        }
+                    }
+                    else
+                    {
+                        worksheet.Cells[3, 2, 3, 5].Value = "Môn học: Không tìm thấy thông tin thời khóa biểu.";
+                    }
+                    worksheet.Cells[3, 2, 3, 5].Style.Font.Bold = true;
+                    worksheet.Cells[3, 2, 3, 5].Style.Font.Size = 16;
+
+
+
+                    worksheet.Cells[4, 2].Value = "STT";
+                    worksheet.Cells[4, 3].Value = "Mã chi tiết thiết bị";
+                    worksheet.Cells[4, 4].Value = "Số kệ";
+                    worksheet.Cells[4, 5].Value = "Tên thiết bị";
+
+                    // Định dạng tiêu đề
+                    worksheet.Cells[4, 2, 4, 5].Style.Font.Bold = true;
+                    worksheet.Cells[4, 2, 4, 5].Style.Font.Size = 14;
+
+                    worksheet.Cells[4, 2, 4, 5].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    worksheet.Cells[4, 2, 4, 5].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGreen);
+                    worksheet.Cells[4, 2, 4, 5].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
+                    // Lặp qua các dòng và cột trong DataGridView để nhập dữ liệu
+                    for (int row = 0; row < dgv_DSChiTietThietBi.Rows.Count; row++)
+                    {
+                        worksheet.Cells[row + 5, 2].Value = row + 1;  // STT
+                        worksheet.Cells[row + 5, 3].Value = dgv_DSChiTietThietBi.Rows[row].Cells["MaCTTB"].Value; // Mã chi tiết thiết bị
+                        worksheet.Cells[row + 5, 4].Value = dgv_DSChiTietThietBi.Rows[row].Cells["MaTB"].Value; // Số kệ
+                        worksheet.Cells[row + 5, 5].Value = dgv_DSChiTietThietBi.Rows[row].Cells["TenTB"].Value; // Tên thiết bị
+                    }
+
+                    worksheet.Cells.AutoFitColumns();
+
+                    // Lưu file Excel
+                    package.SaveAs(new FileInfo(excelFilePath));
+                }
+
+                var _list_MuonChiTiet = GetUniqueThietBiList(_list);
+                // Tạo nội dung email với bảng HTML
+                string tableRows = "";
+                for (int i = 0; i < _list_MuonChiTiet.Count; i++)
+                {
+                    tableRows += $@"
+                <tr>
+                    <td style='text-align:center;'>{i + 1}</td>
+                    <td>{_list_MuonChiTiet[i].MaTB}</td>
+                    <td>{_list_MuonChiTiet[i].TenTB}</td>
+                    <td style='text-align:center;'>{_list_MuonChiTiet[i].SoLuong}</td>
+                </tr>";
+                }
+
+                string emailBody = $@"
+            <html>
+            <head>
+                <style>
+                    body {{
+                        font-family: Arial, sans-serif;
+                        line-height: 1.6;
+                        color: #333;
+                        margin: 0;
+                        padding: 0;
+                    }}
+                    .email-container {{
+                        max-width: 600px;
+                        margin: 20px auto;
+                        padding: 20px;
+                        border: 1px solid #ddd;
+                        border-radius: 8px;
+                        background-color: #f9f9f9;
+                    }}
+                    .email-header {{
+                        font-size: 18px;
+                        font-weight: bold;
+                        margin-bottom: 20px;
+                        color: #0066cc;
+                    }}
+                    .email-footer {{
+                        margin-top: 20px;
+                        font-size: 14px;
+                        color: #555;
+                        border-top: 1px solid #ddd;
+                        padding-top: 10px;
+                    }}
+                    table {{
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-bottom: 20px;
+                    }}
+                    table, th, td {{
+                        border: 1px solid #ddd;
+                    }}
+                    th, td {{
+                        padding: 8px;
+                        text-align: left;
+                    }}
+                    th {{
+                        background-color: #f2f2f2;
+                    }}
+                </style>
+            </head>
+            <body>
+                <div class='email-container'>
+                    <div class='email-header'>
+                        Yêu cầu mượn thiết bị của bạn đã được duyệt
+                    </div>
+                    <p>Mã Mượn: <b>{item.MaMuon}</b> - Môn học: <b>{monHoc.TenMon}</b> - Bài học: <b>{baiHoc.TenBaiHoc}</b></p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Mã thiết bị</th>
+                                <th>Tên thiết bị</th>
+                                <th>Số lượng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tableRows}
+                        </tbody>
+                    </table>
+                </div>
+            </body>
+            </html>";
                 using (var message = new MailMessage())
                 {
                     message.To.Add(toEmail);
-                    message.Subject = "Yêu cầu sửa chữa thiết bị của bạn đã được thực hiện:";
-                    message.Body = $@"
-                                        <html>
-                                        <head>
-                                            <style>
-                                                body {{
-                                                    font-family: Arial, sans-serif;
-                                                    line-height: 1.6;
-                                                    color: #333;
-                                                    margin: 0;
-                                                    padding: 0;
-                                                }}
-                                                .email-container {{
-                                                    max-width: 600px;
-                                                    margin: 20px auto;
-                                                    padding: 20px;
-                                                    border: 1px solid #ddd;
-                                                    border-radius: 8px;
-                                                    background-color: #f9f9f9;
-                                                }}
-                                                .email-header {{
-                                                    font-size: 18px;
-                                                    font-weight: bold;
-                                                    margin-bottom: 20px;
-                                                    color: #0066cc;
-                                                }}
-                                                .email-content {{
-                                                    margin-bottom: 20px;
-                                                }}
-                                                .email-footer {{
-                                                    margin-top: 20px;
-                                                    font-size: 14px;
-                                                    color: #555;
-                                                    border-top: 1px solid #ddd;
-                                                    padding-top: 10px;
-                                                }}
-                                                .highlight {{
-                                                    font-weight: bold;
-                                                    color: #d9534f;
-                                                }}
-                                            </style>
-                                        </head>
-                                        <body>
-                                            <div class='email-container'>
-                                                <div class='email-header'>
-                                                    Yêu cầu mượn thiết bị của bạn đã được duyệt
-                                                </div>
-                                                <div class='email-content'>
-                                                    <p>Mã Mượn: <span class='highlight'>{item.MaMuon}</span> của: <span class='highlight'>{item.MaTKB}</span> đã được duyệt.</p>
-                                                    <p><b>Danh sách thiết bị:</b></p>
-                                                </div>
-                                                <div class='email-footer'>
-                                                    <p>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.</p>
-                                                </div>
-                                            </div>
-                                        </body>
-                                        </html>
-                                    ";
+                    message.Subject = "Yêu cầu mượn thiết bị của bạn đã được duyệt:";
+                    message.Body = emailBody;
                     message.From = new MailAddress(fromEmail);
                     message.IsBodyHtml = true;
 
+                    // Đính kèm file Excel
+                    message.Attachments.Add(new Attachment(excelFilePath));
 
                     using (var smtp = new SmtpClient(smtpHost, smtpPort))
                     {
@@ -551,10 +693,113 @@ namespace GUI
                         smtp.Send(message);
                     }
                 }
+
+                // Xóa file tạm sau khi gửi email
+                if (File.Exists(excelFilePath))
+                {
+                    File.Delete(excelFilePath);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi gửi email: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            if(_MuonThietBi_Click_Row != null)
+            {
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Excel Files|*.xlsx";
+                    saveFileDialog.FileName = "Phieu_Muon_Thiet_Bi_"+ _MuonThietBi_Click_Row.MaTKB +"_"+ _MuonThietBi_Click_Row.MaNguoiDung + ".xlsx";
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        try
+                        {
+                            // Khai báo LicenseContext
+                            ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+
+                            // Tạo một file Excel mới
+                            using (var package = new ExcelPackage())
+                            {
+                                var worksheet = package.Workbook.Worksheets.Add("Sheet1");
+
+
+                                // Tiêu đề
+                                worksheet.Cells[1, 2, 1, 5].Merge = true; // Hợp nhất từ B1 đến D1
+                                worksheet.Cells[1, 2, 1, 5].Value = "Phiếu đăng ký mượn thiết bị";
+                                worksheet.Cells[1, 2, 1, 5].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center; // Căn giữa nội dung
+                                worksheet.Cells[1, 2, 1, 5].Style.Font.Bold = true;
+                                worksheet.Cells[1, 2, 1, 5].Style.Font.Size = 20;
+
+                                worksheet.Cells[2, 2, 2, 5].Merge = true;
+                                worksheet.Cells[2, 2, 2, 5].Value = "Họ và tên giáo viên: " + new ThongTinCaNhanBUS().GetByMaNguoiDung(_MuonThietBi_Click_Row.MaNguoiDung).HoTen;
+                                worksheet.Cells[2, 2, 2, 5].Style.Font.Bold = true;
+                                worksheet.Cells[2, 2, 2, 5].Style.Font.Size = 16;
+
+                                var thoiKhoaBieu = new ThoiKhoaBieuBUS().GetByID(_MuonThietBi_Click_Row.MaTKB);
+                                
+                                worksheet.Cells[3, 2, 3, 5].Merge = true;
+                                if (thoiKhoaBieu != null)
+                                {
+                                    var monHoc = new MonHocBUS().GetByID(thoiKhoaBieu.MaMon);
+                                    if (monHoc != null)
+                                    {
+                                        worksheet.Cells[3, 2, 3, 5].Value = "Môn học: " + monHoc.TenMon;
+                                    }
+                                    else
+                                    {
+                                        worksheet.Cells[3, 2, 3, 5].Value = "Môn học: Không tìm thấy thông tin.";
+                                    }
+                                }
+                                else
+                                {
+                                    worksheet.Cells[3, 2, 3, 5].Value = "Môn học: Không tìm thấy thông tin thời khóa biểu.";
+                                }
+                                worksheet.Cells[3, 2, 3, 5].Style.Font.Bold = true;
+                                worksheet.Cells[3, 2, 3, 5].Style.Font.Size = 16;
+
+
+
+                                worksheet.Cells[4, 2].Value = "STT";
+                                worksheet.Cells[4, 3].Value = "Mã chi tiết thiết bị";
+                                worksheet.Cells[4, 4].Value = "Số kệ";
+                                worksheet.Cells[4, 5].Value = "Tên thiết bị";
+
+                                // Định dạng tiêu đề
+                                worksheet.Cells[4, 2, 4, 5].Style.Font.Bold = true;
+                                worksheet.Cells[4, 2, 4, 5].Style.Font.Size = 14;
+
+                                worksheet.Cells[4, 2, 4, 5].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                                worksheet.Cells[4, 2, 4, 5].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGreen);
+                                worksheet.Cells[4, 2, 4, 5].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
+                                // Lặp qua các dòng và cột trong DataGridView để nhập dữ liệu
+                                for (int row = 0; row < dgv_DSChiTietThietBi.Rows.Count; row++)
+                                {
+                                    worksheet.Cells[row + 5, 2].Value = row + 1;  // STT
+                                    worksheet.Cells[row + 5, 3].Value = dgv_DSChiTietThietBi.Rows[row].Cells["MaCTTB"].Value; // Mã chi tiết thiết bị
+                                    worksheet.Cells[row + 5, 4].Value = dgv_DSChiTietThietBi.Rows[row].Cells["MaTB"].Value; // Số kệ
+                                    worksheet.Cells[row + 5, 5].Value = dgv_DSChiTietThietBi.Rows[row].Cells["TenTB"].Value; // Tên thiết bị
+                                }
+
+                                worksheet.Cells.AutoFitColumns();
+
+                                // Lưu file Excel
+                                FileInfo fi = new FileInfo(saveFileDialog.FileName);
+                                package.SaveAs(fi);
+                            }
+
+                            MessageBox.Show("Xuất Excel thành công!");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Có lỗi xảy ra: {ex.Message}");
+                        }
+                    }
+                }
             }
         }
     }

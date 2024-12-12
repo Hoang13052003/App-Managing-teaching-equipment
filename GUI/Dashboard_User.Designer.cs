@@ -365,6 +365,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_User_FormClosing);
+            this.Load += new System.EventHandler(this.Dashboard_User_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.Navbar.ResumeLayout(false);

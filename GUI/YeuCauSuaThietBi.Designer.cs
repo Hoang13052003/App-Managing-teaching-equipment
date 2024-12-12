@@ -241,6 +241,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDSThietBiSua.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvDSThietBiSua.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDSThietBiSua.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDSThietBiSua.Location = new System.Drawing.Point(1, 41);
             this.dgvDSThietBiSua.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -296,6 +297,7 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDSChiTietThietBi.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvDSChiTietThietBi.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDSChiTietThietBi.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvDSChiTietThietBi.Location = new System.Drawing.Point(1, 41);
             this.dgvDSChiTietThietBi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

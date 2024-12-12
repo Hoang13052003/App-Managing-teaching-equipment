@@ -35,7 +35,6 @@
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.panelDangNhap = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.btnChuyenQuaDangKy = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.lbQuenMatKhau = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.btnDangNhap = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -55,6 +54,7 @@
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
             this.guna2Transition1 = new Guna.UI2.WinForms.Guna2Transition();
+            this.lbQuenMatKhau = new System.Windows.Forms.LinkLabel();
             this.guna2GradientPanel1.SuspendLayout();
             this.panelDangNhap.SuspendLayout();
             this.panelDangKy.SuspendLayout();
@@ -85,8 +85,8 @@
             // panelDangNhap
             // 
             this.panelDangNhap.BackColor = System.Drawing.Color.Transparent;
-            this.panelDangNhap.Controls.Add(this.btnChuyenQuaDangKy);
             this.panelDangNhap.Controls.Add(this.lbQuenMatKhau);
+            this.panelDangNhap.Controls.Add(this.btnChuyenQuaDangKy);
             this.panelDangNhap.Controls.Add(this.label3);
             this.panelDangNhap.Controls.Add(this.btnDangNhap);
             this.panelDangNhap.Controls.Add(this.guna2HtmlLabel5);
@@ -126,19 +126,6 @@
             this.btnChuyenQuaDangKy.TabIndex = 8;
             this.btnChuyenQuaDangKy.Text = "Đăng ký";
             this.btnChuyenQuaDangKy.Click += new System.EventHandler(this.btnChuyenQuaDangKy_Click);
-            // 
-            // lbQuenMatKhau
-            // 
-            this.lbQuenMatKhau.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Transition1.SetDecoration(this.lbQuenMatKhau, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.lbQuenMatKhau.Font = new System.Drawing.Font("JetBrains Mono", 8.249999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbQuenMatKhau.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lbQuenMatKhau.Location = new System.Drawing.Point(135, 286);
-            this.lbQuenMatKhau.Name = "lbQuenMatKhau";
-            this.lbQuenMatKhau.Size = new System.Drawing.Size(101, 16);
-            this.lbQuenMatKhau.TabIndex = 7;
-            this.lbQuenMatKhau.Text = "Quên mật khẩu?";
-            this.lbQuenMatKhau.Click += new System.EventHandler(this.lbQuenMatKhau_Click);
             // 
             // label3
             // 
@@ -465,6 +452,22 @@
             animation1.TransparencyCoeff = 0F;
             this.guna2Transition1.DefaultAnimation = animation1;
             // 
+            // lbQuenMatKhau
+            // 
+            this.lbQuenMatKhau.AutoSize = true;
+            this.lbQuenMatKhau.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Transition1.SetDecoration(this.lbQuenMatKhau, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.lbQuenMatKhau.Font = new System.Drawing.Font("JetBrains Mono", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbQuenMatKhau.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
+            this.lbQuenMatKhau.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lbQuenMatKhau.Location = new System.Drawing.Point(134, 293);
+            this.lbQuenMatKhau.Name = "lbQuenMatKhau";
+            this.lbQuenMatKhau.Size = new System.Drawing.Size(120, 17);
+            this.lbQuenMatKhau.TabIndex = 9;
+            this.lbQuenMatKhau.TabStop = true;
+            this.lbQuenMatKhau.Text = "Quên mật khẩu?";
+            this.lbQuenMatKhau.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbQuenMatKhau_LinkClicked);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -508,12 +511,12 @@
         private Guna.UI2.WinForms.Guna2Transition guna2Transition1;
         private Guna.UI2.WinForms.Guna2ShadowPanel panelDangNhap;
         private Guna.UI2.WinForms.Guna2GradientButton btnChuyenQuaDangKy;
-        private Guna.UI2.WinForms.Guna2HtmlLabel lbQuenMatKhau;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2GradientButton btnDangNhap;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
         private Guna.UI2.WinForms.Guna2ToggleSwitch swichHienMatKhauDangNhap;
         private Guna.UI2.WinForms.Guna2TextBox txtMatKhauDangNhap;
         private Guna.UI2.WinForms.Guna2TextBox txtTenDangNhap;
+        private System.Windows.Forms.LinkLabel lbQuenMatKhau;
     }
 }

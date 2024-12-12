@@ -132,7 +132,7 @@ namespace GUI
             {
                 // Lọc các thiết bị có mã trùng khớp với MaTB và lấy đúng số lượng
                 var matchedItems = _List_CTTB
-                    .Where(x => x.MaTB == item.MaTB)
+                    .Where(x => x.MaTB == item.MaTB && x.TrangThai == 0)
                     .Take(item.SoLuong)
                     .ToList();
 
@@ -237,11 +237,10 @@ namespace GUI
         {
             if(List_CTTB != null)
             {
-                //List_CTTB = List_CTTB.Where(cttb => !_list_MonHoc_BaiHoc_ChiTietTB.Any(mhcttb => mhcttb.MaTB == cttb.MaTB)).ToList();
                 var filteredCTTB = List_CTTB.Where(cttb => !_List_CTTB_Muon.Any(mhcttb => mhcttb.MaCTTB == cttb.MaCTTB)).ToList();
                 filteredCTTB = filteredCTTB.AsParallel()
                 .Where(cttb => (string.Equals(cttb.TinhTrang, "Mới") || string.Equals(cttb.TinhTrang, "Cũ"))
-                               && cttb.TrangThai == 1)
+                               && cttb.TrangThai == 0)
                 .ToList();
                 if (filteredCTTB != null)
                 {

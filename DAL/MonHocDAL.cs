@@ -25,7 +25,7 @@ public class MonHocDAL : DatabaseHelper
     }
 
     // Lấy môn học theo ID
-    public MonHocDTO GetByID(int maMon)
+    public MonHocDTO GetByID(int? maMon)
     {
         string query = "SELECT * FROM MonHoc WHERE MaMon = @MaMon";
         using (SqlConnection connection = GetConnection())

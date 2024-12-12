@@ -111,6 +111,15 @@ namespace DAL
                     throw new Exception("Không thể thêm tài khoản vào nhóm người dùng.");
                 }
 
+                //command = new SqlCommand(
+                //    "INSERT INTO ThongTinCaNhan (MaNguoiDung) VALUES (@MaNguoiDung)",
+                //    connection, transaction);
+                //command.Parameters.AddWithValue("@MaNguoiDung", _MaNguoiDungNew);
+                //if (command.ExecuteNonQuery() <= 0)
+                //{
+                //    throw new Exception("Không thể thêm tài khoản vào nhóm người dùng.");
+                //}
+
                 // Commit giao dịch nếu tất cả các bước thành công
                 transaction.Commit();
                 return true;
@@ -192,6 +201,11 @@ namespace DAL
         // Phương thức gửi email
         public void SendCodeEmail(string toEmail, string newCode)
         {
+            if (string.IsNullOrEmpty(toEmail))
+            {
+                throw new ArgumentException("Email người nhận không được để trống.", nameof(toEmail));
+            }
+
             try
             {
                 // Lấy thông tin cấu hình từ App.configs
@@ -208,16 +222,29 @@ namespace DAL
 
                 using (var message = new MailMessage())
                 {
+                    // Thiết lập nội dung email
                     message.To.Add(toEmail);
                     message.Subject = "Mã xác thực của bạn";
-                    message.Body = $"Mã xác thực của bạn là: {newCode}";
+                    message.Body = $@"
+                    <html>
+                        <body style='font-family: Arial, sans-serif; line-height: 1.5;'>
+                            <p>Xin chào,</p>
+                            <p>Mã xác thực của bạn là: <b>{newCode}</b></p>
+                            <p>Vui lòng không chia sẻ mã này với bất kỳ ai.</p>
+                            <p>Trân trọng,</p>
+                            <p><i>Đội ngũ hỗ trợ</i></p>
+                        </body>
+                    </html>";
                     message.From = new MailAddress(fromEmail);
                     message.IsBodyHtml = true;
 
+                    // Cấu hình SMTP client
                     using (var smtp = new SmtpClient(smtpHost, smtpPort))
                     {
                         smtp.Credentials = new NetworkCredential(fromEmail, emailPassword);
                         smtp.EnableSsl = true;
+
+                        // Gửi email
                         smtp.Send(message);
                     }
                 }

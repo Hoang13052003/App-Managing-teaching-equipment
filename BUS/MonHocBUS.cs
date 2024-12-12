@@ -26,7 +26,7 @@ public class MonHocBUS
     }
 
     // Lấy môn học theo mã
-    public MonHocDTO GetByID(int maMon)
+    public MonHocDTO GetByID(int? maMon)
     {
         try
         {

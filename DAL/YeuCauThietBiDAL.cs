@@ -87,14 +87,17 @@ namespace DAL
                 string trangThaiText;
                 switch (trangThai)
                 {
-                    case 1:
-                        trangThaiText = "Đang sử dụng";
-                        break;
                     case 0:
                         trangThaiText = "Không sử dụng";
                         break;
+                    case 1:
+                        trangThaiText = "Đang sử dụng";
+                        break;
                     case 2:
                         trangThaiText = "Đang bảo dưỡng";
+                        break;
+                    case 3:
+                        trangThaiText = "Đang được yêu cầu mượn";
                         break;
                     default:
                         trangThaiText = "Không xác định";
@@ -117,7 +120,7 @@ namespace DAL
         public List<ChiTietThietBiDTO> SearchChiTietThietBi(int pMaTB)
         {
             List<ChiTietThietBiDTO> list = new List<ChiTietThietBiDTO>();
-            string query = @"SELECT cn.MaCTTB_NCC, TenTB, TenPhong, TinhTrang, TrangThai, NgayMua
+            string query = @"SELECT cn.MaCTTB_NCC, t.TenTB, p.TenPhong, c.TinhTrang, c.TrangThai, c.NgayMua
                             FROM ThietBi t
                             LEFT JOIN ChiTietThietBi c ON t.MaTB = c.MaTB
                             LEFT JOIN ChiTietThietBi_NhaCungCap cn ON cn.MaCTTB = c.MaCTTB
@@ -133,13 +136,16 @@ namespace DAL
                 switch (trangThai)
                 {
                     case 0:
-                        trangThaiText = "Đang sử dụng";
+                        trangThaiText = "Không sử dụng";
                         break;
                     case 1:
-                        trangThaiText = "Không sử dụng";
+                        trangThaiText = "Đang sử dụng";
                         break;
                     case 2:
                         trangThaiText = "Đang bảo dưỡng";
+                        break;
+                    case 3:
+                        trangThaiText = "Đang được yêu cầu mượn";
                         break;
                     default:
                         trangThaiText = "Không xác định";
@@ -179,13 +185,16 @@ namespace DAL
                 switch (trangThai)
                 {
                     case 0:
-                        trangThaiText = "Đang sử dụng";
+                        trangThaiText = "Không sử dụng";
                         break;
                     case 1:
-                        trangThaiText = "Không sử dụng";
+                        trangThaiText = "Đang sử dụng";
                         break;
                     case 2:
                         trangThaiText = "Đang bảo dưỡng";
+                        break;
+                    case 3:
+                        trangThaiText = "Đang được yêu cầu mượn";
                         break;
                     default:
                         trangThaiText = "Không xác định";
@@ -223,13 +232,16 @@ namespace DAL
                 switch (trangThai)
                 {
                     case 0:
-                        trangThaiText = "Đang sử dụng";
+                        trangThaiText = "Không sử dụng";
                         break;
                     case 1:
-                        trangThaiText = "Không sử dụng";
+                        trangThaiText = "Đang sử dụng";
                         break;
                     case 2:
                         trangThaiText = "Đang bảo dưỡng";
+                        break;
+                    case 3:
+                        trangThaiText = "Đang được yêu cầu mượn";
                         break;
                     default:
                         trangThaiText = "Không xác định";
@@ -477,7 +489,7 @@ namespace DAL
                     VALUES (@MaCTTB_NCC, @NgayBD, @KetQua, @ChiPhi)";
 
             string updateTrangThaiQuery = @"UPDATE ChiTietThietBi 
-                        SET TrangThai = 1 
+                        SET TrangThai = 0
                         WHERE MaCTTB = (
                             SELECT TOP 1 MaCTTB 
                             FROM ChiTietThietBi_NhaCungCap 
@@ -610,13 +622,16 @@ namespace DAL
                 switch (trangThai)
                 {
                     case 0:
-                        trangThaiText = "Đang sử dụng";
+                        trangThaiText = "Không sử dụng";
                         break;
                     case 1:
-                        trangThaiText = "Không sử dụng";
+                        trangThaiText = "Đang sử dụng";
                         break;
                     case 2:
                         trangThaiText = "Đang bảo dưỡng";
+                        break;
+                    case 3:
+                        trangThaiText = "Đang được yêu cầu mượn";
                         break;
                     default:
                         trangThaiText = "Không xác định";

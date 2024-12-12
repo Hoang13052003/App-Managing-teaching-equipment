@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.SqlClient;
 using DTO;
 
 namespace BUS
@@ -21,7 +22,10 @@ namespace BUS
         {
             return thongTinCaNhanDAL.Insert(thongTinCaNhan);
         }
-
+        public bool InsertNewNull(string maNguoiDung)
+        {
+            return thongTinCaNhanDAL.InsertNewNull(maNguoiDung);
+        }
         public bool Update(ThongTinCaNhanDTO thongTinCaNhan)
         {
             return thongTinCaNhanDAL.Update(thongTinCaNhan);
@@ -30,6 +34,14 @@ namespace BUS
         public bool Delete(string maNguoiDung)
         {
             return thongTinCaNhanDAL.Delete(maNguoiDung);
+        }
+        public bool CheckIfCodeExists(string maNguoiDung)
+        {
+            return thongTinCaNhanDAL.CheckIfCodeExists(maNguoiDung);
+        }
+        public bool CheckIfDataExists(string maNguoiDung)
+        {
+            return thongTinCaNhanDAL.CheckIfDataExists(maNguoiDung);
         }
     }
 }

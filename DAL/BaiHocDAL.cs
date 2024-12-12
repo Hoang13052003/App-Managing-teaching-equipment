@@ -26,7 +26,7 @@ public class BaiHocDAL : DatabaseHelper
     }
 
     // Lấy bài học theo ID
-    public BaiHocDTO GetByID(int maBaiHoc)
+    public BaiHocDTO GetByID(int? maBaiHoc)
     {
         string query = "SELECT * FROM BaiHoc WHERE MaBaiHoc = @MaBaiHoc";
         using (SqlConnection connection = GetConnection())

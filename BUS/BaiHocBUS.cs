@@ -26,7 +26,7 @@ public class BaiHocBUS
     }
 
     // Lấy bài học theo mã
-    public BaiHocDTO GetByID(int maBaiHoc)
+    public BaiHocDTO GetByID(int? maBaiHoc)
     {
         try
         {

@@ -80,5 +80,6 @@ namespace GUI
             autoCloseTimer.Start();
             start.Start();
         }
+        
     }
 }

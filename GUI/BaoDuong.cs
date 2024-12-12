@@ -260,10 +260,11 @@ namespace GUI
                         MessageBox.Show("Cần cho biết kết quả và chi phí sửa chữa trước khi xác nhận!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+
                     int maYC = Convert.ToInt32(dgvChiTietYC.Rows[e.RowIndex].Cells["MaYC"].Value);
                     int maCTTB_NCC = Convert.ToInt32(dgvChiTietYC.Rows[e.RowIndex].Cells["MaCTTB_NCC"].Value);
+                    string ketQua = txtKetQuaSua.Text.Trim();
                     float chiPhi = Convert.ToSingle(txtChiPhiSua.Text);
-
                     YeuCauThietBiDTO yctb = y.getAllYeuCauThietBi().FirstOrDefault(item => item.MaYC == maYC);
 
                     bool success = y.UpdataTrangThaiCTYCTB(maYC, maCTTB_NCC, yctb.MaNguoiDung, 1, txtKetQuaSua.Text, chiPhi);
@@ -271,13 +272,11 @@ namespace GUI
                     if (success)
                     {
                         MessageBox.Show("Đã hoàn thành cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        ThongTinCaNhanDTO item = new ThongTinCaNhanBUS().GetByMaNguoiDung(yctb.MaNguoiDung);
                         
-                        if (yctb != null)
-                        {
-                            BaoDuongDTO bd = b.GetByID(maCTTB_NCC, yctb.MaNguoiDung);
-                            ThongTinCaNhanDTO item = new ThongTinCaNhanBUS().GetByMaNguoiDung(yctb.MaNguoiDung);
-                            SendCodeEmail(item.Email, bd);
-                        }
+                        var culture = new System.Globalization.CultureInfo("vi-VN");
+                        SendCodeEmail(item.Email, dgvChiTietYC.Rows[e.RowIndex].Cells["TenTB"].Value.ToString(), dgvChiTietYC.Rows[e.RowIndex].Cells["TenPhong"].Value.ToString(), ketQua, chiPhi.ToString("N0", culture) + " VNĐ");
 
                         LamMoi();
                     }
@@ -307,7 +306,7 @@ namespace GUI
                 }
             }
         }
-        private void SendCodeEmail(string toEmail, BaoDuongDTO item)
+        private void SendCodeEmail(string toEmail, string tenTB, string tenPhong, string ketQua, string chiPhi)
         {
             try
             {
@@ -374,10 +373,10 @@ namespace GUI
                                                     Yêu cầu sửa chữa thiết bị đã được thực hiện
                                                 </div>
                                                 <div class='email-content'>
-                                                    <p>Thiết bị: <span class='highlight'>{item.TenTB.ToString()}</span> tại phòng: <span class='highlight'>{item.TenPhong.ToString()}</span> đã được bảo dưỡng.</p>
+                                                    <p>Thiết bị: <span class='highlight'>{tenTB}</span> tại phòng: <span class='highlight'>{tenPhong}</span> đã được bảo dưỡng.</p>
                                                     <p><b>Thông tin hỏng:</b></p>
-                                                    <p>- {item.KetQua.ToString()}</p>
-                                                    <p><b>Tổng chi phí sửa chữa:</b> <span class='highlight'>{item.ChiPhi.ToString()} VND</span></p>
+                                                    <p>- {ketQua}</p>
+                                                    <p><b>Tổng chi phí sửa chữa:</b> <span class='highlight'>{chiPhi}</span></p>
                                                 </div>
                                                 <div class='email-footer'>
                                                     <p>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.</p>

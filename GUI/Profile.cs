@@ -42,7 +42,7 @@ namespace GUI
             txtSDT.Text = _dto.SDT;
             txtGmail.Text = _dto.Email;
             txtDiaChi.Text = _dto.DiaChi;
-            dtbNgaySinh.Value = _dto.NgaySinh.Value;
+            dtbNgaySinh.Value = _dto.NgaySinh ?? DateTime.Now;
             cbbGioiTinh.SelectedItem = _dto.GioiTinh;
         }
 
@@ -119,6 +119,19 @@ namespace GUI
         }
         private void btnLuuThongTin_Click(object sender, EventArgs e)
         {
+            if (!IsValidEmail(txtGmail.Text))
+            {
+                MessageBox.Show("Email không hợp lệ. Vui lòng nhập đúng định dạng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Kiểm tra định dạng Số điện thoại
+            if (!IsValidPhoneNumber(txtSDT.Text))
+            {
+                MessageBox.Show("Số điện thoại không hợp lệ. Vui lòng nhập đúng định dạng (10-11 chữ số)!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             var item = new ThongTinCaNhanDTO
             {
                 MaNguoiDung = _dto.MaNguoiDung,
@@ -140,6 +153,43 @@ namespace GUI
                 MessageBox.Show("Cập nhật thông tin cá nhân thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        // Hàm kiểm tra định dạng Số điện thoại
+        private bool IsValidPhoneNumber(string phoneNumber)
+        {
+            // Chỉ chấp nhận số điện thoại từ 10 đến 12 chữ số
+            if (string.IsNullOrEmpty(phoneNumber))
+                return false;
+
+            // Kiểm tra độ dài và ký tự
+            return phoneNumber.Length >= 10 && phoneNumber.Length <= 12 &&
+                   System.Text.RegularExpressions.Regex.IsMatch(phoneNumber, @"^\d+$");
+        }
+        private void Profile_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool checkThongTinCaNhan = new ThongTinCaNhanBUS().CheckIfDataExists(AccountInfo.MaNguoiDung);
+
+            if (checkThongTinCaNhan)
+            {
+                // Hiển thị thông báo
+                MessageBox.Show("Bạn phải hoàn thành việc nhập thông tin cá nhân trước khi đóng!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                // Hủy việc đóng form
+                e.Cancel = true;
+            }
         }
     }
 }

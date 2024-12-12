@@ -183,23 +183,23 @@ namespace GUI
                 txtMatKhauDangNhap.PasswordChar = '*'; // Ẩn mật khẩu
             }
         }
-        private void lbQuenMatKhau_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string tenDangNhap = txtTenDangNhap.Text;
-                NguoiDungDTO nguoiDung = loginBUS.RecoverPassword(tenDangNhap);
+        //private void lbQuenMatKhau_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        string tenDangNhap = txtTenDangNhap.Text;
+        //        NguoiDungDTO nguoiDung = loginBUS.RecoverPassword(tenDangNhap);
 
-                if (nguoiDung != null)
-                {
-                    FormTask.OpenForm<ResetPassword>(nguoiDung);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message);
-            }
-        }
+        //        if (nguoiDung != null)
+        //        {
+        //            FormTask.OpenForm<ResetPassword>(nguoiDung);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Lỗi: " + ex.Message);
+        //    }
+        //}
 
         //Funsion
         private void ResetFieldsAndFocus()
@@ -254,6 +254,22 @@ namespace GUI
             Environment.Exit(0);
         }
 
-        
+        private void lbQuenMatKhau_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                string tenDangNhap = txtTenDangNhap.Text;
+                NguoiDungDTO nguoiDung = loginBUS.RecoverPassword(tenDangNhap);
+
+                if (nguoiDung != null)
+                {
+                    FormTask.OpenForm<ResetPassword>(nguoiDung);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+        }
     }
 }
