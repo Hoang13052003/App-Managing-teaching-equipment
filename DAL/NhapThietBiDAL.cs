@@ -118,7 +118,7 @@ public class NhapThietBiDAL : DatabaseHelper
                             {
                                 string insertChiTietThietBiQuery = @"
                                     INSERT INTO ChiTietThietBi (MaTB, TinhTrang, TrangThai, NgayMua) 
-                                    VALUES (@MaTB, N'Mới', 1, GETDATE());
+                                    VALUES (@MaTB, N'Mới', 0, GETDATE());
                                     SELECT SCOPE_IDENTITY();";
                                 SqlCommand insertChiTietThietBiCommand = new SqlCommand(insertChiTietThietBiQuery, connection, transaction);
                                 insertChiTietThietBiCommand.Parameters.AddWithValue("@MaTB", chiTiet.MaTB);

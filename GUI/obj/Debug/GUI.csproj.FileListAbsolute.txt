@@ -132,3 +132,6 @@ D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\bin\Debug\System
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\bin\Debug\System.Memory.xml
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\bin\Debug\System.Numerics.Vectors.xml
 D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\bin\Debug\BouncyCastle.Cryptography.dll
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\bin\Debug\BouncyCastle.Cryptography.xml
+D:\DATA\2024-2025\doantotnghiep\Project\QuanLyThietBiDayHoc\GUI\obj\Debug\GUI.ThongKe.resources

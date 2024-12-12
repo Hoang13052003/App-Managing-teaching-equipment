@@ -3,14 +3,18 @@ using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace GUI
 {
@@ -38,7 +42,11 @@ namespace GUI
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            if (cboTinhTrang.SelectedIndex != 1)
+            {
+                MessageBox.Show("Vui lòng chọn tình trạng đã xử lý!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             // Kiểm tra định dạng thời gian
             DateTime thoiGian;
             if (string.IsNullOrWhiteSpace(txtThoiGian.Text) || !DateTime.TryParseExact(txtThoiGian.Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out thoiGian))
@@ -58,6 +66,7 @@ namespace GUI
                 ChiPhiSuaChua = Convert.ToSingle(txtChiPhi.Text),
                 TinhTrang = cboTinhTrang.SelectedIndex,
             };
+
             List<ChiTietBienBanDTO> chiTietList = b.GetAllChiTietBB();
 
             if (chiTietList != null && chiTietList.Count > 0)
@@ -66,6 +75,14 @@ namespace GUI
                 if (isUpdated)
                 {
                     MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    string emailNguoiNhan = "anhyeuem13052003@gmail.com"; // Email người làm hỏng
+                    var _list_chiTietBienBan = b.SearchChiTietBB(bienBan.MaBB);
+                    
+                    SendCodeEmail(emailNguoiNhan, _list_chiTietBienBan, bienBan);
+
+                    MessageBox.Show("Biên bản đã được lập và email yêu cầu bồi thường đã được gửi.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
                     LamMoi();
                 }
                 else
@@ -76,6 +93,135 @@ namespace GUI
             else
             {
                 MessageBox.Show("Không có chi tiết để cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        private void SendCodeEmail(string toEmail, List<ChiTietBienBanDTO> list, BienBanXuLyDTO itemBB)
+        {
+            try
+            {
+                string fromEmail = ConfigurationManager.AppSettings["EmailSender"];
+                string emailPassword = ConfigurationManager.AppSettings["EmailPassword"];
+                string smtpHost = ConfigurationManager.AppSettings["SmtpServer"];
+                int smtpPort = int.Parse(ConfigurationManager.AppSettings["SmtpPort"]);
+
+                if (string.IsNullOrEmpty(fromEmail) || string.IsNullOrEmpty(emailPassword) || string.IsNullOrEmpty(smtpHost))
+                {
+                    MessageBox.Show("Thông tin cấu hình email không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                string tableRows = "";
+                for (int i = 0; i < list.Count; i++)
+                {
+                    tableRows += $@"
+                <tr>
+                    <td style='text-align:center;'>{i + 1}</td>
+                    <td>{list[i].MaCTTB_NCC}</td>
+                    <td>{list[i].TenTB}</td>
+                    <td style='text-align:center;'>{list[i].MoTaChiTiet}</td>
+                </tr>";
+                }
+
+                using (var message = new MailMessage())
+                {
+                    message.To.Add(toEmail);
+                    message.Subject = "Yêu cầu bồi thường thiết bị bị hỏng";
+
+                    // Nội dung email
+                    message.Body = $@"
+                <html>
+                <head>
+                    <style>
+                        body {{
+                        font-family: Arial, sans-serif;
+                        line-height: 1.6;
+                        color: #333;
+                        margin: 0;
+                        padding: 0;
+                    }}
+                    .email-container {{
+                        max-width: 600px;
+                        margin: 20px auto;
+                        padding: 20px;
+                        border: 1px solid #ddd;
+                        border-radius: 8px;
+                        background-color: #f9f9f9;
+                    }}
+                    .email-header {{
+                        font-size: 18px;
+                        font-weight: bold;
+                        margin-bottom: 20px;
+                        color: #0066cc;
+                    }}
+                    .email-footer {{
+                        margin-top: 20px;
+                        font-size: 14px;
+                        color: #555;
+                        border-top: 1px solid #ddd;
+                        padding-top: 10px;
+                    }}
+                    table {{
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-bottom: 20px;
+                    }}
+                    table, th, td {{
+                        border: 1px solid #ddd;
+                    }}
+                    th, td {{
+                        padding: 8px;
+                        text-align: left;
+                    }}
+                    th {{
+                        background-color: #f2f2f2;
+                    }}
+                    </style>
+                </head>
+                <body>
+                    <div class='email-container'>
+                        <div class='email-header'>
+                            Thông báo yêu cầu bồi thường
+                        </div>
+                        <div class='email-content'>
+                            <p>Thông tin người làm hỏng: <span class='highlight'>{itemBB.TenNguoiLamHong} - Vai trò: {itemBB.VaiTro}</span></p>
+                            <p>Tổng chi phí bồi thường: <span class='highlight'>{itemBB.ChiPhiSuaChua} VNĐ</span></p>
+                        </div>
+                        <div class='email-header'>
+                            Danh sách thiết bị hư hỏng
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã CTTB_NCC</th>
+                                    <th>Tên thiết bị</th>
+                                    <th>Mô tả hư hỏng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {tableRows}
+                            </tbody>
+                        </table>
+                        <p>Vui lòng liên hệ phòng quản lý để hoàn tất thủ tục bồi thường.</p>
+                    </div>
+                </body>
+                </html>
+            ";
+
+                    message.From = new MailAddress(fromEmail);
+                    message.IsBodyHtml = true;
+
+                    using (var smtp = new SmtpClient(smtpHost, smtpPort))
+                    {
+                        smtp.Credentials = new NetworkCredential(fromEmail, emailPassword);
+                        smtp.EnableSsl = true;
+                        smtp.Send(message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi gửi email: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -100,7 +246,7 @@ namespace GUI
 
             if (File.Exists(combinedImagePath))
             {
-                pictureBox.Image = Image.FromFile(combinedImagePath);
+                pictureBox.Image = System.Drawing.Image.FromFile(combinedImagePath);
                 pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                 //pictureBox.Width = 290;
                 //pictureBox.Height = 220;

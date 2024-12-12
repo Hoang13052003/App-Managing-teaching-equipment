@@ -300,6 +300,7 @@ namespace GUI
                                         cttbBUS.Update_TrangThai(item.MaCTTB, 0);
                                     }
                                 }
+                                SendCodeEmail_ThongBaoThietBiThieu(new ThongTinCaNhanBUS().GetByMaNguoiDung(_MuonThietBi_Click_Row.MaNguoiDung).Email, _MuonThietBi_Click_Row, list);
                             }
                             break;
 
@@ -666,6 +667,216 @@ namespace GUI
                                 <th>Mã thiết bị</th>
                                 <th>Tên thiết bị</th>
                                 <th>Số lượng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tableRows}
+                        </tbody>
+                    </table>
+                </div>
+            </body>
+            </html>";
+                using (var message = new MailMessage())
+                {
+                    message.To.Add(toEmail);
+                    message.Subject = "Yêu cầu mượn thiết bị của bạn đã được duyệt:";
+                    message.Body = emailBody;
+                    message.From = new MailAddress(fromEmail);
+                    message.IsBodyHtml = true;
+
+                    // Đính kèm file Excel
+                    message.Attachments.Add(new Attachment(excelFilePath));
+
+                    using (var smtp = new SmtpClient(smtpHost, smtpPort))
+                    {
+                        smtp.Credentials = new NetworkCredential(fromEmail, emailPassword);
+                        smtp.EnableSsl = true;
+                        smtp.Send(message);
+                    }
+                }
+
+                // Xóa file tạm sau khi gửi email
+                if (File.Exists(excelFilePath))
+                {
+                    File.Delete(excelFilePath);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi gửi email: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void SendCodeEmail_ThongBaoThietBiThieu(string toEmail, MuonThietBiDTO item, List<ChiTietMuonThietBiDTO> _list)
+        {
+            try
+            {
+                // Lấy thông tin cấu hình từ App.configs
+                string fromEmail = ConfigurationManager.AppSettings["EmailSender"];
+                string emailPassword = ConfigurationManager.AppSettings["EmailPassword"];
+                string smtpHost = ConfigurationManager.AppSettings["SmtpServer"];
+                int smtpPort = int.Parse(ConfigurationManager.AppSettings["SmtpPort"]);
+
+
+                if (string.IsNullOrEmpty(fromEmail) || string.IsNullOrEmpty(emailPassword) || string.IsNullOrEmpty(smtpHost))
+                {
+                    MessageBox.Show("Thông tin cấu hình email không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var thoiKhoaBieu = new ThoiKhoaBieuBUS().GetByID(_MuonThietBi_Click_Row.MaTKB);
+                var monHoc = new MonHocBUS().GetByID(thoiKhoaBieu.MaMon);
+                var baiHoc = new BaiHocBUS().GetByID(thoiKhoaBieu.MaBaiHoc);
+
+                string excelFilePath = Path.Combine(Path.GetTempPath(), "DanhSachThietBi.xlsx");
+                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
+
+                // Tạo một file Excel mới
+                using (var package = new ExcelPackage())
+                {
+                    var worksheet = package.Workbook.Worksheets.Add("Sheet1");
+
+
+                    // Tiêu đề
+                    worksheet.Cells[1, 2, 1, 5].Merge = true; // Hợp nhất từ B1 đến D1
+                    worksheet.Cells[1, 2, 1, 5].Value = "Danh sách thiết bị trả thiếu";
+                    worksheet.Cells[1, 2, 1, 5].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center; // Căn giữa nội dung
+                    worksheet.Cells[1, 2, 1, 5].Style.Font.Bold = true;
+                    worksheet.Cells[1, 2, 1, 5].Style.Font.Size = 20;
+
+                    worksheet.Cells[2, 2, 2, 5].Merge = true;
+                    worksheet.Cells[2, 2, 2, 5].Value = "Họ và tên giáo viên: " + new ThongTinCaNhanBUS().GetByMaNguoiDung(_MuonThietBi_Click_Row.MaNguoiDung).HoTen;
+                    worksheet.Cells[2, 2, 2, 5].Style.Font.Bold = true;
+                    worksheet.Cells[2, 2, 2, 5].Style.Font.Size = 16;
+
+
+                    worksheet.Cells[3, 2, 3, 5].Merge = true;
+                    if (thoiKhoaBieu != null)
+                    {
+                        if (monHoc != null)
+                        {
+                            worksheet.Cells[3, 2, 3, 5].Value = "Môn học: " + monHoc.TenMon;
+                        }
+                        else
+                        {
+                            worksheet.Cells[3, 2, 3, 5].Value = "Môn học: Không tìm thấy thông tin.";
+                        }
+                    }
+                    else
+                    {
+                        worksheet.Cells[3, 2, 3, 5].Value = "Môn học: Không tìm thấy thông tin thời khóa biểu.";
+                    }
+                    worksheet.Cells[3, 2, 3, 5].Style.Font.Bold = true;
+                    worksheet.Cells[3, 2, 3, 5].Style.Font.Size = 16;
+
+
+
+                    worksheet.Cells[4, 2].Value = "STT";
+                    worksheet.Cells[4, 3].Value = "Mã chi tiết thiết bị";
+                    worksheet.Cells[4, 4].Value = "Số kệ";
+                    worksheet.Cells[4, 5].Value = "Tên thiết bị";
+
+                    // Định dạng tiêu đề
+                    worksheet.Cells[4, 2, 4, 5].Style.Font.Bold = true;
+                    worksheet.Cells[4, 2, 4, 5].Style.Font.Size = 14;
+
+                    worksheet.Cells[4, 2, 4, 5].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    worksheet.Cells[4, 2, 4, 5].Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGreen);
+                    worksheet.Cells[4, 2, 4, 5].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
+                    // Lặp qua các dòng và cột trong DataGridView để nhập dữ liệu
+                    for (int row = 0; row < dgv_DSChiTietThietBi.Rows.Count; row++)
+                    {
+                        if (Convert.ToBoolean(dgv_DSChiTietThietBi.Rows[row].Cells["TrangThai"].Value) == false)
+                        {
+                            worksheet.Cells[row + 5, 2].Value = row + 1;  // STT
+                            worksheet.Cells[row + 5, 3].Value = dgv_DSChiTietThietBi.Rows[row].Cells["MaCTTB"].Value; // Mã chi tiết thiết bị
+                            worksheet.Cells[row + 5, 4].Value = dgv_DSChiTietThietBi.Rows[row].Cells["MaTB"].Value; // Số kệ
+                            worksheet.Cells[row + 5, 5].Value = dgv_DSChiTietThietBi.Rows[row].Cells["TenTB"].Value; // Tên thiết bị
+                        }
+                    }
+                    worksheet.Cells.AutoFitColumns();
+
+                    // Lưu file Excel
+                    package.SaveAs(new FileInfo(excelFilePath));
+                }
+
+                //var _list_MuonChiTiet = GetUniqueThietBiList(_list);
+                // Tạo nội dung email với bảng HTML
+                string tableRows = "";
+                for (int i = 0; i < _list.Count; i++)
+                {
+                    if(_list[i].TrangThai == false)
+                    {
+                        tableRows += $@"
+                        <tr>
+                            <td style='text-align:center;'>{i + 1}</td>
+                            <td>{_list[i].MaTB}</td>
+                            <td>{_list[i].TenTB}</td>
+                        </tr>";
+                    }
+                }
+
+                string emailBody = $@"
+            <html>
+            <head>
+                <style>
+                    body {{
+                        font-family: Arial, sans-serif;
+                        line-height: 1.6;
+                        color: #333;
+                        margin: 0;
+                        padding: 0;
+                    }}
+                    .email-container {{
+                        max-width: 600px;
+                        margin: 20px auto;
+                        padding: 20px;
+                        border: 1px solid #ddd;
+                        border-radius: 8px;
+                        background-color: #f9f9f9;
+                    }}
+                    .email-header {{
+                        font-size: 18px;
+                        font-weight: bold;
+                        margin-bottom: 20px;
+                        color: #0066cc;
+                    }}
+                    .email-footer {{
+                        margin-top: 20px;
+                        font-size: 14px;
+                        color: #555;
+                        border-top: 1px solid #ddd;
+                        padding-top: 10px;
+                    }}
+                    table {{
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-bottom: 20px;
+                    }}
+                    table, th, td {{
+                        border: 1px solid #ddd;
+                    }}
+                    th, td {{
+                        padding: 8px;
+                        text-align: left;
+                    }}
+                    th {{
+                        background-color: #f2f2f2;
+                    }}
+                </style>
+            </head>
+            <body>
+                <div class='email-container'>
+                    <div class='email-header'>
+                        Danh sách thiết bị trả thiếu
+                    </div>
+                    <p>Mã Mượn: <b>{item.MaMuon}</b> - Môn học: <b>{monHoc.TenMon}</b> - Bài học: <b>{baiHoc.TenBaiHoc}</b></p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Mã thiết bị</th>
+                                <th>Tên thiết bị</th>
                             </tr>
                         </thead>
                         <tbody>

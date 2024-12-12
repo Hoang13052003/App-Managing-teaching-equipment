@@ -106,43 +106,51 @@ namespace GUI
         {
             if (dgvDSChiTietThietBi.SelectedRows.Count > 0)
             {
-                DataGridViewRow selectedRow = dgvDSChiTietThietBi.SelectedRows[0];
-
-                bool exists = false;
-                foreach (DataGridViewRow row in dgvDSThietBiMua.Rows)
+                if (txtGhiChu.Text.Trim() != string.Empty)
                 {
-                    var cellValue1 = row.Cells["TenTB"].Value; 
-                    var cellValue2 = selectedRow.Cells["TenTB"].Value; 
+                    DataGridViewRow selectedRow = dgvDSChiTietThietBi.SelectedRows[0];
 
-                    if (cellValue1 == null || cellValue2 == null)
-                        continue;
-
-                    if (cellValue1.ToString() == cellValue2.ToString())
+                    bool exists = false;
+                    foreach (DataGridViewRow row in dgvDSThietBiMua.Rows)
                     {
-                        exists = true;
-                        break;
+                        var cellValue1 = row.Cells["TenTB"].Value;
+                        var cellValue2 = selectedRow.Cells["TenTB"].Value;
+
+                        if (cellValue1 == null || cellValue2 == null)
+                            continue;
+
+                        if (cellValue1.ToString() == cellValue2.ToString())
+                        {
+                            exists = true;
+                            break;
+                        }
                     }
-                }
 
-                if (!exists)
-                {
-                    DataGridViewRow newRow = new DataGridViewRow();
+                    if (!exists)
+                    {
+                        DataGridViewRow newRow = new DataGridViewRow();
 
-                    newRow.CreateCells(dgvDSThietBiMua); 
-                    newRow.Cells[0].Value = selectedRow.Cells[0].Value; 
-                    newRow.Cells[1].Value = selectedRow.Cells[1].Value; 
-                    newRow.Cells[2].Value = selectedRow.Cells[2].Value; 
-                    newRow.Cells[3].Value = selectedRow.Cells[3].Value; 
-                    newRow.Cells[4].Value = selectedRow.Cells[4].Value; 
-                    newRow.Cells[5].Value = selectedRow.Cells[5].Value; 
+                        newRow.CreateCells(dgvDSThietBiMua);
+                        newRow.Cells[0].Value = selectedRow.Cells[0].Value;
+                        newRow.Cells[1].Value = selectedRow.Cells[1].Value;
+                        newRow.Cells[2].Value = selectedRow.Cells[2].Value;
+                        newRow.Cells[3].Value = selectedRow.Cells[3].Value;
+                        newRow.Cells[4].Value = selectedRow.Cells[4].Value;
+                        newRow.Cells[5].Value = selectedRow.Cells[5].Value;
 
-                    newRow.Cells[6].Value = txtGhiChu.Text; 
+                        newRow.Cells[6].Value = txtGhiChu.Text;
 
-                    dgvDSThietBiMua.Rows.Add(newRow);
+                        dgvDSThietBiMua.Rows.Add(newRow);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thiết bị này đã có trong danh sách mua!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Thiết bị này đã có trong danh sách mua!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Vui lòng nhập thông tin ghi chú số lượng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
             }
             else
